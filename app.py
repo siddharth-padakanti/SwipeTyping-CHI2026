@@ -52,7 +52,7 @@ def angle_to_chars(char, angle):
             if k.lower() in visited:
                 continue
             dist = (fx - kx)**2 + (fy - ky)**2
-            if dist < 0.15 and dist < min_dist:  # wider radius
+            if dist < 0.2 and dist < min_dist:  # wider radius
                 closest = k.lower()
                 min_dist = dist
 
@@ -88,20 +88,24 @@ def to_trajectory(tokens):
         filtered.append(ch)
     return "".join(filtered)
 
-def generate_predictions(input_str, beams=5, topn=3):
-    inputs = tokenizer(input_str, return_tensors="pt").to(device)
+def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
+    inputs = tokenizer(text, return_tensors="pt", padding=True).to(device)
     outputs = model.generate(
         inputs['input_ids'],
         max_length=8,
-        num_beams=beams,
-        num_return_sequences=topn,
+        num_beams=num_beams,
+        num_return_sequences=num_return_sequences,
         early_stopping=True
     )
-    decoded = [
-        tokenizer.decode(output, skip_special_tokens=True).replace("<pad>", "").strip().lower()
+    words = [
+        tokenizer.decode(output, skip_special_tokens=True)
+        .replace("</s>", "")
+        .replace("<pad>", "")
+        .replace("<unk>", "")
+        .replace(" ", "")
         for output in outputs
     ]
-    return list(dict.fromkeys(decoded))[:topn]
+    return list(dict.fromkeys(words))[:3]
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -129,7 +133,7 @@ def predict():
             "The input is the closest key sequence to the user-drawn gesture trajectory. "
             f"Please find the target word for this input: {trajectory}"
         )
-        predictions = generate_predictions(prompt)
+        predictions = generate_n_best_words(prompt)
         return jsonify(predictions=predictions, pattern=trajectory)
 
     except Exception as e:
