@@ -110,31 +110,28 @@ def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
-        tokens = request.json.get("input", "").strip().split()
+        tokens = request.json.get("input", "")
         if not tokens:
             return jsonify(error="Empty input."), 400
         
-        if not tokens:
-            return jsonify(error="Empty input."), 400
+        # try:
+        #     letters = [t for t in tokens if len(t) == 1 and t.isalpha()]
+        #     swipes = [t for t in tokens if re.match(r"^\d+degrees$", t)]
+        #     if not swipes:
+        #         typed_word = "".join(letters).lower()
+        #         return jsonify(predictions=[typed_word], pattern=typed_word)
+        # except Exception as e:
+        #     return jsonify(error=str(e)), 500
 
-        try:
-            letters = [t for t in tokens if len(t) == 1 and t.isalpha()]
-            swipes = [t for t in tokens if re.match(r"^\d+degrees$", t)]
-            if not swipes:
-                typed_word = "".join(letters).lower()
-                return jsonify(predictions=[typed_word], pattern=typed_word)
-        except Exception as e:
-            return jsonify(error=str(e)), 500
-
-        trajectory = to_trajectory(tokens)
-        print(f"Trajectory: {trajectory}")
+        # trajectory = to_trajectory(tokens)
+        print(f"Trajectory: {tokens}")
         prompt = (
             "You are an intelligent QWERTY keyboard decoder. "
             "The input is the closest key sequence to the user-drawn gesture trajectory. "
-            f"Please find the target word for this input: {trajectory}"
+            f"Please find the target word for this input: {tokens}"
         )
         predictions = generate_n_best_words(prompt)
-        return jsonify(predictions=predictions, pattern=trajectory)
+        return jsonify(predictions=predictions, pattern=tokens)
 
     except Exception as e:
         return jsonify(error=str(e)), 500

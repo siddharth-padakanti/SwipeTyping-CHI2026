@@ -259,26 +259,26 @@ function predict() {
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
   document.getElementById("demo").innerHTML = char_res.join("");
 
-  // const input = swipeInput.value;
-  // const results = document.getElementById("results");
-  // results.innerHTML = "Loading...";
+  const input = char_res.join("");
+  const results = document.getElementById("results");
+  results.innerHTML = "Loading...";
 
-  // fetch("http://localhost:5000/predict", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ input })
-  // })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     if (data.predictions) {
-  //       results.innerHTML = `<h3>Predictions:</h3><ul>${data.predictions.map(word => `<li>${word}</li>`).join('')}</ul>`;
-  //     } else {
-  //       results.innerHTML = `<p>Error: ${data.error}</p>`;
-  //     }
-  //   })
-  //   .catch(err => {
-  //     results.innerHTML = `<p>Request failed: ${err}</p>`;
-  //   });
+  fetch("http://localhost:5000/predict", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ input })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.predictions) {
+        results.innerHTML = `<h3>Predictions:</h3><ul>${data.predictions.map(word => `<li>${word}</li>`).join('')}</ul>`;
+      } else {
+        results.innerHTML = `<p>Error: ${data.error}</p>`;
+      }
+    })
+    .catch(err => {
+      results.innerHTML = `<p>Request failed: ${err}</p>`;
+    });
 }
 
 // function handleStart(x, y, key, el) {
