@@ -34,13 +34,22 @@ function getKeyID(key) {
   return keyMapping[key];
 }
 
+function svgLoad() {
+  console.log("LOADED");
 
-var obj = document.getElementById("keyboardOBJ");
-obj.addEventListener('load', function(){
-    document.getElementById("keyboardOBJ").getSVGDocument().onmousemove = function(event) {myMouseMove(event)};
-    document.getElementById("keyboardOBJ").getSVGDocument().onmousedown = function(event) {myMouseDown(event)};
-    document.getElementById("keyboardOBJ").getSVGDocument().onmouseup = function(event) {myMouseUp(event)};
-});
+  let svgObj = document.getElementById("keyboardOBJ");
+  let svgDoc = svgObj.contentDocument;
+
+  svgDoc.addEventListener("mousemove", function (event) {
+    myMouseMove(event);
+  });
+  svgDoc.addEventListener("mouseup", function (event) {
+    myMouseUp(event);
+  });
+  svgDoc.addEventListener("mousedown", function (event) {
+    myMouseDown(event);
+  });
+}
 
 let isMousePressed = false;
 let currentKey = null;
@@ -50,15 +59,14 @@ function myMouseMove(e) {
   let y = e.clientY;
   let coor = "Coordinates: (" + x + "," + y + ")";
   let key = getKeyFromPos(x, y);
-  if(isMousePressed){
-    if(key != currentKey){
+  if (isMousePressed) {
+    if (key != currentKey) {
       colourKey(key, "gray");
-      if(currentKey != null){
+      if (currentKey != null) {
         colourKey(currentKey, "default");
       }
       currentKey = key;
     }
-    
   }
   //document.getElementById("demo").innerHTML = coor;
 }
@@ -68,7 +76,7 @@ function myMouseDown(e) {
   let y = e.clientY;
   let coor = "Down Coordinates: (" + x + "," + y + ")";
   currentKey = getKeyFromPos(x, y);
-  if(currentKey != null){
+  if (currentKey != null) {
     isMousePressed = true;
     colourKey(currentKey, "gray");
     setStartPos(x, y, currentKey);
@@ -80,8 +88,8 @@ function myMouseUp(e) {
   let x = e.clientX;
   let y = e.clientY;
   let coor = "Up Coordinates: (" + x + "," + y + ")";
-  if(isMousePressed){
-    if(currentKey != null){
+  if (isMousePressed) {
+    if (currentKey != null) {
       colourKey(currentKey, "default");
     }
     setInput(x, y, currentKey);
@@ -89,10 +97,9 @@ function myMouseUp(e) {
 
     isMousePressed = false;
   }
-  
+
   //document.getElementById("demo").innerHTML = coor;
 }
-
 
 function colourKey(key, colour) {
   if (key) {
