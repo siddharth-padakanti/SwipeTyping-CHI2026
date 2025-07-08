@@ -5,28 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Swipe Typing Predictor</title>
   <style>
-    :root {
-      --key-size: min(8vw, 3rem);
-      --gap-size: 0.5rem;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #f4f4f4;
-    }
-
-    h1 {
-      font-size: 2rem;
-      text-align: center;
-    }
-
     #display {
       font-size: 1rem;
       border: 1px solid #ccc;
@@ -38,63 +16,7 @@
       background: #f9f9f9;
       margin: 1rem 0;
     }
-
-    .cursor {
-      display: inline-block;
-      width: 1px;
-      background: black;
-      animation: blink 1s step-start infinite;
-      vertical-align: bottom;
-      height: 1em;
-      margin-left: 2px;
-    }
-
-    @keyframes blink { 50% { opacity: 0; } }
-
-    button {
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      cursor: pointer;
-    }
-
-    .output {
-      margin: 1rem 0;
-      max-width: 800px;
-      width: 100%;
-    }
-
-    .keyboard {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--gap-size);
-      width: 100%;
-      max-width: 800px;
-    }
-
-    .keyboard-row {
-      display: flex;
-      gap: var(--gap-size);
-      justify-content: center;
-      width: 100%;
-    }
-
-    .key {
-      width: var(--key-size);
-      height: var(--key-size);
-      background: #e0e0e0;
-      border: 1px solid #aaa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      user-select: none;
-      font-size: 1rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      position: relative;
-    }
-  </style>
+  </style>  
 </head>
 <body>
   <h1>Swipe Typing Predictor</h1>
@@ -105,140 +27,18 @@
     <button onclick="predict()">Predict</button>
   </div>
   <div class="output" id="results"></div>
-  <div class="keyboard" id="mockKeyboard"></div>
-
-  <script>
-    const swipeInput = document.getElementById("swipeInput");
-    const display = document.getElementById("display");
-    const keyboard = document.getElementById("mockKeyboard");
-
-    let formattedInput = [];
-    let startX, startY, downKey = null; downKeyElement = null;
-    let keyCenters = {}; // map key label to screen coordinate center
-
-    function updateDisplay() {
-      const text = formattedInput.join(" ");
-      display.innerHTML = text + '<span class="cursor"></span>';
-      swipeInput.value = text;
-    }
-
-    function clearInput() {
-      formattedInput = [];
-      swipeInput.value = "";
-      display.innerHTML = '<span class="cursor"></span>';
-      document.getElementById("results").innerHTML = "";
-    }
-
-    function predict() {
-      const input = swipeInput.value;
-      const results = document.getElementById("results");
-      results.innerHTML = "Loading...";
-
-      fetch("http://localhost:5000/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input })
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.predictions) {
-            results.innerHTML = `<h3>Predictions:</h3><ul>${data.predictions.map(word => `<li>${word}</li>`).join('')}</ul>`;
-          } else {
-            results.innerHTML = `<p>Error: ${data.error}</p>`;
-          }
-        })
-        .catch(err => {
-          results.innerHTML = `<p>Request failed: ${err}</p>`;
-        });
-    }
-
-    function handleStart(x, y, key, el) {
-      const rect = el.getBoundingClientRect();
-      startX = rect.left + rect.width / 2;
-      startY = rect.top + rect.height / 2;
-      downKey = key;
-      downKeyElement = el;
-    }
-
-    function handleEnd(x, y) {
-      if (!downKey || !downKeyElement) return;
-
-      const rect = downKeyElement.getBoundingClientRect();
-      const insideBox = (
-        x >= rect.left &&
-        x <= rect.right &&
-        y >= rect.top &&
-        y <= rect.bottom
-      );
-
-      // Always push tap
-      formattedInput.push(downKey);
-
-      // Only push angle if mouseup/touchend is outside the key box
-      if (!insideBox) {
-        const dx = x - startX;
-        const dy = y - startY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance > 10) {
-          let angle = Math.atan2(dy, dx);
-          angle = (angle * 180 / Math.PI + 360) % 360;
-          angle = Math.round(angle);
-          formattedInput.push(`${angle}degrees`);
-        }
-      }
-
-      updateDisplay();
-      downKey = null;
-      downKeyElement = null;
-    }
-
-    const rows = [
-      ['Q','W','E','R','T','Y','U','I','O','P'],
-      ['A','S','D','F','G','H','J','K','L'],
-      ['Z','X','C','V','B','N','M']
-    ];
-
-    rows.forEach(row => {
-      const rowDiv = document.createElement("div");
-      rowDiv.className = "keyboard-row";
-      row.forEach(key => {
-        const btn = document.createElement("div");
-        btn.className = "key";
-        btn.textContent = key;
-
-        btn.addEventListener("mousedown", e => handleStart(e.clientX, e.clientY, key, btn));
-        btn.addEventListener("touchstart", e => {
-          const touch = e.touches[0];
-          handleStart(touch.clientX, touch.clientY, key, btn);
-          e.preventDefault();
-        });
-
-        rowDiv.appendChild(btn);
-      });
-      keyboard.appendChild(rowDiv);
-    });
-
-    document.addEventListener("mouseup", e => handleEnd(e.clientX, e.clientY));
-    document.addEventListener("touchend", e => {
-      const touch = e.changedTouches[0];
-      handleEnd(touch.clientX, touch.clientY);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      const key = e.key;
-      if (key === "Backspace") {
-        e.preventDefault();
-        formattedInput.pop();
-        updateDisplay();
-      } else if (key === "Enter") {
-        e.preventDefault();
-        predict();
-      } else if (key.length === 1 && /^[a-zA-Z0-9]$/.test(key)) {
-        formattedInput.push(key.toUpperCase());
-        updateDisplay();
-      }
-    });
-  </script>
+  <object
+        class="svgClass"
+        type="image/svg+xml"
+        id="keyboardOBJ"
+        data="keyboard_sm.svg"
+        width="800"
+        height="50%" 
+      ></object>
+      <p id="demo"></p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <script src="everpolate.browserified.min.js"></script>
+    <script src="svgMod.js"></script>
+    <script src="process.js"></script>
 </body>
 </html>
