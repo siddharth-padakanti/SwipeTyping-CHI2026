@@ -127,21 +127,23 @@ def predict():
         # trajectory = to_trajectory(tokens)
 
         #Handle Taps-only
-        swipes = [t for t in tokens if re.match(r"^\d+degrees$", t)]
-        if not swipes:
+        onlyTaps = request.json.get("tapsOnly", "")
+        
+        if onlyTaps:
+            print("no swipes")
             typed_word = request.json.get("word", "")
             return jsonify(predictions=[typed_word], pattern=typed_word)
-
+        else:
         # Else: Handle tap+swipe input
-        print(f"Trajectory: {tokens}")
-        print(count)
-        prompt = (
-            "You are an intelligent QWERTY keyboard decoder. "
-            "The input is the closest key sequence to the user-drawn gesture trajectory. "
-            f"Please find the {count} characters target word for this input: {tokens}"
-        )
-        predictions = generate_n_best_words(prompt)
-        return jsonify(predictions=predictions, pattern=tokens)
+            print(f"Trajectory: {tokens}")
+            print(count)
+            prompt = (
+                "You are an intelligent QWERTY keyboard decoder. "
+                "The input is the closest key sequence to the user-drawn gesture trajectory. "
+                f"Please find the {count} characters target word for this input: {tokens}"
+            )
+            predictions = generate_n_best_words(prompt)
+            return jsonify(predictions=predictions, pattern=tokens)
 
     except Exception as e:
         return jsonify(error=str(e)), 500

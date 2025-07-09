@@ -425,13 +425,14 @@ function predict() {
   const input = char_res.join("");
   const count = entry_result_x.length;
   const word = formattedInput.join("").toLowerCase();
+  const tapsOnly = entry_result_gesture.every(g => g === "tap");
   const results = document.getElementById("results");
   results.innerHTML = "Loading...";
 
   fetch("http://localhost:5000/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ input, count, word })
+    body: JSON.stringify({ input, count, word, tapsOnly })
   })
     .then(res => res.json())
     .then(data => {
