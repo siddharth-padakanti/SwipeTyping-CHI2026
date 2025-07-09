@@ -111,6 +111,7 @@ def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
 def predict():
     try:
         tokens = request.json.get("input", "")
+        count = request.json.get("count", "")
         if not tokens:
             return jsonify(error="Empty input."), 400
         
@@ -125,10 +126,11 @@ def predict():
 
         # trajectory = to_trajectory(tokens)
         print(f"Trajectory: {tokens}")
+        print(count)
         prompt = (
             "You are an intelligent QWERTY keyboard decoder. "
             "The input is the closest key sequence to the user-drawn gesture trajectory. "
-            f"Please find the target word for this input: {tokens}"
+            f"Please find the {count} characters target word for this input: {tokens}"
         )
         predictions = generate_n_best_words(prompt)
         return jsonify(predictions=predictions, pattern=tokens)

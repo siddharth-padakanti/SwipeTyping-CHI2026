@@ -3,25 +3,10 @@ let swipe_length_key = 3;
 let swipe_length_threshold = 0.5;
 let key_coord = 80; // key distance in (-1, 1) coordinate
 
-function setup() {
-  createCanvas(800, 150);
+let keyboardImg;
 
-}
-
-function draw() {
-  background(255);
-}
-
-/*function keyPressed(event) {
-  event.preventDefault();
-  colourKey(key, "gray");
-}
-
-function keyReleased(event) {
-  event.preventDefault();
-  colourKey(key, "default");
-}*/
-
+let isMousePressed = false;
+let currentKey = null;
 
 const swipeInput = document.getElementById("swipeInput");
 const display = document.getElementById("display");
@@ -30,6 +15,9 @@ let formattedInput = [];
 let startX, startY, startKey;
 let entry_result_x = [];
 let entry_result_y = [];
+let entry_result_gesture = [];
+let interp_x = [];
+let interp_y = [];
 
 const rows = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
@@ -44,8 +32,130 @@ let tap_coords = {
     "A": [60, 120], "S": [140, 120], "D": [220, 120], "F": [300, 120], "G": [380, 120],
     "H": [460, 120], "J": [540, 120], "K": [620, 120], "L": [700, 120],
     "Z": [100, 200], "X": [180, 200], "C": [260, 200], "V": [340, 200], "B": [420, 200],
-    "N": [500, 200], "M": [580, 200]
+    "N": [500, 200], "M": [580, 200], " ": [390, 280]
 }
+
+function preload() {
+  keyboardImg = loadImage('keyboard_sm.png');
+}
+
+function setup() {
+  createCanvas(800, 400);
+
+}
+
+function draw() {
+  background(255);
+  image(keyboardImg, 0, 0, 800, 320);
+  if (currentKey != null && isMousePressed) {
+    colourKey(currentKey);
+  }
+  drawPath();
+}
+
+function drawPath(){
+  let p_idx = 0;
+  for(let i =0;i<entry_result_gesture.length; i++){
+    if(entry_result_gesture[i] == "tap"){
+      // draw a dot
+      fill(247, 220, 111, 100);
+      noStroke();
+      circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
+      p_idx++;
+    }
+    else{
+      // draw 2 dots
+      fill(127, 179, 213, 100);
+      noStroke();
+      circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
+      circle(entry_result_x[p_idx+1], entry_result_y[p_idx+1], 25);
+      stroke(169, 223, 191, 100);
+      strokeWeight(5);
+      noFill();
+      line(entry_result_x[p_idx], entry_result_y[p_idx], entry_result_x[p_idx+1], entry_result_y[p_idx+1]);
+      p_idx+=2;
+    }
+  }
+
+  if(interp_x.length != 0){
+    // predicted
+    for(let i =0;i<entry_result_x.length-1; i++){
+      stroke(33, 47, 61 , 150);
+      strokeWeight(5);
+      noFill();
+      line(entry_result_x[i], entry_result_y[i], entry_result_x[i+1], entry_result_y[i+1]);
+    }
+    for(let i =0;i<interp_x.length-1; i++){
+      fill(146, 43, 33, 100);
+      noStroke();
+      circle(interp_x[i], interp_y[i], 10);
+    }
+  }
+}
+
+function mousePressed() {
+  let x = mouseX;
+  let y = mouseY;
+  let coor = "Down Coordinates: (" + x + "," + y + ")";
+  currentKey = getKeyFromPos(x, y);
+  if (currentKey != null) {
+    isMousePressed = true;
+    setStartPos(x, y, currentKey);
+  }
+}
+
+function mouseDragged() {
+  let x = mouseX;
+  let y = mouseY;
+  let coor = "Coordinates: (" + x + "," + y + ")";
+  let key = getKeyFromPos(x, y);
+  if (isMousePressed) {
+    if (key != currentKey) {
+      currentKey = key;
+    }
+  }
+}
+
+function mouseReleased() {
+  let x = mouseX;
+  let y = mouseY;
+  let coor = "Up Coordinates: (" + x + "," + y + ")";
+  if (isMousePressed) {
+    setInput(x, y, currentKey);
+    currentKey = null;
+
+    isMousePressed = false;
+  }
+}
+
+function colourKey(key) {
+  if (key) {
+    let kx = tap_coords[key][0];
+    let ky = tap_coords[key][1];
+    let kw = 80;
+    if(key == " "){
+      kw = 440;
+    }
+    rectMode(CENTER);
+    fill(133, 50);
+    noStroke();
+    rect(kx, ky, kw, 80);
+  }
+}
+
+
+/*function keyPressed(event) {
+  event.preventDefault();
+  colourKey(key, "gray");
+}
+
+function keyReleased(event) {
+  event.preventDefault();
+  colourKey(key, "default");
+}*/
+
+
+
 
 function findClosestKey(x, y){
   let min_dist = Number.MAX_SAFE_INTEGER;
@@ -181,6 +291,7 @@ function setInput(ex, ey, ek){
     entry_result_x.push(startX);
     entry_result_y.push(startY);
     formattedInput.push(startKey);
+    entry_result_gesture.push("tap");
   }
   else{
     // swipe
@@ -193,6 +304,7 @@ function setInput(ex, ey, ek){
 
     formattedInput.push(startKey);
     formattedInput.push(`${angle}degrees`);
+    entry_result_gesture.push("swipe");
   }
   updateDisplay();
 }
@@ -207,6 +319,9 @@ function clearInput() {
   formattedInput = [];
   entry_result_x = [];
   entry_result_y = [];
+  entry_result_gesture = [];
+  interp_x = [];
+  interp_y = [];
   swipeInput.value = "";
   display.innerHTML = '<span class="cursor"></span>';
   document.getElementById("results").innerHTML = "";
@@ -240,8 +355,8 @@ function getTrajectoryChars(entry_x, entry_y){
       original_axis.push(path_dis);
     }
     //print(original_axis);
-    let interp_x = everpolate.linear(makeArr(0, path_dis, 25), original_axis, entry_x);
-    let interp_y = everpolate.linear(makeArr(0, path_dis, 25), original_axis, entry_y);
+    interp_x = everpolate.linear(makeArr(0, path_dis, 25), original_axis, entry_x);
+    interp_y = everpolate.linear(makeArr(0, path_dis, 25), original_axis, entry_y);
     //print(interp_x);
     //print(interp_y);
     for(let i=0;i<interp_x.length; i++){
@@ -260,13 +375,14 @@ function predict() {
   document.getElementById("demo").innerHTML = char_res.join("");
 
   const input = char_res.join("");
+  const count = entry_result_x.length;
   const results = document.getElementById("results");
   results.innerHTML = "Loading...";
 
   fetch("http://localhost:5000/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ input })
+    body: JSON.stringify({ input, count })
   })
     .then(res => res.json())
     .then(data => {
