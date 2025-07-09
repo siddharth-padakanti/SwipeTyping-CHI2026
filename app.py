@@ -125,6 +125,14 @@ def predict():
         #     return jsonify(error=str(e)), 500
 
         # trajectory = to_trajectory(tokens)
+
+        #Handle Taps-only
+        swipes = [t for t in tokens if re.match(r"^\d+degrees$", t)]
+        if not swipes:
+            typed_word = request.json.get("word", "")
+            return jsonify(predictions=[typed_word], pattern=typed_word)
+
+        # Else: Handle tap+swipe input
         print(f"Trajectory: {tokens}")
         print(count)
         prompt = (

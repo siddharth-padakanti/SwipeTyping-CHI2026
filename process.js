@@ -143,6 +143,48 @@ function colourKey(key) {
   }
 }
 
+document.addEventListener("keydown", (e) => {
+  const key = e.key.toUpperCase();
+
+  if (key === "BACKSPACE") {
+    e.preventDefault();
+    if (formattedInput.length > 0) {
+      const last = formattedInput.pop();
+
+      if (typeof last === "string" && last.includes("degrees")) {
+        formattedInput.pop();
+        entry_result_x.pop();
+        entry_result_x.pop();
+        entry_result_y.pop();
+        entry_result_y.pop();
+        entry_result_gesture.pop();
+      } else {
+        entry_result_x.pop();
+        entry_result_y.pop();
+        entry_result_gesture.pop();
+      }
+    }
+    updateDisplay();
+  }
+
+  else if (key === "ENTER") {
+    e.preventDefault();
+    predict();
+  }
+
+  else if (key.length === 1 && tap_coords[key]) {
+    e.preventDefault();
+    const [x, y] = tap_coords[key];
+
+    // Push synthetic tap input
+    formattedInput.push(key);
+    entry_result_x.push(x);
+    entry_result_y.push(y);
+    entry_result_gesture.push("tap");
+    updateDisplay();
+  }
+});
+
 
 /*function keyPressed(event) {
   event.preventDefault();
@@ -371,18 +413,25 @@ function getTrajectoryChars(entry_x, entry_y){
 function predict() {
   //print(entry_result_x);
   //print(entry_result_y);
+
+  if (entry_result_x.length === 0 || entry_result_y.length === 0) {
+    document.getElementById("demo").innerHTML = "Empty Input";
+    document.getElementById("results").innerHTML = "";
+  }
+
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
   document.getElementById("demo").innerHTML = char_res.join("");
 
   const input = char_res.join("");
   const count = entry_result_x.length;
+  const word = formattedInput.join("").toLowerCase();
   const results = document.getElementById("results");
   results.innerHTML = "Loading...";
 
   fetch("http://localhost:5000/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ input, count })
+    body: JSON.stringify({ input, count, word })
   })
     .then(res => res.json())
     .then(data => {
