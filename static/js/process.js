@@ -36,7 +36,7 @@ let tap_coords = {
 }
 
 function preload() {
-  keyboardImg = loadImage('keyboard_sm.png');
+  keyboardImg = loadImage(document.getElementById('imgurl').value);
 }
 
 function setup() {
@@ -429,7 +429,7 @@ function predict() {
   const results = document.getElementById("results");
   results.innerHTML = "Loading...";
 
-  fetch("http://localhost:5000/predict", {
+  fetch("http://localhost:5000/typing/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ input, count, word, tapsOnly })

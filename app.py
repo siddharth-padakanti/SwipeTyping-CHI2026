@@ -1,7 +1,7 @@
 import os
 import math
 import torch
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
 from transformers import AutoTokenizer, T5ForConditionalGeneration
 import re
@@ -107,7 +107,7 @@ def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
     ]
     return list(dict.fromkeys(words))[:3]
 
-@app.route("/predict", methods=["POST"])
+@app.route("/typing/predict", methods=["POST"])
 def predict():
     try:
         tokens = request.json.get("input", "")
@@ -147,6 +147,11 @@ def predict():
 
     except Exception as e:
         return jsonify(error=str(e)), 500
+    
+@app.route('/typing/interface')
+def interface():
+    IMAGE_URL = url_for('static', filename='js/keyboard_sm.png')
+    return render_template('index.html', kBimage = IMAGE_URL)
 
 if __name__ == "__main__":
     app.run(debug=True)
