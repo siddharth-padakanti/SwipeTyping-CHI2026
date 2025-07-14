@@ -429,7 +429,7 @@ function predict() {
   const results = document.getElementById("results");
   results.innerHTML = "Loading...";
 
-  fetch("http://localhost:5000/typing/predict", {
+  fetch("http://localhost:1111/typing/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ input, count, word, tapsOnly })

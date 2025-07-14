@@ -1,0 +1,14 @@
+### Conda related
+
+Activate Conda: source usr/bin/anaconda3/bin/activate
+
+Activate conda environment: conda activate typing
+
+### Running
+
+Python app.py 
+
+
+### Interface
+
+http://localhost:1111/typing/interface

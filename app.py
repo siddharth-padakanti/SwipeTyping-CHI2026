@@ -154,4 +154,4 @@ def interface():
     return render_template('index.html', kBimage = IMAGE_URL)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=1111, debug=True)
