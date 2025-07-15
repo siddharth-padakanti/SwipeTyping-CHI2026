@@ -18,7 +18,7 @@
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
-    <script src="{{ url_for('static', filename='js/everpolate.browserified.min.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/everpolate.browserified.min.js') }}"></script>
   </head>
   <body>
     <h1>Swipe Typing Predictor</h1>
@@ -31,6 +31,6 @@
     <div class="output" id="results"></div>
     <p id="demo"></p>
     <input value="{{ kBimage }}" type="text" hidden="hidden" id="imgurl" />
-    <script src="{{ url_for('static', filename='js/process.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/process.js') }}"></script>
   </body>
 </html>

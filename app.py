@@ -1,14 +1,15 @@
 import os
 import math
 import torch
-from flask import Flask, request, jsonify, render_template, url_for
+from flask import Flask, request, jsonify, render_template, url_for, Blueprint
 from flask_cors import CORS
 from transformers import AutoTokenizer, T5ForConditionalGeneration
 import re
 
 # === APP SETUP ===
-app = Flask(__name__)
-CORS(app)
+
+
+typingPage = Blueprint('typing', __name__, template_folder='templates', static_folder='static')
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model_path = "./"
@@ -88,6 +89,7 @@ def to_trajectory(tokens):
         filtered.append(ch)
     return "".join(filtered)
 
+
 def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
     inputs = tokenizer(text, return_tensors="pt", padding=True).to(device)
     outputs = model.generate(
@@ -106,8 +108,8 @@ def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
         for output in outputs
     ]
     return list(dict.fromkeys(words))[:3]
-
-@app.route("/typing/predict", methods=["POST"])
+    
+@typingPage.route("/predict", methods=["POST"])
 def predict():
     try:
         tokens = request.json.get("input", "")
@@ -148,10 +150,17 @@ def predict():
     except Exception as e:
         return jsonify(error=str(e)), 500
     
-@app.route('/typing/interface')
+@typingPage.route("/interface")
 def interface():
-    IMAGE_URL = url_for('static', filename='js/keyboard_sm.png')
+    IMAGE_URL = url_for('.static', filename='js/keyboard_sm.png')
     return render_template('index.html', kBimage = IMAGE_URL)
+
+
+
+app = Flask(__name__)
+app.register_blueprint(typingPage, url_prefix='/typing')
+CORS(app)
+
 
 if __name__ == "__main__":
     app.run(port=1111, debug=True)

@@ -6,7 +6,7 @@ Activate conda environment: conda activate typing
 
 ### Running
 
-Python app.py 
+python app.py 
 
 
 ### Interface
