@@ -137,8 +137,6 @@ def predict():
             return jsonify(predictions=[typed_word], pattern=typed_word)
         else:
         # Else: Handle tap+swipe input
-            print(f"Trajectory: {tokens}")
-            print(count)
             prompt = (
                 "You are an intelligent QWERTY keyboard decoder. "
                 "The input is the closest key sequence to the user-drawn gesture trajectory. "

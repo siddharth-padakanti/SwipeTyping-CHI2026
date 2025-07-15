@@ -40,18 +40,55 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 400);
+  // Remove any old rogue canvas (if reloaded)
+  const existing = document.querySelector("canvas");
+  if (existing) existing.remove();
 
+  const cnv = createCanvas(800, 400);
+  cnv.parent("canvas-container");
+  cnv.style("position", "relative"); // <- Make it behave like normal block
+  resizeCanvasToFit();
+
+  const imgUrl = document.getElementById("imgurl").value;
+  keyboardImg = loadImage(imgUrl, () => {
+    console.log("Keyboard image loaded successfully.");
+  }, (err) => {
+    console.error("Image failed to load:", err);
+  });
+}
+
+
+function resizeCanvasToFit() {
+  let targetWidth = windowWidth;
+  let targetHeight = targetWidth * 0.4; 
+
+  resizeCanvas(targetWidth, targetHeight);
+
+  const container = document.getElementById('canvas-container');
+  container.style.height = `${targetHeight}px`;
+}
+
+
+function windowResized() {
+  resizeCanvasToFit();
 }
 
 function draw() {
   background(255);
+
+  
+  push();
+  let scaleFactor = width / 800;
+  scale(scaleFactor);
+
   image(keyboardImg, 0, 0, 800, 320);
   if (currentKey != null && isMousePressed) {
     colourKey(currentKey);
   }
   drawPath();
+  pop();
 }
+
 
 function drawPath(){
   let p_idx = 0;
@@ -94,9 +131,8 @@ function drawPath(){
 }
 
 function mousePressed() {
-  let x = mouseX;
-  let y = mouseY;
-  let coor = "Down Coordinates: (" + x + "," + y + ")";
+  let x = mouseX / (width / 800);
+  let y = mouseY / (width / 800);
   currentKey = getKeyFromPos(x, y);
   if (currentKey != null) {
     isMousePressed = true;
@@ -105,9 +141,8 @@ function mousePressed() {
 }
 
 function mouseDragged() {
-  let x = mouseX;
-  let y = mouseY;
-  let coor = "Coordinates: (" + x + "," + y + ")";
+  let x = mouseX / (width / 800);
+  let y = mouseY / (width / 800);
   let key = getKeyFromPos(x, y);
   if (isMousePressed) {
     if (key != currentKey) {
@@ -117,9 +152,8 @@ function mouseDragged() {
 }
 
 function mouseReleased() {
-  let x = mouseX;
-  let y = mouseY;
-  let coor = "Up Coordinates: (" + x + "," + y + ")";
+  let x = mouseX / (width / 800);
+  let y = mouseY / (width / 800);
   if (isMousePressed) {
     setInput(x, y, currentKey);
     currentKey = null;
@@ -411,23 +445,20 @@ function getTrajectoryChars(entry_x, entry_y){
     
 
 function predict() {
-  //print(entry_result_x);
-  //print(entry_result_y);
-
   if (entry_result_x.length === 0 || entry_result_y.length === 0) {
     document.getElementById("demo").innerHTML = "Empty Input";
     document.getElementById("results").innerHTML = "";
+    return;
   }
 
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
-  document.getElementById("demo").innerHTML = char_res.join("");
-
   const input = char_res.join("");
   const count = entry_result_x.length;
   const word = formattedInput.join("").toLowerCase();
   const tapsOnly = entry_result_gesture.every(g => g === "tap");
-  const results = document.getElementById("results");
-  results.innerHTML = "Loading...";
+
+  const predictionBar = document.getElementById("prediction-bar");
+  predictionBar.innerHTML = "Loading...";
 
   fetch("http://precision.usask.ca/typing/predict", {
     method: "POST",
@@ -437,13 +468,24 @@ function predict() {
     .then(res => res.json())
     .then(data => {
       if (data.predictions) {
-        results.innerHTML = `<h3>Predictions:</h3><ul>${data.predictions.map(word => `<li>${word}</li>`).join('')}</ul>`;
+        predictionBar.innerHTML = "";
+        data.predictions.forEach(prediction => {
+          const box = document.createElement("div");
+          box.className = "prediction";
+          box.textContent = prediction;
+          box.addEventListener("click", () => {
+            // Update the display box with selected word
+            display.innerHTML = prediction + '<span class="cursor"></span>';
+            swipeInput.value = prediction;
+          });
+          predictionBar.appendChild(box);
+        });
       } else {
-        results.innerHTML = `<p>Error: ${data.error}</p>`;
+        predictionBar.innerHTML = `<p>Error: ${data.error}</p>`;
       }
     })
     .catch(err => {
-      results.innerHTML = `<p>Request failed: ${err}</p>`;
+      predictionBar.innerHTML = `<p>Request failed: ${err}</p>`;
     });
 }
 
