@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg-keyboard" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1373.3 498.32">
+  <!-- Generator: Adobe Illustrator 29.6.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 9)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-family: ArialMT, Arial;
+        font-size: 36px;
+        isolation: isolate;
+      }
+
+      .st1 {
+        stroke-linecap: round;
+      }
+
+      .st1, .st2 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .st3 {
+        fill: #f7f7f7;
+        fill-opacity: .78;
+      }
+    </style>
+  </defs>
+  <g id="layer1">
+    <g id="KeyQ">
+      <path id="rect1181" class="st3" d="M6.4,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28H6.39c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28,0,0,.01,0,.01,0Z"/>
+      <rect id="rect1183" class="st3" x="2.15" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyA">
+      <path id="rect1187" class="st3" d="M38.01,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.13.28-.28.28H38.02c-.15,0-.28-.13-.28-.28v-111.52c0-.15.13-.28.28-.28h-.01Z"/>
+      <rect id="rect1189" class="st3" x="33.76" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyZ">
+      <path id="rect1193" class="st3" d="M100.09,255.39h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h.01,0Z"/>
+      <rect id="rect1195" class="st3" x="95.84" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyW">
+      <path id="rect1205" class="st3" d="M131.13,5.94h112.86c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.12-.28.28-.28Z"/>
+      <rect id="rect1207" class="st3" x="126.88" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyS">
+      <path id="rect1211" class="st3" d="M162.73,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.13.28-.28.28h-112.85c-.15,0-.28-.13-.28-.28v-111.52c0-.15.13-.28.28-.28h0Z"/>
+      <rect id="rect1213" class="st3" x="158.48" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyX">
+      <path id="rect1217" class="st3" d="M224.81,255.39h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h0Z"/>
+      <rect id="rect1219" class="st3" x="220.56" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyE">
+      <path id="rect1229" class="st3" d="M255.85,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28h0Z"/>
+      <rect id="rect1231" class="st3" x="251.6" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyD">
+      <path id="rect1235" class="st3" d="M287.46,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h0Z"/>
+      <rect id="rect1237" class="st3" x="283.21" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyC">
+      <path id="rect1241" class="st3" d="M349.54,255.39h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h.01,0Z"/>
+      <rect id="rect1243" class="st3" x="345.29" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyR">
+      <path id="rect1253" class="st3" d="M380.58,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28h.01,0Z"/>
+      <rect id="rect1255" class="st3" x="376.32" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyF">
+      <path id="rect1259" class="st3" d="M412.18,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.13.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28Z"/>
+      <rect id="rect1261" class="st3" x="407.93" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyV">
+      <path id="rect1265" class="st3" d="M474.26,255.39h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h.01Z"/>
+      <rect id="rect1267" class="st3" x="470.01" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyT">
+      <path id="rect1277" class="st3" d="M505.3,5.94h112.86c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.13-.28-.28V6.22c0-.15.12-.28.28-.28Z"/>
+      <rect id="rect1279" class="st3" x="501.05" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyG">
+      <path id="rect1283" class="st3" d="M536.91,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.13.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28Z"/>
+      <rect id="rect1285" class="st3" x="532.66" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyB">
+      <path id="rect1289" class="st3" d="M598.99,255.39h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.13-.28-.28v-111.52c0-.15.13-.28.28-.28h.01Z"/>
+      <rect id="rect1291" class="st3" x="594.73" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyY">
+      <path id="rect1301" class="st3" d="M630.02,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28,0,0,.01,0,.01,0Z"/>
+      <rect id="rect1303" class="st3" x="625.77" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyH">
+      <path id="rect1307" class="st3" d="M661.63,130.66h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h.01Z"/>
+      <rect id="rect1309" class="st3" x="657.38" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyN">
+      <path id="rect1313" class="st3" d="M723.71,255.39h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h.01Z"/>
+      <rect id="rect1315" class="st3" x="719.46" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyU">
+      <path id="rect1325" class="st3" d="M754.75,5.94h112.86c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.12-.28.28-.28Z"/>
+      <rect id="rect1327" class="st3" x="750.5" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyJ">
+      <path id="rect1331" class="st3" d="M786.36,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.13.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28Z"/>
+      <rect id="rect1333" class="st3" x="782.1" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyM">
+      <path id="rect1337" class="st3" d="M848.43,255.39h112.86c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.12-.28.28-.28h0Z"/>
+      <rect id="rect1339" class="st3" x="844.18" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyI">
+      <path id="rect1349" class="st3" d="M879.47,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28,0,0,.01,0,.01,0Z"/>
+      <rect id="rect1351" class="st3" x="875.22" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyK">
+      <path id="rect1355" class="st3" d="M911.08,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.13.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28h0Z"/>
+      <rect id="rect1357" class="st3" x="906.83" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyO">
+      <path id="rect1373" class="st3" d="M1004.2,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28h.01,0Z"/>
+      <rect id="rect1375" class="st3" x="999.95" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyL">
+      <path id="rect1379" class="st3" d="M1035.8,130.66h112.86c.15,0,.28.12.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.13-.28.28-.28Z"/>
+      <rect id="rect1381" class="st3" x="1031.55" y="126.95" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="KeyP">
+      <path id="rect1397" class="st3" d="M1128.92,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28,0,0,.01,0,.01,0Z"/>
+      <rect id="rect1399" class="st3" x="1124.67" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+    </g>
+    <g id="Space">
+      <path id="rect833-1-5" class="st3" d="M290.86,380.19h791.48c1.08,0,1.95.94,1.95,2.1v107.15c0,1.16-.87,2.1-1.95,2.1H290.86c-1.08,0-1.95-.94-1.95-2.1v-107.15c0-1.16.87-2.1,1.95-2.1h0Z"/>
+      <path id="rect833-5" class="st3" d="M292.89,376.7h787.53c4.39,0,7.96,3.84,7.96,8.58v103.55c0,4.74-3.57,8.58-7.96,8.58H292.89c-4.39,0-7.96-3.84-7.96-8.58v-103.55c0-4.74,3.57-8.58,7.96-8.58h0Z"/>
+    </g>
+    <text class="st0" transform="translate(22.61 50.1)"><tspan x="0" y="0">Q</tspan></text>
+    <text class="st0" transform="translate(148.57 49.62)"><tspan x="0" y="0">W</tspan></text>
+    <text class="st0" transform="translate(270.81 49.62)"><tspan x="0" y="0">E</tspan></text>
+    <text class="st0" transform="translate(396.04 49.62)"><tspan x="0" y="0">R</tspan></text>
+    <text class="st0" transform="translate(522.74 49.62)"><tspan x="0" y="0">T</tspan></text>
+    <text class="st0" transform="translate(647.99 49.62)"><tspan x="0" y="0">Y</tspan></text>
+    <text class="st0" transform="translate(769.87 49.62)"><tspan x="0" y="0">U</tspan></text>
+    <text class="st0" transform="translate(895.64 49.62)"><tspan x="0" y="0">I</tspan></text>
+    <text class="st0" transform="translate(1020.4 50.1)"><tspan x="0" y="0">O</tspan></text>
+    <text class="st0" transform="translate(1143.89 49.62)"><tspan x="0" y="0">P</tspan></text>
+    <text class="st0" transform="translate(54.16 175.11)"><tspan x="0" y="0">A</tspan></text>
+    <text class="st0" transform="translate(180.13 174.63)"><tspan x="0" y="0">S</tspan></text>
+    <text class="st0" transform="translate(302.37 174.63)"><tspan x="0" y="0">D</tspan></text>
+    <text class="st0" transform="translate(427.6 174.63)"><tspan x="0" y="0">F</tspan></text>
+    <text class="st0" transform="translate(554.3 174.63)"><tspan x="0" y="0">G</tspan></text>
+    <text class="st0" transform="translate(679.55 174.63)"><tspan x="0" y="0">H</tspan></text>
+    <text class="st0" transform="translate(801.43 174.63)"><tspan x="0" y="0">J</tspan></text>
+    <text class="st0" transform="translate(927.19 174.63)"><tspan x="0" y="0">K</tspan></text>
+    <text class="st0" transform="translate(1051.96 175.11)"><tspan x="0" y="0">L</tspan></text>
+    <text class="st0" transform="translate(117.5 300.14)"><tspan x="0" y="0">Z</tspan></text>
+    <text class="st0" transform="translate(243.47 299.66)"><tspan x="0" y="0">X</tspan></text>
+    <text class="st0" transform="translate(365.71 299.66)"><tspan x="0" y="0">C</tspan></text>
+    <text class="st0" transform="translate(490.93 299.66)"><tspan x="0" y="0">V</tspan></text>
+    <text class="st0" transform="translate(617.64 299.66)"><tspan x="0" y="0">B</tspan></text>
+    <text class="st0" transform="translate(742.88 299.66)"><tspan x="0" y="0">N</tspan></text>
+    <text class="st0" transform="translate(864.77 299.66)"><tspan x="0" y="0">M</tspan></text>
+  </g>
+  <g id="KeyM1" data-name="KeyM">
+    <path id="rect13371" data-name="rect1337" class="st3" d="M973.15,255.39h112.86c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.12-.28.28-.28h0Z"/>
+    <rect id="rect13391" data-name="rect1339" class="st3" x="968.9" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+  </g>
+  <g id="KeyM2" data-name="KeyM">
+    <path id="rect13372" data-name="rect1337" class="st3" d="M1097.87,255.39h112.86c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28v-111.52c0-.15.12-.28.28-.28h0Z"/>
+    <rect id="rect13392" data-name="rect1339" class="st3" x="1093.62" y="251.67" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+  </g>
+  <text class="st0" transform="translate(992.71 299.66)"><tspan x="0" y="0">,</tspan></text>
+  <text class="st0" transform="translate(1114.6 299.66)"><tspan x="0" y="0">.</tspan></text>
+  <g id="KeyP1" data-name="KeyP">
+    <path id="rect13971" data-name="rect1397" class="st3" d="M1253.64,5.94h112.85c.15,0,.28.13.28.28v111.52c0,.15-.12.28-.28.28h-112.86c-.15,0-.28-.12-.28-.28V6.22c0-.15.13-.28.28-.28,0,0,.01,0,.01,0Z"/>
+    <rect id="rect13991" data-name="rect1399" class="st3" x="1249.39" y="2.22" width="121.45" height="121.45" rx="6.31" ry="6.31"/>
+  </g>
+  <g>
+    <polygon class="st2" points="1299.93 23.89 1277.64 23.89 1270.22 36.76 1277.64 49.62 1299.93 49.62 1299.93 36.76 1299.93 23.89"/>
+    <g>
+      <line class="st2" x1="1281.54" y1="29.82" x2="1293.56" y2="43.7"/>
+      <line class="st2" x1="1281.54" y1="43.7" x2="1293.56" y2="29.82"/>
+    </g>
+  </g>
+  <g id="KeyL1" data-name="KeyL">
+    <path id="rect13791" data-name="rect1379" class="st3" d="M1163.5,130.66h199.66c.27,0,.5.12.5.28v111.52c0,.15-.21.28-.5.28h-199.66c-.27,0-.5-.12-.5-.28v-111.52c0-.15.23-.28.5-.28Z"/>
+    <rect id="rect13811" data-name="rect1381" class="st3" x="1155.98" y="126.95" width="214.86" height="121.45" rx="6.31" ry="6.31"/>
+  </g>
+  <g>
+    <g>
+      <line class="st2" x1="1181.8" y1="161.91" x2="1223.83" y2="161.91"/>
+      <path d="M1195.47,171.51c.3-.46.16-1.08-.31-1.38l-12.91-8.22,12.91-8.22c.47-.3.6-.92.31-1.38-.3-.46-.92-.6-1.38-.31l-14.23,9.06c-.29.18-.46.5-.46.84s.17.66.46.84l14.23,9.06c.17.11.35.16.54.16.33,0,.65-.16.84-.46Z"/>
+    </g>
+    <line class="st1" x1="1223.83" y1="161.91" x2="1223.83" y2="152"/>
+  </g>
+</svg>

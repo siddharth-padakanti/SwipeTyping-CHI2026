@@ -150,7 +150,7 @@ def predict():
     
 @typingPage.route("/interface")
 def interface():
-    IMAGE_URL = url_for('.static', filename='js/keyboard_sm.png')
+    IMAGE_URL = url_for('.static', filename='js/keyboard_update.png')
     return render_template('index.html', kBimage = IMAGE_URL)
 
 
