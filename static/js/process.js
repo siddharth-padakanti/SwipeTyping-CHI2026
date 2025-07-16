@@ -66,7 +66,7 @@ function setup() {
 
 function resizeCanvasToFit() {
   let targetWidth = windowWidth;
-  let targetHeight = windowHeight * 0.4; 
+  let targetHeight = windowHeight * 0.5; 
 
   if(targetWidth >= targetHeight / kb_imgHeight * kb_imgWidth){
     // resize based on height
@@ -82,6 +82,7 @@ function resizeCanvasToFit() {
   const container = document.getElementById('canvas-container');
   container.style.height = `${targetHeight}px`;
   container.style.width = `${targetWidth}px`;
+  container.y = `${windowHeight - targetHeight}px`;
 
   img_scale = targetHeight / kb_imgHeight;
 }
