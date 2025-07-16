@@ -3,14 +3,20 @@ let swipe_length_key = 3;
 let swipe_length_threshold = 0.5;
 let key_coord = 80; // key distance in (-1, 1) coordinate
 
+let kb_imgWidth = 880;
+let kb_imgHeight = 320;
+let img_scale = 1;
+
 let keyboardImg;
 
 let isMousePressed = false;
 let currentKey = null;
 
-const swipeInput = document.getElementById("swipeInput");
+const currentWord = document.getElementById("currentWord");
 const display = document.getElementById("display");
+const predictionBar = document.getElementById("prediction-bar");
 
+let typedWords = [];
 let formattedInput = [];
 let startX, startY, startKey;
 let entry_result_x = [];
@@ -20,19 +26,19 @@ let interp_x = [];
 let interp_y = [];
 
 const rows = [
-  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-  ["Z", "X", "C", "V", "B", "N", "M"],
+  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "backspace"],
+  ["A", "S", "D", "F", "G", "H", "J", "K", "L", "enter"],
+  ["Z", "X", "C", "V", "B", "N", "M", ",", "."],
   [" "]
 ];
 
 let tap_coords = {
     "Q": [40, 40], "W": [120, 40], "E": [200, 40], "R": [280, 40], "T": [360, 40],
-    "Y": [440, 40], "U": [520, 40], "I": [600, 40], "O": [680, 40], "P": [760, 40],
+    "Y": [440, 40], "U": [520, 40], "I": [600, 40], "O": [680, 40], "P": [760, 40], "backspace": [840, 40],
     "A": [60, 120], "S": [140, 120], "D": [220, 120], "F": [300, 120], "G": [380, 120],
-    "H": [460, 120], "J": [540, 120], "K": [620, 120], "L": [700, 120],
+    "H": [460, 120], "J": [540, 120], "K": [620, 120], "L": [700, 120], "enter": [810, 120],
     "Z": [100, 200], "X": [180, 200], "C": [260, 200], "V": [340, 200], "B": [420, 200],
-    "N": [500, 200], "M": [580, 200], " ": [390, 280]
+    "N": [500, 200], "M": [580, 200], ",": [660, 200], ".": [740, 200], " ": [440, 280]
 }
 
 function preload() {
@@ -60,12 +66,24 @@ function setup() {
 
 function resizeCanvasToFit() {
   let targetWidth = windowWidth;
-  let targetHeight = targetWidth * 0.4; 
+  let targetHeight = windowHeight * 0.4; 
+
+  if(targetWidth >= targetHeight / kb_imgHeight * kb_imgWidth){
+    // resize based on height
+    targetWidth = targetHeight / kb_imgHeight * kb_imgWidth;
+  }
+  else{
+    // resize base on width
+    targetHeight = targetWidth / kb_imgWidth * kb_imgHeight;
+  }
 
   resizeCanvas(targetWidth, targetHeight);
 
   const container = document.getElementById('canvas-container');
   container.style.height = `${targetHeight}px`;
+  container.style.width = `${targetWidth}px`;
+
+  img_scale = targetHeight / kb_imgHeight;
 }
 
 
@@ -78,10 +96,9 @@ function draw() {
 
   
   push();
-  let scaleFactor = width / 800;
-  scale(scaleFactor);
+  scale(img_scale);
 
-  image(keyboardImg, 0, 0, 800, 320);
+  image(keyboardImg, 0, 0, kb_imgWidth, kb_imgHeight);
   if (currentKey != null && isMousePressed) {
     colourKey(currentKey);
   }
@@ -131,18 +148,19 @@ function drawPath(){
 }
 
 function mousePressed() {
-  let x = mouseX / (width / 800);
-  let y = mouseY / (width / 800);
+  let x = mouseX / img_scale;
+  let y = mouseY / img_scale;
   currentKey = getKeyFromPos(x, y);
   if (currentKey != null) {
-    isMousePressed = true;
     setStartPos(x, y, currentKey);
+    isMousePressed = true;
   }
 }
 
+
 function mouseDragged() {
-  let x = mouseX / (width / 800);
-  let y = mouseY / (width / 800);
+  let x = mouseX / img_scale;
+  let y = mouseY / img_scale;
   let key = getKeyFromPos(x, y);
   if (isMousePressed) {
     if (key != currentKey) {
@@ -151,9 +169,10 @@ function mouseDragged() {
   }
 }
 
+
 function mouseReleased() {
-  let x = mouseX / (width / 800);
-  let y = mouseY / (width / 800);
+  let x = mouseX / img_scale;
+  let y = mouseY / img_scale;
   if (isMousePressed) {
     setInput(x, y, currentKey);
     currentKey = null;
@@ -168,7 +187,10 @@ function colourKey(key) {
     let ky = tap_coords[key][1];
     let kw = 80;
     if(key == " "){
-      kw = 440;
+      kw = 520;
+    }
+    else if(key == "enter"){
+      kw = 140;
     }
     rectMode(CENTER);
     fill(133, 50);
@@ -252,8 +274,8 @@ function getKeyFromPos(px, py){
   let keyY = Math.floor(map(py, 0, 320, 0, 4));
 
   if(keyY == 0){
-    let keyX = Math.floor(map(px, 0, 800, 0, 10));
-    if(keyX < 0 || keyX >= 10){
+    let keyX = Math.floor(map(px, 0, 880, 0, 11));
+    if(keyX < 0 || keyX >= 11){
       return null;
     }
     else{
@@ -262,6 +284,19 @@ function getKeyFromPos(px, py){
   }
   else if(keyY == 1){
     let keyX = Math.floor(map(px, 20, 740, 0, 9));
+    if(keyX < 0 || px >= 880){
+      return null;
+    }
+    else if(keyX >= 9){
+      keyX = 9;
+      return rows[keyY][keyX];
+    }
+    else{
+      return rows[keyY][keyX];
+    }
+  }
+  else if(keyY == 2){
+    let keyX = Math.floor(map(px, 60, 780, 0, 9));
     if(keyX < 0 || keyX >= 9){
       return null;
     }
@@ -269,17 +304,8 @@ function getKeyFromPos(px, py){
       return rows[keyY][keyX];
     }
   }
-  else if(keyY == 2){
-    let keyX = Math.floor(map(px, 60, 620, 0, 7));
-    if(keyX < 0 || keyX >= 7){
-      return null;
-    }
-    else{
-      return rows[keyY][keyX];
-    }
-  }
   else if(keyY == 3){
-    let keyX = Math.floor(map(px, 180, 620, 0, 1));
+    let keyX = Math.floor(map(px, 180, 700, 0, 1));
     if(keyX < 0 || keyX >= 1){
       return null;
     }
@@ -362,33 +388,65 @@ function setStartPos(sx, sy, sk){
 }
 
 function setInput(ex, ey, ek){
-  if(startKey == ek && dist(startX, startY, ex, ey) < swipe_length_threshold * key_coord){
-    // distance smaller than 40 pixels, just a tap
-    entry_result_x.push(startX);
-    entry_result_y.push(startY);
-    formattedInput.push(startKey);
-    entry_result_gesture.push("tap");
+  // handle special case first
+  if(startKey == "backspace"){
+    // press backspace: delete a word or delete current typing word
+    if(formattedInput.length > 0){
+      // delete current typing word
+      clearInput();
+    }
+    else{
+      typedWords.pop();
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="cursor"></span>';
+    }
+  }
+  else if(startKey == "enter"){
+    // press enter: go to next task
+  }
+  else if(startKey == "," || startKey == "." || startKey == " "){
+    // press "," or "." ; predict and add "," or "."
+    if(formattedInput.length == 0){
+      // no current prediction, add symbol
+      typedWords.push(startKey);
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="cursor"></span>';
+      clearInput();
+    }
+    else{
+      predict();
+    }    
   }
   else{
-    // swipe
-    angle = getAngle(startX, startY, ex, ey);
-    const [x2_swipe_point, y2_swipe_point] = getSwipeEnd(startX, startY, ex, ey);
-    entry_result_x.push(startX);
-    entry_result_x.push(x2_swipe_point);
-    entry_result_y.push(startY);
-    entry_result_y.push(y2_swipe_point);
+    // press all other keys
+    if(startKey == ek && dist(startX, startY, ex, ey) < swipe_length_threshold * key_coord){
+      // distance smaller than 40 pixels, just a tap
+      entry_result_x.push(startX);
+      entry_result_y.push(startY);
+      formattedInput.push(startKey);
+      entry_result_gesture.push("tap");
+    }
+    else{
+      // swipe
+      angle = getAngle(startX, startY, ex, ey);
+      const [x2_swipe_point, y2_swipe_point] = getSwipeEnd(startX, startY, ex, ey);
+      entry_result_x.push(startX);
+      entry_result_x.push(x2_swipe_point);
+      entry_result_y.push(startY);
+      entry_result_y.push(y2_swipe_point);
 
-    formattedInput.push(startKey);
-    formattedInput.push(`${angle}degrees`);
-    entry_result_gesture.push("swipe");
+      formattedInput.push(startKey);
+      formattedInput.push(`${angle}degrees`);
+      entry_result_gesture.push("swipe");
+    }
+    updateDisplay();
   }
-  updateDisplay();
+  
 }
 
 function updateDisplay() {
   const text = formattedInput.join(" ");
-  display.innerHTML = text + '<span class="cursor"></span>';
-  swipeInput.value = text;
+  currentWord.innerHTML = text + '<span class="cursor"></span>';
 }
 
 function clearInput() {
@@ -398,10 +456,8 @@ function clearInput() {
   entry_result_gesture = [];
   interp_x = [];
   interp_y = [];
-  swipeInput.value = "";
-  display.innerHTML = '<span class="cursor"></span>';
-  document.getElementById("results").innerHTML = "";
-  document.getElementById("demo").innerHTML = "";
+  currentWord.innerHTML = "";
+  predictionBar.replaceChildren();
 }
 
 function makeArr(startValue, stopValue, cardinality) {
@@ -445,19 +501,13 @@ function getTrajectoryChars(entry_x, entry_y){
     
 
 function predict() {
-  if (entry_result_x.length === 0 || entry_result_y.length === 0) {
-    document.getElementById("demo").innerHTML = "Empty Input";
-    document.getElementById("results").innerHTML = "";
-    return;
-  }
-
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
   const input = char_res.join("");
   const count = entry_result_x.length;
   const word = formattedInput.join("").toLowerCase();
   const tapsOnly = entry_result_gesture.every(g => g === "tap");
 
-  const predictionBar = document.getElementById("prediction-bar");
+  
   predictionBar.innerHTML = "Loading...";
 
   fetch("http://precision.usask.ca/typing/predict", {
@@ -475,8 +525,16 @@ function predict() {
           box.textContent = prediction;
           box.addEventListener("click", () => {
             // Update the display box with selected word
-            display.innerHTML = prediction + '<span class="cursor"></span>';
-            swipeInput.value = prediction;
+            if(startKey == "," || startKey == "."){
+              typedWords.push(prediction + startKey + " ");
+            }
+            else if(startKey == " "){
+              typedWords.push(prediction + startKey);
+            }
+            const sentence = typedWords.join("");
+            display.innerHTML = sentence + '<span class="cursor"></span>';
+            // clear all input
+            clearInput();
           });
           predictionBar.appendChild(box);
         });

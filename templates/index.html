@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Swipe Typing Predictor</title>
+    <!-- <title>Swipe Typing Predictor</title> -->
     <style>
       html, body {
         margin: 0;
@@ -22,6 +22,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: auto;
         margin-bottom: 1rem;
         overflow: hidden;
       }
@@ -116,16 +117,14 @@
     <script src="{{ url_for('.static', filename='js/everpolate.browserified.min.js') }}"></script>
   </head>
   <body>
-    <h1>Swipe Typing Predictor</h1>
+    <!-- <h1>Swipe Typing Predictor</h1> -->
     
     <div id="display"></div>
-    <input type="hidden" id="swipeInput" />
-    <div class="button-group">
+    <!-- <div class="button-group">
       <button onclick="clearInput()">Clear</button>
       <button onclick="predict()">Predict</button>
-    </div>
-    <div class="output" id="results"></div>
-    <p id="demo"></p>
+    </div> -->
+    <div class="output" id="currentWord"></div>
     <div id="prediction-bar" class="prediction-bar"></div>
     <div id="canvas-container"></div>
     <input value="{{ kBimage }}" type="text" hidden="hidden" id="imgurl" />
