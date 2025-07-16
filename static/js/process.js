@@ -15,7 +15,9 @@ let currentKey = null;
 const currentWord = document.getElementById("currentWord");
 const display = document.getElementById("display");
 const predictionBar = document.getElementById("prediction-bar");
-let isMobile = /Android|iPhone|iPad|iPod|Windows Phone|webOS/i.test(navigator.userAgent);
+const isiPhone = /iPhone/.test(navigator.userAgent);
+let isMobile = /Android|iPad|Windows Phone|webOS/i.test(navigator.userAgent);
+let multiTouchUsed = false;
 
 let typedWords = [];
 let formattedInput = [];
@@ -56,10 +58,11 @@ function setup() {
   cnv.style("position", "relative"); 
   resizeCanvasToFit();
 
-  document.addEventListener('gesturestart', e => e.preventDefault());
-  document.addEventListener('gesturechange', e => e.preventDefault());
-  document.addEventListener('gestureend', e => e.preventDefault());
-
+  if (!isiPhone) {
+    document.addEventListener('gesturestart', e => e.preventDefault());
+    document.addEventListener('gesturechange', e => e.preventDefault());
+    document.addEventListener('gestureend', e => e.preventDefault());
+  }
 
   // Disable context menu on long press
   document.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -73,9 +76,10 @@ function setup() {
     // Mobile: only accept single finger touches
     cnv.elt.addEventListener("touchstart", (e) => {
       if (e.touches.length > 1) {
-        e.preventDefault();
+        multiTouchUsed = true;
         return false;
       }
+
       let x = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
       let y = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
       x /= img_scale;
@@ -84,15 +88,17 @@ function setup() {
       if (currentKey != null) {
         setStartPos(x, y, currentKey);
         isMousePressed = true;
+        multiTouchUsed = false;  // Reset when starting with single finger
       }
       e.preventDefault();
     }, { passive: false });
 
     cnv.elt.addEventListener("touchmove", (e) => {
       if (e.touches.length > 1) {
-        e.preventDefault();
+        multiTouchUsed = true;
         return false;
       }
+
       let x = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
       let y = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
       x /= img_scale;
@@ -101,28 +107,40 @@ function setup() {
       if (isMousePressed && key !== currentKey) {
         currentKey = key;
       }
+
+      lastTouchX = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
+      lastTouchY = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
+
       e.preventDefault();
     }, { passive: false });
+
 
     cnv.elt.addEventListener("touchend", (e) => {
       if (e.touches.length === 0 && isMousePressed) {
         let x = lastTouchX / img_scale;
         let y = lastTouchY / img_scale;
-        setInput(x, y, currentKey);
+
+        if (multiTouchUsed) {
+          // Multi-touch: treat both as separate taps
+          if (currentKey != null) {
+            entry_result_x.push(x);
+            entry_result_y.push(y);
+            formattedInput.push(currentKey);
+            entry_result_gesture.push("tap");
+            updateDisplay();
+          }
+        } else {
+          // Single-touch: treat normally (tap or swipe)
+          setInput(x, y, currentKey);
+        }
+
         currentKey = null;
         isMousePressed = false;
+        multiTouchUsed = false;
       }
       e.preventDefault();
     }, { passive: false });
 
-    let lastTouchX = 0;
-    let lastTouchY = 0;
-    cnv.elt.addEventListener("touchmove", (e) => {
-      if (e.touches.length === 1) {
-        lastTouchX = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
-        lastTouchY = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
-      }
-    });
   }
 
   document.addEventListener("dblclick", (event) => {event.preventDefault()});
