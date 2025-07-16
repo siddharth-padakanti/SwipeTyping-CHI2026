@@ -55,6 +55,8 @@ function setup() {
   cnv.style("position", "relative"); // <- Make it behave like normal block
   resizeCanvasToFit();
 
+  document.addEventListener("dblclick", (event) => {event.preventDefault()});
+
   const imgUrl = document.getElementById("imgurl").value;
   keyboardImg = loadImage(imgUrl, () => {
     console.log("Keyboard image loaded successfully.");
