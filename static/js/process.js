@@ -15,6 +15,7 @@ let currentKey = null;
 const currentWord = document.getElementById("currentWord");
 const display = document.getElementById("display");
 const predictionBar = document.getElementById("prediction-bar");
+let isMobile = /Android|iPhone|iPad|iPod|Windows Phone|webOS/i.test(navigator.userAgent);
 
 let typedWords = [];
 let formattedInput = [];
@@ -52,8 +53,77 @@ function setup() {
 
   const cnv = createCanvas(800, 400);
   cnv.parent("canvas-container");
-  cnv.style("position", "relative"); // <- Make it behave like normal block
+  cnv.style("position", "relative"); 
   resizeCanvasToFit();
+
+  document.addEventListener('gesturestart', e => e.preventDefault());
+  document.addEventListener('gesturechange', e => e.preventDefault());
+  document.addEventListener('gestureend', e => e.preventDefault());
+
+
+  // Disable context menu on long press
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+  if (!isMobile) {
+    // Desktop only: use mouse
+    window.mousePressed = () => mousePressedHandler();
+    window.mouseReleased = () => mouseReleasedHandler();
+    window.mouseDragged = () => mouseDraggedHandler();
+  } else {
+    // Mobile: only accept single finger touches
+    cnv.elt.addEventListener("touchstart", (e) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+        return false;
+      }
+      let x = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
+      let y = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
+      x /= img_scale;
+      y /= img_scale;
+      currentKey = getKeyFromPos(x, y);
+      if (currentKey != null) {
+        setStartPos(x, y, currentKey);
+        isMousePressed = true;
+      }
+      e.preventDefault();
+    }, { passive: false });
+
+    cnv.elt.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+        return false;
+      }
+      let x = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
+      let y = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
+      x /= img_scale;
+      y /= img_scale;
+      let key = getKeyFromPos(x, y);
+      if (isMousePressed && key !== currentKey) {
+        currentKey = key;
+      }
+      e.preventDefault();
+    }, { passive: false });
+
+    cnv.elt.addEventListener("touchend", (e) => {
+      if (e.touches.length === 0 && isMousePressed) {
+        let x = lastTouchX / img_scale;
+        let y = lastTouchY / img_scale;
+        setInput(x, y, currentKey);
+        currentKey = null;
+        isMousePressed = false;
+      }
+      e.preventDefault();
+    }, { passive: false });
+
+    let lastTouchX = 0;
+    let lastTouchY = 0;
+    cnv.elt.addEventListener("touchmove", (e) => {
+      if (e.touches.length === 1) {
+        lastTouchX = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
+        lastTouchY = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
+      }
+    });
+  }
 
   document.addEventListener("dblclick", (event) => {event.preventDefault()});
 
@@ -150,7 +220,7 @@ function drawPath(){
   }
 }
 
-function mousePressed() {
+function mousePressedHandler() {
   let x = mouseX / img_scale;
   let y = mouseY / img_scale;
   currentKey = getKeyFromPos(x, y);
@@ -161,7 +231,7 @@ function mousePressed() {
 }
 
 
-function mouseDragged() {
+function mouseDraggedHandler() {
   let x = mouseX / img_scale;
   let y = mouseY / img_scale;
   let key = getKeyFromPos(x, y);
@@ -173,7 +243,7 @@ function mouseDragged() {
 }
 
 
-function mouseReleased() {
+function mouseReleasedHandler() {
   let x = mouseX / img_scale;
   let y = mouseY / img_scale;
   if (isMousePressed) {
@@ -182,6 +252,38 @@ function mouseReleased() {
 
     isMousePressed = false;
   }
+}
+
+function touchStartedHandler() {
+  let x = touches[0].x / img_scale;
+  let y = touches[0].y / img_scale;
+  currentKey = getKeyFromPos(x, y);
+  if (currentKey != null) {
+    setStartPos(x, y, currentKey);
+    isMousePressed = true;
+  }
+  return false; // prevent default
+}
+
+function touchMovedHandler() {
+  let x = touches[0].x / img_scale;
+  let y = touches[0].y / img_scale;
+  let key = getKeyFromPos(x, y);
+  if (isMousePressed && key !== currentKey) {
+    currentKey = key;
+  }
+  return false; // prevent default
+}
+
+function touchEndedHandler() {
+  if (touches.length === 0) {
+    let x = pmouseX / img_scale;
+    let y = pmouseY / img_scale;
+    setInput(x, y, currentKey);
+    currentKey = null;
+    isMousePressed = false;
+  }
+  return false;
 }
 
 function colourKey(key) {
