@@ -262,6 +262,10 @@ function findClosestKey(x, y){
   let min_dist = Number.MAX_SAFE_INTEGER;
   let closest = null;
   for (var key in tap_coords) {
+    if(key == "backspace" || key == "enter" || key == "," || key == "."){
+      print("special key");
+      continue;
+    }
     let kx = tap_coords[key][0];
     let ky = tap_coords[key][1];
     let d = dist(x, y, kx, ky);
