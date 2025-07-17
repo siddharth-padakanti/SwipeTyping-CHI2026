@@ -153,6 +153,16 @@ def interface():
     IMAGE_URL = url_for('.static', filename='js/keyboard_update.png')
     return render_template('index.html', kBimage = IMAGE_URL)
 
+@typingPage.route("/debug", methods=["POST"])
+def debug():
+    try:
+        string = request.json.get("string", "")
+        print(string)
+        return jsonify("")
+
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
 
 
 app = Flask(__name__)

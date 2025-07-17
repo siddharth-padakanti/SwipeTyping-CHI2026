@@ -1,6 +1,6 @@
 //global variable
 let swipe_length_key = 3;
-let swipe_length_threshold = 0.5;
+let swipe_length_threshold = 0.2;
 let key_coord = 80; // key distance in (-1, 1) coordinate
 
 let kb_imgWidth = 880;
@@ -15,9 +15,9 @@ let currentKey = null;
 const currentWord = document.getElementById("currentWord");
 const display = document.getElementById("display");
 const predictionBar = document.getElementById("prediction-bar");
-const isiPhone = /iPhone/.test(navigator.userAgent);
-let isMobile = /Android|iPad|Windows Phone|webOS/i.test(navigator.userAgent);
-let multiTouchUsed = false;
+let isTouchDevice = ('ontouchstart' in window) ||
+     (navigator.maxTouchPoints > 0) ||
+     (navigator.msMaxTouchPoints > 0);
 
 let typedWords = [];
 let formattedInput = [];
@@ -44,6 +44,17 @@ let tap_coords = {
     "N": [500, 200], "M": [580, 200], ",": [660, 200], ".": [740, 200], " ": [440, 280]
 }
 
+class touchPoint {
+  constructor(x, y, key) {
+    this.x = x;
+    this.y = y;
+    this.key = key;
+  }
+}
+
+let currentTouches = [];
+
+
 function preload() {
   keyboardImg = loadImage(document.getElementById('imgurl').value);
 }
@@ -58,7 +69,7 @@ function setup() {
   cnv.style("position", "relative"); 
   resizeCanvasToFit();
 
-  if (!isiPhone) {
+  if (isTouchDevice) {
     document.addEventListener('gesturestart', e => e.preventDefault());
     document.addEventListener('gesturechange', e => e.preventDefault());
     document.addEventListener('gestureend', e => e.preventDefault());
@@ -67,7 +78,7 @@ function setup() {
   // Disable context menu on long press
   document.addEventListener("contextmenu", (e) => e.preventDefault());
 
-  if (!isMobile) {
+  if (!isTouchDevice) {
     // Desktop only: use mouse
     window.mousePressed = () => mousePressedHandler();
     window.mouseReleased = () => mouseReleasedHandler();
@@ -75,68 +86,62 @@ function setup() {
   } else {
     // Mobile: only accept single finger touches
     cnv.elt.addEventListener("touchstart", (e) => {
-      if (e.touches.length > 1) {
-        multiTouchUsed = true;
-        return false;
-      }
-
-      let x = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
-      let y = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
-      x /= img_scale;
-      y /= img_scale;
-      currentKey = getKeyFromPos(x, y);
-      if (currentKey != null) {
-        setStartPos(x, y, currentKey);
-        isMousePressed = true;
-        multiTouchUsed = false;  // Reset when starting with single finger
+      const touches = e.changedTouches;
+      for (const t of touches) { 
+        //print(`touchstart: ${t.identifier}.`);
+        let x = t.clientX - cnv.elt.getBoundingClientRect().left;
+        let y = t.clientY - cnv.elt.getBoundingClientRect().top;
+        x /= img_scale;
+        y /= img_scale;
+        let key  = getKeyFromPos(x, y);
+        currentTouches.push({"identifier": t.identifier, "points": [new touchPoint(x, y, key)]});
       }
       e.preventDefault();
     }, { passive: false });
 
     cnv.elt.addEventListener("touchmove", (e) => {
-      if (e.touches.length > 1) {
-        multiTouchUsed = true;
-        return false;
+      const touches = e.changedTouches;
+      for (const touch of touches) {
+        const idx = ongoingTouchIndexById(touch.identifier);
+
+        if (idx >= 0) {
+          //print(`continuing touch ${idx}`);
+
+          let x = touch.clientX - cnv.elt.getBoundingClientRect().left;
+          let y = touch.clientY - cnv.elt.getBoundingClientRect().top;
+          x /= img_scale;
+          y /= img_scale;
+          let key  = getKeyFromPos(x, y);
+
+          currentTouches[idx]["points"].push(new touchPoint(x, y, key));
+        } else {
+          print("can't figure out which touch to continue");
+        }
       }
-
-      let x = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
-      let y = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
-      x /= img_scale;
-      y /= img_scale;
-      let key = getKeyFromPos(x, y);
-      if (isMousePressed && key !== currentKey) {
-        currentKey = key;
-      }
-
-      lastTouchX = e.touches[0].clientX - cnv.elt.getBoundingClientRect().left;
-      lastTouchY = e.touches[0].clientY - cnv.elt.getBoundingClientRect().top;
-
       e.preventDefault();
     }, { passive: false });
 
 
     cnv.elt.addEventListener("touchend", (e) => {
-      if (e.touches.length === 0 && isMousePressed) {
-        let x = lastTouchX / img_scale;
-        let y = lastTouchY / img_scale;
+      const touches = e.changedTouches;
+      for (const touch of touches) {
+        let idx = ongoingTouchIndexById(touch.identifier);
 
-        if (multiTouchUsed) {
-          // Multi-touch: treat both as separate taps
-          if (currentKey != null) {
-            entry_result_x.push(x);
-            entry_result_y.push(y);
-            formattedInput.push(currentKey);
-            entry_result_gesture.push("tap");
-            updateDisplay();
-          }
+        if (idx >= 0) {
+          //print(`touchend: ${idx}.`);
+          let x = touch.clientX - cnv.elt.getBoundingClientRect().left;
+          let y = touch.clientY - cnv.elt.getBoundingClientRect().top;
+          x /= img_scale;
+          y /= img_scale;
+          let key  = getKeyFromPos(x, y);
+
+          currentTouches[idx]["points"].push(new touchPoint(x, y, key));
+
+          setInputPoints(currentTouches[idx]);
+          currentTouches.splice(idx, 1); // remove it; we're done
         } else {
-          // Single-touch: treat normally (tap or swipe)
-          setInput(x, y, currentKey);
+          print("can't figure out which touch to end");
         }
-
-        currentKey = null;
-        isMousePressed = false;
-        multiTouchUsed = false;
       }
       e.preventDefault();
     }, { passive: false });
@@ -190,8 +195,16 @@ function draw() {
   scale(img_scale);
 
   image(keyboardImg, 0, 0, kb_imgWidth, kb_imgHeight);
-  if (currentKey != null && isMousePressed) {
-    colourKey(currentKey);
+  if (!isTouchDevice) {
+    if (currentKey != null && isMousePressed) {
+      colourKey(currentKey);
+    }
+  }
+  else{
+    for (let i = 0; i < currentTouches.length; i++) {
+      let pcount = currentTouches[i]["points"].length;
+      colourKey(currentTouches[i]["points"][pcount-1].key);
+    }
   }
   drawPath();
   pop();
@@ -238,6 +251,17 @@ function drawPath(){
   }
 }
 
+function ongoingTouchIndexById(idToFind) {
+  for (let i = 0; i < currentTouches.length; i++) {
+    const id = currentTouches[i]["identifier"];
+
+    if (id === idToFind) {
+      return i;
+    }
+  }
+  return -1; // not found
+}
+
 function mousePressedHandler() {
   let x = mouseX / img_scale;
   let y = mouseY / img_scale;
@@ -272,37 +296,6 @@ function mouseReleasedHandler() {
   }
 }
 
-function touchStartedHandler() {
-  let x = touches[0].x / img_scale;
-  let y = touches[0].y / img_scale;
-  currentKey = getKeyFromPos(x, y);
-  if (currentKey != null) {
-    setStartPos(x, y, currentKey);
-    isMousePressed = true;
-  }
-  return false; // prevent default
-}
-
-function touchMovedHandler() {
-  let x = touches[0].x / img_scale;
-  let y = touches[0].y / img_scale;
-  let key = getKeyFromPos(x, y);
-  if (isMousePressed && key !== currentKey) {
-    currentKey = key;
-  }
-  return false; // prevent default
-}
-
-function touchEndedHandler() {
-  if (touches.length === 0) {
-    let x = pmouseX / img_scale;
-    let y = pmouseY / img_scale;
-    setInput(x, y, currentKey);
-    currentKey = null;
-    isMousePressed = false;
-  }
-  return false;
-}
 
 function colourKey(key) {
   if (key) {
@@ -348,7 +341,7 @@ document.addEventListener("keydown", (e) => {
 
   else if (key === "ENTER") {
     e.preventDefault();
-    predict();
+    predict("");
   }
 
   else if (key.length === 1 && tap_coords[key]) {
@@ -541,12 +534,12 @@ function setInput(ex, ey, ek){
       clearInput();
     }
     else{
-      predict();
+      predict(startKey);
     }    
   }
   else{
     // press all other keys
-    if(startKey == ek && dist(startX, startY, ex, ey) < swipe_length_threshold * key_coord){
+    if(dist(startX, startY, ex, ey) < swipe_length_threshold * key_coord){
       // distance smaller than 40 pixels, just a tap
       entry_result_x.push(startX);
       entry_result_y.push(startY);
@@ -569,6 +562,69 @@ function setInput(ex, ey, ek){
     updateDisplay();
   }
   
+}
+
+function setInputPoints(currentTouch){
+  // handle special case first
+  let pcount = currentTouch["points"].length;
+  let skey = currentTouch["points"][0].key;
+  let sx = currentTouch["points"][0].x;
+  let sy = currentTouch["points"][0].y;
+  let ekey = currentTouch["points"][pcount - 1].key;
+  let ex = currentTouch["points"][pcount - 1].x;
+  let ey = currentTouch["points"][pcount - 1].y;
+  if(skey == "backspace"){
+    // press backspace: delete a word or delete current typing word
+    if(formattedInput.length > 0){
+      // delete current typing word
+      clearInput();
+    }
+    else{
+      typedWords.pop();
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="cursor"></span>';
+    }
+  }
+  else if(skey == "enter"){
+    // press enter: go to next task
+  }
+  else if(skey == "," || skey == "." || skey == " "){
+    // press "," or "." ; predict and add "," or "."
+    if(formattedInput.length == 0){
+      // no current prediction, add symbol
+      typedWords.push(skey);
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="cursor"></span>';
+      clearInput();
+    }
+    else{
+      predict(skey);
+    }    
+  }
+  else{
+    // press all other keys
+    if(dist(sx, sy, ex, ey) < swipe_length_threshold * key_coord){
+      // distance smaller than 40 pixels, just a tap
+      entry_result_x.push(sx);
+      entry_result_y.push(sy);
+      formattedInput.push(skey);
+      entry_result_gesture.push("tap");
+    }
+    else{
+      // swipe
+      angle = getAngle(sx, sy, ex, ey);
+      const [x2_swipe_point, y2_swipe_point] = getSwipeEnd(sx, sy, ex, ey);
+      entry_result_x.push(sx);
+      entry_result_x.push(x2_swipe_point);
+      entry_result_y.push(sy);
+      entry_result_y.push(y2_swipe_point);
+
+      formattedInput.push(skey);
+      formattedInput.push(`${angle}degrees`);
+      entry_result_gesture.push("swipe");
+    }
+    updateDisplay();
+  }
 }
 
 function updateDisplay() {
@@ -627,7 +683,7 @@ function getTrajectoryChars(entry_x, entry_y){
 
     
 
-function predict() {
+function predict(ending) {
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
   const input = char_res.join("");
   const count = entry_result_x.length;
@@ -652,11 +708,11 @@ function predict() {
           box.textContent = prediction;
           box.addEventListener("click", () => {
             // Update the display box with selected word
-            if(startKey == "," || startKey == "."){
-              typedWords.push(prediction + startKey + " ");
+            if(ending == "," || ending == "."){
+              typedWords.push(prediction + ending + " ");
             }
-            else if(startKey == " "){
-              typedWords.push(prediction + startKey);
+            else if(ending == " "){
+              typedWords.push(prediction + ending);
             }
             const sentence = typedWords.join("");
             display.innerHTML = sentence + '<span class="cursor"></span>';
@@ -673,6 +729,20 @@ function predict() {
       predictionBar.innerHTML = `<p>Request failed: ${err}</p>`;
     });
 }
+
+function printServer(string){
+  fetch("http://precision.usask.ca/typing/debug", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ string })
+  })
+    .then(res => res.json())
+    .catch(err => {
+      predictionBar.innerHTML = `<p>Request failed: ${err}</p>`;
+    });
+}
+
+
 
 // function handleStart(x, y, key, el) {
 //   const rect = el.getBoundingClientRect();
