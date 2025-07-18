@@ -656,8 +656,9 @@ function getTrajectoryChars(entry_x, entry_y){
   let chars_res = [];
   if (entry_x.length == 1){
     // only one point, return same 25 characters
+    let char = findClosestKey(entry_x[0], entry_y[0]);
     for (let i=0;i<25;i++){
-      chars_res.push(findClosestKey(entry_x[0], entry_y[0]));
+      chars_res.push(char);
     }
   }
   else{
@@ -687,8 +688,8 @@ function predict(ending) {
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
   const input = char_res.join("");
   const count = entry_result_x.length;
-  const word = formattedInput.join("").toLowerCase();
-  const tapsOnly = entry_result_gesture.every(g => g === "tap");
+  //const word = formattedInput.join("").toLowerCase();
+  //const tapsOnly = entry_result_gesture.every(g => g === "tap");
 
   
   predictionBar.innerHTML = "Loading...";
@@ -696,7 +697,8 @@ function predict(ending) {
   fetch("http://precision.usask.ca/typing/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ input, count, word, tapsOnly })
+    //body: JSON.stringify({ input, count, word, tapsOnly })
+    body: JSON.stringify({ input, count })
   })
     .then(res => res.json())
     .then(data => {

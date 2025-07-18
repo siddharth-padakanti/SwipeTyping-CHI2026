@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, render_template, url_for, Blueprint
 from flask_cors import CORS
 from transformers import AutoTokenizer, T5ForConditionalGeneration
 import re
+from datetime import datetime
 
 # === APP SETUP ===
 
@@ -12,6 +13,7 @@ import re
 typingPage = Blueprint('typing', __name__, template_folder='templates', static_folder='static')
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(torch.cuda.is_available())
 model_path = "./"
 
 # Load tokenizer and model
@@ -117,6 +119,8 @@ def predict():
         if not tokens:
             return jsonify(error="Empty input."), 400
         
+        print(datetime.now())
+        #print(tokens)
         # try:
         #     letters = [t for t in tokens if len(t) == 1 and t.isalpha()]
         #     swipes = [t for t in tokens if re.match(r"^\d+degrees$", t)]
@@ -129,21 +133,22 @@ def predict():
         # trajectory = to_trajectory(tokens)
 
         #Handle Taps-only
-        onlyTaps = request.json.get("tapsOnly", "")
+        # onlyTaps = request.json.get("tapsOnly", "")
         
-        if onlyTaps:
-            print("no swipes")
-            typed_word = request.json.get("word", "")
-            return jsonify(predictions=[typed_word], pattern=typed_word)
-        else:
+        # if onlyTaps:
+        #     print("no swipes")
+        #     typed_word = request.json.get("word", "")
+        #     return jsonify(predictions=[typed_word], pattern=typed_word)
+        # else:
         # Else: Handle tap+swipe input
-            prompt = (
-                "You are an intelligent QWERTY keyboard decoder. "
-                "The input is the closest key sequence to the user-drawn gesture trajectory. "
-                f"Please find the {count} characters target word for this input: {tokens}"
-            )
-            predictions = generate_n_best_words(prompt)
-            return jsonify(predictions=predictions, pattern=tokens)
+        prompt = (
+            "You are an intelligent QWERTY keyboard decoder. "
+            "The input is the closest key sequence to the user-drawn gesture trajectory. "
+            f"Please find the {count}-letter target word for this input: {tokens}"
+        )
+        predictions = generate_n_best_words(prompt)
+        print(datetime.now())
+        return jsonify(predictions=predictions, pattern=tokens)
 
     except Exception as e:
         return jsonify(error=str(e)), 500
