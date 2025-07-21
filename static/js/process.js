@@ -20,6 +20,7 @@ let isTouchDevice = ('ontouchstart' in window) ||
      (navigator.msMaxTouchPoints > 0);
 
 let typedWords = [];
+let currentTypedWord;
 let formattedInput = [];
 let startX, startY, startKey;
 let entry_result_x = [];
@@ -341,7 +342,7 @@ document.addEventListener("keydown", (e) => {
 
   else if (key === "ENTER") {
     e.preventDefault();
-    predict("");
+    predict();
   }
 
   else if (key.length === 1 && tap_coords[key]) {
@@ -517,9 +518,9 @@ function setInput(ex, ey, ek){
     }
     else{
       typedWords.pop();
-      const sentence = typedWords.join("");
-      display.innerHTML = sentence + '<span class="cursor"></span>';
     }
+    const sentence = typedWords.join("");
+    display.innerHTML = sentence + '<span class="cursor"></span>';
   }
   else if(startKey == "enter"){
     // press enter: go to next task
@@ -534,7 +535,12 @@ function setInput(ex, ey, ek){
       clearInput();
     }
     else{
-      predict(startKey);
+      // use current prediction, and add symbol
+      typedWords.push(currentTypedWord);
+      typedWords.push(startKey);
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="cursor"></span>';
+      clearInput();
     }    
   }
   else{
@@ -559,6 +565,7 @@ function setInput(ex, ey, ek){
       formattedInput.push(`${angle}degrees`);
       entry_result_gesture.push("swipe");
     }
+    predict();
     updateDisplay();
   }
   
@@ -581,9 +588,9 @@ function setInputPoints(currentTouch){
     }
     else{
       typedWords.pop();
-      const sentence = typedWords.join("");
-      display.innerHTML = sentence + '<span class="cursor"></span>';
     }
+    const sentence = typedWords.join("");
+    display.innerHTML = sentence + '<span class="cursor"></span>';
   }
   else if(skey == "enter"){
     // press enter: go to next task
@@ -598,7 +605,12 @@ function setInputPoints(currentTouch){
       clearInput();
     }
     else{
-      predict(skey);
+      // use current prediction, and add symbol
+      typedWords.push(currentTypedWord);
+      typedWords.push(startKey);
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="cursor"></span>';
+      clearInput();
     }    
   }
   else{
@@ -623,6 +635,7 @@ function setInputPoints(currentTouch){
       formattedInput.push(`${angle}degrees`);
       entry_result_gesture.push("swipe");
     }
+    predict();
     updateDisplay();
   }
 }
@@ -641,6 +654,7 @@ function clearInput() {
   interp_y = [];
   currentWord.innerHTML = "";
   predictionBar.replaceChildren();
+  currentTypedWord = "";
 }
 
 function makeArr(startValue, stopValue, cardinality) {
@@ -684,7 +698,7 @@ function getTrajectoryChars(entry_x, entry_y){
 
     
 
-function predict(ending) {
+function predict() {
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
   const input = char_res.join("");
   const count = entry_result_x.length;
@@ -692,7 +706,7 @@ function predict(ending) {
   //const tapsOnly = entry_result_gesture.every(g => g === "tap");
 
   
-  predictionBar.innerHTML = "Loading...";
+  //predictionBar.innerHTML = "Loading...";
 
   fetch("http://precision.usask.ca/typing/predict", {
     method: "POST",
@@ -704,24 +718,28 @@ function predict(ending) {
     .then(data => {
       if (data.predictions) {
         predictionBar.innerHTML = "";
-        data.predictions.forEach(prediction => {
-          const box = document.createElement("div");
-          box.className = "prediction";
-          box.textContent = prediction;
-          box.addEventListener("click", () => {
-            // Update the display box with selected word
-            if(ending == "," || ending == "."){
-              typedWords.push(prediction + ending + " ");
-            }
-            else if(ending == " "){
-              typedWords.push(prediction + ending);
-            }
+        data.predictions.forEach((prediction, index) => {
+          if(index == 0){
+            // auto set the current word
+            currentTypedWord = prediction;
             const sentence = typedWords.join("");
-            display.innerHTML = sentence + '<span class="cursor"></span>';
-            // clear all input
-            clearInput();
-          });
-          predictionBar.appendChild(box);
+            display.innerHTML = sentence + currentTypedWord + '<span class="cursor"></span>';
+          }
+          else{
+            const box = document.createElement("div");
+            box.className = "prediction";
+            box.textContent = prediction;
+            box.addEventListener("click", () => {
+              // Update the display box with selected word
+              typedWords.push(prediction);
+              typedWords.push(" ");
+              const sentence = typedWords.join("");
+              display.innerHTML = sentence + '<span class="cursor"></span>';
+              // clear all input
+              clearInput();
+            });
+            predictionBar.appendChild(box);
+          }
         });
       } else {
         predictionBar.innerHTML = `<p>Error: ${data.error}</p>`;

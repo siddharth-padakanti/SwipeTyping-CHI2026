@@ -92,7 +92,7 @@ def to_trajectory(tokens):
     return "".join(filtered)
 
 
-def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
+def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10):
     inputs = tokenizer(text, return_tensors="pt", padding=True).to(device)
     outputs = model.generate(
         inputs['input_ids'],
@@ -109,7 +109,9 @@ def generate_n_best_words(text, num_beams=5, num_return_sequences=4):
         .replace(" ", "")
         for output in outputs
     ]
-    return list(dict.fromkeys(words))[:3]
+    filterWord = [word for word in words if len(word) == count]
+    #print(filterWord)
+    return list(dict.fromkeys(filterWord))[:3]
     
 @typingPage.route("/predict", methods=["POST"])
 def predict():
@@ -144,9 +146,9 @@ def predict():
         prompt = (
             "You are an intelligent QWERTY keyboard decoder. "
             "The input is the closest key sequence to the user-drawn gesture trajectory. "
-            f"Please find the {count}-letter target word for this input: {tokens}"
+            f"Please only find the {count}-LETTER target word for this input: {tokens}"
         )
-        predictions = generate_n_best_words(prompt)
+        predictions = generate_n_best_words(prompt, count)
         print(datetime.now())
         return jsonify(predictions=predictions, pattern=tokens)
 
