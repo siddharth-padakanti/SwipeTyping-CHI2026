@@ -162,6 +162,16 @@ function setup() {
   });
 }
 
+function logGesture(type, startX, startY, endX, endY, startKey, endKey = null) {
+  const now = new Date();
+  const timestamp = now.toTimeString().split(" ")[0] + "." + now.getMilliseconds().toString().padStart(3, "0");
+
+  if (type === "tap") {
+    console.log(`[${timestamp}] Tap at (${Math.round(startX)}, ${Math.round(startY)}) → Key: ${startKey}`);
+  } else if (type === "swipe") {
+    console.log(`[${timestamp}] Swipe from (${Math.round(startX)}, ${Math.round(startY)}) to (${Math.round(endX)}, ${Math.round(endY)}) → Start: ${startKey} → End: ${endKey}`);
+  }
+}
 
 function resizeCanvasToFit() {
   let targetWidth = windowWidth;
@@ -550,6 +560,7 @@ function setInput(ex, ey, ek){
     // press all other keys
     if(dist(startX, startY, ex, ey) < swipe_length_threshold * key_coord){
       // distance smaller than 40 pixels, just a tap
+      logGesture("tap", startX, startY, null, null, startKey);
       entry_result_x.push(startX);
       entry_result_y.push(startY);
       formattedInput.push(startKey);
@@ -563,7 +574,9 @@ function setInput(ex, ey, ek){
       entry_result_x.push(x2_swipe_point);
       entry_result_y.push(startY);
       entry_result_y.push(y2_swipe_point);
-
+      const swipeEnd = getSwipeEnd(startX, startY, ex, ey);
+      const endKey = getKeyFromPos(swipeEnd[0], swipeEnd[1]);
+      logGesture("swipe", startX, startY, swipeEnd[0], swipeEnd[1], startKey, endKey);
       formattedInput.push(startKey);
       formattedInput.push(`${angle}degrees`);
       entry_result_gesture.push("swipe");
@@ -620,6 +633,7 @@ function setInputPoints(currentTouch){
     // press all other keys
     if(dist(sx, sy, ex, ey) < swipe_length_threshold * key_coord){
       // distance smaller than 40 pixels, just a tap
+      logGesture("tap", sx, sy, null, null, skey);
       entry_result_x.push(sx);
       entry_result_y.push(sy);
       formattedInput.push(skey);
@@ -628,6 +642,9 @@ function setInputPoints(currentTouch){
     else{
       // swipe
       angle = getAngle(sx, sy, ex, ey);
+      const swipeEnd = getSwipeEnd(sx, sy, ex, ey);
+      const endKey = getKeyFromPos(swipeEnd[0], swipeEnd[1]);
+      logGesture("swipe", sx, sy, swipeEnd[0], swipeEnd[1], skey, endKey);
       const [x2_swipe_point, y2_swipe_point] = getSwipeEnd(sx, sy, ex, ey);
       entry_result_x.push(sx);
       entry_result_x.push(x2_swipe_point);
