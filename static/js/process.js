@@ -70,6 +70,9 @@ function setup() {
   cnv.style("position", "relative"); 
   resizeCanvasToFit();
 
+  const sentence = typedWords.join("");
+  display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+
   if (isTouchDevice) {
     document.addEventListener('gesturestart', e => e.preventDefault());
     document.addEventListener('gesturechange', e => e.preventDefault());
@@ -520,7 +523,7 @@ function setInput(ex, ey, ek){
       typedWords.pop();
     }
     const sentence = typedWords.join("");
-    display.innerHTML = sentence + '<span class="cursor"></span>';
+    display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
   }
   else if(startKey == "enter"){
     // press enter: go to next task
@@ -531,7 +534,7 @@ function setInput(ex, ey, ek){
       // no current prediction, add symbol
       typedWords.push(startKey);
       const sentence = typedWords.join("");
-      display.innerHTML = sentence + '<span class="cursor"></span>';
+      display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
       clearInput();
     }
     else{
@@ -539,7 +542,7 @@ function setInput(ex, ey, ek){
       typedWords.push(currentTypedWord);
       typedWords.push(startKey);
       const sentence = typedWords.join("");
-      display.innerHTML = sentence + '<span class="cursor"></span>';
+      display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
       clearInput();
     }    
   }
@@ -590,7 +593,7 @@ function setInputPoints(currentTouch){
       typedWords.pop();
     }
     const sentence = typedWords.join("");
-    display.innerHTML = sentence + '<span class="cursor"></span>';
+    display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
   }
   else if(skey == "enter"){
     // press enter: go to next task
@@ -601,15 +604,15 @@ function setInputPoints(currentTouch){
       // no current prediction, add symbol
       typedWords.push(skey);
       const sentence = typedWords.join("");
-      display.innerHTML = sentence + '<span class="cursor"></span>';
+      display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
       clearInput();
     }
     else{
       // use current prediction, and add symbol
       typedWords.push(currentTypedWord);
-      typedWords.push(startKey);
+      typedWords.push(skey);
       const sentence = typedWords.join("");
-      display.innerHTML = sentence + '<span class="cursor"></span>';
+      display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
       clearInput();
     }    
   }
@@ -642,7 +645,7 @@ function setInputPoints(currentTouch){
 
 function updateDisplay() {
   const text = formattedInput.join(" ");
-  currentWord.innerHTML = text + '<span class="cursor"></span>';
+  currentWord.innerHTML = text + '<span class="blinking-cursor">|</span>';
 }
 
 function clearInput() {
@@ -723,7 +726,7 @@ function predict() {
             // auto set the current word
             currentTypedWord = prediction;
             const sentence = typedWords.join("");
-            display.innerHTML = sentence + currentTypedWord + '<span class="cursor"></span>';
+            display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
           }
           else{
             const box = document.createElement("div");
@@ -734,7 +737,7 @@ function predict() {
               typedWords.push(prediction);
               typedWords.push(" ");
               const sentence = typedWords.join("");
-              display.innerHTML = sentence + '<span class="cursor"></span>';
+              display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
               // clear all input
               clearInput();
             });
