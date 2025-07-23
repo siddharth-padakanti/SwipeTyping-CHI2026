@@ -29,6 +29,8 @@ let entry_result_gesture = [];
 let interp_x = [];
 let interp_y = [];
 
+let gestureLogs = [];
+
 const rows = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "backspace"],
   ["A", "S", "D", "F", "G", "H", "J", "K", "L", "enter"],
@@ -168,9 +170,42 @@ function logGesture(type, startX, startY, endX, endY, startKey, endKey = null) {
 
   if (type === "tap") {
     console.log(`[${timestamp}] Tap at (${Math.round(startX)}, ${Math.round(startY)}) → Key: ${startKey}`);
+    gestureLogs.push([
+      timestamp,
+      "tap",
+      `[${Math.round(startX)}]`,
+      `[${Math.round(startY)}]`,
+      `['${startKey}']`
+    ]);
   } else if (type === "swipe") {
     console.log(`[${timestamp}] Swipe from (${Math.round(startX)}, ${Math.round(startY)}) to (${Math.round(endX)}, ${Math.round(endY)}) → Start: ${startKey} → End: ${endKey}`);
+    gestureLogs.push([
+      timestamp,
+      "swipe",
+      `[${Math.round(startX)}, ${Math.round(endX)}]`,
+      `[${Math.round(startY)}, ${Math.round(endY)}]`,
+      `['${startKey}', '${endKey}']`
+    ]);
   }
+}
+
+function downloadGestureCSV() {
+  let csvContent = "data:text/csv;charset=utf-8,";
+  csvContent += "Time,Type,X,Y,Keys\n";
+
+  gestureLogs.forEach(row => {
+    csvContent += row.join(",") + "\n";
+  });
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  const now = new Date();
+  const filename = `gesture_log_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.csv`;
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 function resizeCanvasToFit() {
@@ -368,6 +403,11 @@ document.addEventListener("keydown", (e) => {
     entry_result_y.push(y);
     entry_result_gesture.push("tap");
     updateDisplay();
+  }
+
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+    e.preventDefault();
+    downloadGestureCSV();
   }
 });
 
