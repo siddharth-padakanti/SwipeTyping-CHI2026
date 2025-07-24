@@ -762,16 +762,20 @@ function predict() {
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
   const input = char_res.join("");
   const count = entry_result_x.length;
-  //const word = formattedInput.join("").toLowerCase();
-  //const tapsOnly = entry_result_gesture.every(g => g === "tap");
 
-  
-  //predictionBar.innerHTML = "Loading...";
+  const tapsOnly = entry_result_gesture.every(g => g === "tap");
+
+  if (tapsOnly) {
+    currentTypedWord = formattedInput.join("").toLowerCase();
+    const sentence = typedWords.join("");
+    display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
+    predictionBar.innerHTML = ""; 
+    return;
+  }
 
   fetch("http://precision.usask.ca/typing/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    //body: JSON.stringify({ input, count, word, tapsOnly })
     body: JSON.stringify({ input, count })
   })
     .then(res => res.json())
@@ -779,13 +783,12 @@ function predict() {
       if (data.predictions) {
         predictionBar.innerHTML = "";
         data.predictions.forEach((prediction, index) => {
-          if(index == 0){
+          if (index == 0) {
             // auto set the current word
             currentTypedWord = prediction;
             const sentence = typedWords.join("");
             display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
-          }
-          else{
+          } else {
             const box = document.createElement("div");
             box.className = "prediction";
             box.textContent = prediction;
