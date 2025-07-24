@@ -164,6 +164,15 @@ function setup() {
   });
 }
 
+document.getElementById("downloadCsvBtn").addEventListener("click", () => {
+  if (gestureLogs.length === 0) {
+    alert("No gestures recorded yet.");
+    return;
+  }
+  downloadGestureCSV();
+});
+
+
 function logGesture(type, startX, startY, endX, endY, startKey, endKey = null) {
   const now = new Date();
   const timestamp = now.toTimeString().split(" ")[0] + "." + now.getMilliseconds().toString().padStart(3, "0");
@@ -179,12 +188,13 @@ function logGesture(type, startX, startY, endX, endY, startKey, endKey = null) {
     ]);
   } else if (type === "swipe") {
     console.log(`[${timestamp}] Swipe from (${Math.round(startX)}, ${Math.round(startY)}) to (${Math.round(endX)}, ${Math.round(endY)}) → Start: ${startKey} → End: ${endKey}`);
+    
     gestureLogs.push([
       timestamp,
       "swipe",
-      `[${Math.round(startX)}, ${Math.round(endX)}]`,
-      `[${Math.round(startY)}, ${Math.round(endY)}]`,
-      `['${startKey}', '${endKey}']`
+      `"[${Math.round(startX)},${Math.round(endX)}]"`,  // wrapped in quotes
+      `"[${Math.round(startY)},${Math.round(endY)}]"`,  // wrapped in quotes
+      `"['${startKey}','${endKey}']"`                   // wrapped in quotes
     ]);
   }
 }
