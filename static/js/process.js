@@ -30,6 +30,7 @@ let interp_x = [];
 let interp_y = [];
 
 let gestureLogs = [];
+let wordLogs = [];
 
 const rows = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "backspace"],
@@ -164,15 +165,6 @@ function setup() {
   });
 }
 
-document.getElementById("downloadCsvBtn").addEventListener("click", () => {
-  if (gestureLogs.length === 0) {
-    alert("No gestures recorded yet.");
-    return;
-  }
-  downloadGestureCSV();
-});
-
-
 function logGesture(type, startX, startY, endX, endY, startKey, endKey = null) {
   const now = new Date();
   const timestamp = now.toTimeString().split(" ")[0] + "." + now.getMilliseconds().toString().padStart(3, "0");
@@ -216,6 +208,54 @@ function downloadGestureCSV() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+document.getElementById("downloadCsvBtn").addEventListener("click", () => {
+  if (gestureLogs.length === 0) {
+    alert("No gestures recorded yet.");
+    return;
+  }
+  downloadGestureCSV();
+});
+
+function logWords() {
+  const now = new Date();
+  const timestamp = now.toTimeString().split(" ")[0] + "." + now.getMilliseconds().toString().padStart(3, "0");
+  const word = currentTypedWord || "";
+  const inputSequence = formattedInput.join(" ");
+
+  wordLogs.push([timestamp, word, inputSequence]);
+}
+
+// Download Word CSV function
+function downloadWordCSV() {
+  if (wordLogs.length === 0) {
+    alert("No words recorded yet.");
+    return;
+  }
+
+  let csvContent = "data:text/csv;charset=utf-8,";
+  csvContent += "Time,Word,Input Sequence\n";
+
+  wordLogs.forEach(row => {
+    csvContent += row.join(",") + "\n";
+  });
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+
+  const now = new Date();
+  const filename = `word_log_${now.getMonth() + 1}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.csv`;
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+const wordBtn = document.getElementById("downloadWordCsvBtn");
+if (wordBtn) {
+  wordBtn.addEventListener("click", downloadWordCSV);
 }
 
 function resizeCanvasToFit() {
@@ -780,6 +820,7 @@ function predict() {
     const sentence = typedWords.join("");
     display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
     predictionBar.innerHTML = ""; 
+    logWords();
     return;
   }
 
@@ -798,6 +839,7 @@ function predict() {
             currentTypedWord = prediction;
             const sentence = typedWords.join("");
             display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
+            logWords();
           } else {
             const box = document.createElement("div");
             box.className = "prediction";
@@ -808,6 +850,7 @@ function predict() {
               typedWords.push(" ");
               const sentence = typedWords.join("");
               display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+              logWords();
               // clear all input
               clearInput();
             });
