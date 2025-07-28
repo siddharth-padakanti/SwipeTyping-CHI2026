@@ -821,7 +821,6 @@ function predict() {
     display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
     predictionBar.innerHTML = ""; 
     logWords();
-    return;
   }
 
   fetch("http://precision.usask.ca/typing/predict", {
@@ -834,7 +833,7 @@ function predict() {
       if (data.predictions) {
         predictionBar.innerHTML = "";
         data.predictions.forEach((prediction, index) => {
-          if (index == 0) {
+          if ((index == 0) && !(tapsOnly)){
             // auto set the current word
             currentTypedWord = prediction;
             const sentence = typedWords.join("");
