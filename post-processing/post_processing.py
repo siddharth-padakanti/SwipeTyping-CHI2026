@@ -1,59 +1,114 @@
 import pandas as pd
 from tkinter import Tk, filedialog
 from datetime import datetime, timedelta
-import os
+import math
 
-def parse_time(t):
-    return datetime.strptime(t, "%H:%M:%S.%f")
+UI_W, UI_H       = 880.0, 320.0
+WARP_W, WARP_H   = 640.0, 480.0
+SCALE_X = WARP_W / UI_W   # ≈ 0.727
+SCALE_Y = WARP_H / UI_H   # = 1.5
 
-def clean_val(val):
-    val = val.strip("[]").replace("'", "").strip()
-    return f"[{val}]"
+def parse_time(ts):
+    return datetime.strptime(ts, "%H:%M:%S.%f")
 
-def find_closest_finger(gesture_time, finger_df, window=200):
-    min_time_diff = timedelta(milliseconds=window)
-    closest_row = None
+def parse_gesture_coord(text):
+    t = str(text).strip()
+    if t in ("-", "", "[]"):
+        return None
+    parts = [p.strip() for p in t.strip("[]").split(",") if p.strip()]
+    try:
+        return float(parts[-1])
+    except:
+        return None
 
-    for _, row in finger_df.iterrows():
-        finger_time = parse_time(row["Timestamp"])
-        time_diff = abs(gesture_time - finger_time)
-        if time_diff <= min_time_diff:
-            min_time_diff = time_diff
-            closest_row = row
+def parse_finger_coord(text):
+    """
+    Given a string like "[123,456]" or "-", return (123.0, 456.0),
+    or None if missing / malformed.
+    """
+    t = str(text).strip()
+    if t in ("-", "", "[]"):
+        return None
+    body = t.strip("[]")
+    parts = [p.strip() for p in body.split(",") if p.strip()]
+    if len(parts) != 2:
+        return None
+    try:
+        return float(parts[0]), float(parts[1])
+    except:
+        return None
 
-    return closest_row["Finger"] if closest_row is not None else "Unknown"
 
 root = Tk()
 root.withdraw()
 
-gesture_path = filedialog.askopenfilename(title="Select Gesture Log CSV", filetypes=[("CSV Files", "*.csv")])
-finger_path = filedialog.askopenfilename(title="Select Finger Log CSV", filetypes=[("CSV Files", "*.csv")])
+gesture_path = filedialog.askopenfilename(
+    title="Select Gesture Log CSV", filetypes=[("CSV Files", "*.csv")]
+)
+finger_path = filedialog.askopenfilename(
+    title="Select Finger Log CSV", filetypes=[("CSV Files", "*.csv")]
+)
 
-gesture_df = pd.read_csv(gesture_path)
-finger_df = pd.read_csv(finger_path)
+gest = pd.read_csv(gesture_path)
+fing = pd.read_csv(finger_path)
 
-gesture_df["ParsedTime"] = gesture_df["Time"].apply(parse_time)
+gest["ParsedTime"] = gest["Time"].apply(parse_time)
+gest["GX"] = gest["X"].apply(parse_gesture_coord)
+gest["GY"] = gest["Y"].apply(parse_gesture_coord)
 
-gesture_df["X"] = gesture_df["X"].apply(clean_val)
-gesture_df["Y"] = gesture_df["Y"].apply(clean_val)
-gesture_df["Keys"] = gesture_df["Keys"].apply(clean_val)
+fing["ParsedTime"] = fing["Timestamp"].apply(parse_time)
 
-fingers = []
-for _, gesture_row in gesture_df.iterrows():
-    g_time = gesture_row["ParsedTime"]
-    matched_finger = find_closest_finger(g_time, finger_df)
-    fingers.append(matched_finger)
+finger_cols = [
+    'Left_Pinky','Left_Ring','Left_Middle','Left_Index','Left_Thumb',
+    'Right_Thumb','Right_Index','Right_Middle','Right_Ring','Right_Pinky'
+]
 
-gesture_df["Finger"] = fingers
+matches = []
+time_window = timedelta(milliseconds=200)
 
-result_df = gesture_df[["Time", "Type", "X", "Y", "Keys", "Finger"]]
+for _, g in gest.iterrows():
+    gt = g["ParsedTime"]
+    raw_x = g["GX"] 
+    raw_y = g["GY"]
+    if raw_x is None or raw_y is None:
+        matches.append("Unknown")
+        continue
+
+    gx = raw_x * SCALE_X
+    gy = raw_y * SCALE_Y
+
+    window = fing[abs(fing["ParsedTime"] - gt) <= time_window]
+    if window.empty:
+        matches.append("Unknown")
+        continue
+
+    nearest = window.iloc[(window["ParsedTime"] - gt).abs().argmin()]
+
+    best, best_d = "Unknown", float("inf")
+    for col in finger_cols:
+        coord = parse_finger_coord(nearest[col])
+        if not coord:
+            continue
+        x, y = coord
+        d = math.hypot(x - gx, y - gy)
+        if d < best_d:
+            best_d, best = d, col.replace("_"," ")
+    matches.append(best)
+
+gest["Finger"] = matches
+
+out = gest[["Time","Type","X","Y","Keys","Finger"]]
+now = datetime.now()
+default_name = f"gesture_finger_match_{now.month:02d}-{now.day:02d}-{now.year}__{now.hour:02d}-{now.minute:02d}-{now.second:02d}.csv"
 
 save_path = filedialog.asksaveasfilename(
     title="Save Result CSV",
     defaultextension=".csv",
-    filetypes=[("CSV Files", "*.csv")],
-    initialfile="gesture_finger_match.csv"
+    filetypes=[("CSV files","*.csv")],
+    initialfile=default_name
 )
-
-result_df.to_csv(save_path, index=False)
-print(f"Result saved to: {save_path}")
+if save_path:
+    out.to_csv(save_path, index=False)
+    print(f"Result saved to: {save_path}")
+else:
+    print("Save cancelled — no file written.")
