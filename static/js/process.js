@@ -60,10 +60,18 @@ let currentTouches = [];
 
 
 function preload() {
-  keyboardImg = loadImage(document.getElementById('imgurl').value);
+  const urlEl = document.getElementById('imgurl');
+  if (urlEl) {
+    keyboardImg = loadImage(urlEl.value);
+  }
 }
 
+
 function setup() {
+  const displayEl = document.getElementById("display");
+  if (displayEl) {
+    displayEl.innerHTML = '<span class="blinking-cursor">|</span>';
+  }
   // Remove any old rogue canvas (if reloaded)
   const existing = document.querySelector("canvas");
   if (existing) existing.remove();
@@ -203,20 +211,21 @@ function downloadGestureCSV() {
   const link = document.createElement("a");
   link.setAttribute("href", encodedUri);
   const now = new Date();
-  const filename = `gesture_log_${now.getMonth()}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.csv`;
+  let filename = `gesture_log_${now.getMonth()+1}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.csv`;
+  if (studyState.participantID) {
+    let id = studyState.participantID.toString();
+    filename = `gesture_log_${now.getMonth()+1}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}__${id}.csv`;
+  }
   link.setAttribute("download", filename);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 }
 
-document.getElementById("downloadCsvBtn").addEventListener("click", () => {
-  if (gestureLogs.length === 0) {
-    alert("No gestures recorded yet.");
-    return;
-  }
-  downloadGestureCSV();
-});
+const gBtn = document.getElementById("downloadCsvBtn");
+if (gBtn) {
+  gBtn.addEventListener("click", downloadGestureCSV);
+}
 
 function logWords() {
   const now = new Date();
@@ -246,16 +255,20 @@ function downloadWordCSV() {
   link.setAttribute("href", encodedUri);
 
   const now = new Date();
-  const filename = `word_log_${now.getMonth() + 1}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.csv`;
+  let filename = `word_log_${now.getMonth() + 1}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.csv`;
+  if (studyState.participantID) {
+    let id = studyState.participantID.toString();
+    filename = `word_log_${now.getMonth() + 1}-${now.getDate()}-${now.getFullYear()}__${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}__${id}.csv`;
+  }
   link.setAttribute("download", filename);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 }
 
-const wordBtn = document.getElementById("downloadWordCsvBtn");
-if (wordBtn) {
-  wordBtn.addEventListener("click", downloadWordCSV);
+const wBtn = document.getElementById("downloadWordCsvBtn");
+if (wBtn) {
+  wBtn.addEventListener("click", downloadWordCSV);
 }
 
 function resizeCanvasToFit() {
@@ -415,6 +428,11 @@ function colourKey(key) {
 }
 
 document.addEventListener("keydown", (e) => {
+  const task = document.getElementById("task-section");
+  if (!task || !task.classList.contains("active")) {
+    return;
+  }
+  
   const key = e.key.toUpperCase();
 
   if (key === "BACKSPACE") {
@@ -436,6 +454,16 @@ document.addEventListener("keydown", (e) => {
       }
     }
     updateDisplay();
+  }
+
+  else if (e.key === " ") {
+    e.preventDefault();
+    const word = (currentTypedWord || formattedInput.join("")).toLowerCase().trim();
+    if (!word) return;                
+    typedWords.push(word);            
+    typedWords.push(" ");
+    display.innerHTML = typedWords.join("") + '<span class="blinking-cursor">|</span>';
+    clearInput();                     
   }
 
   else if (key === "ENTER") {
@@ -612,11 +640,50 @@ function setStartPos(sx, sy, sk){
 }
 
 function setInput(ex, ey, ek){
-  // handle special case first
+  if (window.studyState && window.studyState.phase === "normal") {
+    if (startKey === "backspace") {
+      if(formattedInput.length > 0){
+        clearInput();
+      }
+      else{
+        typedWords.pop();
+      }
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+    }
+    else if (startKey === "enter") {
+      if (typeof handleSubmitSentence === "function") {
+        handleSubmitSentence();
+      }
+    }
+    else if(startKey == "," || startKey == "." || startKey == " "){
+      if(formattedInput.length == 0){
+        typedWords.push(startKey);
+        const sentence = typedWords.join("");
+        display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+        clearInput();
+      }
+      else{
+        typedWords.push(currentTypedWord);
+        typedWords.push(startKey);
+        const sentence = typedWords.join("");
+        display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+        clearInput();
+      }    
+    }
+    else {
+      logGesture("tap", startX, startY, null, null, startKey);
+      entry_result_x.push(startX);
+      entry_result_y.push(startY);
+      formattedInput.push(startKey);
+      entry_result_gesture.push("tap");
+      predict();
+      updateDisplay();
+    }
+    return;  
+  }
   if(startKey == "backspace"){
-    // press backspace: delete a word or delete current typing word
     if(formattedInput.length > 0){
-      // delete current typing word
       clearInput();
     }
     else{
@@ -626,19 +693,19 @@ function setInput(ex, ey, ek){
     display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
   }
   else if(startKey == "enter"){
-    // press enter: go to next task
+    if (typeof handleSubmitSentence === "function") {
+      handleSubmitSentence();
+    }
+    return;
   }
   else if(startKey == "," || startKey == "." || startKey == " "){
-    // press "," or "." ; predict and add "," or "."
     if(formattedInput.length == 0){
-      // no current prediction, add symbol
       typedWords.push(startKey);
       const sentence = typedWords.join("");
       display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
       clearInput();
     }
     else{
-      // use current prediction, and add symbol
       typedWords.push(currentTypedWord);
       typedWords.push(startKey);
       const sentence = typedWords.join("");
@@ -647,9 +714,7 @@ function setInput(ex, ey, ek){
     }    
   }
   else{
-    // press all other keys
     if(dist(startX, startY, ex, ey) < swipe_length_threshold * key_coord){
-      // distance smaller than 40 pixels, just a tap
       logGesture("tap", startX, startY, null, null, startKey);
       entry_result_x.push(startX);
       entry_result_y.push(startY);
@@ -657,7 +722,6 @@ function setInput(ex, ey, ek){
       entry_result_gesture.push("tap");
     }
     else{
-      // swipe
       angle = getAngle(startX, startY, ex, ey);
       const [x2_swipe_point, y2_swipe_point] = getSwipeEnd(startX, startY, ex, ey);
       entry_result_x.push(startX);
@@ -678,6 +742,49 @@ function setInput(ex, ey, ek){
 }
 
 function setInputPoints(currentTouch){
+  if (window.studyState && window.studyState.phase === "normal") {
+    const p = currentTouch.points[0];
+    if (p.key === "backspace") {
+      if(formattedInput.length > 0){
+        clearInput();
+      }
+      else{
+        typedWords.pop();
+      }
+      const sentence = typedWords.join("");
+      display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+    }
+    else if (p.key === "enter") {
+      if (typeof handleSubmitSentence === "function") {
+        handleSubmitSentence();
+      }
+    }
+    else if(p.key == "," || p.key == "." || p.key == " "){
+      if(formattedInput.length == 0){
+        typedWords.push(p.key);
+        const sentence = typedWords.join("");
+        display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+        clearInput();
+      }
+      else{
+        typedWords.push(currentTypedWord);
+        typedWords.push(p.key);
+        const sentence = typedWords.join("");
+        display.innerHTML = sentence + '<span class="blinking-cursor">|</span>';
+        clearInput();
+      }    
+    }
+    else {
+      logGesture("tap", p.x, p.y, null, null, p.key);
+      entry_result_x.push(p.x);
+      entry_result_y.push(p.y);
+      formattedInput.push(p.key);
+      entry_result_gesture.push("tap");
+      predict();
+      updateDisplay();
+    }
+    return;
+  }
   // handle special case first
   let pcount = currentTouch["points"].length;
   let skey = currentTouch["points"][0].key;
@@ -700,6 +807,10 @@ function setInputPoints(currentTouch){
   }
   else if(skey == "enter"){
     // press enter: go to next task
+    if (typeof handleSubmitSentence === "function") {
+      handleSubmitSentence();
+    }
+    return;
   }
   else if(skey == "," || skey == "." || skey == " "){
     // press "," or "." ; predict and add "," or "."
@@ -751,8 +862,9 @@ function setInputPoints(currentTouch){
 }
 
 function updateDisplay() {
-  const text = formattedInput.join(" ");
-  currentWord.innerHTML = text + '<span class="blinking-cursor">|</span>';
+  if (currentWord) {
+    currentWord.innerHTML = formattedInput.join(" ") + '<span class="blinking-cursor">|</span>';
+  }
 }
 
 function clearInput() {

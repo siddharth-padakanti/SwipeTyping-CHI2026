@@ -1,12 +1,16 @@
+import os
 import pandas as pd
 from tkinter import Tk, filedialog
 from datetime import datetime, timedelta
 import math
 
-UI_W, UI_H       = 880.0, 320.0
-WARP_W, WARP_H   = 640.0, 480.0
-SCALE_X = WARP_W / UI_W   # ≈ 0.727
-SCALE_Y = WARP_H / UI_H   # = 1.5
+# ——— Helpers ———
+
+# dimensions must match your code
+UI_W, UI_H     = 880.0, 320.0
+WARP_W, WARP_H = 640.0, 480.0
+SCALE_X = WARP_W / UI_W
+SCALE_Y = WARP_H / UI_H
 
 def parse_time(ts):
     return datetime.strptime(ts, "%H:%M:%S.%f")
@@ -17,20 +21,15 @@ def parse_gesture_coord(text):
         return None
     parts = [p.strip() for p in t.strip("[]").split(",") if p.strip()]
     try:
-        return float(parts[-1])
+        return float(parts[-1])  # use last element
     except:
         return None
 
 def parse_finger_coord(text):
-    """
-    Given a string like "[123,456]" or "-", return (123.0, 456.0),
-    or None if missing / malformed.
-    """
     t = str(text).strip()
     if t in ("-", "", "[]"):
         return None
-    body = t.strip("[]")
-    parts = [p.strip() for p in body.split(",") if p.strip()]
+    parts = [p.strip() for p in t.strip("[]").split(",") if p.strip()]
     if len(parts) != 2:
         return None
     try:
@@ -38,6 +37,7 @@ def parse_finger_coord(text):
     except:
         return None
 
+# ——— Load files ———
 
 root = Tk()
 root.withdraw()
@@ -49,8 +49,17 @@ finger_path = filedialog.askopenfilename(
     title="Select Finger Log CSV", filetypes=[("CSV Files", "*.csv")]
 )
 
+# —— extract participant ID from gesture filename ——
+# e.g. "...__P01.csv" → "P01"
+base = os.path.basename(gesture_path)
+name, _ext = os.path.splitext(base)
+# split on "__" and take last segment
+participant_id = name.rsplit("__", 1)[-1]
+
 gest = pd.read_csv(gesture_path)
 fing = pd.read_csv(finger_path)
+
+# ——— Parse the columns ———
 
 gest["ParsedTime"] = gest["Time"].apply(parse_time)
 gest["GX"] = gest["X"].apply(parse_gesture_coord)
@@ -63,13 +72,14 @@ finger_cols = [
     'Right_Thumb','Right_Index','Right_Middle','Right_Ring','Right_Pinky'
 ]
 
+# ——— Matching ———
+
 matches = []
 time_window = timedelta(milliseconds=200)
 
 for _, g in gest.iterrows():
     gt = g["ParsedTime"]
-    raw_x = g["GX"] 
-    raw_y = g["GY"]
+    raw_x, raw_y = g["GX"], g["GY"]
     if raw_x is None or raw_y is None:
         matches.append("Unknown")
         continue
@@ -87,7 +97,7 @@ for _, g in gest.iterrows():
     best, best_d = "Unknown", float("inf")
     for col in finger_cols:
         coord = parse_finger_coord(nearest[col])
-        if not coord:
+        if coord is None:
             continue
         x, y = coord
         d = math.hypot(x - gx, y - gy)
@@ -97,9 +107,17 @@ for _, g in gest.iterrows():
 
 gest["Finger"] = matches
 
+# ——— Save result ———
+
 out = gest[["Time","Type","X","Y","Keys","Finger"]]
 now = datetime.now()
-default_name = f"gesture_finger_match_{now.month:02d}-{now.day:02d}-{now.year}__{now.hour:02d}-{now.minute:02d}-{now.second:02d}.csv"
+# include participant_id in the filename
+default_name = (
+    f"gesture_finger_match_{now.month:02d}-"
+    f"{now.day:02d}-{now.year}__"
+    f"{now.hour:02d}-{now.minute:02d}-{now.second:02d}"
+    f"__{participant_id}.csv"
+)
 
 save_path = filedialog.asksaveasfilename(
     title="Save Result CSV",
