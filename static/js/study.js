@@ -167,7 +167,7 @@ document.getElementById("btn-main-study")
   .addEventListener("click", () => startPhase("main"));
 
 // ==== Start a Phase ====
-function shuffle(array) {
+function shuffleTrials(array) {
   const a = array.slice();            
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -182,15 +182,15 @@ function startPhase(phase) {
 
   switch (phase) {
     case "normal":
-      studyState.sentences = shuffle(NORMAL_SENTENCES);
+      studyState.sentences = shuffleTrials(NORMAL_SENTENCES);
       STUDY_LOGGING_ENABLED = false;
       break;
     case "swipe":
-      studyState.sentences = shuffle(SWIPE_SENTENCES);
+      studyState.sentences = shuffleTrials(SWIPE_SENTENCES);
       STUDY_LOGGING_ENABLED = false;
       break;
     case "main":
-      studyState.sentences = shuffle(MAIN_SENTENCES);
+      studyState.sentences = shuffleTrials(MAIN_SENTENCES);
       STUDY_LOGGING_ENABLED = true;
       break;
   }
@@ -255,10 +255,17 @@ function handleSubmitSentence() {
     clearInput();
   }
 
-  // 2) Build actual vs. expected
-  const actual = typedWords.join("").trim().toLowerCase();
+  let rawSentence = typedWords.join("");
+  rawSentence = rawSentence.replace(/ {2,}/g, " ");
+  rawSentence = rawSentence.trim();
+
+  displayEl.textContent = rawSentence;
+  displayEl.innerHTML += '<span class="blinking-cursor">|</span>';
+
+  const actual   = rawSentence.toLowerCase();
   const expected = studyState.sentences[studyState.trialIndex].trim().toLowerCase();
   const wordCount = expected.split(/\s+/).length;
+  console.log(actual);
 
   // 3) Correctness check
   if (actual !== expected) {
