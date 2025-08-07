@@ -935,7 +935,7 @@ function predict() {
     logWords();
   }
 
-  fetch("http://precision.usask.ca/typing/predict", {
+  fetch("http://127.0.0.1:1111/typing/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ input, count })
@@ -978,7 +978,7 @@ function predict() {
 }
 
 function printServer(string){
-  fetch("http://precision.usask.ca/typing/debug", {
+  fetch("http://127.0.0.1:1111/typing/debug", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ string })
