@@ -10,9 +10,8 @@ import re
 from datetime import datetime
 
 # === APP SETUP ===
-
-
-typingPage = Blueprint('typing', __name__)
+app = Flask(__name__)
+CORS(app, origins=["http://localhost:1111", "http://127.0.0.1:1111"])
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(torch.cuda.is_available())
@@ -126,7 +125,7 @@ def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10):
     return list(dict.fromkeys(filterWord))[:3]
 
 # === New: Participant registration endpoint ===
-@typingPage.route("/register", methods=["POST"])
+@app.route("/register", methods=["POST"])
 def register_participant():
     data = request.get_json() or {}
     raw_id = data.get('id', '').strip()
@@ -156,7 +155,7 @@ def register_participant():
     return jsonify(id=new_id)
 
         
-@typingPage.route("/predict", methods=["POST"])
+@app.route('/predict', methods=["POST"])
 def predict():
     try:
         tokens = request.json.get("input", "")
@@ -199,7 +198,7 @@ def predict():
         return jsonify(error=str(e)), 500
     
 
-@typingPage.route("/debug", methods=["POST"])
+@app.route('/debug', methods=["POST"])
 def debug():
     try:
         string = request.json.get("string", "")
@@ -211,10 +210,8 @@ def debug():
 
 
 
-app = Flask(__name__)
-app.register_blueprint(typingPage, url_prefix='/typing')
-CORS(app, origins=["http://precision.usask.ca:8000"])
+
 
 
 if __name__ == "__main__":
-    app.run(port=30000, debug=True)
+    app.run(port=5000, host='0.0.0.0', debug=True)
