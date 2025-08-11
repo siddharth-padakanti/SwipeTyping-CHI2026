@@ -935,7 +935,7 @@ function predict() {
     logWords();
   }
 
-  fetch('api/frontend/predict', {
+  fetch("/typing/api/frontend/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ input, count })
@@ -978,7 +978,7 @@ function predict() {
 }
 
 function printServer(string){
-  fetch('api/frontend/debug', {
+  fetch("/typing/api/frontend/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ string })
