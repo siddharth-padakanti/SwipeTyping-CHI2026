@@ -922,8 +922,8 @@ function getTrajectoryChars(entry_x, entry_y){
 
 function predict() {
   let char_res = getTrajectoryChars(entry_result_x, entry_result_y);
-  const input = char_res.join("");
-  const count = entry_result_x.length;
+  const input = char_res.join("").toLowerCase();
+  const count = formattedInput.filter(t => /^[A-Za-z]$/.test(t)).length;
 
   const tapsOnly = entry_result_gesture.every(g => g === "tap");
 
@@ -933,6 +933,7 @@ function predict() {
     display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
     predictionBar.innerHTML = ""; 
     logWords();
+    return;
   }
 
   fetch("/typing/api/frontend/predict", {

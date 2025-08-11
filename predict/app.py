@@ -103,26 +103,28 @@ def to_trajectory(tokens):
     return "".join(filtered)
 
 
-def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10):
-    inputs = tokenizer(text, return_tensors="pt", padding=True).to(device)
+def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10, max_new=None):
+    count = int(count)
+    max_new = max_new or max(count, 1)
+
+    inputs = tokenizer(text, return_tensors="pt").to(device)
     outputs = model.generate(
         inputs['input_ids'],
-        max_length=8,
         num_beams=num_beams,
         num_return_sequences=num_return_sequences,
-        early_stopping=True
+        max_new_tokens=max_new,
+        min_new_tokens=1,         
+        early_stopping=True,
+        # length_penalty=0.0,     
     )
+
     words = [
-        tokenizer.decode(output, skip_special_tokens=True)
-        .replace("</s>", "")
-        .replace("<pad>", "")
-        .replace("<unk>", "")
-        .replace(" ", "")
-        for output in outputs
+        tokenizer.decode(o, skip_special_tokens=True)
+        .replace("</s>", "").replace("<pad>", "").replace("<unk>", "").replace(" ", "")
+        for o in outputs
     ]
-    filterWord = [word for word in words if len(word) == count]
-    #print(filterWord)
-    return list(dict.fromkeys(filterWord))[:3]
+    filtered = [w for w in words if len(w) == count]
+    return list(dict.fromkeys(filtered))[:3]
 
 # === New: Participant registration endpoint ===
 @app.route("/register", methods=["POST"])
@@ -190,9 +192,14 @@ def predict():
             "The input is the closest key sequence to the user-drawn gesture trajectory. "
             f"Please only find the {count}-LETTER target word for this input: {tokens}"
         )
-        predictions = generate_n_best_words(prompt, count)
+        sequence = (request.json.get("input", "") or "").lower()
+        count = int(request.json.get("count", 0))
+        if not sequence or count <= 0:
+            return jsonify(error="Empty input or invalid count."), 400
+
+        predictions = generate_n_best_words(sequence, count)
         print(datetime.now())
-        return jsonify(predictions=predictions, pattern=tokens)
+        return jsonify(predictions=predictions, pattern=sequence)
 
     except Exception as e:
         return jsonify(error=str(e)), 500
