@@ -272,27 +272,27 @@ if (wBtn) {
 }
 
 function resizeCanvasToFit() {
-  let targetWidth = windowWidth;
-  let targetHeight = windowHeight * 0.5; 
-
-  if(targetWidth >= targetHeight / kb_imgHeight * kb_imgWidth){
-    // resize based on height
-    targetWidth = targetHeight / kb_imgHeight * kb_imgWidth;
-  }
-  else{
-    // resize base on width
-    targetHeight = targetWidth / kb_imgWidth * kb_imgHeight;
-  }
-
-  resizeCanvas(targetWidth, targetHeight);
-
   const container = document.getElementById('canvas-container');
-  container.style.height = `${targetHeight}px`;
-  container.style.width = `${targetWidth}px`;
-  container.y = `${windowHeight - targetHeight}px`;
+  // Use the container’s box, which is fixed and stable
+  const cw = container.clientWidth;
+  const ch = container.clientHeight;
 
-  img_scale = targetHeight / kb_imgHeight;
+  // Maintain the keyboard image aspect ratio (880 x 320)
+  const imgW = kb_imgWidth;   // 880
+  const imgH = kb_imgHeight;  // 320
+  const targetRatio = imgW / imgH;
+
+  let width = cw;
+  let height = width / targetRatio;
+  if (height > ch) {
+    height = ch;
+    width = height * targetRatio;
+  }
+
+  resizeCanvas(width, height);
+  img_scale = height / imgH;
 }
+
 
 
 function windowResized() {
@@ -935,7 +935,7 @@ function predict() {
     logWords();
   }
 
-  fetch("http://127.0.0.1:1111/typing/predict", {
+  fetch("/typing/api/frontend/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ input, count })
@@ -978,7 +978,7 @@ function predict() {
 }
 
 function printServer(string){
-  fetch("http://127.0.0.1:1111/typing/debug", {
+  fetch("/typing/api/frontend/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ string })

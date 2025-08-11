@@ -22,21 +22,29 @@
         touch-action: manipulation;
       }
 
-      #canvas-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 1rem;
-        overflow: hidden;
-        touch-action: manipulation;
+      :root {
+        /* Tweak the side margin here */
+        --page-gutter: clamp(12px, 4vw, 48px);
+        --display-height: 4.5rem; /* optional: fixed height */
+      }
 
+
+      /* Keyboard is a fixed “dock” at the bottom. It never moves. */
+      #canvas-container {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 100%;
+        max-width: 100vw;
+        height: var(--kb-height);
+        overflow: visible; /* so the bar can hang above it */
       }
 
       canvas {
         display: block !important;
-        position: relative !important; /* <- critical */
-        z-index: 0 !important;         /* <- make sure it's behind other elements */
+        position: relative !important; /* below the bar */
+        z-index: 0 !important;
         width: 100% !important;
         height: auto !important;
         max-width: 100vw !important;
@@ -44,17 +52,21 @@
       }
 
       
+      /* Make the display bar a fixed width: viewport minus gutters */
       #display {
-        font-size: 1.5rem; /* Bigger text */
+        box-sizing: border-box;
+        width: calc(100vw - (2 * var(--page-gutter)));
+        margin: 1rem var(--page-gutter);   /* equal side margins */
+        align-self: stretch;               /* ignore body’s align-items:center */
+        font-size: 1.5rem;
         border: 2px solid #ccc;
         padding: 1rem;
-        min-height: 3rem;
-        width: 100%;
-        max-width: none; /* remove the 800px limit */
         background: #f9f9f9;
-        margin: 1rem 0;
-        box-sizing: border-box;
-        white-space: pre-wrap;
+        white-space: nowrap;               /* keep it to one line (optional) */
+        overflow: hidden;                  /* clip overflow */
+        text-overflow: ellipsis;           /* show … when long (optional) */
+        height: var(--display-height);     /* optional: fix the height */
+        line-height: calc(var(--display-height) - 2rem); /* vertically center text (height - padding) */
       }
 
       .button-group {
@@ -97,26 +109,35 @@
         margin: 1rem 0;
       }
 
+      /* Bar floats above the keyboard. It doesn’t take layout space. */
       .prediction-bar {
+        position: absolute;
+        bottom: calc(100% + 8px);  /* sits just above the docked keyboard */
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100vw - (2 * var(--page-gutter)));
+        max-width: none;
         display: flex;
+        flex-wrap: wrap;           /* allow wrapping without pushing anything */
+        align-items: center;
         justify-content: center;
-        gap: 1rem;
-        /* padding: 1rem; */
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: auto;
-        margin-bottom: 1rem;
+        gap: 0.75rem;
+        z-index: 10;
+        margin: 0;
+        pointer-events: none;      /* gestures go through unless on a button */
       }
 
       .prediction-bar .prediction {
         background-color: #f1f1f1;
         border: 2px solid #999;
         border-radius: 12px;
-        padding: 0.75rem 1.5rem;
-        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
         cursor: pointer;
+        pointer-events: auto;      /* keep buttons clickable */
         transition: background 0.2s ease;
       }
+
 
       .prediction-bar .prediction:hover {
         background-color: #ddd;
@@ -197,8 +218,9 @@
       Download Word CSV
     </button>
     <div class="output" id="currentWord"></div>
-    <div id="prediction-bar" class="prediction-bar"></div>
-    <div id="canvas-container"></div>
+    <div id="canvas-container">
+      <div id="prediction-bar" class="prediction-bar" aria-live="polite"></div>
+    </div>
     <input value="{{ kBimage }}" type="text" hidden="hidden" id="imgurl" />
     <script src="{{ url_for('.static', filename='js/process.js') }}"></script>
   </body>

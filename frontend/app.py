@@ -13,7 +13,7 @@ import requests
 # === APP SETUP ===
 
 # Backend API URL - change this based on your backend server location
-BACKEND_URL = "http://ramen.usask.ca:5000"
+BACKEND_URL = "http://127.0.0.1:5000"
 
 typingPage = Blueprint('typing', __name__, template_folder='templates', static_folder='static')
 
@@ -143,20 +143,24 @@ def interface():
     print(IMAGE_URL)
     return render_template('index.html', kBimage = IMAGE_URL)
 
+@typingPage.route('/predict', methods=["POST"])
+def legacy_predict_passthrough():
+    # Back-compat for old JS that posts to /typing/predict
+    try:
+        payload = request.get_json(force=True)
+        r = requests.post(f"{BACKEND_URL}/predict", json=payload, timeout=5)
+        return jsonify(r.json())
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
 @typingPage.route('/api/frontend/predict', methods=["POST"])
 def frontend_predict():
-    """Frontend predict"""
-    tokens = request.json.get("input", "")
-    count = request.json.get("count", "")
-
-    if tokens:
-        try:
-            response = requests.post(f"{BACKEND_URL}/predict", 
-                                   json={"input": tokens, "count": count})
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            return jsonify("")
+    try:
+        payload = request.get_json(force=True)
+        r = requests.post(f"{BACKEND_URL}/predict", json=payload, timeout=5)
+        return jsonify(r.json())
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
 @typingPage.route('/api/frontend/debug', methods=["POST"])
 def frontend_debug():

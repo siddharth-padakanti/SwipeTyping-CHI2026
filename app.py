@@ -104,26 +104,27 @@ def to_trajectory(tokens):
     return "".join(filtered)
 
 
-def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10):
-    inputs = tokenizer(text, return_tensors="pt", padding=True).to(device)
+def generate_n_best_words(sequence, count, num_beams=11, num_return_sequences=10, max_len=None):
+    count = int(count)
+    if max_len is None:
+        max_len = max(count, 2)  # allow at least 'count' chars
+
+    inputs = tokenizer(sequence, return_tensors="pt").to(device)
     outputs = model.generate(
         inputs['input_ids'],
-        max_length=8,
+        max_length=max_len,
         num_beams=num_beams,
         num_return_sequences=num_return_sequences,
         early_stopping=True
     )
     words = [
-        tokenizer.decode(output, skip_special_tokens=True)
-        .replace("</s>", "")
-        .replace("<pad>", "")
-        .replace("<unk>", "")
-        .replace(" ", "")
-        for output in outputs
+        tokenizer.decode(o, skip_special_tokens=True)
+        .replace("</s>", "").replace("<pad>", "").replace("<unk>", "").replace(" ", "")
+        for o in outputs
     ]
-    filterWord = [word for word in words if len(word) == count]
-    #print(filterWord)
-    return list(dict.fromkeys(filterWord))[:3]
+    filtered = [w for w in words if len(w) == count]
+    # dedupe & top-3
+    return list(dict.fromkeys(filtered))[:3]
 
 # === New: Participant registration endpoint ===
 @typingPage.route("/register", methods=["POST"])
@@ -163,10 +164,10 @@ def study_page():
 @typingPage.route("/predict", methods=["POST"])
 def predict():
     try:
-        tokens = request.json.get("input", "")
-        count = request.json.get("count", "")
-        if not tokens:
-            return jsonify(error="Empty input."), 400
+        sequence = request.json.get("input", "")  # this is the raw 'ttthhii...' string
+        count = int(request.json.get("count", 0))
+        if not sequence or count <= 0:
+            return jsonify(error="Empty input or invalid count."), 400
         
         print(datetime.now())
         #print(tokens)
@@ -195,7 +196,7 @@ def predict():
             "The input is the closest key sequence to the user-drawn gesture trajectory. "
             f"Please only find the {count}-LETTER target word for this input: {tokens}"
         )
-        predictions = generate_n_best_words(prompt, count)
+        predictions = generate_n_best_words(sequence, count, max_len=count)
         print(datetime.now())
         return jsonify(predictions=predictions, pattern=tokens)
 
