@@ -13,7 +13,7 @@ import requests
 # === APP SETUP ===
 
 # Backend API URL - change this based on your backend server location
-BACKEND_URL = "http://127.0.0.1:5000"
+BACKEND_URL = "http://ramen.usask.ca:5000"
 
 typingPage = Blueprint('typing', __name__, template_folder='templates', static_folder='static')
 
