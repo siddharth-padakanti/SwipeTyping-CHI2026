@@ -8,6 +8,7 @@ from json.decoder import JSONDecodeError
 from transformers import AutoTokenizer, T5ForConditionalGeneration
 import re
 from datetime import datetime
+from pathlib import Path
 
 # === APP SETUP ===
 app = Flask(__name__)
@@ -17,9 +18,15 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(torch.cuda.is_available())
 model_path = "../model/"
 
+HERE = Path(__file__).resolve().parent            
+MODEL_DIR = (HERE / ".." / "model").resolve()  
+
+if not MODEL_DIR.exists():
+    raise FileNotFoundError(f"Model dir not found: {MODEL_DIR}")
+
 # Load tokenizer and model
-tokenizer = AutoTokenizer.from_pretrained(model_path)
-model = T5ForConditionalGeneration.from_pretrained(model_path).to(device)
+tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR), local_files_only=True)
+model = T5ForConditionalGeneration.from_pretrained(str(MODEL_DIR), local_files_only=True).to(device)
 
 # Ensure a folder for participant logs
 LOGS_DIR = os.path.join(os.getcwd(), 'logs')
