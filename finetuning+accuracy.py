@@ -16,7 +16,7 @@ from transformers import TrainerCallback
 import os
 
 # global variable
-swipe_length_key = 3
+swipe_length_key = 2
 key_coord_x = 0.2 # key distance in (-1, 1) coordinate
 key_coord_y = 0.5 # key distance in (-1, 1) coordinate
 
@@ -513,16 +513,16 @@ if __name__ == "__main__":
     # create_training_pairs("csv_files/trajectories_50.csv")
     # … any cleaning steps you do …
     # 6b) then launch our 10-fold loop:
-    # cross_validate_finetune(
-    #     data_path="finetune_data.csv",
-    #     output_base_dir="./cv_finetuned_models",
-    #     n_splits=10,
-    #     test_size=0.1,
-    # )
+    cross_validate_finetune(
+        data_path="finetune_data.csv",
+        output_base_dir="./cv_finetuned_models_slk-2",
+        n_splits=10,
+        test_size=0.1,
+    )
 
     evaluate_cross_validation(
         data_path="finetune_data.csv",
-        model_base_dir="./cv_finetuned_models",
+        model_base_dir="./cv_finetuned_models_slk-2",
         n_splits=10,
         test_size=0.1,
     )
