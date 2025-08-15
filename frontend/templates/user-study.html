@@ -32,7 +32,7 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
     #completion-section p { text-align: center; font-size: 1.25rem; }
-    /* 1a. Style the two “boxes” above the keyboard */
+    /* “boxes” above the keyboard */
     #currentWord {
       font-size: 1.5rem;
       border: 2px solid #ccc;
@@ -54,23 +54,22 @@
       box-sizing: border-box;
     }
 
-    /* 1b. Centre the canvas & force correct box sizing */
+    /* centre the canvas */
     #canvas-container {
       width: 100%;
-      height: 60vh;              /* bigger than 40vh */
+      height: 60vh;
       display: flex;
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
     }
 
-    /* you already have these, but ensure they’re here: */
     .prediction-bar {
       display: flex;
       justify-content: center;
       gap: 1rem;
       min-height: 4rem;
-      margin-bottom: 1rem;       /* space above keyboard */
+      margin-bottom: 1rem;
     }
     .prediction-bar .prediction {
       background-color: #f1f1f1;
@@ -85,13 +84,11 @@
       background-color: #ddd;
     }
 
-    #currentWord {
-      border: none;
-      background: transparent;
-      padding: 0;
-      margin: 0 0 1rem;
-    }
+    #currentWord { border: none; background: transparent; padding: 0; margin: 0 0 1rem; }
 
+    .badge { font-weight: 800; padding: 0 0.35rem; border-radius: 6px; }
+    .badge-block { color: #0a58ca; background: #e7f1ff; }
+    .badge-trial { color: #0f5132; background: #d1e7dd; }
   </style>
 </head>
 <body>
@@ -109,21 +106,16 @@
   <section id="main-menu">
     <h1>Main Menu</h1>
     <div class="button-group">
-      <button id="btn-normal-practice">Normal Typing Practice</button>
-      <button id="btn-swipe-practice">Swipe Typing Practice</button>
+      <button id="btn-swipe1">Swipe Typing Practice 1</button>
+      <button id="btn-swipe2">Swipe Typing Practice 2</button>
       <button id="btn-main-study">Main Study</button>
     </div>
   </section>
 
-  <!-- 3–5. Task Pages (re‑use your keyboard UI) -->
+  <!-- 3. Task Page -->
   <section id="task-section">
-    <div id="trial-counter" 
-        style="font-size:1rem; margin-bottom:0.5rem;">
-    </div>
-    <div id="prompt-header" 
-        style="font-weight:bold; font-size:1.25rem; margin-bottom:0.25rem;">
-        Sentence
-    </div>
+    <div id="trial-counter" style="font-size:1rem; margin-bottom:0.5rem;"></div>
+    <div id="prompt-header" style="font-weight:bold; font-size:1.25rem; margin-bottom:0.25rem;">Sentence</div>
     <div id="prompt-box"></div>
     <div id="currentWord" style="font-size:1.5rem; margin-bottom:1rem;"></div>
 
@@ -138,7 +130,7 @@
 
   <!-- Completion Page -->
   <section id="completion-section">
-    <p>Study completed!<br/>
+    <p>Study completed!<br/></p>
     <div class="button-group">
       <button id="btn-download-gesture-logs">Downlaod Gesture Logs</button>
       <button id="btn-download-word-logs">Download Word Logs</button>
