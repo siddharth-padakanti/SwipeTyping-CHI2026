@@ -83,17 +83,19 @@ def create_training_pairs(csv_file):
     instance_fold = 5 # 10 fold, each fold should have 5 samples per word
 
     inputs, targets = [], []
+    counts = []
     output_file = "fold_0/finetune_data.csv"
 
     for idx, row in df.iterrows():
         if idx % (word_count*instance_fold) == 0:
             # save the previous fold
             if idx != 0:
-                pd.DataFrame({"input": inputs, "target": targets}).to_csv(output_file, index=False)
+                pd.DataFrame({"input": inputs, "target": targets, "count": counts}).to_csv(output_file, index=False)
                 print(f"Saved fine-tune data to {output_file}") 
 
             # create a new fold
             inputs, targets = [], []
+            counts = []
 
             outname = 'finetune_data.csv'
 
@@ -126,10 +128,11 @@ def create_training_pairs(csv_file):
         trajectory_string = "".join(get_trajectory_chars(entry_result_x, entry_result_y))
         inputs.append(trajectory_string)
         targets.append(str(row["word"]))
-        print(f"Extraction complete for the word: '{row["word"]}'")
+        counts.append(str(len(entry_result_x)))
+        print(f"Extraction complete for the word: '{row['word']}'")
 
     # save last fold
-    pd.DataFrame({"input": inputs, "target": targets}).to_csv(output_file, index=False)
+    pd.DataFrame({"input": inputs, "target": targets, "count": counts}).to_csv(output_file, index=False)
     print(f"Saved fine-tune data to {output_file}") 
 
 def process_csv(filepath):

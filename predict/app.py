@@ -119,8 +119,8 @@ def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10, ma
         inputs['input_ids'],
         num_beams=num_beams,
         num_return_sequences=num_return_sequences,
-        max_new_tokens=max_new,
-        min_new_tokens=1,         
+        # max_new_tokens=max_new,
+        # min_new_tokens=1,         
         early_stopping=True,
         # length_penalty=0.0,     
     )

@@ -10,7 +10,7 @@ from transformers import (
 )
 import os
 import sys
-
+from datetime import datetime
 
 n_splits = 10
 
@@ -22,7 +22,7 @@ tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
 model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-base").to(device)
 
 def cross_validate_finetune(
-    test_fold: int,
+    test_fold: str,
     data_path: str,
 ):
     fold_dir = "fold_" + str(test_fold)
@@ -168,8 +168,113 @@ def cross_validate_finetune(
     metrics = trainer.evaluate()
     print(f"Fold {fold} metrics:", metrics)
 
-    model.save_pretrained(fold_dir)
-    tokenizer.save_pretrained(fold_dir)
+    model.save_pretrained(os.path.join(fold_dir, "final/"))
+    tokenizer.save_pretrained(os.path.join(fold_dir, "final/"))
+
+
+    # calculate the accuracy
+    test_df = pd.read_csv(
+        "fold_" + str(test_fold) + "/" + data_path,
+        keep_default_na=False,  # don't convert "null"/"none" to NaN
+        na_values=[]            # no extra NA tokens
+    )
+
+    test_ds = Dataset.from_pandas(test_df.reset_index(drop=True))
+    result_inputs, result_targets = [], []
+    result_counts = []
+    result_predicts = []
+    result_corrects = []
+    for example in test_ds:
+        print(datetime.now())
+        print(example)   
+        prompt = prefix + example["input"]
+        
+        inputs = tokenizer(prompt, return_tensors="pt", padding=True).to(device)
+        outputs = model.generate(
+            inputs['input_ids'],
+            num_beams=11,
+            num_return_sequences=10,
+            # max_new_tokens=max_new,
+            # min_new_tokens=1,         
+            early_stopping=True,
+        )
+        words = [
+            tokenizer.decode(o, skip_special_tokens=True)
+            .replace("</s>", "").replace("<pad>", "").replace("<unk>", "").replace(" ", "")
+            for o in outputs
+        ]
+        filtered = [w for w in words if len(w) == int(example["count"])]
+
+        result_inputs.append(example["input"])
+        result_targets.append(example["target"])
+        result_counts.append(example["count"])
+
+        if len(filtered) == 0:
+            result_predicts.append("")
+            result_corrects.append(False)
+        else:
+            result_predicts.append(filtered[0])
+            result_corrects.append(filtered[0] == example["target"])
+
+    output_file = fold_dir + "/test_result.csv"
+    pd.DataFrame({"input": result_inputs, "target": result_targets, "count": result_counts, "predict": result_predicts, "correct": result_corrects}).to_csv(output_file, index=False)
+
+def test_finetune(
+    test_fold: str,
+    data_path: str,
+):
+    fold_dir = "fold_" + str(test_fold)
+    prefix = "Find word from trajectory: "
+
+    tokenizer = AutoTokenizer.from_pretrained(str(os.path.join(fold_dir, "final/")), local_files_only=True)
+    model = T5ForConditionalGeneration.from_pretrained(str(os.path.join(fold_dir, "final/")), local_files_only=True).to(device)
+
+    # calculate the accuracy
+    test_df = pd.read_csv(
+        "fold_" + str(test_fold) + "/" + data_path,
+        keep_default_na=False,  # don't convert "null"/"none" to NaN
+        na_values=[]            # no extra NA tokens
+    )
+
+    test_ds = Dataset.from_pandas(test_df.reset_index(drop=True))
+    result_inputs, result_targets = [], []
+    result_counts = []
+    result_predicts = []
+    result_corrects = []
+    for example in test_ds:
+        print(datetime.now())
+        print(example)        
+        prompt = prefix + example["input"]
+        
+        inputs = tokenizer(prompt, return_tensors="pt", padding=True).to(device)
+        outputs = model.generate(
+            inputs['input_ids'],
+            num_beams=11,
+            num_return_sequences=10,
+            # max_new_tokens=max_new,
+            # min_new_tokens=1,         
+            early_stopping=True,
+        )
+        words = [
+            tokenizer.decode(o, skip_special_tokens=True)
+            .replace("</s>", "").replace("<pad>", "").replace("<unk>", "").replace(" ", "")
+            for o in outputs
+        ]
+        filtered = [w for w in words if len(w) == int(example["count"])]
+
+        result_inputs.append(example["input"])
+        result_targets.append(example["target"])
+        result_counts.append(example["count"])
+
+        if len(filtered) == 0:
+            result_predicts.append("")
+            result_corrects.append(False)
+        else:
+            result_predicts.append(filtered[0])
+            result_corrects.append(filtered[0] == example["target"])
+
+    output_file = fold_dir + "/test_result.csv"
+    pd.DataFrame({"input": result_inputs, "target": result_targets, "count": result_counts, "predict": result_predicts, "correct": result_corrects}).to_csv(output_file, index=False)
 
 
 if __name__ == "__main__":
@@ -181,15 +286,13 @@ if __name__ == "__main__":
     print("finetune model for fold " + fold)
 
     fold_dir = "./fold_" + str(fold)
-
-    output_dir = os.path.join(fold_dir, "checkpoints/")
-
-    print(output_dir)
-
-    if not os.path.exists(output_dir):
-        os.mkdir(output_dir)
     
     cross_validate_finetune(
         test_fold = fold,
         data_path="finetune_data.csv",
     )
+
+    # test_finetune(
+    #     test_fold = fold,
+    #     data_path="finetune_data.csv",
+    # )
