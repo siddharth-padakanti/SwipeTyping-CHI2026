@@ -184,6 +184,10 @@ def cross_validate_finetune(
     result_counts = []
     result_predicts = []
     result_corrects = []
+    result_predicts_top1 = []
+    result_predicts_top2 = []
+    result_predicts_top3 = []
+    result_corrects_top3 = []
     for example in test_ds:
         print(datetime.now())
         print(example)   
@@ -216,8 +220,31 @@ def cross_validate_finetune(
             result_predicts.append(filtered[0])
             result_corrects.append(filtered[0] == example["target"])
 
+        if len(filtered) == 0:
+            result_predicts_top1.append("")
+            result_predicts_top2.append("")
+            result_predicts_top3.append("")
+            result_corrects_top3.append(False)
+        elif len(filtered) == 1:
+            result_predicts_top1.append(filtered[0])
+            result_predicts_top2.append("")
+            result_predicts_top3.append("")
+            result_corrects_top3.append(filtered[0] == example["target"])
+        elif len(filtered) == 2:
+            result_predicts_top1.append(filtered[0])
+            result_predicts_top2.append(filtered[1])
+            result_predicts_top3.append("")
+            result_corrects_top3.append(filtered[0] == example["target"] or filtered[1] == example["target"])
+        else:
+            result_predicts_top1.append(filtered[0])
+            result_predicts_top2.append(filtered[1])
+            result_predicts_top3.append(filtered[2])
+            result_corrects_top3.append(filtered[0] == example["target"] or filtered[1] == example["target"] or filtered[2] == example["target"])
+
+
     output_file = fold_dir + "/test_result.csv"
-    pd.DataFrame({"input": result_inputs, "target": result_targets, "count": result_counts, "predict": result_predicts, "correct": result_corrects}).to_csv(output_file, index=False)
+    pd.DataFrame({"input": result_inputs, "target": result_targets, "count": result_counts, "predict": result_predicts, "correct": result_corrects,
+        "predicts_top1": result_predicts_top1, "predicts_top2": result_predicts_top2, "predicts_top3": result_predicts_top3, "corrects_top3": result_corrects_top3}).to_csv(output_file, index=False)
 
 def test_finetune(
     test_fold: str,
@@ -241,6 +268,10 @@ def test_finetune(
     result_counts = []
     result_predicts = []
     result_corrects = []
+    result_predicts_top1 = []
+    result_predicts_top2 = []
+    result_predicts_top3 = []
+    result_corrects_top3 = []
     for example in test_ds:
         print(datetime.now())
         print(example)        
@@ -273,8 +304,30 @@ def test_finetune(
             result_predicts.append(filtered[0])
             result_corrects.append(filtered[0] == example["target"])
 
+        if len(filtered) == 0:
+            result_predicts_top1.append("")
+            result_predicts_top2.append("")
+            result_predicts_top3.append("")
+            result_corrects_top3.append(False)
+        elif len(filtered) == 1:
+            result_predicts_top1.append(filtered[0])
+            result_predicts_top2.append("")
+            result_predicts_top3.append("")
+            result_corrects_top3.append(filtered[0] == example["target"])
+        elif len(filtered) == 2:
+            result_predicts_top1.append(filtered[0])
+            result_predicts_top2.append(filtered[1])
+            result_predicts_top3.append("")
+            result_corrects_top3.append(filtered[0] == example["target"] or filtered[1] == example["target"])
+        else:
+            result_predicts_top1.append(filtered[0])
+            result_predicts_top2.append(filtered[1])
+            result_predicts_top3.append(filtered[2])
+            result_corrects_top3.append(filtered[0] == example["target"] or filtered[1] == example["target"] or filtered[2] == example["target"])
+
     output_file = fold_dir + "/test_result.csv"
-    pd.DataFrame({"input": result_inputs, "target": result_targets, "count": result_counts, "predict": result_predicts, "correct": result_corrects}).to_csv(output_file, index=False)
+    pd.DataFrame({"input": result_inputs, "target": result_targets, "count": result_counts, "predict": result_predicts, "correct": result_corrects,
+        "predicts_top1": result_predicts_top1, "predicts_top2": result_predicts_top2, "predicts_top3": result_predicts_top3, "corrects_top3": result_corrects_top3}).to_csv(output_file, index=False)
 
 
 if __name__ == "__main__":
@@ -287,12 +340,12 @@ if __name__ == "__main__":
 
     fold_dir = "./fold_" + str(fold)
     
-    cross_validate_finetune(
-        test_fold = fold,
-        data_path="finetune_data.csv",
-    )
-
-    # test_finetune(
+    # cross_validate_finetune(
     #     test_fold = fold,
     #     data_path="finetune_data.csv",
     # )
+
+    test_finetune(
+        test_fold = fold,
+        data_path="finetune_data.csv",
+    )
