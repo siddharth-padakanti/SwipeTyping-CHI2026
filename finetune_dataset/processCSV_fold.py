@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 # global variable
-swipe_length_key = 3
+swipe_length_key = 4
 key_coord_x = 0.2 # key distance in (-1, 1) coordinate
 key_coord_y = 0.5 # key distance in (-1, 1) coordinate
 
@@ -84,7 +84,7 @@ def create_training_pairs(csv_file):
 
     inputs, targets = [], []
     counts = []
-    output_file = "fold_0/finetune_data.csv"
+    output_file = "swipe_length_" + str(swipe_length_key) + "/fold_0/finetune_data.csv"
 
     for idx, row in df.iterrows():
         if idx % (word_count*instance_fold) == 0:
@@ -99,9 +99,9 @@ def create_training_pairs(csv_file):
 
             outname = 'finetune_data.csv'
 
-            outdir = "fold_" + str(int(idx / (word_count*instance_fold)))
+            outdir = "swipe_length_" + str(swipe_length_key) + "/fold_" + str(int(idx / (word_count*instance_fold)))
             if not os.path.exists(outdir):
-                os.mkdir(outdir)
+                os.makedirs(outdir)
 
             output_file = os.path.join(outdir, outname) 
 
