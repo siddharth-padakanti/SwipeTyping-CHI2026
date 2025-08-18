@@ -1,0 +1,190 @@
+---
+title: "swipe length accuracy"
+author: "Allen Yeh"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```
+```
+
+```{r warning=FALSE}
+library(tidyverse)
+library(gmodels)
+library(rstatix)
+library(ggplot2)
+library(ez)
+```
+
+### Import data
+
+#### Read the csv file and claim the data type
+```{r}
+
+
+accuracy_total_log <- read_csv("fold_accuracy.csv", col_types = cols(
+  length = col_factor(levels = c("2", "3", "4")),
+  fold = col_integer(),
+  condition = col_factor(levels = c("1", "3")),
+  accuracy = col_double(),
+))
+
+accuracy_char_log <- read_csv("fold_accuracy_char_count.csv", col_types = cols(
+  length = col_factor(levels = c("2", "3", "4")),
+  fold = col_integer(),
+  char_num = col_factor(levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "18")),
+  condition = col_factor(levels = c("1", "3")),
+  accuracy = col_double(),
+))
+
+```
+
+
+
+### Total
+
+#### accuracy
+```{r warning=FALSE}
+
+accuracy_summary <-accuracy_total_log %>%
+  group_by(length, condition) %>%
+  summarize(
+    meanAccuracy = accuracy %>% mean(na.rm=TRUE),
+    lowCIAccuracy = ci(accuracy)[2]%>% pmax(0),
+    highCIAccuracy = ci(accuracy)[3]%>% pmin(100),
+    sdAccuracy = ci(accuracy)[4],
+    stdAccuracy = accuracy %>% sd())
+
+accuracy_summary
+
+# line + dot
+accuracy_graph <- ggplot(accuracy_summary) +
+  geom_pointrange( aes(x=length, y=meanAccuracy, ymin=lowCIAccuracy, ymax=highCIAccuracy,color=length), alpha=0.9, size=0.8, position=position_dodge(width=0.60)) +
+  facet_wrap(~condition, ncol = 1) +
+  scale_y_continuous(limits=c(0.5,1.0)) +
+  scale_colour_manual(values = c("2" = "#E74C3C", "3" = "#3498DB", "4" = "#2ECC71"))
+
+accuracy_graph
+
+accuracy_graph + theme( # remove the vertical grid lines
+          panel.background = element_blank(),
+          panel.grid.major.y = element_blank() ,
+          # explicitly set the horizontal lines (or they will disappear too)
+          panel.grid.major.x = element_line( size=.1, color="gray" ),
+          axis.title.x = element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.title.y = element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y = element_blank()
+    )
+
+ggsave("accuracy total.pdf", width = 3, height = 10)
+
+# time_direction_summary <-fold_time %>%
+#   group_by(direction_code) %>%
+#   summarize(
+#     meanTime = time_fin %>% mean(na.rm=TRUE),
+#     lowCITime = ci(time_fin)[2]%>% pmax(0),
+#     highCITime = ci(time_fin)[3],
+#     sdTime = ci(time_fin)[4],
+#     stdTime = time_fin %>% sd())
+# 
+# time_direction_summary
+# 
+# # line + dot
+# time_graph <- ggplot(time_direction_summary) +
+#   geom_pointrange( aes(x=direction_code, y=meanTime, ymin=lowCITime, ymax=highCITime), colour="#EB984E", alpha=0.9, size=0.8) +
+#   scale_y_continuous(limits=c(0.5,2.0)) +
+#   coord_flip()
+# 
+# time_graph + theme( # remove the vertical grid lines
+#           panel.background = element_blank(),
+#           panel.grid.major.y = element_blank() ,
+#           # explicitly set the horizontal lines (or they will disappear too)
+#           panel.grid.major.x = element_line( size=.1, color="gray" ),
+#           axis.title.x = element_blank(),
+#           axis.title.y = element_blank(),
+#           axis.text.y=element_blank()
+#     )
+# 
+# ggsave("time_fold_direction.pdf", width = 4, height = 1)
+
+
+```
+
+
+### char count
+
+#### accuracy
+```{r warning=FALSE}
+
+accuracy_char_summary <-accuracy_char_log %>%
+  group_by(length, condition, char_num) %>%
+  summarize(
+    meanAccuracy = accuracy %>% mean(na.rm=TRUE),
+    lowCIAccuracy = ci(accuracy)[2]%>% pmax(0),
+    highCIAccuracy = ci(accuracy)[3]%>% pmin(100),
+    sdAccuracy = ci(accuracy)[4],
+    stdAccuracy = accuracy %>% sd())
+
+accuracy_char_summary
+
+# line + dot
+accuracy_char_graph <- ggplot(accuracy_char_summary) +
+  geom_pointrange( aes(x=char_num, y=meanAccuracy, ymin=lowCIAccuracy, ymax=highCIAccuracy,color=length), alpha=0.9, size=0.8, position=position_dodge(width=0.30)) +
+  facet_wrap(~condition, ncol = 1) +
+  scale_y_continuous(limits=c(0,1.0)) +
+  scale_colour_manual(values = c("2" = "#E74C3C", "3" = "#3498DB", "4" = "#2ECC71"))
+
+accuracy_char_graph
+
+accuracy_char_graph + theme( # remove the vertical grid lines
+          panel.background = element_blank(),
+          panel.grid.major.y = element_blank() ,
+          # explicitly set the horizontal lines (or they will disappear too)
+          panel.grid.major.x = element_line( size=.1, color="gray" ),
+          axis.title.x = element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.title.y = element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y = element_blank()
+    )
+
+ggsave("accuracy character.pdf", width = 50, height = 10, limitsize = FALSE)
+
+# time_direction_summary <-fold_time %>%
+#   group_by(direction_code) %>%
+#   summarize(
+#     meanTime = time_fin %>% mean(na.rm=TRUE),
+#     lowCITime = ci(time_fin)[2]%>% pmax(0),
+#     highCITime = ci(time_fin)[3],
+#     sdTime = ci(time_fin)[4],
+#     stdTime = time_fin %>% sd())
+# 
+# time_direction_summary
+# 
+# # line + dot
+# time_graph <- ggplot(time_direction_summary) +
+#   geom_pointrange( aes(x=direction_code, y=meanTime, ymin=lowCITime, ymax=highCITime), colour="#EB984E", alpha=0.9, size=0.8) +
+#   scale_y_continuous(limits=c(0.5,2.0)) +
+#   coord_flip()
+# 
+# time_graph + theme( # remove the vertical grid lines
+#           panel.background = element_blank(),
+#           panel.grid.major.y = element_blank() ,
+#           # explicitly set the horizontal lines (or they will disappear too)
+#           panel.grid.major.x = element_line( size=.1, color="gray" ),
+#           axis.title.x = element_blank(),
+#           axis.title.y = element_blank(),
+#           axis.text.y=element_blank()
+#     )
+# 
+# ggsave("time_fold_direction.pdf", width = 4, height = 1)
+
+
+```
+
+
