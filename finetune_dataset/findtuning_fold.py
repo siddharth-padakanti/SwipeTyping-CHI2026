@@ -340,12 +340,12 @@ if __name__ == "__main__":
 
     fold_dir = "./fold_" + str(fold)
     
-    # cross_validate_finetune(
-    #     test_fold = fold,
-    #     data_path="finetune_data.csv",
-    # )
-
-    test_finetune(
+    cross_validate_finetune(
         test_fold = fold,
         data_path="finetune_data.csv",
     )
+
+    # test_finetune(
+    #     test_fold = fold,
+    #     data_path="finetune_data.csv",
+    # )
