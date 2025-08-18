@@ -19,6 +19,7 @@ tap_coords = {
 
 # output
 len_idx, fold_idx = [], []
+char_idx = []
 accuracy_top1 = []
 accuracy_top3 = []
 
@@ -52,6 +53,47 @@ def process():
             accuracy_top3.append(accu_top3)
 
     pd.DataFrame({"length": len_idx, "fold": fold_idx, "accuracy_top1": accuracy_top1, "accuracy_top3": accuracy_top3}).to_csv("fold_accuracy.csv", index=False)
+
+def process_char_count():
+    for length in length_option:
+        for fold in range(fold_option):
+            
+            print(str(length) + ", " + str(fold))
+            # read csv
+            filepath = "./swipe_length_" + str(length) + "/fold_" + str(fold) + "/test_result.csv"
+
+            df = pd.read_csv(filepath)
+            # print(df)
+
+            correct_top1 = []
+            correct_top3 = []
+            total = []
+
+            for char_count in range(20):
+                correct_top1.append(0)
+                correct_top3.append(0)
+                total.append(0)
+
+            for idx, row in df.iterrows():
+
+                if row["correct"] == True:
+                    correct_top1[int(row["count"]) - 1] += 1
+                if row["corrects_top3"] == True:
+                    correct_top3[int(row["count"]) - 1] += 1
+                total[int(row["count"]) - 1] += 1
+
+            for char_count in range(20):
+                if total[char_count] != 0:
+                    accu_top1 = correct_top1[char_count] / total[char_count]
+                    accu_top3 = correct_top3[char_count] / total[char_count]
+
+                    len_idx.append(length)
+                    fold_idx.append(fold)
+                    char_idx.append(char_count)
+                    accuracy_top1.append(accu_top1)
+                    accuracy_top3.append(accu_top3)
+
+    pd.DataFrame({"length": len_idx, "fold": fold_idx, "char_num": char_idx, "accuracy_top1": accuracy_top1, "accuracy_top3": accuracy_top3}).to_csv("fold_accuracy_char_count.csv", index=False)
 
 
 def calculate_character_gap():
@@ -87,4 +129,5 @@ def calculate_character_gap():
 
 if __name__ == "__main__":
     # process()
-    calculate_character_gap()
+    process_char_count()
+    # calculate_character_gap()
