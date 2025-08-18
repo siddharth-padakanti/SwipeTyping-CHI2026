@@ -22,10 +22,11 @@ tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
 model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-base").to(device)
 
 def cross_validate_finetune(
+    swipe_len: str,
     test_fold: str,
     data_path: str,
 ):
-    fold_dir = "fold_" + str(test_fold)
+    fold_dir = "swipe_length_" + str(swipe_len) + "/fold_" + str(test_fold)
     
     prefix = "Find word from trajectory: "
     def preprocess_function(examples):
@@ -72,7 +73,7 @@ def cross_validate_finetune(
         if fold != int(test_fold):
             print(fold)
             df = pd.read_csv(
-                "fold_" + str(fold) + "/" + data_path,
+                "swipe_length_" + str(swipe_len) + "/fold_" + str(fold) + "/" + data_path,
                 keep_default_na=False,  # don't convert "null"/"none" to NaN
                 na_values=[]            # no extra NA tokens
             )
@@ -174,7 +175,7 @@ def cross_validate_finetune(
 
     # calculate the accuracy
     test_df = pd.read_csv(
-        "fold_" + str(test_fold) + "/" + data_path,
+        "swipe_length_" + str(swipe_len) + "/fold_" + str(test_fold) + "/" + data_path,
         keep_default_na=False,  # don't convert "null"/"none" to NaN
         na_values=[]            # no extra NA tokens
     )
@@ -247,10 +248,11 @@ def cross_validate_finetune(
         "predicts_top1": result_predicts_top1, "predicts_top2": result_predicts_top2, "predicts_top3": result_predicts_top3, "corrects_top3": result_corrects_top3}).to_csv(output_file, index=False)
 
 def test_finetune(
+    swipe_len: str,
     test_fold: str,
     data_path: str,
 ):
-    fold_dir = "fold_" + str(test_fold)
+    fold_dir = "swipe_length_" + str(swipe_len) + "/fold_" + str(test_fold)
     prefix = "Find word from trajectory: "
 
     tokenizer = AutoTokenizer.from_pretrained(str(os.path.join(fold_dir, "final/")), local_files_only=True)
@@ -258,7 +260,7 @@ def test_finetune(
 
     # calculate the accuracy
     test_df = pd.read_csv(
-        "fold_" + str(test_fold) + "/" + data_path,
+        "swipe_length_" + str(swipe_len) + "/fold_" + str(test_fold) + "/" + data_path,
         keep_default_na=False,  # don't convert "null"/"none" to NaN
         na_values=[]            # no extra NA tokens
     )
@@ -334,18 +336,21 @@ if __name__ == "__main__":
     
     print(sys.argv)
 
-    fold = sys.argv[1]
+    swipe_length = sys.argv[1]
+    fold = sys.argv[2]
 
-    print("finetune model for fold " + fold)
+    print("finetune model for swipe length " + swipe_length + ", fold " + fold)
 
-    fold_dir = "./fold_" + str(fold)
+    fold_dir = "./swipe_length_" + str(swipe_length) + "/fold_" + str(fold)
     
     cross_validate_finetune(
+        swipe_len = swipe_length,
         test_fold = fold,
         data_path="finetune_data.csv",
     )
 
     # test_finetune(
+    #     swipe_len = swipe_length,
     #     test_fold = fold,
     #     data_path="finetune_data.csv",
     # )
