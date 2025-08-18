@@ -89,7 +89,7 @@ def process_char_count():
 
                     len_idx.append(length)
                     fold_idx.append(fold)
-                    char_idx.append(char_count)
+                    char_idx.append(char_count + 1)
                     accuracy_top1.append(accu_top1)
                     accuracy_top3.append(accu_top3)
 
