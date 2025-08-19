@@ -34,6 +34,54 @@ const studyState = {
   blockTrials: []       // current block's randomized 5 words
 };
 window.studyState = studyState;
+// ---- Save/Resume (per-phase) ----
+const STORAGE_VERSION = "v2";
+const keyFor = (pid, phase) => `swipetyping:${STORAGE_VERSION}:${pid}:${phase}`;
+
+function saveProgress() {
+  if (!studyState.participantID || !studyState.phase) return;
+  const payload = {
+    participantID: studyState.participantID,
+    phase:        studyState.phase,
+    trialIndex:   studyState.trialIndex || 0,
+    // swipe1 specifics
+    blockIndex:        studyState.blockIndex || 0,
+    withinBlockIndex:  studyState.withinBlockIndex || 0,
+    blockTrials:       Array.isArray(studyState.blockTrials) ? studyState.blockTrials.slice() : [],
+    // swipe2/main specifics
+    sentences:         Array.isArray(studyState.sentences) ? studyState.sentences.slice() : []
+  };
+  try { localStorage.setItem(keyFor(studyState.participantID, studyState.phase), JSON.stringify(payload)); } catch {}
+}
+
+function maybeResumePhase(phase) {
+  try {
+    const raw = localStorage.getItem(keyFor(studyState.participantID, phase));
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    if (s.participantID !== studyState.participantID) return false;
+
+    studyState.phase = s.phase;
+    studyState.trialIndex = s.trialIndex || 0;
+    studyState.swipeCount = 0;
+
+    if (phase === "swipe1") {
+      studyState.blockIndex = s.blockIndex || 0;
+      studyState.withinBlockIndex = s.withinBlockIndex || 0;
+      studyState.blockTrials = Array.isArray(s.blockTrials) ? s.blockTrials.slice() : [];
+    } else {
+      studyState.sentences = Array.isArray(s.sentences) ? s.sentences.slice() : [];
+    }
+    return true;
+  } catch { return false; }
+}
+
+function clearProgressForPhase(phase = studyState.phase) {
+  try { localStorage.removeItem(keyFor(studyState.participantID, phase)); } catch {}
+}
+
+window.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") saveProgress(); });
+window.addEventListener("pagehide", saveProgress);
 
 /**
  * PRACTICE 1: 5 long words (from finetune_data.csv), used across 4 blocks.
@@ -152,33 +200,44 @@ document.getElementById("btn-swipe2")
   .addEventListener("click", () => startPhase("swipe2"));
 document.getElementById("btn-main-study")
   .addEventListener("click", () => startPhase("main"));
+document.getElementById("btn-save-exit")
+  .addEventListener("click", () => {
+    saveProgress();       // persist phase/trial indices/etc.
+    clearForNewTrial();   // clear transient UI state
+    showSection("main-menu");
+  });
 
 
 // ==== Phase control ====
 function startPhase(phase) {
   studyState.phase = phase;
-  studyState.trialIndex = 0;
+  const resumed = maybeResumePhase(phase);
 
   if (phase === "swipe1") {
-    // 4 blocks × 5 trials each
-    studyState.blockIndex = 0;
-    studyState.withinBlockIndex = 0;
-    studyState.blockTrials = shuffleTrials(SWIPE1_WORDS);
+    if (!resumed) {
+      studyState.trialIndex = 0;
+      studyState.blockIndex = 0;
+      studyState.withinBlockIndex = 0;
+      studyState.blockTrials = shuffleTrials(SWIPE1_WORDS);
+    }
     STUDY_LOGGING_ENABLED = false;
     showSection("task-section");
     loadSwipe1Trial();
     return;
   }
 
-  switch (phase) {
-    case "swipe2":
-      studyState.sentences = shuffleTrials(SWIPE2_SENTENCES); // 5 trials
+  // swipe2 or main
+  if (!resumed) {
+    studyState.trialIndex = 0;
+    if (phase === "swipe2") {
+      studyState.sentences = shuffleTrials(SWIPE2_SENTENCES);
       STUDY_LOGGING_ENABLED = false;
-      break;
-    case "main":
+    } else {
       studyState.sentences = shuffleTrials(MAIN_SENTENCES);
       STUDY_LOGGING_ENABLED = true;
-      break;
+    }
+  } else {
+    STUDY_LOGGING_ENABLED = (phase === "main");
   }
 
   showSection("task-section");
@@ -186,6 +245,7 @@ function startPhase(phase) {
 }
 
 function endPhase() {
+  clearProgressForPhase(); 
   if (studyState.phase === "main") {
     showSection("completion-section");
   } else {
@@ -216,6 +276,7 @@ function loadSwipe1Trial() {
   // reset interaction state
   studyState.swipeCount = 0;
   clearForNewTrial();
+  saveProgress(); 
 }
 
 // Generic loader used by swipe2 + main (sentences)
@@ -233,6 +294,7 @@ function loadTrial_Generic() {
 
   studyState.swipeCount = 0;
   clearForNewTrial();
+  saveProgress(); 
 }
 
 function clearForNewTrial() {

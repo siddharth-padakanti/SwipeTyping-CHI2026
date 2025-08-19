@@ -83,6 +83,26 @@
     .prediction-bar .prediction:hover {
       background-color: #ddd;
     }
+    /* Save & Back button, top-right of task page */
+    #task-section { position: relative; }
+    .task-toolbar{
+      position: absolute;
+      top: .5rem;
+      right: 1rem;
+      z-index: 1000;
+    }
+    .back-button{
+      padding: .4rem .75rem;
+      font-size: .95rem;
+      border-radius: 8px;
+      border: 2px solid #c33;
+      background: #ffecec;
+      color: #c33;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .back-button:hover{ background: #ffdede; }
+
 
     #currentWord { border: none; background: transparent; padding: 0; margin: 0 0 1rem; }
 
@@ -114,6 +134,12 @@
 
   <!-- 3. Task Page -->
   <section id="task-section">
+    <div class="task-toolbar">
+      <button id="btn-save-exit" class="back-button" type="button" aria-label="Save and go back">
+        ← Save &amp; Go Back
+      </button>
+    </div>
+
     <div id="trial-counter" style="font-size:1rem; margin-bottom:0.5rem;"></div>
     <div id="prompt-header" style="font-weight:bold; font-size:1.25rem; margin-bottom:0.25rem;">Sentence</div>
     <div id="prompt-box"></div>
@@ -127,6 +153,7 @@
       When done, press <strong>Enter</strong> to submit the sentence.
     </p>
   </section>
+
 
   <!-- Completion Page -->
   <section id="completion-section">
