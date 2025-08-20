@@ -16,10 +16,10 @@ CORS(app, origins=["http://localhost:1111", "http://127.0.0.1:1111"])
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(torch.cuda.is_available())
-model_path = "../model/"
+model_path = "../model/final/"
 
 HERE = Path(__file__).resolve().parent            
-MODEL_DIR = (HERE / ".." / "model").resolve()  
+MODEL_DIR = (HERE / ".." / "model" / "final").resolve()  
 
 if not MODEL_DIR.exists():
     raise FileNotFoundError(f"Model dir not found: {MODEL_DIR}")

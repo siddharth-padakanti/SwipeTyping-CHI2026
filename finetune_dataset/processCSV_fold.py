@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 # global variable
-swipe_length_key = 4
+swipe_length_key = 3
 key_coord_x = 0.2 # key distance in (-1, 1) coordinate
 key_coord_y = 0.5 # key distance in (-1, 1) coordinate
 
@@ -135,6 +135,45 @@ def create_training_pairs(csv_file):
     pd.DataFrame({"input": inputs, "target": targets, "count": counts}).to_csv(output_file, index=False)
     print(f"Saved fine-tune data to {output_file}") 
 
+def create_training_pairs_all(csv_file):
+    print(f"Extraction from {csv_file} initiated")
+    df = pd.read_csv(csv_file, keep_default_na=False)
+
+    inputs, targets = [], []
+    counts = []
+    output_file = "swipe_length_" + str(swipe_length_key) + "/finetune_data.csv"
+
+    for idx, row in df.iterrows():
+        
+        x_input = ast.literal_eval(row['x'])
+        y_input = ast.literal_eval(row['y'])
+        entry_result_x, entry_result_y = [], []
+
+        for i in range(len(x_input)):
+            x_seg = x_input[i]
+            y_seg = y_input[i]
+            if len(x_seg) == 1:
+                entry_result_x.append(x_seg[0])
+                entry_result_y.append(y_seg[0])
+            elif len(x_seg) >= 2:
+                x1, y1 = x_seg[0], y_seg[0]
+                x2, y2 = x_seg[-1], y_seg[-1]
+                x1_key, y1_key = x1 / key_coord_x, y1 / key_coord_y
+                x2_key, y2_key = x2 / key_coord_x, y2 / key_coord_y
+                x2_swipe, y2_swipe = get_swipe_key(x1_key, y1_key, x2_key, y2_key)
+                entry_result_x += [x1, x2_swipe * key_coord_x]
+                entry_result_y += [y1, y2_swipe * key_coord_y]
+
+        trajectory_string = "".join(get_trajectory_chars(entry_result_x, entry_result_y))
+        inputs.append(trajectory_string)
+        targets.append(str(row["word"]))
+        counts.append(str(len(entry_result_x)))
+        print(f"Extraction complete for the word: '{row['word']}'")
+
+    # save last fold
+    pd.DataFrame({"input": inputs, "target": targets, "count": counts}).to_csv(output_file, index=False)
+    print(f"Saved fine-tune data to {output_file}") 
+
 def process_csv(filepath):
 
     print("-------------------------------")
@@ -201,4 +240,4 @@ def process_csv(filepath):
 
 
 
-create_training_pairs("trajectories_50.csv")
+create_training_pairs_all("trajectories_50.csv")

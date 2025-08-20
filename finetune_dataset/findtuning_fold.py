@@ -332,20 +332,147 @@ def test_finetune(
         "predicts_top1": result_predicts_top1, "predicts_top2": result_predicts_top2, "predicts_top3": result_predicts_top3, "corrects_top3": result_corrects_top3}).to_csv(output_file, index=False)
 
 
+def cross_validate_finetune_all(
+    swipe_len: str,
+    data_path: str,
+):
+    fold_dir = "swipe_length_" + str(swipe_len)
+    
+    prefix = "Find word from trajectory: "
+    def preprocess_function(examples):
+        """Add prefix to the sentences, tokenize the text, and set the labels"""
+        # The "inputs" are the tokenized answer:
+        inputs = [prefix + doc for doc in examples["input"]]
+        model_inputs = tokenizer(inputs, max_length=32, truncation=True)
+        
+        # The "labels" are the tokenized outputs:
+        labels = tokenizer(text_target=examples["target"], 
+                            max_length=8,         
+                            truncation=True)
+
+        model_inputs["labels"] = labels["input_ids"]
+        return model_inputs
+
+    # 1) Load training CSV via pandas, preserving "null"/"none" as strings
+    df = pd.read_csv(
+        "swipe_length_" + str(swipe_len) + "/" + data_path,
+        keep_default_na=False,  # don't convert "null"/"none" to NaN
+        na_values=[]            # no extra NA tokens
+    )
+    
+    train_ds = Dataset.from_pandas(df.reset_index(drop=True))
+
+    print(train_ds)
+
+    split_dataset = train_ds.train_test_split(test_size=0.2)
+
+    # tokenize
+    tokenized_train = split_dataset["train"].map(
+        preprocess_function,
+        batched=True,
+    )
+
+    tokenized_eval = split_dataset["test"].map(
+        preprocess_function,
+        batched=True,
+    )
+
+    # tokenized_train = split_dataset["train"].map(
+    #     preprocess,
+    #     num_proc=1,
+    #     remove_columns=split_dataset["train"].column_names
+    # )
+
+    # tokenized_eval = split_dataset["test"].map(
+    #     preprocess,
+    #     remove_columns=split_dataset["test"].column_names
+    # )
+
+    # 1) pick a batch_size variable
+    batch_size = 16
+
+    # 2) compute steps_per_epoch before touching training_args
+    steps_per_epoch = len(tokenized_train) // batch_size
+
+    print(steps_per_epoch)
+
+    # 3) now build your args
+    training_args = Seq2SeqTrainingArguments(
+        num_train_epochs=5,
+        per_device_train_batch_size=batch_size,
+        per_device_eval_batch_size=4,
+        weight_decay=0.01,
+        learning_rate=3e-4,
+        eval_strategy='steps',
+        eval_steps=steps_per_epoch,
+        save_steps=steps_per_epoch,
+        load_best_model_at_end=True,
+        metric_for_best_model='loss',
+        greater_is_better=False,
+        save_total_limit=2,
+        output_dir=os.path.join(fold_dir, "checkpoints/"),
+        predict_with_generate=False,
+        prediction_loss_only=True
+    )
+
+    # training_args = Seq2SeqTrainingArguments(
+    #     output_dir=fold_dir,
+    #     per_device_train_batch_size=batch_size,
+    #     per_device_eval_batch_size=4,
+    #     gradient_accumulation_steps=1,
+    #     num_train_epochs=5,
+    #     learning_rate=3e-4,
+    #     weight_decay=0.01,
+    #     logging_dir=os.path.join(fold_dir, "logs"),
+
+    #     # old‐style eval/save flags
+    #     do_eval=True,
+    #     eval_steps=steps_per_epoch,
+    #     logging_steps=steps_per_epoch,
+    #     save_steps=steps_per_epoch,
+
+    #     save_total_limit=2,
+    #     predict_with_generate=True,
+    #     bf16 = True,
+    # )
+
+    trainer = Seq2SeqTrainer(
+        model=model,
+        args=training_args,
+        train_dataset=tokenized_train,
+        eval_dataset=tokenized_eval,
+        tokenizer=tokenizer,
+        data_collator=DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model),
+    )
+
+    trainer.train()
+    metrics = trainer.evaluate()
+    print(f"metrics:", metrics)
+
+    model.save_pretrained(os.path.join(fold_dir, "final/"))
+    tokenizer.save_pretrained(os.path.join(fold_dir, "final/"))
+
+
 if __name__ == "__main__":
     
     print(sys.argv)
 
     swipe_length = sys.argv[1]
-    fold = sys.argv[2]
+    print("finetune model for swipe length " + swipe_length)
+    # fold = sys.argv[2]
 
-    print("finetune model for swipe length " + swipe_length + ", fold " + fold)
+    # print("finetune model for swipe length " + swipe_length + ", fold " + fold)
 
-    fold_dir = "./swipe_length_" + str(swipe_length) + "/fold_" + str(fold)
+    # fold_dir = "./swipe_length_" + str(swipe_length) + "/fold_" + str(fold)
     
-    cross_validate_finetune(
+    # cross_validate_finetune(
+    #     swipe_len = swipe_length,
+    #     test_fold = fold,
+    #     data_path="finetune_data.csv",
+    # )
+
+    cross_validate_finetune_all(
         swipe_len = swipe_length,
-        test_fold = fold,
         data_path="finetune_data.csv",
     )
 
