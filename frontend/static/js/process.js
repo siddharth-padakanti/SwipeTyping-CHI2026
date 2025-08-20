@@ -874,7 +874,9 @@ function clearInput() {
   entry_result_gesture = [];
   interp_x = [];
   interp_y = [];
-  currentWord.innerHTML = "";
+  if (currentWord) {
+    currentWord.innerHTML = "";
+  }
   predictionBar.replaceChildren();
   currentTypedWord = "";
 }

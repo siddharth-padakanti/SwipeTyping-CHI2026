@@ -87,69 +87,69 @@ window.addEventListener("pagehide", saveProgress);
  * PRACTICE 1: 5 long words (from finetune_data.csv), used across 4 blocks.
  * Each block: same 5 words in random order => 5 trials; 4 blocks => 20 total trials.
  * Chosen from the CSV and long enough for swiping:
- * - providing
- * - choosing
- * - reception
- * - auctions
- * - administrative
+ * - providing: pro- & -ing
+ * - television: tele- & -ion
+ * - intermediate: inter- & -ate
+ * - improvement: im- & -ment
+ * - distance: dis- & -ance
  */
 const SWIPE1_WORDS = [
   "providing",
-  "choosing",
-  "reception",
-  "auctions",
-  "administrative"
+  "television",
+  "intermediate",
+  "improvement",
+  "distance"
 ];
 
 /**
- * PRACTICE 2: 5 sentences; each contains a word that shares a ≥4-letter suffix
+ * PRACTICE 2: 5 sentences; each contains a word that shares common suffix and preffix
  * with one of the SWIPE1 words. All similar words were also taken from the CSV:
- * - excluding (similar to providing)
- * - addressing (similar to choosing)
- * - restoration (similar to reception)
- * - infections (similar to auctions)
- * - collaborative (similar to administrative)
+ * -ing, -sion
+ * -ate, im-, -tion, -rect
+ * -ment, en-
+ * -ance, -ing
+ * -dent, dis-
  */
 const SWIPE2_SENTENCES = [
-  "The policy is excluding several old options this quarter",
-  "We are addressing the complex issue through weekly updates",
-  "After the storm, the restoration effort took many months",
-  "Hospitals reported several infections across rural areas",
-  "Our collaborative team improved results in record time"
+  "sprawling subdivisions are bad",
+  "correct your diction immediately",
+  "bad for the environment",
+  "the acceptance speech was boring",
+  "the gun discharged by accident"
 ];
 
 // Keep your existing MAIN set untouched
 const MAIN_SENTENCES = [
-  "user understands the purpose of the study",
-  "index finger tap hits key accurately",
-  "left hand reaches keyboard quickly",
-  "right hand lands gentle touch",
-  "study session records typing time",
-  "swift typing makes sentence appear",
-  "camera capture guides alignment",
-  "screen region defines working area",
-  "fingers move smooth across keyboard",
-  "middle finger press letter y",
-  "ring finger press letter u",
-  "research team tracks behavior patterns",
-  "participant follows simple instruction",
-  "system checks nearest position",
-  "time window limits matching noise",
-  "video evidence supports annotation review",
-  "calibration step keeps coordinates consistent",
-  "log file stores data for analysis",
-  "transform align perspective properly",
-  "study interface shows virtual keyboard",
-  "result summary reports accuracy score",
-  "training data enables better baseline",
-  "workers practice rapid touch typing",
-  "people prefer stable layout during typing",
-  "middle finger reaches high row easily",
-  "right index handles frequent letters",
-  "left index starts sentence rapidly",
-  "hands maintain steady rhythm across keys",
-  "accurate mapping improve feedback quality",
-  "thumb rest near space bar"
+  "please keep this confidential",
+  "the rationale behind the decision",
+  "the cat has a pleasant temperament",
+  "our housekeeper does a thorough job",
+  "her majesty visited our country",
+  "handicapped persons need consideration",
+  "these barracks are big enough",
+  "sing the gospel and the blues",
+  "he underwent triple bypass surgery",
+  "the hopes of a new organization",
+  "peering through a small hole",
+  "rapidly running short on words",
+  "it is difficult to concentrate",
+  "give me one spoonful of coffee",
+  "two or three cups of coffee",
+  "just like it says on the can",
+  "companies announce a merger",
+  "electric cars need big fuel cells",
+  "the plug does not fit the socket",
+  "drugs should be avoided",
+  "the most beautiful sunset",
+  "we dine out on the weekends",
+  "get aboard the ship is leaving",
+  "the water was monitored daily",
+  "he watched in astonishment",
+  "a big scratch on the tabletop",
+  "salesmen must make their monthly quota",
+  "saving that child was an heroic effort",
+  "granite is the hardest of all rocks",
+  "bring the offenders to justice",
 ];
 
 // ==== Helpers ====
