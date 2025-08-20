@@ -4,19 +4,28 @@
 window.STUDY_LOGGING_ENABLED = false;
 const _origLogGesture = window.logGesture;
 const _origLogWords   = window.logWords;
+const _origLogTrials   = window.logTrials;
 
-window.logGesture = function(type, sx, sy, ex, ey, skey, ekey) {
+
+window.logGesture = function(type, sx, sy, ex, ey, px, py, skey, ekey) {
+  console.log("study logGesture");
   // always count swipes for practice‐check
   if (type === "swipe") studyState.swipeCount++;
   // only record full logs in main study
   if (STUDY_LOGGING_ENABLED) {
-    _origLogGesture(type, sx, sy, ex, ey, skey, ekey);
+    _origLogGesture(type, sx, sy, ex, ey, px, py, skey, ekey);
   }
 };
 
-window.logWords = function() {
+window.logWords = function(tapOnly, word_top1, word_top2, word_top3, sequence) {
   if (STUDY_LOGGING_ENABLED) {
-    _origLogWords();
+    _origLogWords(tapOnly, word_top1, word_top2, word_top3, sequence);
+  }
+};
+
+window.logTrials = function(trialNum, target, action, currentSentence, afterSentence) {
+  if (STUDY_LOGGING_ENABLED) {
+    _origLogTrials(studyState.trialIndex, studyState.sentences[studyState.trialIndex], action, currentSentence, afterSentence);
   }
 };
 
@@ -125,31 +134,31 @@ const MAIN_SENTENCES = [
   "the cat has a pleasant temperament",
   "our housekeeper does a thorough job",
   "her majesty visited our country",
-  "handicapped persons need consideration",
-  "these barracks are big enough",
-  "sing the gospel and the blues",
-  "he underwent triple bypass surgery",
-  "the hopes of a new organization",
-  "peering through a small hole",
-  "rapidly running short on words",
-  "it is difficult to concentrate",
-  "give me one spoonful of coffee",
-  "two or three cups of coffee",
-  "just like it says on the can",
-  "companies announce a merger",
-  "electric cars need big fuel cells",
-  "the plug does not fit the socket",
-  "drugs should be avoided",
-  "the most beautiful sunset",
-  "we dine out on the weekends",
-  "get aboard the ship is leaving",
-  "the water was monitored daily",
-  "he watched in astonishment",
-  "a big scratch on the tabletop",
-  "salesmen must make their monthly quota",
-  "saving that child was an heroic effort",
-  "granite is the hardest of all rocks",
-  "bring the offenders to justice",
+  // "handicapped persons need consideration",
+  // "these barracks are big enough",
+  // "sing the gospel and the blues",
+  // "he underwent triple bypass surgery",
+  // "the hopes of a new organization",
+  // "peering through a small hole",
+  // "rapidly running short on words",
+  // "it is difficult to concentrate",
+  // "give me one spoonful of coffee",
+  // "two or three cups of coffee",
+  // "just like it says on the can",
+  // "companies announce a merger",
+  // "electric cars need big fuel cells",
+  // "the plug does not fit the socket",
+  // "drugs should be avoided",
+  // "the most beautiful sunset",
+  // "we dine out on the weekends",
+  // "get aboard the ship is leaving",
+  // "the water was monitored daily",
+  // "he watched in astonishment",
+  // "a big scratch on the tabletop",
+  // "salesmen must make their monthly quota",
+  // "saving that child was an heroic effort",
+  // "granite is the hardest of all rocks",
+  // "bring the offenders to justice",
 ];
 
 // ==== Helpers ====
@@ -292,6 +301,8 @@ function loadTrial_Generic() {
   document.getElementById("prompt-box").textContent =
     studyState.sentences[studyState.trialIndex];
 
+  logTrials(studyState.trialIndex, studyState.sentences[studyState.trialIndex], "Start", "", "");
+
   studyState.swipeCount = 0;
   clearForNewTrial();
   saveProgress(); 
@@ -387,13 +398,14 @@ function handleSubmitSentence() {
   }
 
   // swipe-practice check (applies to both swipe1 and swipe2)
-  if ((studyState.phase === "swipe2") && studyState.swipeCount < wordCount) {
+  if ((studyState.phase === "swipe2") && studyState.swipeCount < 1) {
     displayEl.style.borderColor = "red";
     alert("Please use a swipe for each word before submitting.");
     return;
   }
 
   // Pass → advance
+  logTrials(studyState.trialIndex, studyState.sentences[studyState.trialIndex], "End", actual, actual);
   displayEl.style.borderColor = "green";
   setTimeout(() => {
     studyState.trialIndex++;
@@ -414,4 +426,8 @@ document.getElementById("btn-download-gesture-logs")
 document.getElementById("btn-download-word-logs")
   .addEventListener("click", () => {
     downloadWordCSV();
+  });
+document.getElementById("btn-download-trial-logs")
+  .addEventListener("click", () => {
+    downloadTrialCSV();
   });
