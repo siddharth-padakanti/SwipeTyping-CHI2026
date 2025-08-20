@@ -114,7 +114,10 @@ def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10, ma
     count = int(count)
     max_new = max_new or max(count, 1)
 
-    inputs = tokenizer(text, return_tensors="pt").to(device)
+    prefix = "Find word from trajectory: "
+    prompt = prefix + text
+
+    inputs = tokenizer(prompt, return_tensors="pt").to(device)
     outputs = model.generate(
         inputs['input_ids'],
         num_beams=num_beams,
@@ -130,6 +133,8 @@ def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10, ma
         .replace("</s>", "").replace("<pad>", "").replace("<unk>", "").replace(" ", "")
         for o in outputs
     ]
+
+    # print(words)
     filtered = [w for w in words if len(w) == count]
     return list(dict.fromkeys(filtered))[:3]
 
@@ -172,7 +177,7 @@ def predict():
         if not tokens:
             return jsonify(error="Empty input."), 400
         
-        print(datetime.now())
+        # print(datetime.now())
         #print(tokens)
         # try:
         #     letters = [t for t in tokens if len(t) == 1 and t.isalpha()]
@@ -204,8 +209,11 @@ def predict():
         if not sequence or count <= 0:
             return jsonify(error="Empty input or invalid count."), 400
 
+        # print(sequence)
+        # print(count)
+
         predictions = generate_n_best_words(sequence, count)
-        print(datetime.now())
+        # print(datetime.now())
         return jsonify(predictions=predictions, pattern=sequence)
 
     except Exception as e:
