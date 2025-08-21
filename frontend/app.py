@@ -40,66 +40,66 @@ keyboard_layout = {
     "N": (0.4, 0.3), "M": (0.6, 0.3)
 }
 
-def angle_to_chars(char, angle):
-    char = char.upper()
-    if char not in keyboard_layout:
-        return []
+# def angle_to_chars(char, angle):
+#     char = char.upper()
+#     if char not in keyboard_layout:
+#         return []
 
-    cx, cy = keyboard_layout[char]
-    angle = (angle + 360) % 360
-    radians = math.radians(angle)
-    dx = math.cos(radians)
-    dy = math.sin(radians)
+#     cx, cy = keyboard_layout[char]
+#     angle = (angle + 360) % 360
+#     radians = math.radians(angle)
+#     dx = math.cos(radians)
+#     dy = math.sin(radians)
 
-    result = [char.lower()] * 3
-    visited = set(result)
+#     result = [char.lower()] * 3
+#     visited = set(result)
 
-    for step in range(1, 15):  # allow longer reach
-        fx = cx + dx * step * 0.2
-        fy = cy + dy * step * 0.2
+#     for step in range(1, 15):  # allow longer reach
+#         fx = cx + dx * step * 0.2
+#         fy = cy + dy * step * 0.2
 
-        closest = None
-        min_dist = float("inf")
+#         closest = None
+#         min_dist = float("inf")
 
-        for k, (kx, ky) in keyboard_layout.items():
-            if k.lower() in visited:
-                continue
-            dist = (fx - kx)**2 + (fy - ky)**2
-            if dist < 0.2 and dist < min_dist:  # wider radius
-                closest = k.lower()
-                min_dist = dist
+#         for k, (kx, ky) in keyboard_layout.items():
+#             if k.lower() in visited:
+#                 continue
+#             dist = (fx - kx)**2 + (fy - ky)**2
+#             if dist < 0.2 and dist < min_dist:  # wider radius
+#                 closest = k.lower()
+#                 min_dist = dist
 
-        if closest:
-            visited.add(closest)
-            multiplier = 5 if closest in "aeiou" else 2
-            result.extend([closest] * multiplier)
-            if len(visited) >= 5:
-                break
+#         if closest:
+#             visited.add(closest)
+#             multiplier = 5 if closest in "aeiou" else 2
+#             result.extend([closest] * multiplier)
+#             if len(visited) >= 5:
+#                 break
 
-    return result
+#     return result
 
-def to_trajectory(tokens):
-    out = []
-    i = 0
-    while i < len(tokens):
-        tok = tokens[i]
-        if len(tok) == 1 and tok.isalpha():
-            if i+1 < len(tokens) and re.match(r"^\d+degrees$", tokens[i+1]):
-                angle = int(tokens[i+1].replace("degrees", ""))
-                out.extend(angle_to_chars(tok, angle))
-                i += 2
-            else:
-                out.extend([tok.lower()] * 3)
-                i += 1
-        else:
-            i += 1
+# def to_trajectory(tokens):
+#     out = []
+#     i = 0
+#     while i < len(tokens):
+#         tok = tokens[i]
+#         if len(tok) == 1 and tok.isalpha():
+#             if i+1 < len(tokens) and re.match(r"^\d+degrees$", tokens[i+1]):
+#                 angle = int(tokens[i+1].replace("degrees", ""))
+#                 out.extend(angle_to_chars(tok, angle))
+#                 i += 2
+#             else:
+#                 out.extend([tok.lower()] * 3)
+#                 i += 1
+#         else:
+#             i += 1
 
-    filtered = []
-    for ch in out:
-        if len(filtered) >= 5 and all(c == ch for c in filtered[-5:]):
-            continue
-        filtered.append(ch)
-    return "".join(filtered)
+#     filtered = []
+#     for ch in out:
+#         if len(filtered) >= 5 and all(c == ch for c in filtered[-5:]):
+#             continue
+#         filtered.append(ch)
+#     return "".join(filtered)
 
 
 # === New: Participant registration endpoint ===

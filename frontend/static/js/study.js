@@ -113,52 +113,52 @@ const SWIPE1_WORDS = [
 /**
  * PRACTICE 2: 5 sentences; each contains a word that shares common suffix and preffix
  * with one of the SWIPE1 words. All similar words were also taken from the CSV:
- * -ing, -sion
+ * -ing, -tion
  * -ate, im-, -tion, -rect
  * -ment, en-
- * -ance, -ing
- * -dent, dis-
+ * -sure, pre-
+ * -tent, con-
  */
 const SWIPE2_SENTENCES = [
-  "sprawling subdivisions are bad",
-  "correct your diction immediately",
-  "bad for the environment",
-  "the acceptance speech was boring",
-  "the gun discharged by accident"
+  "construction makes traveling difficult",
+  "i would be glad to participate",
+  "no employment claims for gas or power",
+  "pressure to finish my review",
+  "we must be consistent"
 ];
 
 // Keep your existing MAIN set untouched
 const MAIN_SENTENCES = [
-  "please keep this confidential",
-  "the rationale behind the decision",
-  "the cat has a pleasant temperament",
-  "our housekeeper does a thorough job",
-  "her majesty visited our country",
-  // "handicapped persons need consideration",
-  // "these barracks are big enough",
-  // "sing the gospel and the blues",
-  // "he underwent triple bypass surgery",
-  // "the hopes of a new organization",
-  // "peering through a small hole",
-  // "rapidly running short on words",
-  // "it is difficult to concentrate",
-  // "give me one spoonful of coffee",
-  // "two or three cups of coffee",
-  // "just like it says on the can",
-  // "companies announce a merger",
-  // "electric cars need big fuel cells",
-  // "the plug does not fit the socket",
-  // "drugs should be avoided",
-  // "the most beautiful sunset",
-  // "we dine out on the weekends",
-  // "get aboard the ship is leaving",
-  // "the water was monitored daily",
-  // "he watched in astonishment",
-  // "a big scratch on the tabletop",
-  // "salesmen must make their monthly quota",
-  // "saving that child was an heroic effort",
-  // "granite is the hardest of all rocks",
-  // "bring the offenders to justice",
+  "with each step forward",
+  "the second largest country",
+  "stability of the nation",
+  "please follow the guidelines",
+  "the library is closed today",
+  "this person is a disaster",
+  "protect your environment",
+  "companies announce a merger",
+  "tickets are very expensive",
+  "question that must be answered",
+  "zero in on the facts",
+  "want to join us for lunch",
+  "the power of denial",
+  "frequently asked questions",
+  "is she done yet",
+  "do not drink the water",
+  "are you talking to me",
+  "the world is a stage",
+  "the capital of our nation",
+  "a quarter of a century",
+  "sad to hear that news",
+  "life if but a dream",
+  "the stock exchange dipped",
+  "communicate through email",
+  "the living is easy",
+  "he called seven times",
+  "love means many things",
+  "completely sold out of that",
+  "just what the doctor ordered",
+  "sent this by registered mail"
 ];
 
 // ==== Helpers ====
