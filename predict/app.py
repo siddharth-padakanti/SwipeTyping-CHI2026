@@ -29,14 +29,14 @@ tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR), local_files_only=True)
 model = T5ForConditionalGeneration.from_pretrained(str(MODEL_DIR), local_files_only=True).to(device)
 
 # Ensure a folder for participant logs
-LOGS_DIR = os.path.join(os.getcwd(), 'logs')
-os.makedirs(LOGS_DIR, exist_ok=True)
+# LOGS_DIR = os.path.join(os.getcwd(), 'logs')
+# os.makedirs(LOGS_DIR, exist_ok=True)
 
 # Path for our JSON registry
-PARTICIPANTS_FILE = os.path.join(LOGS_DIR, 'participants.json')
-if not os.path.exists(PARTICIPANTS_FILE):
-    with open(PARTICIPANTS_FILE, 'w') as f:
-        json.dump([], f)
+# PARTICIPANTS_FILE = os.path.join(LOGS_DIR, 'participants.json')
+# if not os.path.exists(PARTICIPANTS_FILE):
+#     with open(PARTICIPANTS_FILE, 'w') as f:
+#         json.dump([], f)
 
 # Normalized keyboard layout in range (-1,-1) to (1,1)
 keyboard_layout = {
@@ -139,34 +139,34 @@ def generate_n_best_words(text, count, num_beams=11, num_return_sequences=10, ma
     return list(dict.fromkeys(filtered))[:3]
 
 # === New: Participant registration endpoint ===
-@app.route("/register", methods=["POST"])
-def register_participant():
-    data = request.get_json() or {}
-    raw_id = data.get('id', '').strip()
-    if not raw_id:
-        return jsonify(error="Missing participant ID"), 400
+# @app.route("/register", methods=["POST"])
+# def register_participant():
+#     data = request.get_json() or {}
+#     raw_id = data.get('id', '').strip()
+#     if not raw_id:
+#         return jsonify(error="Missing participant ID"), 400
 
-    base = re.sub(r"[^\w-]", "_", raw_id.lower())
+#     base = re.sub(r"[^\w-]", "_", raw_id.lower())
 
-    try:
-        with open(PARTICIPANTS_FILE, 'r') as f:
-            participants = json.load(f)
-    except (FileNotFoundError, JSONDecodeError):
-        participants = []
+#     try:
+#         with open(PARTICIPANTS_FILE, 'r') as f:
+#             participants = json.load(f)
+#     except (FileNotFoundError, JSONDecodeError):
+#         participants = []
 
-    if base not in participants:
-        new_id = base
-    else:
-        idx = 1
-        while f"{base}_{idx}" in participants:
-            idx += 1
-        new_id = f"{base}_{idx}"
+#     if base not in participants:
+#         new_id = base
+#     else:
+#         idx = 1
+#         while f"{base}_{idx}" in participants:
+#             idx += 1
+#         new_id = f"{base}_{idx}"
 
-    participants.append(new_id)
-    with open(PARTICIPANTS_FILE, 'w') as f:
-        json.dump(participants, f, indent=2)
+#     participants.append(new_id)
+#     with open(PARTICIPANTS_FILE, 'w') as f:
+#         json.dump(participants, f, indent=2)
 
-    return jsonify(id=new_id)
+#     return jsonify(id=new_id)
 
         
 @app.route('/predict', methods=["POST"])
