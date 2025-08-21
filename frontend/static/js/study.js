@@ -390,9 +390,12 @@ function handleSubmitSentence() {
   // swipe2 / main
   const expected = studyState.sentences[studyState.trialIndex].trim().toLowerCase();
   const actual   = rawSentence.toLowerCase();
-  const wordCount = expected.split(/\s+/).length;
+  const expected_wordCount = expected.split(/\s+/).length;
+  const actual_wordCount = actual.split(/\s+/).length;
 
-  if (actual !== expected) {
+  print(expected_wordCount + "; " + actual_wordCount);
+
+  if (expected_wordCount !== actual_wordCount) {
     displayEl.style.borderColor = "red";
     return;
   }
