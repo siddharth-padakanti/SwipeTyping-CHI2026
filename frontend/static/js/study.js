@@ -7,19 +7,19 @@ const _origLogWords   = window.logWords;
 const _origLogTrials   = window.logTrials;
 
 
-window.logGesture = function(type, sx, sy, ex, ey, px, py, skey, ekey) {
-  console.log("study logGesture");
+window.logGesture = function(trialNum, target, type, sx, sy, ex, ey, px, py, skey, ekey) {
+  // console.log("study logGesture");
   // always count swipes for practice‐check
   if (type === "swipe") studyState.swipeCount++;
   // only record full logs in main study
   if (STUDY_LOGGING_ENABLED) {
-    _origLogGesture(type, sx, sy, ex, ey, px, py, skey, ekey);
+    _origLogGesture(studyState.trialIndex, studyState.sentences[studyState.trialIndex], type, sx, sy, ex, ey, px, py, skey, ekey);
   }
 };
 
-window.logWords = function(tapOnly, word_top1, word_top2, word_top3, sequence) {
+window.logWords = function(trialNum, target, tapOnly, word_top1, word_top2, word_top3, sequence) {
   if (STUDY_LOGGING_ENABLED) {
-    _origLogWords(tapOnly, word_top1, word_top2, word_top3, sequence);
+    _origLogWords(studyState.trialIndex, studyState.sentences[studyState.trialIndex], tapOnly, word_top1, word_top2, word_top3, sequence);
   }
 };
 
@@ -134,31 +134,31 @@ const MAIN_SENTENCES = [
   "stability of the nation",
   "please follow the guidelines",
   "the library is closed today",
-  "this person is a disaster",
-  "protect your environment",
-  "companies announce a merger",
-  "tickets are very expensive",
-  "question that must be answered",
-  "zero in on the facts",
-  "want to join us for lunch",
-  "the power of denial",
-  "frequently asked questions",
-  "is she done yet",
-  "do not drink the water",
-  "are you talking to me",
-  "the world is a stage",
-  "the capital of our nation",
-  "a quarter of a century",
-  "sad to hear that news",
-  "life if but a dream",
-  "the stock exchange dipped",
-  "communicate through email",
-  "the living is easy",
-  "he called seven times",
-  "love means many things",
-  "completely sold out of that",
-  "just what the doctor ordered",
-  "sent this by registered mail"
+  // "this person is a disaster",
+  // "protect your environment",
+  // "companies announce a merger",
+  // "tickets are very expensive",
+  // "question that must be answered",
+  // "zero in on the facts",
+  // "want to join us for lunch",
+  // "the power of denial",
+  // "frequently asked questions",
+  // "is she done yet",
+  // "do not drink the water",
+  // "are you talking to me",
+  // "the world is a stage",
+  // "the capital of our nation",
+  // "a quarter of a century",
+  // "sad to hear that news",
+  // "life if but a dream",
+  // "the stock exchange dipped",
+  // "communicate through email",
+  // "the living is easy",
+  // "he called seven times",
+  // "love means many things",
+  // "completely sold out of that",
+  // "just what the doctor ordered",
+  // "sent this by registered mail"
 ];
 
 // ==== Helpers ====

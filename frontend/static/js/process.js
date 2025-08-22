@@ -174,8 +174,8 @@ function setup() {
   });
 }
 
-function logGesture(type, startX, startY, endX, endY, projectedX, projectedY, startKey, endKey = null) {
-  console.log("process logGesture");
+function logGesture(trialNum, target, type, startX, startY, endX, endY, projectedX, projectedY, startKey, endKey = null) {
+  // console.log("process logGesture");
   const now = new Date();
   const timestamp = now.toTimeString().split(" ")[0] + "." + now.getMilliseconds().toString().padStart(3, "0");
 
@@ -183,6 +183,8 @@ function logGesture(type, startX, startY, endX, endY, projectedX, projectedY, st
     console.log(`[${timestamp}] Tap at (${Math.round(startX)}, ${Math.round(startY)}) → Key: ${startKey}`);
     gestureLogs.push([
       timestamp,
+      trialNum, 
+      target, 
       "tap",
       startX.toFixed(2),
       startY.toFixed(2),
@@ -198,6 +200,8 @@ function logGesture(type, startX, startY, endX, endY, projectedX, projectedY, st
     
     gestureLogs.push([
       timestamp,
+      trialNum, 
+      target, 
       "swipe",
       startX.toFixed(2),
       startY.toFixed(2),
@@ -213,7 +217,7 @@ function logGesture(type, startX, startY, endX, endY, projectedX, projectedY, st
 
 function downloadGestureCSV() {
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "Time,Type,StartX,StartY,EndX,EndY,ProjectedX,ProjectedY,StartKey,ProjectedKey\n";
+  csvContent += "Time,Trial Num, Target,Type,StartX,StartY,EndX,EndY,ProjectedX,ProjectedY,StartKey,ProjectedKey\n";
 
   gestureLogs.forEach(row => {
     csvContent += row.join(",") + "\n";
@@ -239,11 +243,11 @@ if (gBtn) {
   gBtn.addEventListener("click", downloadGestureCSV);
 }
 
-function logWords(tapOnly, word_top1, word_top2, word_top3, sequence) {
+function logWords(trialNum, target, tapOnly, word_top1, word_top2, word_top3, sequence) {
   const now = new Date();
   const timestamp = now.toTimeString().split(" ")[0] + "." + now.getMilliseconds().toString().padStart(3, "0");
 
-  wordLogs.push([timestamp, tapOnly, word_top1, word_top2, word_top3, sequence]);
+  wordLogs.push([timestamp, trialNum, target, tapOnly, word_top1, word_top2, word_top3, sequence]);
 }
 
 // Download Word CSV function
@@ -254,7 +258,7 @@ function downloadWordCSV() {
   }
 
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "Time, TapOnly, Word_top1, Word_top2, Word_top3, Sequence\n";
+  csvContent += "Time, Trial Num, Target, TapOnly, Word_top1, Word_top2, Word_top3, Sequence\n";
 
   wordLogs.forEach(row => {
     csvContent += row.join(",") + "\n";
@@ -734,7 +738,7 @@ function setInput(ex, ey, ek){
       }    
     }
     else {
-      logGesture("tap", startX, startY, null, null, null, null, startKey);
+      logGesture(0, "", "tap", startX, startY, null, null, null, null, startKey);
       entry_result_x.push(startX);
       entry_result_y.push(startY);
       formattedInput.push(startKey);
@@ -787,7 +791,7 @@ function setInput(ex, ey, ek){
   }
   else{
     if(dist(startX, startY, ex, ey) < swipe_length_threshold * key_coord){
-      logGesture("tap", startX, startY, null, null, null, null, startKey);
+      logGesture(0, "", "tap", startX, startY, null, null, null, null, startKey);
       entry_result_x.push(startX);
       entry_result_y.push(startY);
       formattedInput.push(startKey);
@@ -801,7 +805,7 @@ function setInput(ex, ey, ek){
       entry_result_y.push(startY);
       entry_result_y.push(y2_swipe_point);
       const endKey = getKeyFromPos(x2_swipe_point, y2_swipe_point);
-      logGesture("swipe", startX, startY, ex, ey, x2_swipe_point, y2_swipe_point, startKey, endKey);
+      logGesture(0, "", "swipe", startX, startY, ex, ey, x2_swipe_point, y2_swipe_point, startKey, endKey);
       formattedInput.push(startKey);
       formattedInput.push(`${angle}degrees`);
       entry_result_gesture.push("swipe");
@@ -856,7 +860,7 @@ function setInputPoints(currentTouch){
       }    
     }
     else {
-      logGesture("tap", p.x, p.y, null, null, null, null, p.key);
+      logGesture(0, "", "tap", p.x, p.y, null, null, null, null, p.key);
       entry_result_x.push(p.x);
       entry_result_y.push(p.y);
       formattedInput.push(p.key);
@@ -925,7 +929,7 @@ function setInputPoints(currentTouch){
     // press all other keys
     if(dist(sx, sy, ex, ey) < swipe_length_threshold * key_coord){
       // distance smaller than 40 pixels, just a tap
-      logGesture("tap", sx, sy, null, null, null, null, skey);
+      logGesture(0, "", "tap", sx, sy, null, null, null, null, skey);
       entry_result_x.push(sx);
       entry_result_y.push(sy);
       formattedInput.push(skey);
@@ -936,7 +940,7 @@ function setInputPoints(currentTouch){
       angle = getAngle(sx, sy, ex, ey);
       const [x2_swipe_point, y2_swipe_point] = getSwipeEnd(sx, sy, ex, ey);
       const endKey = getKeyFromPos(x2_swipe_point, y2_swipe_point);
-      logGesture("swipe", sx, sy, ex, ey, x2_swipe_point, y2_swipe_point, skey, endKey);
+      logGesture(0, "", "swipe", sx, sy, ex, ey, x2_swipe_point, y2_swipe_point, skey, endKey);
       entry_result_x.push(sx);
       entry_result_x.push(x2_swipe_point);
       entry_result_y.push(sy);
@@ -1024,7 +1028,7 @@ function predict() {
     const sentence = typedWords.join("");
     display.innerHTML = sentence + currentTypedWord + '<span class="blinking-cursor">|</span>';
     predictionBar.innerHTML = ""; 
-    logWords(true, currentTypedWord, null, null, formattedInput.join(""));
+    logWords(0, "", true, currentTypedWord, null, null, formattedInput.join(""));
   }
   else{
     fetch("/typing/api/frontend/predict", {
@@ -1062,7 +1066,7 @@ function predict() {
             predictionBar.appendChild(box);
           }
         });
-        logWords(false, word_candidate[0], word_candidate[1], word_candidate[2], formattedInput.join(""));
+        logWords(0, "", false, word_candidate[0], word_candidate[1], word_candidate[2], formattedInput.join(""));
       } else {
         predictionBar.innerHTML = `<p>Error: ${data.error}</p>`;
       }
