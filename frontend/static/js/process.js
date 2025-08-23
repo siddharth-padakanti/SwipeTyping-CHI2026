@@ -33,6 +33,8 @@ let gestureLogs = [];
 let wordLogs = [];
 let trialLogs = [];
 
+let drawDebugPath = false;
+
 const rows = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "backspace"],
   ["A", "S", "D", "F", "G", "H", "J", "K", "L", "enter"],
@@ -381,42 +383,73 @@ function draw() {
 
 function drawPath(){
   let p_idx = 0;
-  for(let i =0;i<entry_result_gesture.length; i++){
-    if(entry_result_gesture[i] == "tap"){
-      // draw a dot
-      fill(247, 220, 111, 100);
-      noStroke();
-      circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
-      p_idx++;
+  if(drawDebugPath){
+    for(let i =0;i<entry_result_gesture.length; i++){
+      if(entry_result_gesture[i] == "tap"){
+        // draw a dot
+        fill(247, 220, 111, 100);
+        noStroke();
+        circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
+        p_idx++;
+      }
+      else{
+        // draw 2 dots
+        fill(127, 179, 213, 100);
+        noStroke();
+        circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
+        circle(entry_result_x[p_idx+1], entry_result_y[p_idx+1], 25);
+        stroke(169, 223, 191, 100);
+        strokeWeight(5);
+        noFill();
+        line(entry_result_x[p_idx], entry_result_y[p_idx], entry_result_x[p_idx+1], entry_result_y[p_idx+1]);
+        p_idx+=2;
+      }
     }
-    else{
-      // draw 2 dots
-      fill(127, 179, 213, 100);
-      noStroke();
-      circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
-      circle(entry_result_x[p_idx+1], entry_result_y[p_idx+1], 25);
-      stroke(169, 223, 191, 100);
-      strokeWeight(5);
-      noFill();
-      line(entry_result_x[p_idx], entry_result_y[p_idx], entry_result_x[p_idx+1], entry_result_y[p_idx+1]);
-      p_idx+=2;
-    }
-  }
 
-  if(interp_x.length != 0){
-    // predicted
-    for(let i =0;i<entry_result_x.length-1; i++){
-      stroke(33, 47, 61 , 150);
-      strokeWeight(5);
-      noFill();
-      line(entry_result_x[i], entry_result_y[i], entry_result_x[i+1], entry_result_y[i+1]);
-    }
-    for(let i =0;i<interp_x.length-1; i++){
-      fill(146, 43, 33, 100);
-      noStroke();
-      circle(interp_x[i], interp_y[i], 10);
+    if(interp_x.length != 0){
+      // predicted
+      for(let i =0;i<entry_result_x.length-1; i++){
+        stroke(33, 47, 61 , 150);
+        strokeWeight(5);
+        noFill();
+        line(entry_result_x[i], entry_result_y[i], entry_result_x[i+1], entry_result_y[i+1]);
+      }
+      for(let i =0;i<interp_x.length-1; i++){
+        fill(146, 43, 33, 100);
+        noStroke();
+        circle(interp_x[i], interp_y[i], 10);
+      }
     }
   }
+  else{
+    for(let i =0;i<entry_result_gesture.length; i++){
+      if(entry_result_gesture[i] == "tap"){
+        // draw a dot
+        fill(247, 220, 111, 100);
+        noStroke();
+        circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
+        p_idx++;
+      }
+      else{
+        // draw 2 dot, and use 1 key as swipe indicator
+        let dx = entry_result_x[p_idx+1] - entry_result_x[p_idx];
+        let dy = entry_result_y[p_idx+1] - entry_result_y[p_idx];
+        let d_distance = dist(entry_result_x[p_idx], entry_result_y[p_idx], entry_result_x[p_idx+1], entry_result_y[p_idx+1]);
+        let x_res = entry_result_x[p_idx] + dx * 1 * key_coord / d_distance;
+        let y_res = entry_result_y[p_idx] + dy * 1 * key_coord / d_distance;
+        fill(127, 179, 213, 100);
+        noStroke();
+        circle(entry_result_x[p_idx], entry_result_y[p_idx], 25);
+        circle(x_res, y_res, 15);
+        stroke(169, 223, 191, 100);
+        strokeWeight(5);
+        noFill();
+        line(entry_result_x[p_idx], entry_result_y[p_idx], x_res, y_res);
+        p_idx+=2;
+      }
+    }
+  }
+  
 }
 
 function ongoingTouchIndexById(idToFind) {
