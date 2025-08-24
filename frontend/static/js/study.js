@@ -333,10 +333,13 @@ function handleSubmitSentence() {
   // Auto-confirm any in-flight word
   if (formattedInput.length > 0 || currentTypedWord) {
       const last = (currentTypedWord || formattedInput.join("")).toLowerCase().trim();
+      const beforeSentence = typedWords.join("");
       if (last) {
         typedWords.push(last);
         typedWords.push(" ");
       }
+      const sentence = typedWords.join("");
+      logTrials(0, "", "Insert_top1", beforeSentence, sentence);
       clearInput();
   }
 
