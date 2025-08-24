@@ -219,7 +219,7 @@ function logGesture(trialNum, target, type, startX, startY, endX, endY, projecte
 
 function downloadGestureCSV() {
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "Time,Trial Num, Target,Type,StartX,StartY,EndX,EndY,ProjectedX,ProjectedY,StartKey,ProjectedKey\n";
+  csvContent += "Time,Trial Num,Target,Type,StartX,StartY,EndX,EndY,ProjectedX,ProjectedY,StartKey,ProjectedKey\n";
 
   gestureLogs.forEach(row => {
     csvContent += row.join(",") + "\n";
@@ -260,7 +260,7 @@ function downloadWordCSV() {
   }
 
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "Time, Trial Num, Target, TapOnly, Word_top1, Word_top2, Word_top3, Sequence\n";
+  csvContent += "Time,Trial Num,Target,TapOnly,Word_top1,Word_top2,Word_top3,Sequence\n";
 
   wordLogs.forEach(row => {
     csvContent += row.join(",") + "\n";
@@ -302,7 +302,7 @@ function downloadTrialCSV() {
   }
 
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "Time, Trial Num, Target, Action, Current Sentence, Updated Sentence\n";
+  csvContent += "Time,Trial Num,Target,Action,Current Sentence,Updated Sentence\n";
 
   trialLogs.forEach(row => {
     csvContent += row.join(",") + "\n";
