@@ -1,39 +1,32 @@
 import os
 import math
+import ast
+import re
 import numpy as np
 import pandas as pd
 import cv2
 from tkinter import Tk, filedialog
 from datetime import datetime
 
-# =============== Tunables ===============
-# interpolation / timing
-MAX_GAP_MS       = 400.0
-TAU_RANGE_MS     = 1500
-TAU_GRID_MS      = 20
+MAX_GAP_MS       = 400.0     
+TAU_RANGE_MS     = 1500      
+TAU_GRID_MS      = 20        
 
-# geometry / fitting
-CAL_ITERS        = 2
-RANSAC_REPROJ    = 3.0      # px
+RANSAC_REPROJ    = 3.0        
 MIN_INLIERS      = 40
 
-# costs
-SWITCH_PENALTY   = 140.0
-SESSION_PRIOR    = 70.0
-BOOK_PRIOR       = 6.0
-HAND_SOFT        = 100.0
-NON_WL_PEN       = 220.0
-EDGE_RING_PEN    = 120.0
-ANCHOR_PX_W      = 0.35
-DIST_REJECT_PX   = 90.0
-
-# motion term
-MOTION_HALF_MS   = 180
+SWITCH_PENALTY   = 140.0     
+SESSION_PRIOR    = 70.0      
+BOOK_PRIOR       = 6.0       
+HAND_SOFT        = 100.0     
+NON_WL_PEN       = 220.0     
+EDGE_RING_PEN    = 120.0     
+ANCHOR_PX_W      = 0.35      
+MOTION_HALF_MS   = 180       
 MOTION_STEP_MS   = 50
 MOTION_WEIGHT    = 80.0
 
-# restrict to a subset if you ran a constrained protocol
-FORCE_FINGERS = None  # e.g. ["Left_Index","Right_Index"]
+FORCE_FINGERS = None       
 
 ALL_FINGERS = [
     "Left_Pinky","Left_Ring","Left_Middle","Left_Index","Left_Thumb",
@@ -42,8 +35,8 @@ ALL_FINGERS = [
 LEFT_SET  = {"Left_Pinky","Left_Ring","Left_Middle","Left_Index","Left_Thumb"}
 RIGHT_SET = {"Right_Pinky","Right_Ring","Right_Middle","Right_Index","Right_Thumb"}
 
-LEFT_KEYS  = set(list("qwertasdfgzxcvb"))
-RIGHT_KEYS = set(list("yuiophjklnm,."))
+LEFT_KEYS  = set(list("qwertasdfgzxcvb"))   # treat T,B left
+RIGHT_KEYS = set(list("yuiophjklnm,."))     # Y right
 BOOK_DEFAULT = {
     **{k:"Left Pinky"  for k in "qaz"},
     **{k:"Left Ring"   for k in "wsx"},
@@ -56,37 +49,69 @@ BOOK_DEFAULT = {
 }
 RIGHT_EDGE_KEYS = {"o","p",",","."}
 
-# =============== Parsers ===============
-def parse_time(ts): return datetime.strptime(str(ts), "%H:%M:%S.%f")
+_num_re = re.compile(r"[-+]?\d*\.?\d+")
 
-def parse_gcoord(text):
-    t = str(text).strip()
-    if t in ("-", "", "[]"): return None
-    parts = [p.strip() for p in t.strip("[]").split(",") if p.strip()]
-    try: return float(parts[-1])
-    except: return None
+def parse_time(ts):
+    s = str(ts).strip()
+    for fmt in ("%H:%M:%S.%f", "%H:%M:%S"):
+        try: return datetime.strptime(s, fmt)
+        except Exception: pass
+    # last resort: shave trailing junk
+    return datetime.strptime(s.split()[0], "%H:%M:%S")
+
+def parse_gcoord(cell):
+    """
+    Accepts: 123 | [123] | "[123]" | [123,456] | "[123,456]"
+    Returns last numeric as float (NaN if none).
+    """
+    if cell is None: return float("nan")
+    s = str(cell).strip()
+    if s in ("-", "", "[]", "null", "None"): return float("nan")
+    if len(s) >= 2 and s[0] == s[-1] == '"':  # peel one layer of quotes
+        s = s[1:-1]
+    nums = _num_re.findall(s)
+    if not nums: return float("nan")
+    try: return float(nums[-1])
+    except Exception: return float("nan")
 
 def parse_xy(text):
+    """
+    "[x,y]" or '"[x,y]"' or "-" → (x,y) or (nan,nan)
+    """
     t = str(text).strip()
-    if t in ("-", "", "[]"): return float("nan"), float("nan")
-    parts = [p.strip() for p in t.strip("[]").split(",") if p.strip()]
-    if len(parts) != 2: return float("nan"), float("nan")
-    try: return float(parts[0]), float(parts[1])
-    except: return float("nan"), float("nan")
+    if t in ("-", "", "[]", "null", "None"): return float("nan"), float("nan")
+    if len(t) >= 2 and t[0] == t[-1] == '"':
+        t = t[1:-1]
+    nums = _num_re.findall(t)
+    if len(nums) < 2: return float("nan"), float("nan")
+    try: return float(nums[0]), float(nums[1])
+    except Exception: return float("nan"), float("nan")
 
 def parse_keys_field(cell):
+    """
+    Handles: p | ['p'] | "['p']" | ['s','t'] | "['s','t']" | null
+    Returns list[str or None]
+    """
+    if cell is None: return [None]
     s = str(cell).strip()
-    if s.startswith("[") and s.endswith("]"):
-        raw = [x.strip() for x in s[1:-1].split(",")]
-        out = []
-        for x in raw:
-            x = x.strip().strip("'").strip('"').lower()
-            if x in ("null", "", "none", "-"):
-                out.append(None)
-            else:
-                out.append(x)
-        return out
     if s in ("-", "", "[]", "null", "None"): return [None]
+    if len(s) >= 2 and s[0] == s[-1] == '"':
+        s = s[1:-1]
+    try:
+        val = ast.literal_eval(s)
+        if isinstance(val, list):
+            out = []
+            for x in val:
+                if x is None: out.append(None)
+                else:
+                    xs = str(x).strip().lower()
+                    out.append(None if xs in ("null","none","-","") else xs)
+            return out if out else [None]
+        elif isinstance(val, str):
+            xs = val.strip().lower()
+            return [None] if xs in ("null","none","-","") else [xs]
+    except Exception:
+        pass
     return [s.lower()]
 
 def key_hand(letter: str):
@@ -106,17 +131,17 @@ def most_common(lst):
     if not vals: return None
     return pd.Series(vals).mode().iloc[0]
 
-# =============== Time helpers ===============
+
+# Time & interpolation
+
 def to_ms(t0, ser): return (ser - t0).dt.total_seconds() * 1000.0
 
 def interp_finger_at(times_ms, xs, ys, t_ms, max_gap_ms=MAX_GAP_MS):
     idx = np.searchsorted(times_ms, t_ms, side="left")
     i0 = idx - 1
     while i0 >= 0 and (np.isnan(xs[i0]) or np.isnan(ys[i0])): i0 -= 1
-    i1 = idx
-    n = len(times_ms)
+    i1 = idx; n = len(times_ms)
     while i1 < n and (np.isnan(xs[i1]) or np.isnan(ys[i1])): i1 += 1
-
     if i0 < 0 and i1 >= n: return float("nan"), float("nan")
     if i0 < 0:
         if abs(times_ms[i1]-t_ms) > max_gap_ms: return float("nan"), float("nan")
@@ -124,14 +149,11 @@ def interp_finger_at(times_ms, xs, ys, t_ms, max_gap_ms=MAX_GAP_MS):
     if i1 >= n:
         if abs(t_ms-times_ms[i0]) > max_gap_ms: return float("nan"), float("nan")
         return xs[i0], ys[i0]
-
     dt = times_ms[i1] - times_ms[i0]
     if dt <= 0:
         return (xs[i0], ys[i0]) if abs(t_ms-times_ms[i0]) <= abs(times_ms[i1]-t_ms) else (xs[i1], ys[i1])
-
     if (t_ms - times_ms[i0]) > max_gap_ms and (times_ms[i1] - t_ms) > max_gap_ms:
         return float("nan"), float("nan")
-
     a = (t_ms - times_ms[i0]) / dt
     return xs[i0] + a*(xs[i1]-xs[i0]), ys[i0] + a*(ys[i1]-ys[i0])
 
@@ -141,8 +163,7 @@ def motion_energy(times_ms, xs, ys, center_ms, half_win_ms, step_ms):
     pts = []
     for t in ts:
         fx, fy = interp_finger_at(times_ms, xs, ys, t)
-        if np.isnan(fx) or np.isnan(fy): pts.append(None)
-        else: pts.append((fx, fy))
+        pts.append(None if (np.isnan(fx) or np.isnan(fy)) else (fx, fy))
     e = 0.0; prev = None
     for p in pts:
         if p is None: prev = None; continue
@@ -150,7 +171,8 @@ def motion_energy(times_ms, xs, ys, center_ms, half_win_ms, step_ms):
         prev = p
     return e
 
-# =============== Vision: video→UI homography ===============
+# Vision: video→UI homography
+
 def grab_middle_frame(video_path):
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened(): return None
@@ -165,22 +187,15 @@ def find_homography_v2ui(video_frame_bgr, ui_bgr):
     if video_frame_bgr is None or ui_bgr is None: return None
     img1 = cv2.cvtColor(video_frame_bgr, cv2.COLOR_BGR2GRAY)
     img2 = cv2.cvtColor(ui_bgr,          cv2.COLOR_BGR2GRAY)
-
     orb = cv2.ORB_create(3000)
     k1, d1 = orb.detectAndCompute(img1, None)
     k2, d2 = orb.detectAndCompute(img2, None)
-    if d1 is None or d2 is None or len(k1)<20 or len(k2)<20:
+    if d1 is None or d2 is None or len(k1) < 20 or len(k2) < 20:
         return None
-
     bf = cv2.BFMatcher(cv2.NORM_HAMMING)
     matches = bf.knnMatch(d1, d2, k=2)
-    good = []
-    for m,n in matches:
-        if m.distance < 0.75*n.distance:
-            good.append(m)
-    if len(good) < MIN_INLIERS:
-        return None
-
+    good = [m for m,n in matches if m.distance < 0.75*n.distance]
+    if len(good) < MIN_INLIERS: return None
     pts1 = np.float32([k1[m.queryIdx].pt for m in good]).reshape(-1,1,2)
     pts2 = np.float32([k2[m.trainIdx].pt for m in good]).reshape(-1,1,2)
     H, mask = cv2.findHomography(pts1, pts2, cv2.RANSAC, RANSAC_REPROJ)
@@ -189,12 +204,11 @@ def find_homography_v2ui(video_frame_bgr, ui_bgr):
     return H if inliers >= MIN_INLIERS else None
 
 def perspective_transform_points(H, xy_array):
-    # xy_array: (N,2)
     pts = xy_array.reshape(-1,1,2).astype(np.float32)
     out = cv2.perspectiveTransform(pts, H).reshape(-1,2)
     return out
 
-# =============== Main ===============
+# Main
 root = Tk(); root.withdraw()
 
 gesture_path = filedialog.askopenfilename(title="Select Gesture Log CSV", filetypes=[("CSV Files","*.csv")])
@@ -217,9 +231,68 @@ t0 = min(gest["t"].min(), fing["t"].min())
 gest["tms"] = to_ms(t0, gest["t"])
 fing["tms"] = to_ms(t0, fing["t"])
 
-# --- parse gesture coords (UI plane) ---
-gest["gx_ui"] = gest["X"].apply(parse_gcoord).astype(float)
-gest["gy_ui"] = gest["Y"].apply(parse_gcoord).astype(float)
+# --- detect gesture X/Y/Keys columns robustly ---
+def _find_col(df, candidates):
+    norm = {c.strip().lower(): c for c in df.columns}
+    # exact/normalized matches
+    for cand in candidates:
+        if cand in norm: return norm[cand]
+    # substring fallback
+    for k, orig in norm.items():
+        if any(cand in k for cand in candidates): return orig
+    return None
+
+X_CANDS = [
+    "x", "gx", "x_ui", "ui_x", "uix", "x(px)", "x (px)", "x_ui(px)",
+    "posx", "clientx", "screenx", "tapx", "startx"
+]
+Y_CANDS = [
+    "y", "gy", "y_ui", "ui_y", "uiy", "y(px)", "y (px)", "y_ui(px)",
+    "posy", "clienty", "screeny", "tapy", "starty"
+]
+KEYS_CANDS = [
+    "keys", "key", "letters", "chars", "labels", "gesturekeys",
+    "key_list", "keystrokes", "tapkey", "startkey", "endkey"
+]
+
+x_col = _find_col(gest, X_CANDS)
+y_col = _find_col(gest, Y_CANDS)
+keys_col = _find_col(gest, KEYS_CANDS)
+
+# if X/Y not found, try single list-like column for [x,y]
+if x_col is None or y_col is None:
+    maybe_xy = None
+    for c in gest.columns:
+        sample = str(gest[c].dropna().astype(str).head(20).tolist())
+        if "[" in sample and "," in sample and "]" in sample:
+            maybe_xy = c; break
+    if maybe_xy:
+        gest["gx_ui"] = gest[maybe_xy].apply(lambda s: parse_xy(s)[0]).astype(float)
+        gest["gy_ui"] = gest[maybe_xy].apply(lambda s: parse_xy(s)[1]).astype(float)
+    else:
+        # allow running even if not found; raise with helpful message
+        raise ValueError(
+            f"Couldn't find gesture X/Y columns. Headers:\n{list(gest.columns)}\n"
+            "Rename headers to include 'X'/'Y' (or 'ui_x'/'ui_y'), or add one column like '[x,y]'."
+        )
+else:
+    gest["gx_ui"] = gest[x_col].apply(parse_gcoord).astype(float)
+    gest["gy_ui"] = gest[y_col].apply(parse_gcoord).astype(float)
+
+# keys column fallback: try to autodetect list-like column with letters
+if keys_col is None:
+    for c in gest.columns:
+        sample = gest[c].dropna().astype(str).head(20).str.lower().str.cat(sep=" ")
+        if "[" in sample and "]" in sample and any(k in sample for k in list("abcdefghijklmnopqrstuvwxyz")):
+            keys_col = c; break
+if keys_col is None:
+    raise ValueError(
+        f"Couldn't find a keys-like column. Headers:\n{list(gest.columns)}\n"
+        "Use a name like 'Keys'/'key'/'letters', or a list-like string such as \"['t']\"."
+    )
+
+print(f"Detected columns → X: {x_col or '[xy_col]'} | Y: {y_col or '[xy_col]'} | Keys: {keys_col}")
+
 g_ui = gest[["gx_ui","gy_ui"]].to_numpy()
 t_g  = gest["tms"].to_numpy()
 
@@ -230,17 +303,17 @@ for col in finger_cols:
     fing[f"{col}_y"] = [p[1] for p in arr]
 times_ms = fing["tms"].to_numpy()
 
-# --- compute video→UI homography (preferred) ---
+# --- video→UI homography (preferred); fallback to fixed scale 640x480 → 880x320 ---
 H_v2ui = None
 try:
-    frame = grab_middle_frame(video_path)
-    ui_img = cv2.imread(ui_image)
-    if frame is not None and ui_img is not None:
-        H_v2ui = find_homography_v2ui(frame, ui_img)
+    if video_path and ui_image:
+        frame = grab_middle_frame(video_path)
+        ui_img = cv2.imread(ui_image)
+        if frame is not None and ui_img is not None:
+            H_v2ui = find_homography_v2ui(frame, ui_img)
 except Exception:
     H_v2ui = None
 
-# Fallback: pure scale from 640x480 → 880x320
 if H_v2ui is None:
     sx, sy = 880.0/640.0, 320.0/480.0
     H_v2ui = np.array([[sx, 0, 0],
@@ -253,7 +326,7 @@ def median_distance_for_tau(tau_ms):
     for i in range(len(gest)):
         xg, yg = g_ui[i]
         if not np.isfinite(xg) or not np.isfinite(yg): continue
-        keys_list = parse_keys_field(gest.at[i,"Keys"])
+        keys_list = parse_keys_field(gest.at[i, keys_col])
         key_last  = next((k for k in reversed(keys_list) if k), None)
         h = key_hand(key_last)
         for col in finger_cols:
@@ -287,23 +360,29 @@ for j, col in enumerate(finger_cols):
 key_counts = {}
 coarse = []
 for i in range(N):
-    key_last = next((k for k in parse_keys_field(gest.at[i,"Keys"])[::-1] if k), None)
-    if not key_last: coarse.append(None); continue
+    key_last = next((k for k in parse_keys_field(gest.at[i, keys_col])[::-1] if k), None)
+    if not key_last:
+        coarse.append(None); continue
     candidates = [(D[i,j], finger_cols[j]) for j in range(F) if D[i,j] < 1e6]
-    if not candidates: coarse.append(None); continue
+    if not candidates:
+        coarse.append(None); continue
     best = min(candidates, key=lambda x: x[0])[1]
     coarse.append(best)
     key_counts.setdefault(key_last.lower(), {})
     key_counts[key_last.lower()][best] = key_counts[key_last.lower()].get(best, 0) + 1
 
-key_whitelist = {k: [f for f,_ in sorted(cnts.items(), key=lambda kv: kv[1], reverse=True)[:2]]
-                 for k, cnts in key_counts.items()}
-session_prior = {k: (sorted(cnts.items(), key=lambda kv: kv[1], reverse=True)[0][0].replace("_"," "))
-                 for k, cnts in key_counts.items()}
+key_whitelist = {
+    k: [f for f,_ in sorted(cnts.items(), key=lambda kv: kv[1], reverse=True)[:2]]
+    for k, cnts in key_counts.items()
+}
+session_prior = {
+    k: (sorted(cnts.items(), key=lambda kv: kv[1], reverse=True)[0][0].replace("_"," "))
+    for k, cnts in key_counts.items()
+}
 
 anchors = {}
 for i in range(N):
-    key_last = next((k for k in parse_keys_field(gest.at[i,"Keys"])[::-1] if k), None)
+    key_last = next((k for k in parse_keys_field(gest.at[i, keys_col])[::-1] if k), None)
     bestf = coarse[i]
     if not key_last or not bestf: continue
     xs = fing[f"{bestf}_x"].to_numpy(); ys = fing[f"{bestf}_y"].to_numpy()
@@ -316,11 +395,10 @@ for kf, pts in anchors.items():
     anchors[kf] = (float(np.median(arr[:,0])), float(np.median(arr[:,1])))
 
 # --- hand midline from UI geometry ---
-# use the gesture distribution directly
 xvals = g_ui[:,0]; xvals = xvals[np.isfinite(xvals)]
 midline = float(np.median(xvals)) if xvals.size else 440.0  # center of 880
 
-# --- motion energy (still computed on finger stream, mapped per-row) ---
+# --- motion energy ---
 motion = np.zeros((N,F), dtype=float)
 for j, col in enumerate(finger_cols):
     xs = fing[f"{col}_x"].to_numpy(); ys = fing[f"{col}_y"].to_numpy()
@@ -334,7 +412,7 @@ canon_pen = np.zeros((N,F)); book_pen = np.zeros((N,F))
 hand_pen  = np.zeros((N,F)); white_pen= np.zeros((N,F)); anch_pen = np.zeros((N,F))
 
 for i in range(N):
-    key_last = next((k for k in parse_keys_field(gest.at[i,"Keys"])[::-1] if k), None)
+    key_last = next((k for k in parse_keys_field(gest.at[i, keys_col])[::-1] if k), None)
     sess = session_prior.get((key_last or "").lower())
     book = BOOK_DEFAULT.get((key_last or "").lower())
     expected_hand = "Left" if (np.isfinite(g_ui[i,0]) and g_ui[i,0] < midline) else ("Right" if np.isfinite(g_ui[i,0]) else None)
@@ -354,7 +432,7 @@ for i in range(N):
             ax, ay = anchors[(key_last.lower(), col)]
             anch_pen[i,j] = ANCHOR_PX_W * math.hypot(ax - g_ui[i,0], ay - g_ui[i,1])
 
-# --- final cost & Viterbi ---
+# --- final cost & Viterbi smoothing ---
 C = D + motion_pen + canon_pen + book_pen + hand_pen + white_pen + anch_pen
 
 F = len(finger_cols)
@@ -374,9 +452,11 @@ for i in range(N-2,-1,-1):
 labels = [finger_cols[k].replace("_"," ") for k in path]
 gest["Finger"] = labels
 
-# --- repair swipe 'null' values ---
+# Repair swipe 'null' values in Keys (no Unknowns)
+
 keys_fixed = []
-single_keys = [(parse_keys_field(k)[0] if len(parse_keys_field(k))==1 else None) for k in gest["Keys"]]
+single_keys = [(parse_keys_field(k)[0] if len(parse_keys_field(k))==1 else None) for k in gest[keys_col]]
+
 def nearest_prev(i):
     j = i-1
     while j >= 0:
@@ -384,6 +464,7 @@ def nearest_prev(i):
         if k: return k
         j -= 1
     return None
+
 def nearest_next(i):
     j = i+1; n = len(single_keys)
     while j < n:
@@ -392,10 +473,12 @@ def nearest_next(i):
         j += 1
     return None
 
-for i, cell in enumerate(gest["Keys"]):
+for i, cell in enumerate(gest[keys_col]):
     arr = parse_keys_field(cell)
     if len(arr) == 1:
-        keys_fixed.append(arr[0] if arr[0] is not None else (nearest_next(i) or nearest_prev(i) or "")); continue
+        keys_fixed.append(arr[0] if arr[0] is not None else (nearest_next(i) or nearest_prev(i) or ""))
+        continue
+
     arr2 = arr[:]
     for j, val in enumerate(arr2):
         if val is not None: continue
@@ -410,16 +493,26 @@ for i, cell in enumerate(gest["Keys"]):
             cand = ("a" if isinstance(finger,str) and finger.startswith("Left") else "l")
         arr2[j] = cand
     keys_fixed.append("[" + ", ".join(k for k in arr2 if k) + "]")
-gest["Keys"] = keys_fixed
 
-# --- save ---
-out = gest[["Time","Type","X","Y","Keys","Finger"]].copy()
+gest[keys_col] = keys_fixed
+
+# Save with normalized headers: Time, Type, X, Y, Keys, Finger
+
+x_out  = "X"    if "X"    in gest.columns else (x_col  or "gx_ui")
+y_out  = "Y"    if "Y"    in gest.columns else (y_col  or "gy_ui")
+k_out  = "Keys" if "Keys" in gest.columns else keys_col
+
+out = gest.rename(columns={x_out: "X", y_out: "Y", k_out: "Keys"})[
+    ["Time", "Type", "X", "Y", "Keys", "Finger"]
+].copy()
+
 now = datetime.now()
 default_name = (
     f"gesture_finger_match_{now.month:02d}-{now.day:02d}-{now.year}"
     f"__{now.hour:02d}-{now.minute:02d}-{now.second:02d}"
     f"__{participant_id}.csv"
 )
+
 save_path = filedialog.asksaveasfilename(
     title="Save Result CSV",
     defaultextension=".csv",
