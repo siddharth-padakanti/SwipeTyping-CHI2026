@@ -6,7 +6,7 @@ import numpy as np
 import os
 from datetime import datetime
 
-participant_id = [0, 28, 29]
+participant_id = [2, 12, 16, 19]
 
 tap_coords = {
     "Q": (40, 40), "W": (120, 40), "E": (200, 40), "R": (280, 40), "T": (360, 40),
@@ -111,6 +111,7 @@ def process_trial(pid, tid, gesture, word, trial):
                         category = "top3"
                 
                 insert_word.append({
+                    "pid": pid,
                     "target": target_string[len(after_string) - 1],
                     "word": after_string[len(after_string) - 1],
                     "count": len(target_string[len(after_string) - 1]),
@@ -126,6 +127,7 @@ def process_trial(pid, tid, gesture, word, trial):
                     elif row['Action'] == 'Insert_top3':
                         category = "top3"
                 insert_word[len(after_string) - 1] = {
+                    "pid": pid,
                     "target": target_string[len(after_string) - 1],
                     "word": after_string[len(after_string) - 1],
                     "count": len(target_string[len(after_string) - 1]),
@@ -138,6 +140,7 @@ def process_trial(pid, tid, gesture, word, trial):
         if ((row['Action'] == 'End') and (len(target_string) != len(insert_word))):
             after_string = row['Updated Sentence'].split()
             insert_word.append({
+                "pid": pid,
                 "target": target_string[len(after_string) - 1],
                 "word": after_string[len(after_string) - 1],
                 "count": len(target_string[len(after_string) - 1]),
@@ -171,18 +174,31 @@ def process_trial(pid, tid, gesture, word, trial):
         for gidx, grow in gesture_insertdf.iterrows():
             if grow['Type'] == "swipe":
                 swipe_count += 1
-                swipe_key_set.append([target[target_char_count], target[target_char_count+1]])
-                tarX1 = tap_coords[target[target_char_count].upper()][0]
-                tarY1 = tap_coords[target[target_char_count].upper()][1]
-                tarX2 = tap_coords[target[target_char_count+1].upper()][0]
-                tarY2 = tap_coords[target[target_char_count+1].upper()][1]
-                dtx = tarX2 - tarX1
-                dty = tarY2 - tarY1
-                distarget = math.sqrt(dtx*dtx + dty*dty) / key_coord
-                dx = float(grow['EndX']) - float(grow['StartX'])
-                dy = float(grow['EndY']) - float(grow['StartY'])
-                dis = math.sqrt(dx*dx + dy*dy) / key_coord
-                swipe_dist.append([dis, distarget])
+                if target_char_count + 1 < len(target):
+                    swipe_key_set.append([target[target_char_count], target[target_char_count+1]])
+                    tarX1 = tap_coords[target[target_char_count].upper()][0]
+                    tarY1 = tap_coords[target[target_char_count].upper()][1]
+                    tarX2 = tap_coords[target[target_char_count+1].upper()][0]
+                    tarY2 = tap_coords[target[target_char_count+1].upper()][1]
+                    dtx = tarX2 - tarX1
+                    dty = tarY2 - tarY1
+                    distarget = math.sqrt(dtx*dtx + dty*dty) / key_coord
+                    dx = float(grow['EndX']) - float(grow['StartX'])
+                    dy = float(grow['EndY']) - float(grow['StartY'])
+                    dis = math.sqrt(dx*dx + dy*dy) / key_coord
+                    swipe_dist.append([dis, distarget])
+                elif target_char_count < len(target):
+                    swipe_key_set.append([target[target_char_count], ''])
+                    dx = float(grow['EndX']) - float(grow['StartX'])
+                    dy = float(grow['EndY']) - float(grow['StartY'])
+                    dis = math.sqrt(dx*dx + dy*dy) / key_coord
+                    swipe_dist.append([dis, 0])
+                else:
+                    swipe_key_set.append(['', ''])
+                    dx = float(grow['EndX']) - float(grow['StartX'])
+                    dy = float(grow['EndY']) - float(grow['StartY'])
+                    dis = math.sqrt(dx*dx + dy*dy) / key_coord
+                    swipe_dist.append([0, 0])
                 
                 target_char_count += 2
             elif grow['Type'] == "tap":
