@@ -7,6 +7,8 @@ import pandas as pd
 import cv2
 from tkinter import Tk, filedialog
 from datetime import datetime
+import warnings
+from pandas.errors import ParserWarning
 
 # =========================
 # Tunables
@@ -224,7 +226,15 @@ ui_image     = filedialog.askopenfilename(title="Select UI Screenshot (PNG/JPG)"
 base = os.path.basename(gesture_path); name, _ = os.path.splitext(base)
 participant_id = name.rsplit("__", 1)[-1]
 
-gest = pd.read_csv(gesture_path)
+gest = pd.read_csv(
+    gesture_path,
+    engine="python",
+    sep=r',(?=(?:[^\[]*\[[^\]]*\])*[^\]]*$)',  # ignore commas inside [...]
+    dtype=str,
+    keep_default_na=False,
+    skipinitialspace=True,
+    on_bad_lines="warn",   # pandas >=1.3
+)
 fing = pd.read_csv(finger_path)
 
 finger_cols = ALL_FINGERS if FORCE_FINGERS is None else FORCE_FINGERS[:]
