@@ -1,0 +1,836 @@
+Time,Trial Num,Target,TapOnly,Word_top1,Word_top2,Word_top3,Sequence
+16:38:57.965,0,the living is easy,true,t,,,T
+16:38:58.190,0,the living is easy,true,th,,,TH
+16:38:58.407,0,the living is easy,true,the,,,THE
+16:39:00.331,0,the living is easy,false,li,ti,lu,L223degrees
+16:39:00.331,0,the living is easy,false,lil,ill,kil,L223degrees
+16:39:00.608,0,the living is easy,false,lamb,lind,kind,L223degreesV
+16:39:01.126,0,the living is easy,false,london,liland,lilton,L223degreesVI122degrees
+16:39:01.441,0,the living is easy,false,killing,lending,pending,L223degreesVI122degreesG
+16:39:05.245,0,the living is easy,false,lu,li,lt,L220degrees
+16:39:05.661,0,the living is easy,false,lib,loc,lid,L220degreesV
+16:39:06.248,0,the living is easy,false,kevin,login,lucia,L220degreesVI125degrees
+16:39:06.601,0,the living is easy,false,living,loving,,L220degreesVI125degreesG
+16:39:07.661,0,the living is easy,true,i,,,I
+16:39:07.812,0,the living is easy,true,is,,,IS
+16:39:08.604,0,the living is easy,true,e,,,E
+16:39:08.839,0,the living is easy,true,ea,,,EA
+16:39:09.155,0,the living is easy,true,eas,,,EAS
+16:39:09.863,0,the living is easy,true,easy,,,EASY
+16:39:09.865,0,the living is easy,true,easy,,,EASY
+16:39:13.194,1,life if but a dream,false,ky,le,la,L190degrees
+16:39:13.547,1,life if but a dream,false,leo,leu,kyo,L190degreesI
+16:39:14.079,1,life if but a dream,false,lyric,rover,laugh,L190degreesIF225degrees
+16:39:16.966,1,life if but a dream,true,l,,,L
+16:39:17.151,1,life if but a dream,true,li,,,LI
+16:39:19.167,1,life if but a dream,true,l,,,L
+16:39:19.791,1,life if but a dream,false,,,,LI154degrees
+16:39:19.939,1,life if but a dream,false,life,live,line,LI154degreesE
+16:39:21.614,1,life if but a dream,false,kitty,lucia,fatty,LI154degreesEIF
+16:39:21.790,1,life if but a dream,false,ilgium,,,LI154degreesEIF
+16:39:22.597,1,life if but a dream,false,ni,,,B309degrees
+16:39:22.949,1,life if but a dream,false,,,,B309degreesT
+16:39:25.305,1,life if but a dream,true,l,,,L
+16:39:25.947,1,life if but a dream,false,liz,lib,lil,LI160degrees
+16:39:26.372,1,life if but a dream,false,life,like,lime,LI160degreesE
+16:39:28.065,1,life if but a dream,true,i,,,I
+16:39:28.449,1,life if but a dream,true,if,,,IF
+16:39:29.626,1,life if but a dream,false,bb,ni,,B307degrees
+16:39:29.978,1,life if but a dream,false,but,nut,buf,B307degreesT
+16:39:30.682,1,life if but a dream,true,a,,,A
+16:39:31.133,1,life if but a dream,true,d,,,D
+16:39:31.350,1,life if but a dream,true,dr,,,DR
+16:39:31.559,1,life if but a dream,true,dre,,,DRE
+16:39:32.585,1,life if but a dream,false,frank,,,DREA10degrees
+16:39:34.443,1,life if but a dream,true,d,,,D
+16:39:34.627,1,life if but a dream,true,dr,,,DR
+16:39:34.877,1,life if but a dream,true,dre,,,DRE
+16:39:35.867,1,life if but a dream,false,frank,draft,,DREA9degrees
+16:39:37.678,1,life if but a dream,true,d,,,D
+16:39:37.904,1,life if but a dream,true,dr,,,DR
+16:39:38.188,1,life if but a dream,true,dre,,,DRE
+16:39:38.663,1,life if but a dream,true,drea,,,DREA
+16:39:38.846,1,life if but a dream,true,dream,,,DREAM
+16:39:41.925,2,question that must be answered,false,qt,wr,ae,Q358degrees
+16:39:42.266,2,question that must be answered,false,,,,Q358degreesE
+16:39:42.468,2,question that must be answered,false,weed,ward,,Q358degreesES
+16:39:42.907,2,question that must be answered,false,water,,,Q358degreesEST
+16:39:43.122,2,question that must be answered,false,luxury,,,Q358degreesESTI
+16:39:43.341,2,question that must be answered,false,quality,quantum,,Q358degreesESTIO
+16:39:43.737,2,question that must be answered,false,,,,Q358degreesESTIOO130degrees
+16:39:45.899,2,question that must be answered,true,q,,,Q
+16:39:46.350,2,question that must be answered,true,qu,,,QU
+16:39:46.484,2,question that must be answered,true,que,,,QUE
+16:39:46.809,2,question that must be answered,true,ques,,,QUES
+16:39:47.151,2,question that must be answered,true,quest,,,QUEST
+16:39:47.576,2,question that must be answered,true,questi,,,QUESTI
+16:39:47.743,2,question that must be answered,true,questio,,,QUESTIO
+16:39:48.154,2,question that must be answered,false,questions,,,QUESTIOO131degrees
+16:39:48.901,2,question that must be answered,true,t,,,T
+16:39:49.119,2,question that must be answered,true,th,,,TH
+16:39:49.660,2,question that must be answered,false,that,than,tear,THA338degrees
+16:39:50.994,2,question that must be answered,true,m,,,M
+16:39:51.220,2,question that must be answered,true,mu,,,MU
+16:39:51.894,2,question that must be answered,false,nude,nudt,,MUS337degrees
+16:39:53.804,2,question that must be answered,true,m,,,M
+16:39:53.972,2,question that must be answered,true,mu,,,MU
+16:39:54.461,2,question that must be answered,false,muze,nude,midi,MUS333degrees
+16:39:56.297,2,question that must be answered,true,m,,,M
+16:39:56.489,2,question that must be answered,true,mu,,,MU
+16:39:56.882,2,question that must be answered,false,must,,,MUS343degrees
+16:39:58.556,2,question that must be answered,true,b,,,B
+16:39:58.724,2,question that must be answered,true,be,,,BE
+16:40:00.007,2,question that must be answered,true,a,,,A
+16:40:00.201,2,question that must be answered,true,an,,,AN
+16:40:00.967,2,question that must be answered,true,ans,,,ANS
+16:40:01.326,2,question that must be answered,true,answ,,,ANSW
+16:40:01.792,2,question that must be answered,true,answe,,,ANSWE
+16:40:02.009,2,question that must be answered,true,answer,,,ANSWER
+16:40:02.251,2,question that must be answered,true,answere,,,ANSWERE
+16:40:02.434,2,question that must be answered,true,answered,,,ANSWERED
+16:40:06.179,3,tickets are very expensive,false,ti,ty,tu,T358degrees
+16:40:06.783,3,tickets are very expensive,false,toc,rid,rug,T358degreesC
+16:40:07.448,3,tickets are very expensive,false,bucks,rocks,tanks,T358degreesCK190degrees
+16:40:07.980,3,tickets are very expensive,false,ticket,tucked,,T358degreesCK190degreesTS
+16:40:08.156,3,tickets are very expensive,false,tickets,touched,twisted,T358degreesCK190degreesTS
+16:40:09.696,3,tickets are very expensive,true,a,,,A
+16:40:09.906,3,tickets are very expensive,true,ar,,,AR
+16:40:10.080,3,tickets are very expensive,true,are,,,ARE
+16:40:10.638,3,tickets are very expensive,true,v,,,V
+16:40:10.889,3,tickets are very expensive,true,ve,,,VE
+16:40:11.056,3,tickets are very expensive,true,ver,,,VER
+16:40:11.706,3,tickets are very expensive,true,very,,,VERY
+16:40:13.141,3,tickets are very expensive,false,rx,ed,ec,E94degreesX
+16:40:13.141,3,tickets are very expensive,false,,,,E94degreesX
+16:40:13.426,3,tickets are very expensive,false,expo,echo,paso,E94degreesXP
+16:40:13.591,3,tickets are very expensive,false,whose,cliff,,E94degreesXPE
+16:40:13.998,3,tickets are very expensive,false,expand,reform,modern,E94degreesXPEN
+16:40:14.635,3,tickets are very expensive,false,expenses,,,E94degreesXPENS339degrees
+16:40:15.523,3,tickets are very expensive,false,intensity,expensive,,E94degreesXPENS339degreesIV
+16:40:15.566,3,tickets are very expensive,false,systematic,scientific,ecological,E94degreesXPENS339degreesIV
+16:40:17.392,3,tickets are very expensive,true,e,,,E
+16:40:17.626,3,tickets are very expensive,true,ex,,,EX
+16:40:17.868,3,tickets are very expensive,true,exp,,,EXP
+16:40:18.001,3,tickets are very expensive,true,expe,,,EXPE
+16:40:18.244,3,tickets are very expensive,true,expen,,,EXPEN
+16:40:18.731,3,tickets are very expensive,false,spencer,orlando,expedia,EXPENS349degrees
+16:40:19.127,3,tickets are very expensive,false,cornwall,columbus,cornford,EXPENS349degreesV
+16:40:19.410,3,tickets are very expensive,false,cognitive,expensive,sensitive,EXPENS349degreesVE
+16:40:21.111,3,tickets are very expensive,true,e,,,E
+16:40:21.337,3,tickets are very expensive,true,ex,,,EX
+16:40:21.554,3,tickets are very expensive,true,exp,,,EXP
+16:40:21.687,3,tickets are very expensive,true,expe,,,EXPE
+16:40:22.137,3,tickets are very expensive,true,expen,,,EXPEN
+16:40:23.022,3,tickets are very expensive,false,spencer,ecuador,expedia,EXPENS350degrees
+16:40:23.663,3,tickets are very expensive,false,scottish,cohensen,columbus,EXPENS350degreesV
+16:40:23.933,3,tickets are very expensive,false,expensive,cognitive,sensitive,EXPENS350degreesVE
+16:40:28.065,4,just what the doctor ordered,false,ni,jj,,J256degrees
+16:40:28.672,4,just what the doctor ordered,false,just,juan,june,J256degreesU155degrees
+16:40:31.101,4,just what the doctor ordered,false,wb,wv,wm,W22degrees
+16:40:31.453,4,just what the doctor ordered,false,wma,eds,dna,W22degreesA
+16:40:31.807,4,just what the doctor ordered,false,ebay,,,W22degreesAT
+16:40:33.409,4,just what the doctor ordered,true,w,,,W
+16:40:33.552,4,just what the doctor ordered,true,wh,,,WH
+16:40:33.973,4,just what the doctor ordered,false,what,ehar,eval,WHA334degrees
+16:40:35.193,4,just what the doctor ordered,true,t,,,T
+16:40:35.361,4,just what the doctor ordered,true,th,,,TH
+16:40:35.478,4,just what the doctor ordered,true,the,,,THE
+16:40:36.261,4,just what the doctor ordered,true,d,,,D
+16:40:36.554,4,just what the doctor ordered,true,do,,,DO
+16:40:38.032,4,just what the doctor ordered,false,dick,doug,drew,DOC304degrees
+16:40:38.466,4,just what the doctor ordered,false,tokyo,dover,docto,DOC304degreesOR
+16:40:38.577,4,just what the doctor ordered,false,doctor,victor,cooper,DOC304degreesOR
+16:40:40.071,4,just what the doctor ordered,true,o,,,O
+16:40:40.172,4,just what the doctor ordered,true,or,,,OR
+16:40:40.372,4,just what the doctor ordered,true,ord,,,ORD
+16:40:40.589,4,just what the doctor ordered,true,orde,,,ORDE
+16:40:40.756,4,just what the doctor ordered,true,order,,,ORDER
+16:40:40.939,4,just what the doctor ordered,true,ordere,,,ORDERE
+16:40:41.107,4,just what the doctor ordered,true,ordered,,,ORDERED
+16:40:43.911,5,he called seven times,false,he,hr,je,H190degrees
+16:40:44.391,5,he called seven times,true,c,,,C
+16:40:44.616,5,he called seven times,true,ca,,,CA
+16:40:44.942,5,he called seven times,true,cal,,,CAL
+16:40:45.729,5,he called seven times,false,cable,vault,baker,CALL191degrees
+16:40:46.259,5,he called seven times,false,called,backed,failed,CALL191degreesD
+16:40:47.217,5,he called seven times,true,s,,,S
+16:40:47.418,5,he called seven times,true,se,,,SE
+16:40:47.693,5,he called seven times,true,sev,,,SEV
+16:40:47.985,5,he called seven times,true,seve,,,SEVE
+16:40:48.952,5,he called seven times,true,seven,,,SEVEN
+16:40:49.794,5,he called seven times,true,t,,,T
+16:40:49.969,5,he called seven times,true,ti,,,TI
+16:40:50.490,5,he called seven times,false,ring,tomd,tits,TIM212degrees
+16:40:50.823,5,he called seven times,false,times,tones,tions,TIM212degreesS
+16:40:53.795,6,sad to hear that news,true,s,,,S
+16:40:54.013,6,sad to hear that news,true,sa,,,SA
+16:40:54.205,6,sad to hear that news,true,sad,,,SAD
+16:40:54.830,6,sad to hear that news,true,t,,,T
+16:40:55.005,6,sad to hear that news,true,to,,,TO
+16:40:55.639,6,sad to hear that news,false,he,hr,je,H195degrees
+16:40:56.504,6,sad to hear that news,false,hrs,,,H195degreesAR
+16:40:56.606,6,sad to hear that news,false,hear,head,gear,H195degreesAR
+16:40:57.622,6,sad to hear that news,true,r,,,R
+16:40:57.882,6,sad to hear that news,true,rh,,,RH
+16:40:58.193,6,sad to hear that news,true,rha,,,RHA
+16:40:58.816,6,sad to hear that news,true,rhat,,,RHAT
+16:40:59.707,6,sad to hear that news,true,n,,,N
+16:40:59.891,6,sad to hear that news,true,ne,,,NE
+16:41:00.050,6,sad to hear that news,true,new,,,NEW
+16:41:00.267,6,sad to hear that news,true,news,,,NEWS
+16:41:02.959,6,sad to hear that news,true,t,,,T
+16:41:03.153,6,sad to hear that news,true,th,,,TH
+16:41:03.780,6,sad to hear that news,false,that,jade,than,THA342degrees
+16:41:04.685,6,sad to hear that news,true,n,,,N
+16:41:04.811,6,sad to hear that news,true,ne,,,NE
+16:41:04.961,6,sad to hear that news,true,new,,,NEW
+16:41:05.170,6,sad to hear that news,true,news,,,NEWS
+16:41:08.245,7,please follow the guidelines,true,p,,,P
+16:41:08.389,7,please follow the guidelines,true,pl,,,PL
+16:41:08.605,7,please follow the guidelines,true,ple,,,PLE
+16:41:08.822,7,please follow the guidelines,true,plea,,,PLEA
+16:41:09.023,7,please follow the guidelines,true,pleas,,,PLEAS
+16:41:09.247,7,please follow the guidelines,true,please,,,PLEASE
+16:41:09.839,7,please follow the guidelines,true,f,,,F
+16:41:10.057,7,please follow the guidelines,true,fo,,,FO
+16:41:10.239,7,please follow the guidelines,true,fol,,,FOL
+16:41:10.364,7,please follow the guidelines,true,foll,,,FOLL
+16:41:10.842,7,please follow the guidelines,false,guilty,follow,,FOLLO175degrees182degrees
+16:41:10.903,7,please follow the guidelines,false,,,,FOLLO175degrees182degrees
+16:41:11.606,7,please follow the guidelines,true,t,,,T
+16:41:11.757,7,please follow the guidelines,true,th,,,TH
+16:41:13.440,7,please follow the guidelines,true,f,,,F
+16:41:13.574,7,please follow the guidelines,true,fo,,,FO
+16:41:13.749,7,please follow the guidelines,true,fol,,,FOL
+16:41:13.866,7,please follow the guidelines,true,foll,,,FOLL
+16:41:14.033,7,please follow the guidelines,true,follo,,,FOLLO
+16:41:16.367,7,please follow the guidelines,true,f,,,F
+16:41:16.519,7,please follow the guidelines,true,fo,,,FO
+16:41:16.701,7,please follow the guidelines,true,fol,,,FOL
+16:41:16.818,7,please follow the guidelines,true,foll,,,FOLL
+16:41:17.947,7,please follow the guidelines,false,follow,guilty,,FOLLO177degrees
+16:41:19.052,7,please follow the guidelines,true,t,,,T
+16:41:19.228,7,please follow the guidelines,true,th,,,TH
+16:41:19.339,7,please follow the guidelines,true,the,,,THE
+16:41:19.827,7,please follow the guidelines,true,g,,,G
+16:41:20.036,7,please follow the guidelines,true,gu,,,GU
+16:41:20.128,7,please follow the guidelines,true,gui,,,GUI
+16:41:20.278,7,please follow the guidelines,true,guid,,,GUID
+16:41:20.470,7,please follow the guidelines,true,guide,,,GUIDE
+16:41:20.845,7,please follow the guidelines,true,guidel,,,GUIDEL
+16:41:21.095,7,please follow the guidelines,true,guideli,,,GUIDELI
+16:41:22.412,7,please follow the guidelines,true,guidelin,,,GUIDELIN
+16:41:22.704,7,please follow the guidelines,true,guideline,,,GUIDELINE
+16:41:23.020,7,please follow the guidelines,false,,,,GUIDELINES135degrees
+16:41:24.880,7,please follow the guidelines,true,g,,,G
+16:41:25.298,7,please follow the guidelines,true,gu,,,GU
+16:41:25.431,7,please follow the guidelines,true,gui,,,GUI
+16:41:25.765,7,please follow the guidelines,true,guid,,,GUID
+16:41:26.014,7,please follow the guidelines,true,guide,,,GUIDE
+16:41:26.432,7,please follow the guidelines,true,guidel,,,GUIDEL
+16:41:26.925,7,please follow the guidelines,false,highland,,,GUIDELI128degrees
+16:41:27.272,7,please follow the guidelines,false,governing,,,GUIDELI128degreesE
+16:41:27.461,7,please follow the guidelines,false,guidelines,households,wilderness,GUIDELI128degreesES
+16:41:30.541,8,the stock exchange dipped,true,t,,,T
+16:41:30.692,8,the stock exchange dipped,true,th,,,TH
+16:41:30.792,8,the stock exchange dipped,true,the,,,THE
+16:41:31.250,8,the stock exchange dipped,true,s,,,S
+16:41:31.484,8,the stock exchange dipped,true,st,,,ST
+16:41:32.675,8,the stock exchange dipped,false,,,,STO153degrees
+16:41:33.046,8,the stock exchange dipped,false,stock,drunk,spank,STO153degreesK
+16:41:34.118,8,the stock exchange dipped,true,e,,,E
+16:41:34.369,8,the stock exchange dipped,true,ex,,,EX
+16:41:34.686,8,the stock exchange dipped,true,exc,,,EXC
+16:41:35.128,8,the stock exchange dipped,true,exch,,,EXCH
+16:41:35.844,8,the stock exchange dipped,false,expand,escape,wealth,EXCHA6degrees
+16:41:36.305,8,the stock exchange dipped,false,exhaust,,,EXCHA6degreesG
+16:41:36.735,8,the stock exchange dipped,false,exchange,explicit,,EXCHA6degreesGE
+16:41:38.112,8,the stock exchange dipped,true,d,,,D
+16:41:38.371,8,the stock exchange dipped,true,di,,,DI
+16:41:38.722,8,the stock exchange dipped,true,dip,,,DIP
+16:41:39.218,8,the stock exchange dipped,false,delhi,,,DIPP177degrees180degrees
+16:41:41.689,8,the stock exchange dipped,true,d,,,D
+16:41:41.874,8,the stock exchange dipped,true,di,,,DI
+16:41:42.140,8,the stock exchange dipped,true,dip,,,DIP
+16:41:42.674,8,the stock exchange dipped,false,zobox,delhi,zolip,DIPP176degrees180degrees
+16:41:44.591,8,the stock exchange dipped,true,d,,,D
+16:41:44.775,8,the stock exchange dipped,true,di,,,DI
+16:41:45.159,8,the stock exchange dipped,true,dip,,,DIP
+16:41:45.990,8,the stock exchange dipped,false,floppy,bloody,,DIPP174degrees
+16:41:45.990,8,the stock exchange dipped,false,,,,DIPP174degrees
+16:41:46.544,8,the stock exchange dipped,false,folding,dollars,,DIPP174degreesD
+16:41:48.051,8,the stock exchange dipped,true,d,,,D
+16:41:48.177,8,the stock exchange dipped,true,di,,,DI
+16:41:48.477,8,the stock exchange dipped,true,dip,,,DIP
+16:41:48.635,8,the stock exchange dipped,true,dipp,,,DIPP
+16:41:48.860,8,the stock exchange dipped,true,dippe,,,DIPPE
+16:41:49.094,8,the stock exchange dipped,true,dipped,,,DIPPED
+16:41:51.820,9,are you talking to me,true,a,,,A
+16:41:52.037,9,are you talking to me,true,ar,,,AR
+16:41:52.246,9,are you talking to me,true,are,,,ARE
+16:41:52.645,9,are you talking to me,true,y,,,Y
+16:41:52.871,9,are you talking to me,true,yo,,,YO
+16:41:52.921,9,are you talking to me,true,you,,,YOU
+16:41:53.837,9,are you talking to me,true,t,,,T
+16:41:54.047,9,are you talking to me,true,ta,,,TA
+16:41:54.981,9,are you talking to me,true,tal,,,TAL
+16:41:55.114,9,are you talking to me,true,talk,,,TALK
+16:41:55.390,9,are you talking to me,true,talki,,,TALKI
+16:41:56.816,9,are you talking to me,false,talking,tailing,telling,TALKIN213degrees
+16:41:57.898,9,are you talking to me,true,t,,,T
+16:41:58.074,9,are you talking to me,true,to,,,TO
+16:41:58.746,9,are you talking to me,false,mt,mr,mw,M210degrees
+16:42:00.947,9,are you talking to me,false,mf,mn,mm,M196degrees
+16:42:03.153,9,are you talking to me,false,mw,mf,mh,M198degrees
+16:42:05.630,9,are you talking to me,false,mf,mw,mh,M201degrees
+16:42:07.161,9,are you talking to me,true,m,,,M
+16:42:07.513,9,are you talking to me,true,me,,,ME
+16:42:10.021,10,this person is a disaster,true,t,,,T
+16:42:10.190,10,this person is a disaster,true,th,,,TH
+16:42:10.642,10,this person is a disaster,false,this,thug,thou,THI158degrees178degrees
+16:42:10.657,10,this person is a disaster,false,,,,THI158degrees178degrees
+16:42:11.839,10,this person is a disaster,true,p,,,P
+16:42:12.057,10,this person is a disaster,true,pe,,,PE
+16:42:12.299,10,this person is a disaster,true,per,,,PER
+16:42:13.046,10,this person is a disaster,false,,,,PERS349degrees
+16:42:13.512,10,this person is a disaster,false,person,oregon,prison,PERS349degreesN
+16:42:14.616,10,this person is a disaster,true,i,,,I
+16:42:14.867,10,this person is a disaster,true,is,,,IS
+16:42:15.192,10,this person is a disaster,true,a,,,A
+16:42:16.233,10,this person is a disaster,true,d,,,D
+16:42:16.493,10,this person is a disaster,true,di,,,DI
+16:42:17.252,10,this person is a disaster,true,dis,,,DIS
+16:42:17.569,10,this person is a disaster,true,disa,,,DISA
+16:42:17.860,10,this person is a disaster,true,disas,,,DISAS
+16:42:18.386,10,this person is a disaster,true,disast,,,DISAST
+16:42:18.594,10,this person is a disaster,true,disaste,,,DISASTE
+16:42:18.727,10,this person is a disaster,true,disaster,,,DISASTER
+16:42:22.664,11,with each step forward,false,wy,wt,wr,W1degrees
+16:42:23.019,11,with each step forward,false,wet,,,W1degreesTH
+16:42:23.196,11,with each step forward,false,with,worm,work,W1degreesTH
+16:42:24.405,11,with each step forward,true,e,,,E
+16:42:24.648,11,with each step forward,true,ea,,,EA
+16:42:25.265,11,with each step forward,false,each,wang,inch,EAC329degrees
+16:42:27.123,11,with each step forward,false,st,,,S331degrees
+16:42:27.360,11,with each step forward,false,,,,S331degreesE
+16:42:27.543,11,with each step forward,false,step,drop,,S331degreesEP
+16:42:29.188,11,with each step forward,false,fu,fi,fp,F342degrees
+16:42:30.141,11,with each step forward,false,fur,for,cir,F342degreesR
+16:42:30.673,11,with each step forward,false,fire,grew,cite,F342degreesRW
+16:42:31.204,11,with each step forward,false,guitar,,,F342degreesRWA333degrees
+16:42:31.613,11,with each step forward,false,forward,guitars,firefox,F342degreesRWA333degreesD
+16:42:34.729,12,the world is a stage,true,t,,,T
+16:42:34.930,12,the world is a stage,true,t,,,T
+16:42:34.946,12,the world is a stage,true,th,,,TH
+16:42:35.072,12,the world is a stage,true,the,,,THE
+16:42:36.024,12,the world is a stage,false,wy,,,W0degrees
+16:42:36.378,12,the world is a stage,false,,,,W0degreesR
+16:42:36.732,12,the world is a stage,false,week,work,worm,W0degreesRLD
+16:42:36.911,12,the world is a stage,false,world,,,W0degreesRLD
+16:42:38.015,12,the world is a stage,true,i,,,I
+16:42:38.165,12,the world is a stage,true,is,,,IS
+16:42:38.499,12,the world is a stage,true,a,,,A
+16:42:39.376,12,the world is a stage,false,,,,S344degrees
+16:42:39.693,12,the world is a stage,false,aus,,,S344degreesAG
+16:42:39.870,12,the world is a stage,false,,,,S344degreesAGE
+16:42:40.046,12,the world is a stage,false,asian,,,S344degreesAGE
+16:42:42.406,12,the world is a stage,false,,,,S339degrees
+16:42:42.955,12,the world is a stage,false,,,,S339degreesA
+16:42:43.193,12,the world is a stage,false,deaf,,,S339degreesAG
+16:42:43.295,12,the world is a stage,false,awful,,,S339degreesAGE
+16:42:45.170,12,the world is a stage,false,st,,,S341degrees
+16:42:45.763,12,the world is a stage,false,,,,S341degreesAG
+16:42:45.939,12,the world is a stage,false,,,,S341degreesAGE
+16:42:46.116,12,the world is a stage,false,sarah,,,S341degreesAGE
+16:42:48.063,12,the world is a stage,true,s,,,S
+16:42:48.205,12,the world is a stage,true,st,,,ST
+16:42:48.799,12,the world is a stage,false,,,,STA358degrees
+16:42:49.153,12,the world is a stage,false,stage,,,STA358degreesE
+16:42:53.165,13,protect your environment,true,p,,,P
+16:42:53.924,13,protect your environment,false,pro,,,PR1degrees
+16:42:54.337,13,protect your environment,false,prot,,,PR1degreesT
+16:42:54.997,13,protect your environment,false,sorted,buried,posted,PR1degreesTE72degrees
+16:42:55.414,13,protect your environment,false,protect,project,perfect,PR1degreesTE72degreesT
+16:42:56.726,13,protect your environment,true,y,,,Y
+16:42:57.144,13,protect your environment,true,yo,,,YO
+16:42:57.927,13,protect your environment,false,tion,toll,tomm,YO196degreesU169degrees
+16:42:57.963,13,protect your environment,false,toward,,,YO196degreesU169degrees
+16:42:58.002,13,protect your environment,false,tourism,turning,,YO196degreesU169degrees
+16:43:00.120,13,protect your environment,true,y,,,Y
+16:43:00.437,13,protect your environment,true,yo,,,YO
+16:43:00.949,13,protect your environment,false,toys,tubs,yard,YOU169degrees
+16:43:00.973,13,protect your environment,false,youth,yield,,YOU169degrees
+16:43:03.905,13,protect your environment,true,y,,,Y
+16:43:04.064,13,protect your environment,true,yo,,,YO
+16:43:04.248,13,protect your environment,true,you,,,YOU
+16:43:05.881,13,protect your environment,true,y,,,Y
+16:43:06.285,13,protect your environment,false,too,you,top,YO235degrees
+16:43:06.576,13,protect your environment,false,tiger,youth,,YO235degreesU179degrees
+16:43:08.266,13,protect your environment,true,y,,,Y
+16:43:08.458,13,protect your environment,true,yo,,,YO
+16:43:08.517,13,protect your environment,true,you,,,YOU
+16:43:08.867,13,protect your environment,true,your,,,YOUR
+16:43:09.725,13,protect your environment,true,e,,,E
+16:43:09.868,13,protect your environment,true,en,,,EN
+16:43:10.329,13,protect your environment,false,enbi,thai,oman,ENC328degrees
+16:43:10.694,13,protect your environment,false,,,,ENC328degreesR
+16:43:11.317,13,protect your environment,false,,,,ENC328degreesRO141degrees
+16:43:12.332,13,protect your environment,false,invision,,,ENC328degreesRO141degreesM
+16:43:12.677,13,protect your environment,false,encounter,enclosure,,ENC328degreesRO141degreesME
+16:43:13.261,13,protect your environment,false,environment,,,ENC328degreesRO141degreesMEN225degrees
+16:43:16.937,14,companies announce a merger,true,c,,,C
+16:43:17.180,14,companies announce a merger,true,co,,,CO
+16:43:17.331,14,companies announce a merger,true,com,,,COM
+16:43:17.564,14,companies announce a merger,true,como,,,COMO
+16:43:17.739,14,companies announce a merger,true,comoa,,,COMOA
+16:43:18.368,14,companies announce a merger,false,chicago,comment,buffalo,COMOAN301degrees
+16:43:18.810,14,companies announce a merger,false,cingular,colombia,,COMOAN301degreesE
+16:43:18.999,14,companies announce a merger,false,companies,colleague,contacted,COMOAN301degreesES
+16:43:19.698,14,companies announce a merger,true,a,,,A
+16:43:20.065,14,companies announce a merger,true,an,,,AN
+16:43:20.775,14,companies announce a merger,false,sexo,seno,asni,ANN314degrees
+16:43:21.301,14,companies announce a merger,false,annex,annie,sanyo,ANN314degreesU
+16:43:21.779,14,companies announce a merger,false,adrian,,,ANN314degreesUN
+16:43:21.950,14,companies announce a merger,false,,,,ANN314degreesUNC
+16:43:22.197,14,companies announce a merger,false,announce,,,ANN314degreesUNCE
+16:43:22.875,14,companies announce a merger,true,a,,,A
+16:43:23.910,14,companies announce a merger,false,mf,mn,mm,M194degrees
+16:43:26.040,14,companies announce a merger,false,mar,mel,met,M194degreesR
+16:43:26.483,14,companies announce a merger,false,mpeg,,,M194degreesRG
+16:43:27.556,14,companies announce a merger,false,merge,nerve,large,M194degreesRGE
+16:43:27.805,14,companies announce a merger,false,merger,member,larger,M194degreesRGER
+16:43:32.124,15,completely sold out of that,false,cg,ch,vg,C335degrees
+16:43:33.719,15,completely sold out of that,false,cum,com,cim,C335degreesM
+16:43:34.224,15,completely sold out of that,false,comm,,,C335degreesMP
+16:43:34.981,15,completely sold out of that,false,,,,C335degreesMPL191degrees
+16:43:35.336,15,completely sold out of that,false,,,,C335degreesMPL191degreesT
+16:43:35.636,15,completely sold out of that,false,complete,,,C335degreesMPL191degreesTE
+16:43:36.604,15,completely sold out of that,false,completely,controller,,C335degreesMPL191degreesTEL194degrees
+16:43:38.099,15,completely sold out of that,true,s,,,S
+16:43:38.417,15,completely sold out of that,true,so,,,SO
+16:43:39.301,15,completely sold out of that,false,doug,self,,SOL179degrees
+16:43:41.876,15,completely sold out of that,true,s,,,S
+16:43:42.153,15,completely sold out of that,true,so,,,SO
+16:43:42.764,15,completely sold out of that,false,aims,erik,doug,SOL181degrees
+16:43:44.553,15,completely sold out of that,true,s,,,S
+16:43:44.696,15,completely sold out of that,true,so,,,SO
+16:43:45.310,15,completely sold out of that,false,doug,,,SOL181degrees
+16:43:47.204,15,completely sold out of that,true,s,,,S
+16:43:47.749,15,completely sold out of that,false,,,,SO93degreesL
+16:43:47.802,15,completely sold out of that,false,silk,film,soil,SO93degreesLD
+16:43:47.857,15,completely sold out of that,false,souls,utils,aimed,SO93degreesLD
+16:43:50.006,15,completely sold out of that,true,s,,,S
+16:43:50.174,15,completely sold out of that,true,so,,,SO
+16:43:50.349,15,completely sold out of that,true,sol,,,SOL
+16:43:50.557,15,completely sold out of that,true,sold,,,SOLD
+16:43:52.434,15,completely sold out of that,false,oe,os,,O182degrees
+16:43:54.791,15,completely sold out of that,false,oe,os,,O179degrees
+16:43:55.349,15,completely sold out of that,false,out,our,org,O179degreesT
+16:43:56.443,15,completely sold out of that,true,o,,,O
+16:43:56.569,15,completely sold out of that,true,of,,,OF
+16:43:56.919,15,completely sold out of that,true,t,,,T
+16:43:57.531,15,completely sold out of that,false,tha,the,,TH178degrees
+16:43:57.949,15,completely sold out of that,false,that,they,andy,TH178degreesT
+16:44:01.220,16,a quarter of a century,true,a,,,A
+16:44:02.547,16,a quarter of a century,false,qt,wr,wt,Q359degrees
+16:44:02.906,16,a quarter of a century,false,,,,Q359degreesA
+16:44:03.256,16,a quarter of a century,false,wear,,,Q359degreesAR
+16:44:03.460,16,a quarter of a century,false,query,wider,,Q359degreesART
+16:44:03.665,16,a quarter of a century,false,waters,square,watere,Q359degreesARTE
+16:44:03.862,16,a quarter of a century,false,quarter,weather,,Q359degreesARTER
+16:44:04.773,16,a quarter of a century,true,o,,,O
+16:44:04.907,16,a quarter of a century,true,of,,,OF
+16:44:05.157,16,a quarter of a century,true,a,,,A
+16:44:05.827,16,a quarter of a century,false,ace,ide,acc,AC261degreesE
+16:44:05.965,16,a quarter of a century,false,acre,alex,,AC261degreesE
+16:44:08.027,16,a quarter of a century,false,ce,ve,de,C252degreesE
+16:44:08.027,16,a quarter of a century,false,ver,dee,cet,C252degreesE
+16:44:08.290,16,a quarter of a century,false,vern,cent,crop,C252degreesEN
+16:44:08.669,16,a quarter of a century,false,chevy,henry,vegas,C252degreesENT
+16:44:08.924,16,a quarter of a century,false,twenty,center,,C252degreesENTU
+16:44:09.010,16,a quarter of a century,false,century,venture,,C252degreesENTUR
+16:44:09.784,16,a quarter of a century,false,february,cemetery,cellular,C252degreesENTURY
+16:44:12.073,16,a quarter of a century,false,ce,ve,de,C257degrees
+16:44:12.396,16,a quarter of a century,false,crm,cem,zen,C257degreesN
+16:44:12.925,16,a quarter of a century,false,cent,celt,,C257degreesNT
+16:44:13.280,16,a quarter of a century,false,metro,,,C257degreesNTU
+16:44:13.810,16,a quarter of a century,false,century,,,C257degreesNTUR354degrees
+16:44:20.765,16,a quarter of a century,true,a,,,A
+16:44:21.577,16,a quarter of a century,false,ce,ve,de,C264degrees
+16:44:22.105,16,a quarter of a century,false,crm,cen,cem,C264degreesN
+16:44:22.621,16,a quarter of a century,false,cent,cnet,,C264degreesNT
+16:44:22.878,16,a quarter of a century,false,metro,cinci,,C264degreesNTU
+16:44:23.112,16,a quarter of a century,false,vendor,vector,sector,C264degreesNTUR
+16:44:23.201,16,a quarter of a century,false,century,,,C264degreesNTURY
+16:44:26.770,17,sent this by registered mail,false,de,se,,S296degrees
+16:44:27.122,17,sent this by registered mail,false,dem,zen,dee,S296degreesNT
+16:44:27.301,17,sent this by registered mail,false,sent,deny,debt,S296degreesNT
+16:44:27.861,17,sent this by registered mail,true,t,,,T
+16:44:27.995,17,sent this by registered mail,true,th,,,TH
+16:44:28.716,17,sent this by registered mail,false,this,,,THI160degrees
+16:44:30.334,17,sent this by registered mail,false,bg,bt,nt,B260degrees
+16:44:32.577,17,sent this by registered mail,false,by,bg,ny,B281degrees
+16:44:33.981,17,sent this by registered mail,true,e,,,E
+16:44:34.327,17,sent this by registered mail,false,wre,,,ER231degrees
+16:44:36.299,17,sent this by registered mail,true,r,,,R
+16:44:37.028,17,sent this by registered mail,false,rev,rec,ref,RE37degrees
+16:44:37.326,17,sent this by registered mail,false,reno,treo,reci,RE37degreesI
+16:44:37.894,17,sent this by registered mail,false,regga,diffs,revid,RE37degreesIS
+16:44:39.486,17,sent this by registered mail,false,resist,robust,repair,RE37degreesIST
+16:44:39.729,17,sent this by registered mail,false,webster,website,enlarge,RE37degreesISTE
+16:44:39.870,17,sent this by registered mail,false,register,webshots,,RE37degreesISTER
+16:44:40.055,17,sent this by registered mail,false,registrar,webmaster,webstever,RE37degreesISTERE
+16:44:40.212,17,sent this by registered mail,false,registered,,,RE37degreesISTERED
+16:44:41.829,17,sent this by registered mail,false,mv,mb,mc,M181degrees
+16:44:42.014,17,sent this by registered mail,false,mai,mao,,M181degreesI
+16:44:42.387,17,sent this by registered mail,false,mail,maui,,M181degreesIL
+16:44:45.279,18,the library is closed today,true,t,,,T
+16:44:45.471,18,the library is closed today,true,th,,,TH
+16:44:45.955,18,the library is closed today,true,the,,,THE
+16:44:47.659,18,the library is closed today,false,li,lu,lt,L216degrees
+16:44:48.191,18,the library is closed today,false,lib,lin,,L216degreesB
+16:44:50.323,18,the library is closed today,true,l,,,L
+16:44:50.516,18,the library is closed today,true,l,,,L
+16:44:50.524,18,the library is closed today,true,li,,,LI
+16:44:51.152,18,the library is closed today,false,leone,larry,,LIB221degrees
+16:44:51.532,18,the library is closed today,false,latina,clones,guinea,LIB221degreesA
+16:44:51.863,18,the library is closed today,false,longest,highest,largest,LIB221degreesAR
+16:44:52.352,18,the library is closed today,false,contrary,monetary,literary,LIB221degreesARY
+16:44:55.294,18,the library is closed today,false,li,ko,lp,L218degrees
+16:44:55.812,18,the library is closed today,false,lib,,,L218degreesB
+16:44:56.874,18,the library is closed today,false,long,lime,,L218degreesBRA
+16:44:57.053,18,the library is closed today,false,kings,lines,karma,L218degreesBRA
+16:44:58.535,18,the library is closed today,false,library,liberty,hungary,L218degreesBRAR356degrees
+16:45:00.187,18,the library is closed today,true,i,,,I
+16:45:00.355,18,the library is closed today,true,is,,,IS
+16:45:01.561,18,the library is closed today,false,ch,cg,vg,C335degrees
+16:45:02.593,18,the library is closed today,false,cho,chi,vip,C335degreesO
+16:45:03.084,18,the library is closed today,false,chose,,,C335degreesOS309degrees
+16:45:03.729,18,the library is closed today,false,coffee,,,C335degreesOS309degreesD
+16:45:05.787,18,the library is closed today,false,ch,cg,vg,C335degrees
+16:45:06.377,18,the library is closed today,false,cho,chi,vip,C335degreesO
+16:45:06.553,18,the library is closed today,false,void,,,C335degreesOS
+16:45:06.908,18,the library is closed today,false,chose,,,C335degreesOSED
+16:45:07.084,18,the library is closed today,false,copied,coding,,C335degreesOSED
+16:45:08.984,18,the library is closed today,true,c,,,C
+16:45:09.118,18,the library is closed today,true,cl,,,CL
+16:45:09.661,18,the library is closed today,false,xbox,cnet,,CLO161degrees
+16:45:10.052,18,the library is closed today,false,blake,scott,click,CLO161degreesE
+16:45:10.219,18,the library is closed today,false,logged,backed,clicks,CLO161degreesED
+16:45:12.653,18,the library is closed today,true,c,,,C
+16:45:12.787,18,the library is closed today,true,cl,,,CL
+16:45:12.970,18,the library is closed today,true,clo,,,CLO
+16:45:13.805,18,the library is closed today,true,clos,,,CLOS
+16:45:14.104,18,the library is closed today,true,close,,,CLOSE
+16:45:14.313,18,the library is closed today,true,closed,,,CLOSED
+16:45:15.718,18,the library is closed today,false,ti,ty,tu,T357degrees
+16:45:15.962,18,the library is closed today,false,rid,tit,tif,T357degreesD
+16:45:16.177,18,the library is closed today,false,tits,todd,rugs,T357degreesDA
+16:45:16.920,18,the library is closed today,false,today,fifty,fatty,T357degreesDAY
+16:45:20.333,19,the power of denial,true,t,,,T
+16:45:20.718,19,the power of denial,false,the,thr,thy,TH187degrees
+16:45:22.600,19,the power of denial,true,p,,,P
+16:45:22.625,19,the power of denial,true,po,,,PO
+16:45:23.109,19,the power of denial,true,pow,,,POW
+16:45:24.010,19,the power of denial,false,fatty,,,POWE353degrees
+16:45:25.236,19,the power of denial,false,op,oh,pj,O164degrees
+16:45:25.718,19,the power of denial,true,d,,,D
+16:45:25.944,19,the power of denial,true,de,,,DE
+16:45:26.195,19,the power of denial,true,den,,,DEN
+16:45:26.803,19,the power of denial,true,deni,,,DENI
+16:45:29.412,19,the power of denial,true,p,,,P
+16:45:29.446,19,the power of denial,true,po,,,PO
+16:45:30.435,19,the power of denial,false,poet,,,POW355degrees
+16:45:31.701,19,the power of denial,false,peter,power,,POW355degreesR
+16:45:33.473,19,the power of denial,true,p,,,P
+16:45:33.531,19,the power of denial,true,po,,,PO
+16:45:33.748,19,the power of denial,true,pow,,,POW
+16:45:34.224,19,the power of denial,true,powe,,,POWE
+16:45:34.332,19,the power of denial,true,power,,,POWER
+16:45:35.048,19,the power of denial,false,,,,O166degrees
+16:45:36.859,19,the power of denial,false,,,,O167degrees
+16:45:40.070,19,the power of denial,false,op,pj,og,O163degrees
+16:45:42.695,19,the power of denial,true,o,,,O
+16:45:42.796,19,the power of denial,true,of,,,OF
+16:45:45.229,19,the power of denial,true,d,,,D
+16:45:45.890,19,the power of denial,false,dev,def,deb,DE31degrees
+16:45:46.371,19,the power of denial,false,demo,dept,debt,DE31degreesI
+16:45:47.256,19,the power of denial,false,debian,,,DE31degreesIA1degrees
+16:45:49.165,19,the power of denial,true,d,,,D
+16:45:49.349,19,the power of denial,true,de,,,DE
+16:45:49.466,19,the power of denial,true,den,,,DEN
+16:45:50.074,19,the power of denial,false,debug,denis,,DENI157degrees
+16:45:50.543,19,the power of denial,false,denial,derick,,DENI157degreesL
+16:45:53.484,20,communicate through email,true,c,,,C
+16:45:53.868,20,communicate through email,true,co,,,CO
+16:45:54.135,20,communicate through email,true,com,,,COM
+16:45:54.662,20,communicate through email,false,congo,chevy,confy,COMM257degrees
+16:45:54.955,20,communicate through email,false,column,commit,volume,COMM257degreesN
+16:45:55.192,20,communicate through email,false,compile,,,COMM257degreesNI
+16:45:55.549,20,communicate through email,false,,,,COMM257degreesNIC
+16:45:56.077,20,communicate through email,false,chemicals,compounds,,COMM257degreesNICA
+16:45:56.587,20,communicate through email,false,communicate,,,COMM257degreesNICAT184degrees
+16:45:57.978,20,communicate through email,true,t,,,T
+16:45:58.196,20,communicate through email,true,th,,,TH
+16:45:58.654,20,communicate through email,true,thr,,,THR
+16:45:59.171,20,communicate through email,true,thro,,,THRO
+16:46:00.040,20,communicate through email,true,throu,,,THROU
+16:46:00.407,20,communicate through email,true,throug,,,THROUG
+16:46:00.623,20,communicate through email,true,through,,,THROUGH
+16:46:02.011,20,communicate through email,false,eg,eh,ev,E25degrees
+16:46:02.538,20,communicate through email,false,dna,fda,rna,E25degreesA
+16:46:02.681,20,communicate through email,false,ebay,anti,echo,E25degreesAI
+16:46:03.213,20,communicate through email,false,email,endif,awful,E25degreesAIL
+16:46:06.083,21,the capital of our nation,true,t,,,T
+16:46:06.209,21,the capital of our nation,true,th,,,TH
+16:46:06.309,21,the capital of our nation,true,the,,,THE
+16:46:06.893,21,the capital of our nation,true,c,,,C
+16:46:07.736,21,the capital of our nation,false,cab,cad,,CA346degrees
+16:46:08.511,21,the capital of our nation,false,,,,CA346degreesI
+16:46:08.613,21,the capital of our nation,false,cddie,vsnet,,CA346degreesIT
+16:46:09.533,21,the capital of our nation,false,capital,carries,,CA346degreesITA358degrees
+16:46:10.869,21,the capital of our nation,true,o,,,O
+16:46:11.019,21,the capital of our nation,true,of,,,OF
+16:46:11.694,21,the capital of our nation,true,o,,,O
+16:46:11.745,21,the capital of our nation,true,o,,,O
+16:46:11.778,21,the capital of our nation,true,ou,,,OU
+16:46:11.953,21,the capital of our nation,true,our,,,OUR
+16:46:12.813,21,the capital of our nation,false,mc,nb,nc,N190degrees
+16:46:13.121,21,the capital of our nation,false,nat,msg,nft,N190degreesT
+16:46:13.591,21,the capital of our nation,false,nato,ncaa,thai,N190degreesTI
+16:46:13.731,21,the capital of our nation,false,tokyo,namto,mario,N190degreesTIO
+16:46:15.023,21,the capital of our nation,false,nations,,,N190degreesTION184degrees
+16:46:17.306,21,the capital of our nation,true,n,,,N
+16:46:17.606,21,the capital of our nation,true,na,,,NA
+16:46:17.949,21,the capital of our nation,true,nat,,,NAT
+16:46:18.582,21,the capital of our nation,true,nati,,,NATI
+16:46:19.309,21,the capital of our nation,false,nation,marion,,NATIO137degrees
+16:46:22.608,22,frequently asked questions,true,f,,,F
+16:46:22.784,22,frequently asked questions,true,fr,,,FR
+16:46:22.993,22,frequently asked questions,true,fre,,,FRE
+16:46:23.716,22,frequently asked questions,false,fewer,greek,green,FREQ2degrees
+16:46:24.231,22,frequently asked questions,false,greene,herein,freely,FREQ2degreesE
+16:46:24.409,22,frequently asked questions,false,freedom,between,,FREQ2degreesEN
+16:46:24.587,22,frequently asked questions,false,frequent,freeware,,FREQ2degreesENT
+16:46:25.116,22,frequently asked questions,false,frequently,,,FREQ2degreesENTL194degrees
+16:46:26.177,22,frequently asked questions,true,a,,,A
+16:46:26.387,22,frequently asked questions,true,as,,,AS
+16:46:26.930,22,frequently asked questions,false,sake,able,salt,ASK196degrees
+16:46:27.318,22,frequently asked questions,false,asked,aimed,armed,ASK196degreesD
+16:46:28.951,22,frequently asked questions,false,skenda,skened,,ASK196degreesDQU
+16:46:29.129,22,frequently asked questions,false,silence,,,ASK196degreesDQU
+16:46:29.129,22,frequently asked questions,false,shanghai,slovakia,,ASK196degreesDQU
+16:46:30.730,22,frequently asked questions,true,a,,,A
+16:46:30.948,22,frequently asked questions,true,as,,,AS
+16:46:31.548,22,frequently asked questions,false,sams,asks,aims,ASK194degrees
+16:46:31.780,22,frequently asked questions,false,asked,added,salad,ASK194degreesD
+16:46:33.173,22,frequently asked questions,true,q,,,Q
+16:46:33.358,22,frequently asked questions,true,q,,,Q
+16:46:33.374,22,frequently asked questions,true,qu,,,QU
+16:46:33.574,22,frequently asked questions,true,que,,,QUE
+16:46:33.774,22,frequently asked questions,true,ques,,,QUES
+16:46:34.199,22,frequently asked questions,true,quest,,,QUEST
+16:46:34.900,22,frequently asked questions,true,questi,,,QUESTI
+16:46:35.452,22,frequently asked questions,false,exclusion,thesaurus,webmaster,QUESTIO129degreesK140degrees
+16:46:35.569,22,frequently asked questions,false,exploration,,,QUESTIO129degreesK140degrees
+16:46:36.343,22,frequently asked questions,false,,,,QUESTIO129degreesK140degreesS
+16:46:37.659,22,frequently asked questions,true,q,,,Q
+16:46:38.018,22,frequently asked questions,true,qu,,,QU
+16:46:38.177,22,frequently asked questions,true,que,,,QUE
+16:46:38.410,22,frequently asked questions,true,ques,,,QUES
+16:46:39.651,22,frequently asked questions,false,questo,,,QUEST4degrees
+16:46:39.977,22,frequently asked questions,false,quality,quantum,,QUEST4degreesI
+16:46:40.263,22,frequently asked questions,false,question,warranty,,QUEST4degreesIN
+16:46:40.794,22,frequently asked questions,false,questions,,,QUEST4degreesINS
+16:46:43.945,23,stability of the nation,true,s,,,S
+16:46:44.096,23,stability of the nation,true,st,,,ST
+16:46:44.714,23,stability of the nation,false,stan,stud,,STA18degrees
+16:46:45.598,23,stability of the nation,false,tracy,staff,strap,STA18degreesI
+16:46:45.993,23,stability of the nation,false,stable,detail,attack,STA18degreesIL
+16:46:46.339,23,stability of the nation,false,stanford,,,STA18degreesILI177degrees
+16:46:46.677,23,stability of the nation,false,stability,,,STA18degreesILI177degreesY
+16:46:48.233,23,stability of the nation,true,o,,,O
+16:46:48.407,23,stability of the nation,true,of,,,OF
+16:46:49.750,23,stability of the nation,false,tm,tn,th,T48degrees
+16:46:50.280,23,stability of the nation,false,thee,they,thet,T48degreesH197degrees
+16:46:51.983,23,stability of the nation,true,t,,,T
+16:46:52.469,23,stability of the nation,false,tha,the,,TH189degrees
+16:46:54.885,23,stability of the nation,true,t,,,T
+16:46:55.003,23,stability of the nation,true,th,,,TH
+16:46:55.128,23,stability of the nation,true,the,,,THE
+16:46:56.077,23,stability of the nation,true,n,,,N
+16:46:56.270,23,stability of the nation,true,na,,,NA
+16:46:57.782,23,stability of the nation,false,mali,midi,,NAT0degrees
+16:46:58.312,23,stability of the nation,false,nasty,fatty,macro,NAT0degreesI
+16:46:58.668,23,stability of the nation,false,marion,madrid,nation,NAT0degreesIN
+16:47:00.113,23,stability of the nation,true,n,,,N
+16:47:00.247,23,stability of the nation,true,na,,,NA
+16:47:00.956,23,stability of the nation,false,maui,,,NAT357degrees
+16:47:01.856,23,stability of the nation,false,macro,malto,mario,NAT357degreesO
+16:47:02.041,23,stability of the nation,false,marion,nation,malton,NAT357degreesON
+16:47:03.698,23,stability of the nation,true,n,,,N
+16:47:03.866,23,stability of the nation,true,na,,,NA
+16:47:04.149,23,stability of the nation,true,nat,,,NAT
+16:47:05.159,23,stability of the nation,true,nati,,,NATI
+16:47:05.661,23,stability of the nation,false,marion,nation,,NATIO140degrees
+16:47:07.367,23,stability of the nation,true,n,,,N
+16:47:07.552,23,stability of the nation,true,na,,,NA
+16:47:07.943,23,stability of the nation,true,nat,,,NAT
+16:47:08.360,23,stability of the nation,true,nati,,,NATI
+16:47:09.761,23,stability of the nation,true,natin,,,NATIN
+16:47:12.786,23,stability of the nation,true,n,,,N
+16:47:12.929,23,stability of the nation,true,na,,,NA
+16:47:13.288,23,stability of the nation,true,nat,,,NAT
+16:47:13.471,23,stability of the nation,true,nati,,,NATI
+16:47:13.654,23,stability of the nation,false,nation,marion,,NATIO123degrees
+16:47:15.089,23,stability of the nation,false,bedroom,maximum,bahrain,NATIO123degreesN
+16:47:18.190,23,stability of the nation,true,n,,,N
+16:47:18.983,23,stability of the nation,true,na,,,NA
+16:47:19.491,23,stability of the nation,true,nat,,,NAT
+16:47:20.217,23,stability of the nation,true,nati,,,NATI
+16:47:20.409,23,stability of the nation,true,natio,,,NATIO
+16:47:20.884,23,stability of the nation,true,nation,,,NATION
+16:47:23.409,24,the second largest country,true,t,,,T
+16:47:23.543,24,the second largest country,true,th,,,TH
+16:47:23.660,24,the second largest country,true,the,,,THE
+16:47:24.953,24,the second largest country,true,s,,,S
+16:47:25.361,24,the second largest country,true,se,,,SE
+16:47:25.828,24,the second largest country,false,deer,deaf,exec,SEE77degrees
+16:47:28.421,24,the second largest country,true,s,,,S
+16:47:29.267,24,the second largest country,false,def,sex,dec,SE73degrees
+16:47:30.251,24,the second largest country,false,devon,devil,dover,SE73degreesO131degrees
+16:47:30.895,24,the second largest country,false,second,defend,,SE73degreesO131degreesD
+16:47:32.382,24,the second largest country,false,lf,lg,ls,L180degrees
+16:47:32.764,24,the second largest country,false,kde,lat,,L180degreesR
+16:47:33.509,24,the second largest country,false,large,larry,lance,L180degreesRG195degrees
+16:47:33.902,24,the second largest country,false,lenses,logged,,L180degreesRG195degreesS
+16:47:34.888,24,the second largest country,false,largest,largely,laneous,L180degreesRG195degreesST
+16:47:36.517,24,the second largest country,true,c,,,C
+16:47:36.884,24,the second largest country,true,co,,,CO
+16:47:37.161,24,the second largest country,false,corp,coin,,COU99degrees
+16:47:37.337,24,the second largest country,false,column,cinema,medium,COU99degreesJ96degrees
+16:47:39.051,24,the second largest country,true,x,,,X
+16:47:40.585,24,the second largest country,true,c,,,C
+16:47:40.928,24,the second largest country,true,co,,,CO
+16:47:41.611,24,the second largest country,false,coin,corn,corp,COU104degrees
+16:47:42.316,24,the second largest country,false,count,court,print,COU104degreesT
+16:47:43.771,24,the second largest country,true,c,,,C
+16:47:44.030,24,the second largest country,true,co,,,CO
+16:47:44.587,24,the second largest country,false,coin,,,COU102degrees
+16:47:45.054,24,the second largest country,false,count,const,court,COU102degreesT
+16:47:45.232,24,the second largest country,false,corner,cooler,cooper,COU102degreesTRY
+16:47:45.408,24,the second largest country,false,country,counter,liberty,COU102degreesTRY
+16:47:49.383,25,do not drink the water,false,fg,ff,dh,D352degrees
+16:47:50.801,25,do not drink the water,false,ni,nj,no,N315degrees
+16:47:51.209,25,do not drink the water,false,not,nut,nor,N315degreesT
+16:47:54.037,25,do not drink the water,false,fy,ft,ff,D345degrees
+16:47:55.728,25,do not drink the water,false,fu,fi,fy,D345degrees
+16:47:57.222,25,do not drink the water,true,d,,,D
+16:47:57.379,25,do not drink the water,true,do,,,DO
+16:47:58.189,25,do not drink the water,false,np,nj,nl,N318degrees
+16:47:58.722,25,do not drink the water,false,not,nut,nor,N318degreesT
+16:48:00.105,25,do not drink the water,true,d,,,D
+16:48:00.298,25,do not drink the water,true,dr,,,DR
+16:48:00.704,25,do not drink the water,false,from,drum,fort,DRI120degrees
+16:48:01.074,25,do not drink the water,false,drunk,drink,drill,DRI120degreesK
+16:48:04.583,25,do not drink the water,true,t,,,T
+16:48:05.107,25,do not drink the water,false,the,thy,,TH200degrees
+16:48:06.175,25,do not drink the water,true,w,,,W
+16:48:06.418,25,do not drink the water,true,wa,,,WA
+16:48:06.777,25,do not drink the water,true,wat,,,WAT
+16:48:07.002,25,do not drink the water,true,wate,,,WATE
+16:48:07.101,25,do not drink the water,true,water,,,WATER
+16:48:10.078,26,want to join us for lunch,false,,,,W106degrees
+16:48:10.412,26,want to join us for lunch,false,wan,ham,wal,W106degreesN
+16:48:10.572,26,want to join us for lunch,false,want,wang,cant,W106degreesNT
+16:48:11.586,26,want to join us for lunch,true,t,,,T
+16:48:11.821,26,want to join us for lunch,true,to,,,TO
+16:48:12.548,26,want to join us for lunch,true,toj,,,TOJ
+16:48:12.814,26,want to join us for lunch,true,tojo,,,TOJO
+16:48:12.888,26,want to join us for lunch,true,tojoi,,,TOJOI
+16:48:13.155,26,want to join us for lunch,true,tojoin,,,TOJOIN
+16:48:15.130,26,want to join us for lunch,true,t,,,T
+16:48:15.331,26,want to join us for lunch,true,to,,,TO
+16:48:15.965,26,want to join us for lunch,true,toj,,,TOJ
+16:48:16.190,26,want to join us for lunch,true,tojo,,,TOJO
+16:48:16.640,26,want to join us for lunch,true,tojon,,,TOJON
+16:48:18.557,26,want to join us for lunch,true,t,,,T
+16:48:19.091,26,want to join us for lunch,true,to,,,TO
+16:48:20.132,26,want to join us for lunch,true,j,,,J
+16:48:20.359,26,want to join us for lunch,true,jo,,,JO
+16:48:20.842,26,want to join us for lunch,false,zoom,moon,john,JOI128degrees
+16:48:22.826,26,want to join us for lunch,true,j,,,J
+16:48:23.143,26,want to join us for lunch,true,jo,,,JO
+16:48:23.584,26,want to join us for lunch,false,john,boom,moon,JOI123degrees
+16:48:25.677,26,want to join us for lunch,true,j,,,J
+16:48:25.912,26,want to join us for lunch,true,jo,,,JO
+16:48:26.004,26,want to join us for lunch,true,joi,,,JOI
+16:48:26.229,26,want to join us for lunch,true,join,,,JOIN
+16:48:27.170,26,want to join us for lunch,true,u,,,U
+16:48:27.371,26,want to join us for lunch,true,us,,,US
+16:48:28.044,26,want to join us for lunch,false,isbn,isle,undo,USF344degrees
+16:48:28.378,26,want to join us for lunch,false,issue,usdor,,USF344degreesR
+16:48:30.147,26,want to join us for lunch,true,u,,,U
+16:48:30.314,26,want to join us for lunch,true,us,,,US
+16:48:31.640,26,want to join us for lunch,false,fu,fi,fy,F345degrees
+16:48:32.169,26,want to join us for lunch,false,fur,for,cir,F345degreesR
+16:48:34.905,26,want to join us for lunch,false,li,lu,lt,L204degrees
+16:48:35.994,26,want to join us for lunch,false,liu,lin,,L204degreesN
+16:48:37.235,26,want to join us for lunch,false,lunch,punch,leone,L204degreesNC336degrees
+16:48:40.828,27,love means many things,false,li,lp,ko,L245degreesV
+16:48:41.003,27,love means many things,false,lib,loc,,L245degreesV
+16:48:41.357,27,love means many things,false,love,like,live,L245degreesVE
+16:48:42.818,27,love means many things,false,mw,mf,mh,M202degrees
+16:48:43.265,27,love means many things,false,mma,mas,mba,M202degreesA
+16:48:43.595,27,love means many things,false,mesm,mean,mesa,M202degreesAN
+16:48:44.392,27,love means many things,false,means,meals,manga,M202degreesANS
+16:48:45.914,27,love means many things,false,mb,mv,mc,M193degrees
+16:48:46.446,27,love means many things,false,nam,man,mam,M193degreesN
+16:48:46.740,27,love means many things,false,many,gang,name,M193degreesNY
+16:48:47.940,27,love means many things,true,t,,,T
+16:48:48.166,27,love means many things,true,th,,,TH
+16:48:48.719,27,love means many things,false,thin,thou,thom,THI120degrees
+16:48:49.077,27,love means many things,false,thing,thumb,thats,THI120degreesG
+16:48:49.785,27,love means many things,false,things,thinks,thumbs,THI120degreesGS
+16:48:54.697,28,zero in on the facts,false,,,,Z322degrees
+16:48:55.127,28,zero in on the facts,false,ddr,xax,xxx,Z322degreesR
+16:48:55.205,28,zero in on the facts,false,zero,euro,,Z322degreesRO
+16:48:56.394,28,zero in on the facts,true,i,,,I
+16:48:56.687,28,zero in on the facts,true,in,,,IN
+16:48:58.719,28,zero in on the facts,false,lm,ln,kb,O138degrees
+16:49:00.530,28,zero in on the facts,true,o,,,O
+16:49:00.790,28,zero in on the facts,true,on,,,ON
+16:49:01.131,28,zero in on the facts,true,t,,,T
+16:49:01.565,28,zero in on the facts,false,the,,,TH196degrees
+16:49:02.757,28,zero in on the facts,true,f,,,F
+16:49:02.949,28,zero in on the facts,true,fa,,,FA
+16:49:03.452,28,zero in on the facts,false,fact,fast,,FAC302degrees
+16:49:03.748,28,zero in on the facts,false,facts,gifts,,FAC302degreesS
+16:49:06.733,29,is she done yet,true,i,,,I
+16:49:06.935,29,is she done yet,true,is,,,IS
+16:49:07.818,29,is she done yet,true,s,,,S
+16:49:08.251,29,is she done yet,false,,,,SH201degrees
+16:49:10.579,29,is she done yet,false,jr,hr,jj,H194degrees
+16:49:12.612,29,is she done yet,true,s,,,S
+16:49:12.978,29,is she done yet,false,,,,SH195degrees
+16:49:15.797,29,is she done yet,true,s,,,S
+16:49:16.479,29,is she done yet,false,ard,,,SH200degrees
+16:49:18.082,29,is she done yet,true,s,,,S
+16:49:18.224,29,is she done yet,true,sh,,,SH
+16:49:18.366,29,is she done yet,true,she,,,SHE
+16:49:20.219,29,is she done yet,false,fy,ff,ft,D343degrees
+16:49:20.577,29,is she done yet,false,dem,dim,den,D343degreesNE
+16:49:20.772,29,is she done yet,false,funk,diff,dude,D343degreesNE
+16:49:23.282,29,is she done yet,false,fy,ff,ft,D341degrees
+16:49:23.488,29,is she done yet,false,dem,dim,den,D341degreesN
+16:49:23.775,29,is she done yet,false,funk,duke,dude,D341degreesNE
+16:49:25.661,29,is she done yet,true,d,,,D
+16:49:25.921,29,is she done yet,true,do,,,DO
+16:49:26.505,29,is she done yet,false,doug,bind,,DON211degrees
+16:49:28.722,29,is she done yet,true,d,,,D
+16:49:28.897,29,is she done yet,true,do,,,DO
+16:49:29.390,29,is she done yet,true,don,,,DON
+16:49:29.591,29,is she done yet,true,done,,,DONE
+16:49:30.755,29,is she done yet,true,y,,,Y
+16:49:30.823,29,is she done yet,true,ye,,,YE
+16:49:30.965,29,is she done yet,true,yet,,,YET

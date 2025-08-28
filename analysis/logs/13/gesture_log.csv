@@ -1,0 +1,560 @@
+Time,Trial Num,Target,Type,StartX,StartY,EndX,EndY,ProjectedX,ProjectedY,StartKey,ProjectedKey
+14:37:52.787,0,protect your environment,tap,744.68,32.17,,,,,P,
+14:37:53.178,0,protect your environment,tap,269.93,34.27,,,,,R,
+14:37:53.294,0,protect your environment,tap,673.96,28.67,,,,,O,
+14:37:54.321,0,protect your environment,swipe,357.46,40.57,185.91,27.26,118.18,22.01,T,W
+14:37:54.905,0,protect your environment,tap,255.23,198.82,,,,,C,
+14:37:55.204,0,protect your environment,tap,349.76,44.77,,,,,T,
+14:37:58.081,0,protect your environment,tap,428.18,27.26,,,,,Y,
+14:37:58.673,0,protect your environment,swipe,670.46,32.17,508.71,34.27,430.48,35.28,O,Y
+14:37:59.231,0,protect your environment,tap,275.54,27.26,,,,,R,
+14:38:02.125,0,protect your environment,tap,190.81,30.77,,,,,E,
+14:38:02.900,0,protect your environment,tap,508.01,194.62,,,,,N,
+14:38:04.292,0,protect your environment,swipe,328.75,199.52,589.93,35.67,532.06,71.98,V,U
+14:38:04.784,0,protect your environment,tap,269.93,31.47,,,,,R,
+14:38:05.635,0,protect your environment,swipe,673.96,20.96,506.61,196.72,508.46,194.77,O,N
+14:38:06.194,0,protect your environment,tap,576.63,190.42,,,,,M,
+14:38:06.544,0,protect your environment,tap,198.51,33.57,,,,,E,
+14:38:07.411,0,protect your environment,swipe,515.01,203.02,365.86,37.77,354.21,24.85,N,T
+14:38:11.730,1,do not drink the water,tap,202.71,109.19,,,,,D,
+14:38:11.963,1,do not drink the water,tap,671.86,27.26,,,,,O,
+14:38:12.605,1,do not drink the water,tap,502.41,193.92,,,,,N,
+14:38:12.972,1,do not drink the water,tap,671.86,27.26,,,,,O,
+14:38:13.147,1,do not drink the water,tap,358.86,18.16,,,,,T,
+14:38:14.606,1,do not drink the water,swipe,189.41,123.89,283.24,26.56,308.85,0.00,D,R
+14:38:15.182,1,do not drink the water,tap,591.33,29.37,,,,,I,
+14:38:15.865,1,do not drink the water,swipe,498.21,197.42,599.74,111.29,681.23,42.17,N,O
+14:38:17.475,1,do not drink the water,tap,348.36,36.37,,,,,T,
+14:38:17.633,1,do not drink the water,tap,455.49,121.09,,,,,H,
+14:38:17.892,1,do not drink the water,tap,199.91,32.17,,,,,E,
+14:38:19.084,1,do not drink the water,swipe,117.99,34.27,44.46,107.09,0.00,151.13,W,
+14:38:19.993,1,do not drink the water,swipe,352.56,45.47,185.91,46.17,112.56,46.48,T,W
+14:38:20.326,1,do not drink the water,tap,276.24,35.67,,,,,R,
+14:38:23.928,2,tickets are very expensive,tap,354.66,37.07,,,,,T,
+14:38:24.170,2,tickets are very expensive,tap,598.34,32.17,,,,,I,
+14:38:24.913,2,tickets are very expensive,tap,256.63,204.42,,,,,C,
+14:38:25.829,2,tickets are very expensive,tap,603.24,110.59,,,,,K,
+14:38:26.446,2,tickets are very expensive,swipe,192.21,34.27,350.46,30.07,432.13,27.90,E,Y
+14:38:26.905,2,tickets are very expensive,tap,130.59,110.59,,,,,S,
+14:38:28.239,2,tickets are very expensive,tap,33.26,116.89,,,,,A,
+14:38:28.989,2,tickets are very expensive,swipe,267.13,34.97,190.11,32.17,27.29,26.25,R,Q
+14:38:30.232,2,tickets are very expensive,tap,337.86,212.82,,,,,V,
+14:38:31.040,2,tickets are very expensive,swipe,183.11,32.87,269.23,41.27,421.97,56.17,E,Y
+14:38:31.391,2,tickets are very expensive,tap,430.98,28.67,,,,,Y,
+14:38:33.909,2,tickets are very expensive,swipe,190.81,37.07,172.60,191.82,166.94,240.00,E,
+14:38:34.443,2,tickets are very expensive,tap,753.79,27.26,,,,,P,
+14:38:34.960,2,tickets are very expensive,tap,195.01,33.57,,,,,E,
+14:38:35.260,2,tickets are very expensive,tap,497.51,194.62,,,,,N,
+14:38:35.860,2,tickets are very expensive,tap,124.29,110.59,,,,,S,
+14:38:36.110,2,tickets are very expensive,tap,578.03,37.77,,,,,I,
+14:38:36.802,2,tickets are very expensive,swipe,326.65,211.42,209.72,35.67,193.71,11.61,V,E
+14:38:40.346,3,sad to hear that news,tap,140.39,112.69,,,,,S,
+14:38:40.563,3,sad to hear that news,tap,49.37,119.69,,,,,A,
+14:38:40.821,3,sad to hear that news,tap,219.52,115.49,,,,,D,
+14:38:41.838,3,sad to hear that news,tap,356.76,42.67,,,,,T,
+14:38:42.005,3,sad to hear that news,tap,665.56,34.97,,,,,O,
+14:38:42.639,3,sad to hear that news,tap,452.69,128.10,,,,,H,
+14:38:43.189,3,sad to hear that news,tap,202.01,40.57,,,,,E,
+14:38:44.414,3,sad to hear that news,swipe,41.66,123.19,279.74,45.47,269.81,48.71,A,R
+14:38:46.207,3,sad to hear that news,swipe,335.75,27.96,447.79,111.99,527.75,171.96,T,N
+14:38:47.475,3,sad to hear that news,swipe,29.06,124.60,349.06,38.47,260.81,62.22,A,R
+14:38:49.676,3,sad to hear that news,tap,507.31,201.62,,,,,N,
+14:38:50.035,3,sad to hear that news,tap,195.01,45.47,,,,,E,
+14:38:51.118,3,sad to hear that news,swipe,100.48,28.67,143.89,131.60,189.62,240.00,W, 
+14:38:53.161,3,sad to hear that news,tap,502.41,201.62,,,,,N,
+14:38:53.522,3,sad to hear that news,tap,194.31,46.17,,,,,E,
+14:38:54.012,3,sad to hear that news,swipe,105.38,34.27,137.59,130.90,173.96,240.00,W,
+14:38:57.113,3,sad to hear that news,tap,503.11,202.32,,,,,N,
+14:38:57.622,3,sad to hear that news,swipe,211.12,46.17,115.89,36.37,0.00,24.44,E,Q
+14:38:57.906,3,sad to hear that news,tap,141.79,132.30,,,,,S,
+14:39:01.933,4,sent this by registered mail,swipe,136.19,129.50,213.92,19.56,227.75,0.00,S,E
+14:39:02.475,4,sent this by registered mail,tap,506.61,200.92,,,,,N,
+14:39:02.667,4,sent this by registered mail,tap,352.56,44.77,,,,,T,
+14:39:04.509,4,sent this by registered mail,swipe,357.46,28.67,444.99,119.69,523.81,201.67,T,N
+14:39:05.085,4,sent this by registered mail,tap,577.33,38.47,,,,,I,
+14:39:05.310,4,sent this by registered mail,tap,124.29,109.19,,,,,S,
+14:39:08.178,4,sent this by registered mail,tap,352.56,44.07,,,,,T,
+14:39:08.645,4,sent this by registered mail,swipe,463.19,127.40,585.73,37.07,636.02,0.00,H,I
+14:39:09.029,4,sent this by registered mail,tap,126.39,115.49,,,,,S,
+14:39:11.513,4,sent this by registered mail,tap,426.78,207.92,,,,,B,
+14:39:11.731,4,sent this by registered mail,tap,430.28,36.37,,,,,Y,
+14:39:13.114,4,sent this by registered mail,swipe,276.94,43.37,206.91,36.37,38.13,19.49,R,Q
+14:39:13.539,4,sent this by registered mail,tap,374.27,114.79,,,,,G,
+14:39:13.948,4,sent this by registered mail,tap,579.43,42.67,,,,,I,
+14:39:14.265,4,sent this by registered mail,tap,128.49,115.49,,,,,S,
+14:39:15.224,4,sent this by registered mail,swipe,352.56,38.47,190.81,34.27,112.64,32.24,T,W
+14:39:15.691,4,sent this by registered mail,tap,280.44,41.97,,,,,R,
+14:39:17.825,4,sent this by registered mail,swipe,187.31,29.37,217.42,109.89,266.07,240.00,E, 
+14:39:20.368,4,sent this by registered mail,tap,582.23,204.42,,,,,M,
+14:39:20.743,4,sent this by registered mail,tap,47.96,122.49,,,,,A,
+14:39:21.302,4,sent this by registered mail,swipe,586.43,37.77,680.96,105.69,781.34,177.81,I,
+14:39:24.704,5,zero in on the facts,tap,93.48,205.12,,,,,Z,
+14:39:25.496,5,zero in on the facts,tap,187.31,35.67,,,,,E,
+14:39:26.055,5,zero in on the facts,tap,285.34,39.17,,,,,R,
+14:39:26.221,5,zero in on the facts,tap,664.86,32.87,,,,,O,
+14:39:27.647,5,zero in on the facts,swipe,572.43,31.47,508.01,191.12,488.28,240.00,I, 
+14:39:30.624,5,zero in on the facts,swipe,583.63,23.76,486.30,194.62,464.84,232.30,I,N
+14:39:32.934,5,zero in on the facts,tap,577.33,34.97,,,,,I,
+14:39:33.142,5,zero in on the facts,tap,487.70,199.52,,,,,N,
+14:39:34.226,5,zero in on the facts,tap,653.65,34.97,,,,,O,
+14:39:34.401,5,zero in on the facts,tap,491.20,196.02,,,,,N,
+14:39:35.435,5,zero in on the facts,tap,345.56,37.77,,,,,T,
+14:39:35.560,5,zero in on the facts,tap,444.99,109.19,,,,,H,
+14:39:35.810,5,zero in on the facts,tap,192.91,27.26,,,,,E,
+14:39:36.794,5,zero in on the facts,tap,285.34,118.29,,,,,F,
+14:39:37.211,5,zero in on the facts,tap,38.16,120.39,,,,,A,
+14:39:37.953,5,zero in on the facts,swipe,251.73,214.22,342.06,20.26,351.49,0.00,C,T
+14:39:38.362,5,zero in on the facts,tap,130.59,110.59,,,,,S,
+14:39:40.971,6,a quarter of a century,tap,49.37,111.99,,,,,A,
+14:39:41.780,6,a quarter of a century,tap,43.06,41.97,,,,,Q,
+14:39:42.230,6,a quarter of a century,tap,510.11,39.17,,,,,U,
+14:39:42.682,6,a quarter of a century,tap,45.16,127.40,,,,,A,
+14:39:43.289,6,a quarter of a century,tap,258.73,32.17,,,,,R,
+14:39:44.198,6,a quarter of a century,swipe,342.06,30.07,207.61,21.66,102.52,15.09,T,W
+14:39:45.307,6,a quarter of a century,tap,265.73,42.67,,,,,R,
+14:39:46.925,6,a quarter of a century,tap,663.46,41.97,,,,,O,
+14:39:47.141,6,a quarter of a century,tap,293.74,107.09,,,,,F,
+14:39:47.484,6,a quarter of a century,tap,45.16,136.50,,,,,A,
+14:39:48.551,6,a quarter of a century,tap,248.23,201.62,,,,,C,
+14:39:49.051,6,a quarter of a century,tap,190.11,32.17,,,,,E,
+14:39:49.259,6,a quarter of a century,tap,490.50,191.82,,,,,N,
+14:39:49.702,6,a quarter of a century,tap,349.06,32.87,,,,,T,
+14:39:49.877,6,a quarter of a century,tap,505.91,27.96,,,,,U,
+14:39:50.602,6,a quarter of a century,swipe,276.24,34.97,444.99,38.47,516.18,39.95,R,U
+14:39:53.970,7,please follow the guidelines,swipe,762.19,23.76,676.76,109.19,592.48,193.47,P,M
+14:39:54.362,7,please follow the guidelines,tap,186.61,20.26,,,,,E,
+14:39:54.821,7,please follow the guidelines,tap,45.16,111.29,,,,,A,
+14:39:55.329,7,please follow the guidelines,swipe,144.60,117.59,206.21,38.47,236.17,0.00,S,E
+14:39:56.747,7,please follow the guidelines,tap,277.64,118.99,,,,,F,
+14:39:56.955,7,please follow the guidelines,tap,666.26,39.17,,,,,O,
+14:39:57.931,7,please follow the guidelines,tap,697.07,115.49,,,,,L,
+14:39:58.064,7,please follow the guidelines,tap,695.67,117.59,,,,,L,
+14:39:59.448,7,please follow the guidelines,tap,675.36,33.57,,,,,O,
+14:39:59.607,7,please follow the guidelines,tap,127.09,37.07,,,,,W,
+14:40:01.033,7,please follow the guidelines,swipe,346.96,40.57,439.39,109.89,538.96,184.57,T,N
+14:40:01.358,7,please follow the guidelines,tap,200.61,21.66,,,,,E,
+14:40:03.426,7,please follow the guidelines,tap,381.27,115.49,,,,,G,
+14:40:03.676,7,please follow the guidelines,tap,507.31,39.17,,,,,U,
+14:40:04.726,7,please follow the guidelines,tap,580.13,23.76,,,,,I,
+14:40:05.685,7,please follow the guidelines,swipe,220.92,121.79,184.51,25.86,174.69,0.00,D,E
+14:40:06.360,7,please follow the guidelines,swipe,687.26,114.09,578.03,18.86,556.39,0.00,L,U
+14:40:06.794,7,please follow the guidelines,tap,505.21,190.42,,,,,N,
+14:40:07.386,7,please follow the guidelines,tap,191.51,34.97,,,,,E,
+14:40:07.936,7,please follow the guidelines,tap,144.60,120.39,,,,,S,
+14:40:11.447,8,stability of the nation,tap,112.39,116.89,,,,,S,
+14:40:11.747,8,stability of the nation,tap,356.76,37.77,,,,,T,
+14:40:12.406,8,stability of the nation,tap,40.26,117.59,,,,,A,
+14:40:14.065,8,stability of the nation,swipe,417.68,199.52,580.83,30.77,584.50,26.97,B,I
+14:40:14.857,8,stability of the nation,swipe,687.26,116.19,579.43,23.06,552.73,0.00,L,U
+14:40:15.674,8,stability of the nation,swipe,339.96,32.17,446.39,39.17,579.44,47.92,T,I
+14:40:17.275,8,stability of the nation,tap,645.95,30.07,,,,,O,
+14:40:17.492,8,stability of the nation,tap,300.04,115.49,,,,,F,
+14:40:18.617,8,stability of the nation,swipe,358.16,34.27,447.09,116.89,533.98,197.63,T,N
+14:40:19.059,8,stability of the nation,tap,176.11,34.27,,,,,E,
+14:40:20.552,8,stability of the nation,tap,501.71,198.82,,,,,N,
+14:40:20.777,8,stability of the nation,tap,40.26,119.69,,,,,A,
+14:40:21.302,8,stability of the nation,tap,351.16,34.97,,,,,T,
+14:40:22.086,8,stability of the nation,swipe,585.03,20.26,662.06,25.16,800.00,33.94,I,backspace
+14:40:22.578,8,stability of the nation,tap,508.71,205.82,,,,,N,
+14:40:26.822,9,the stock exchange dipped,tap,339.96,27.26,,,,,T,
+14:40:27.706,9,the stock exchange dipped,tap,453.39,120.39,,,,,H,
+14:40:27.847,9,the stock exchange dipped,tap,190.11,38.47,,,,,E,
+14:40:29.157,9,the stock exchange dipped,tap,115.19,123.19,,,,,S,
+14:40:29.740,9,the stock exchange dipped,tap,355.36,40.57,,,,,T,
+14:40:29.990,9,the stock exchange dipped,tap,657.86,25.86,,,,,O,
+14:40:30.557,9,the stock exchange dipped,tap,248.23,203.02,,,,,C,
+14:40:30.691,9,the stock exchange dipped,tap,620.04,93.09,,,,,K,
+14:40:32.275,9,the stock exchange dipped,swipe,204.11,27.26,179.61,185.51,171.17,240.00,E,
+14:40:33.292,9,the stock exchange dipped,swipe,255.23,211.42,448.49,110.59,468.01,100.41,C,H
+14:40:33.759,9,the stock exchange dipped,tap,46.56,121.09,,,,,A,
+14:40:34.068,9,the stock exchange dipped,tap,500.31,197.42,,,,,N,
+14:40:35.510,9,the stock exchange dipped,swipe,377.07,123.19,217.42,39.87,164.30,12.15,G,E
+14:40:37.378,9,the stock exchange dipped,tap,214.62,124.60,,,,,D,
+14:40:37.828,9,the stock exchange dipped,tap,595.54,39.87,,,,,I,
+14:40:38.628,9,the stock exchange dipped,tap,742.58,28.67,,,,,P,
+14:40:38.779,9,the stock exchange dipped,tap,736.28,32.87,,,,,P,
+14:40:39.587,9,the stock exchange dipped,swipe,183.11,22.36,221.62,123.19,266.23,240.00,E, 
+14:40:42.681,9,the stock exchange dipped,tap,201.31,126.00,,,,,D,
+14:40:42.965,9,the stock exchange dipped,tap,578.73,33.57,,,,,I,
+14:40:43.398,9,the stock exchange dipped,tap,725.78,33.57,,,,,P,
+14:40:43.540,9,the stock exchange dipped,tap,725.08,31.47,,,,,P,
+14:40:46.325,9,the stock exchange dipped,swipe,192.91,121.09,622.14,19.56,426.47,65.85,D,Y
+14:40:47.184,9,the stock exchange dipped,tap,730.68,39.17,,,,,P,
+14:40:47.367,9,the stock exchange dipped,tap,727.88,40.57,,,,,P,
+14:40:47.984,9,the stock exchange dipped,swipe,183.81,18.16,209.72,118.99,240.81,240.00,E, 
+14:40:50.771,9,the stock exchange dipped,tap,202.71,121.09,,,,,D,
+14:40:51.019,9,the stock exchange dipped,tap,583.63,27.26,,,,,I,
+14:40:51.303,9,the stock exchange dipped,tap,743.98,31.47,,,,,P,
+14:40:51.444,9,the stock exchange dipped,tap,738.38,25.86,,,,,P,
+14:40:51.611,9,the stock exchange dipped,tap,183.11,23.76,,,,,E,
+14:40:51.836,9,the stock exchange dipped,tap,212.52,137.90,,,,,D,
+14:40:54.287,10,the capital of our nation,swipe,343.46,30.07,460.39,128.80,526.84,184.89,T,N
+14:40:54.646,10,the capital of our nation,tap,177.51,27.96,,,,,E,
+14:40:55.871,10,the capital of our nation,tap,246.83,192.52,,,,,C,
+14:40:56.230,10,the capital of our nation,tap,40.26,107.79,,,,,A,
+14:40:57.005,10,the capital of our nation,swipe,742.58,31.47,574.53,25.86,502.72,23.47,P,U
+14:40:57.389,10,the capital of our nation,tap,358.86,18.86,,,,,T,
+14:40:58.031,10,the capital of our nation,tap,53.57,111.29,,,,,A,
+14:40:58.240,10,the capital of our nation,tap,683.06,113.39,,,,,L,
+14:40:59.682,10,the capital of our nation,tap,649.45,34.97,,,,,O,
+14:40:59.832,10,the capital of our nation,tap,257.33,94.49,,,,,D,
+14:41:01.541,10,the capital of our nation,tap,294.44,116.19,,,,,F,
+14:41:03.192,10,the capital of our nation,tap,669.06,20.26,,,,,O,
+14:41:03.410,10,the capital of our nation,tap,302.14,136.50,,,,,F,
+14:41:04.743,10,the capital of our nation,swipe,666.96,34.27,501.01,32.17,426.98,31.23,O,Y
+14:41:05.010,10,the capital of our nation,tap,284.64,34.27,,,,,R,
+14:41:07.478,10,the capital of our nation,tap,508.01,197.42,,,,,N,
+14:41:07.653,10,the capital of our nation,tap,45.16,121.79,,,,,A,
+14:41:08.112,10,the capital of our nation,tap,359.56,32.17,,,,,T,
+14:41:09.154,10,the capital of our nation,swipe,582.23,27.26,527.61,159.61,494.44,240.00,I, 
+14:41:11.222,10,the capital of our nation,tap,497.51,195.32,,,,,N,
+14:41:11.397,10,the capital of our nation,tap,47.96,126.00,,,,,A,
+14:41:11.881,10,the capital of our nation,tap,359.56,37.77,,,,,T,
+14:41:12.714,10,the capital of our nation,swipe,569.63,29.37,669.06,30.07,800.00,30.99,I,backspace
+14:41:13.056,10,the capital of our nation,tap,505.21,197.42,,,,,N,
+14:41:16.850,11,with each step forward,tap,117.29,42.67,,,,,W,
+14:41:16.992,11,with each step forward,tap,577.33,37.07,,,,,I,
+14:41:17.842,11,with each step forward,swipe,347.66,28.67,441.49,121.09,518.64,197.09,T,N
+14:41:20.927,11,with each step forward,swipe,204.81,38.47,51.47,103.59,0.00,125.44,E,
+14:41:22.203,11,with each step forward,swipe,236.32,200.92,458.29,104.29,456.38,105.12,C,H
+14:41:24.471,11,with each step forward,swipe,135.49,123.89,350.46,37.77,358.28,34.64,S,T
+14:41:26.297,11,with each step forward,swipe,190.81,48.27,751.68,38.47,430.77,44.08,E,Y
+14:41:29.857,11,with each step forward,swipe,134.09,128.10,332.25,41.27,353.92,31.78,S,T
+14:41:31.650,11,with each step forward,swipe,183.11,32.17,737.68,20.96,423.06,27.32,E,Y
+14:41:34.443,11,with each step forward,swipe,129.19,126.70,348.36,44.77,354.00,42.66,S,T
+14:41:35.202,11,with each step forward,tap,189.41,26.56,,,,,E,
+14:41:35.836,11,with each step forward,tap,755.19,25.86,,,,,P,
+14:41:38.887,11,with each step forward,tap,293.74,109.19,,,,,F,
+14:41:39.387,11,with each step forward,tap,677.46,13.26,,,,,O,
+14:41:39.729,11,with each step forward,tap,276.24,31.47,,,,,R,
+14:41:40.797,11,with each step forward,swipe,115.89,32.17,34.66,127.40,0.00,168.03,W,
+14:41:41.663,11,with each step forward,swipe,282.54,25.16,204.11,113.39,123.09,204.54,R,Z
+14:41:46.125,12,the world is a stage,tap,356.06,33.57,,,,,T,
+14:41:46.850,12,the world is a stage,swipe,452.69,114.79,202.01,27.26,226.11,35.68,H,E
+14:41:49.335,12,the world is a stage,tap,120.09,41.97,,,,,W,
+14:41:50.077,12,the world is a stage,tap,668.36,29.37,,,,,O,
+14:41:51.602,12,the world is a stage,swipe,266.43,38.47,680.26,124.60,501.40,87.37,R,J
+14:41:53.237,12,the world is a stage,tap,251.73,18.86,,,,,R,
+14:41:54.963,12,the world is a stage,tap,108.88,26.56,,,,,W,
+14:41:55.572,12,the world is a stage,tap,671.16,29.37,,,,,O,
+14:41:57.806,12,the world is a stage,tap,272.04,40.57,,,,,R,
+14:41:58.715,12,the world is a stage,tap,679.56,115.49,,,,,L,
+14:41:58.898,12,the world is a stage,tap,197.11,107.09,,,,,D,
+14:41:59.816,12,the world is a stage,tap,576.63,48.97,,,,,I,
+14:41:59.965,12,the world is a stage,tap,139.69,126.00,,,,,S,
+14:42:00.232,12,the world is a stage,tap,48.67,129.50,,,,,A,
+14:42:01.825,12,the world is a stage,swipe,115.19,127.40,348.36,37.07,338.98,40.70,S,T
+14:42:04.810,12,the world is a stage,swipe,35.36,122.49,373.57,118.29,275.34,119.51,A,F
+14:42:05.244,12,the world is a stage,tap,199.91,40.57,,,,,E,
+14:42:08.604,13,the power of denial,tap,363.06,35.67,,,,,T,
+14:42:09.262,13,the power of denial,swipe,460.39,111.99,209.72,28.67,232.65,36.29,H,E
+14:42:11.731,13,the power of denial,tap,750.98,23.06,,,,,P,
+14:42:13.331,13,the power of denial,swipe,758.69,25.86,663.46,20.96,519.00,13.53,P,U
+14:42:14.390,13,the power of denial,swipe,98.38,32.17,270.63,41.27,338.05,44.83,W,T
+14:42:16.483,13,the power of denial,swipe,740.48,25.86,658.56,21.66,500.80,13.57,P,U
+14:42:17.109,13,the power of denial,swipe,108.18,27.26,195.01,28.67,348.15,31.14,W,T
+14:42:17.392,13,the power of denial,tap,283.94,34.27,,,,,R,
+14:42:20.827,13,the power of denial,swipe,760.79,34.97,678.86,37.77,520.93,43.17,P,U
+14:42:22.603,13,the power of denial,tap,103.98,28.67,,,,,W,
+14:42:23.270,13,the power of denial,swipe,197.81,40.57,280.44,42.67,437.73,46.67,E,Y
+14:42:24.680,13,the power of denial,tap,764.29,13.26,,,,,P,
+14:42:24.913,13,the power of denial,tap,677.46,34.27,,,,,O,
+14:42:25.296,13,the power of denial,tap,108.88,34.27,,,,,W,
+14:42:25.513,13,the power of denial,tap,188.01,34.97,,,,,E,
+14:42:25.705,13,the power of denial,tap,278.34,45.47,,,,,R,
+14:42:26.773,13,the power of denial,tap,671.86,35.67,,,,,O,
+14:42:27.197,13,the power of denial,tap,290.94,123.19,,,,,F,
+14:42:28.081,13,the power of denial,swipe,216.02,126.70,191.51,20.96,186.65,0.00,D,E
+14:42:29.215,13,the power of denial,swipe,496.81,217.02,590.63,22.36,601.01,0.83,N,I
+14:42:30.158,13,the power of denial,tap,53.57,116.89,,,,,A,
+14:42:30.291,13,the power of denial,tap,677.46,109.89,,,,,L,
+14:42:33.593,14,completely sold out of that,tap,255.93,212.82,,,,,C,
+14:42:34.293,14,completely sold out of that,swipe,680.96,18.86,572.43,183.41,548.82,219.21,O,M
+14:42:35.244,14,completely sold out of that,tap,767.79,24.46,,,,,P,
+14:42:37.387,14,completely sold out of that,swipe,757.29,23.76,673.26,116.89,596.51,201.95,P,M
+14:42:39.221,14,completely sold out of that,tap,248.93,203.72,,,,,C,
+14:42:40.021,14,completely sold out of that,swipe,666.96,13.96,559.12,177.11,534.62,214.18,O,N
+14:42:40.972,14,completely sold out of that,swipe,748.18,18.16,678.86,107.79,601.35,208.01,P,M
+14:42:42.823,14,completely sold out of that,swipe,190.81,36.37,351.86,46.87,430.30,51.99,E,Y
+14:42:47.734,14,completely sold out of that,tap,192.21,37.07,,,,,E,
+14:42:48.843,14,completely sold out of that,swipe,699.87,117.59,444.29,32.17,472.25,41.51,L,Y
+14:42:50.870,14,completely sold out of that,tap,130.59,112.69,,,,,S,
+14:42:51.569,14,completely sold out of that,swipe,676.76,18.16,685.16,107.09,697.72,240.00,O, 
+14:42:52.028,14,completely sold out of that,tap,225.82,121.09,,,,,D,
+14:42:54.946,14,completely sold out of that,swipe,676.06,27.26,494.00,45.47,437.25,51.15,O,Y
+14:42:55.239,14,completely sold out of that,tap,356.76,32.87,,,,,T,
+14:42:56.605,14,completely sold out of that,tap,661.36,30.77,,,,,O,
+14:42:56.823,14,completely sold out of that,tap,295.84,107.09,,,,,F,
+14:42:57.598,14,completely sold out of that,swipe,351.86,26.56,444.99,114.09,526.74,190.93,T,N
+14:42:58.674,14,completely sold out of that,swipe,31.86,121.09,347.66,32.17,262.88,56.04,A,R
+14:43:01.509,15,question that must be answered,tap,20.66,30.77,,,,,Q,
+14:43:02.050,15,question that must be answered,tap,517.81,35.67,,,,,U,
+14:43:02.751,15,question that must be answered,swipe,193.61,29.37,143.89,102.19,58.29,227.58,E,
+14:43:03.418,15,question that must be answered,tap,354.66,35.67,,,,,T,
+14:43:04.235,15,question that must be answered,swipe,576.63,28.67,660.66,26.56,800.00,23.08,I,backspace
+14:43:04.752,15,question that must be answered,tap,498.91,189.72,,,,,N,
+14:43:06.503,15,question that must be answered,swipe,342.76,25.16,447.79,117.59,522.93,183.71,T,N
+14:43:07.428,15,question that must be answered,swipe,50.77,126.00,351.16,37.77,281.04,58.36,A,R
+14:43:09.154,15,question that must be answered,swipe,591.33,191.82,511.51,34.97,493.71,0.00,M,U
+14:43:10.230,15,question that must be answered,swipe,133.39,128.80,362.36,48.27,359.80,49.17,S,T
+14:43:11.580,15,question that must be answered,tap,412.08,200.22,,,,,B,
+14:43:11.839,15,question that must be answered,tap,178.21,30.07,,,,,E,
+14:43:13.315,15,question that must be answered,tap,34.66,107.79,,,,,A,
+14:43:13.623,15,question that must be answered,tap,501.01,192.52,,,,,N,
+14:43:14.324,15,question that must be answered,swipe,120.79,130.20,110.98,24.46,108.72,0.00,S,W
+14:43:15.066,15,question that must be answered,swipe,187.31,36.37,269.23,34.97,427.27,32.27,E,Y
+14:43:15.783,15,question that must be answered,tap,214.62,100.09,,,,,D,
+14:43:20.811,15,question that must be answered,tap,36.76,114.09,,,,,A,
+14:43:21.704,15,question that must be answered,tap,494.00,200.92,,,,,N,
+14:43:21.945,15,question that must be answered,tap,123.59,112.69,,,,,S,
+14:43:22.912,15,question that must be answered,swipe,111.68,35.67,201.31,33.57,351.62,30.04,W,T
+14:43:24.188,15,question that must be answered,swipe,264.33,32.17,185.21,25.86,25.09,13.11,R,Q
+14:43:24.755,15,question that must be answered,tap,209.72,113.39,,,,,D,
+14:43:27.865,16,are you talking to me,tap,38.86,119.69,,,,,A,
+14:43:28.306,16,are you talking to me,swipe,280.44,32.87,192.91,34.27,40.47,36.71,R,Q
+14:43:29.866,16,are you talking to me,tap,442.89,35.67,,,,,Y,
+14:43:30.274,16,are you talking to me,tap,669.76,29.37,,,,,O,
+14:43:30.541,16,are you talking to me,tap,485.60,36.37,,,,,U,
+14:43:32.034,16,are you talking to me,tap,338.56,31.47,,,,,T,
+14:43:32.517,16,are you talking to me,tap,35.36,113.39,,,,,A,
+14:43:33.868,16,are you talking to me,tap,700.57,102.19,,,,,L,
+14:43:34.985,16,are you talking to me,swipe,624.95,118.29,586.43,25.86,575.66,0.00,K,I
+14:43:35.827,16,are you talking to me,swipe,512.21,204.42,391.77,108.49,324.48,54.89,N,T
+14:43:37.120,16,are you talking to me,tap,356.76,45.47,,,,,T,
+14:43:37.237,16,are you talking to me,tap,662.76,28.67,,,,,O,
+14:43:37.770,16,are you talking to me,tap,573.13,188.32,,,,,M,
+14:43:37.912,16,are you talking to me,tap,190.81,45.47,,,,,E,
+14:43:40.680,17,love means many things,swipe,706.17,108.49,663.46,23.76,651.48,0.00,L,O
+14:43:41.464,17,love means many things,swipe,337.86,209.32,188.71,23.06,187.84,21.98,V,E
+14:43:43.732,17,love means many things,swipe,693.57,111.29,666.26,22.36,659.39,0.00,L,O
+14:43:44.365,17,love means many things,swipe,349.06,209.32,180.31,31.47,183.87,35.22,V,E
+14:43:47.351,17,love means many things,tap,577.33,189.02,,,,,M,
+14:43:48.151,17,love means many things,swipe,190.81,27.26,56.37,118.99,0.00,157.45,E,
+14:43:48.643,17,love means many things,tap,495.40,191.82,,,,,N,
+14:43:48.810,17,love means many things,tap,130.59,114.79,,,,,S,
+14:43:50.386,17,love means many things,tap,580.83,193.92,,,,,M,
+14:43:50.619,17,love means many things,tap,54.97,114.79,,,,,A,
+14:43:51.219,17,love means many things,swipe,515.71,201.62,437.29,34.97,420.83,0.00,N,Y
+14:43:53.337,17,love means many things,swipe,351.16,33.57,451.29,128.10,525.68,198.32,T,N
+14:43:54.271,17,love means many things,swipe,582.23,30.07,507.31,183.41,479.66,240.00,I, 
+14:43:55.238,17,love means many things,swipe,379.87,104.99,143.19,94.49,140.10,94.35,G,S
+14:43:59.549,18,want to join us for lunch,swipe,116.59,30.07,45.16,104.29,0.00,151.22,W,
+14:44:00.900,18,want to join us for lunch,swipe,520.61,207.92,365.16,39.17,358.01,31.40,N,T
+14:44:02.484,18,want to join us for lunch,tap,356.06,37.77,,,,,T,
+14:44:02.784,18,want to join us for lunch,tap,667.66,39.87,,,,,O,
+14:44:05.336,18,want to join us for lunch,swipe,537.42,115.49,497.51,193.22,473.48,240.00,J, 
+14:44:07.020,18,want to join us for lunch,swipe,529.72,123.19,664.86,34.97,718.42,0.00,J,O
+14:44:08.404,18,want to join us for lunch,swipe,594.84,32.87,501.71,190.42,472.71,239.47,I,N
+14:44:10.955,18,want to join us for lunch,tap,532.52,103.59,,,,,J,
+14:44:11.164,18,want to join us for lunch,tap,653.65,18.16,,,,,O,
+14:44:11.380,18,want to join us for lunch,tap,575.93,16.06,,,,,I,
+14:44:11.589,18,want to join us for lunch,tap,508.71,178.51,,,,,N,
+14:44:13.848,18,want to join us for lunch,swipe,505.21,29.37,138.99,126.00,273.15,90.60,U,F
+14:44:15.258,18,want to join us for lunch,tap,509.41,15.36,,,,,U,
+14:44:15.408,18,want to join us for lunch,tap,127.09,118.29,,,,,S,
+14:44:17.184,18,want to join us for lunch,tap,295.14,125.30,,,,,F,
+14:44:17.317,18,want to join us for lunch,tap,670.46,16.06,,,,,O,
+14:44:17.452,18,want to join us for lunch,tap,295.14,41.97,,,,,R,
+14:44:18.951,18,want to join us for lunch,swipe,704.07,118.29,522.01,44.07,481.83,27.69,L,U
+14:44:20.003,18,want to join us for lunch,tap,490.50,187.61,,,,,N,
+14:44:21.011,18,want to join us for lunch,swipe,262.93,215.62,450.59,118.99,476.31,105.75,C,H
+14:44:24.196,19,the living is easy,tap,348.36,31.47,,,,,T,
+14:44:25.388,19,the living is easy,swipe,447.09,102.89,183.11,13.96,219.65,26.27,H,E
+14:44:27.840,19,the living is easy,swipe,678.86,107.79,601.14,18.86,584.65,0.00,L,I
+14:44:28.790,19,the living is easy,swipe,333.65,198.12,582.23,32.87,533.52,65.25,V,U
+14:44:29.390,19,the living is easy,swipe,492.60,201.62,391.07,111.99,312.68,42.79,N,R
+14:44:32.025,19,the living is easy,tap,573.13,34.97,,,,,I,
+14:44:32.200,19,the living is easy,tap,134.09,95.19,,,,,S,
+14:44:33.042,19,the living is easy,swipe,183.11,31.47,64.77,130.20,0.00,184.24,E,
+14:44:34.385,19,the living is easy,swipe,150.20,121.79,402.28,31.47,376.13,40.84,S,T
+14:44:37.411,20,life if but a dream,swipe,692.17,115.49,568.23,14.66,550.21,0.00,L,U
+14:44:37.937,20,life if but a dream,swipe,302.14,121.09,183.11,32.87,138.76,0.00,F,W
+14:44:40.572,20,life if but a dream,tap,575.93,27.26,,,,,I,
+14:44:40.755,20,life if but a dream,tap,288.84,130.90,,,,,F,
+14:44:42.164,20,life if but a dream,swipe,421.88,205.12,504.51,46.87,528.98,0.00,B,U
+14:44:42.490,20,life if but a dream,tap,347.66,22.36,,,,,T,
+14:44:44.532,20,life if but a dream,swipe,414.88,208.62,504.51,32.87,521.27,0.00,B,U
+14:44:44.832,20,life if but a dream,tap,356.06,38.47,,,,,T,
+14:44:46.392,20,life if but a dream,tap,40.96,121.79,,,,,A,
+14:44:47.276,20,life if but a dream,swipe,209.72,132.30,281.84,33.57,306.36,0.00,D,R
+14:44:48.209,20,life if but a dream,swipe,198.51,27.26,46.56,109.89,0.00,135.21,E,
+14:44:48.668,20,life if but a dream,tap,575.93,190.42,,,,,M,
+14:44:51.671,21,the second largest country,swipe,341.36,29.37,441.49,114.09,524.57,184.39,T,N
+14:44:52.055,21,the second largest country,tap,176.11,19.56,,,,,E,
+14:44:53.315,21,the second largest country,swipe,128.49,132.30,201.31,25.86,219.01,0.00,S,E
+14:44:53.866,21,the second largest country,tap,251.03,193.92,,,,,C,
+14:44:54.074,21,the second largest country,tap,657.16,24.46,,,,,O,
+14:44:54.716,21,the second largest country,tap,501.01,198.82,,,,,N,
+14:44:54.900,21,the second largest country,tap,216.72,110.59,,,,,D,
+14:44:56.601,21,the second largest country,tap,684.46,109.19,,,,,L,
+14:44:57.277,21,the second largest country,tap,36.76,129.50,,,,,A,
+14:44:57.927,21,the second largest country,tap,260.83,30.07,,,,,R,
+14:44:58.903,21,the second largest country,swipe,378.47,124.60,202.71,28.67,167.81,9.61,G,E
+14:44:59.637,21,the second largest country,swipe,134.09,127.40,347.66,39.87,356.17,36.38,S,T
+14:45:00.971,21,the second largest country,tap,251.73,193.22,,,,,C,
+14:45:01.322,21,the second largest country,tap,662.76,37.77,,,,,O,
+14:45:01.730,21,the second largest country,tap,503.81,30.07,,,,,U,
+14:45:02.590,21,the second largest country,tap,496.11,196.72,,,,,N,
+14:45:03.298,21,the second largest country,swipe,353.96,30.07,253.13,32.17,114.01,35.06,T,W
+14:45:03.523,21,the second largest country,tap,419.78,48.27,,,,,Y,
+14:45:08.152,22,frequently asked questions,tap,283.94,116.19,,,,,F,
+14:45:08.869,22,frequently asked questions,swipe,262.23,29.37,188.71,22.36,23.31,6.61,R,Q
+14:45:09.553,22,frequently asked questions,tap,19.26,37.07,,,,,Q,
+14:45:10.137,22,frequently asked questions,tap,185.91,41.27,,,,,E,
+14:45:10.745,22,frequently asked questions,tap,508.01,201.62,,,,,N,
+14:45:11.413,22,frequently asked questions,tap,353.26,33.57,,,,,T,
+14:45:12.038,22,frequently asked questions,swipe,690.07,116.19,440.09,22.36,465.37,31.85,L,Y
+14:45:14.573,22,frequently asked questions,swipe,295.84,126.00,281.84,30.77,277.31,0.00,F,R
+14:45:15.649,22,frequently asked questions,tap,190.11,27.96,,,,,E,
+14:45:16.933,22,frequently asked questions,tap,23.46,34.97,,,,,Q,
+14:45:17.467,22,frequently asked questions,tap,512.21,24.46,,,,,U,
+14:45:18.959,22,frequently asked questions,tap,190.11,22.36,,,,,E,
+14:45:19.167,22,frequently asked questions,tap,495.40,189.72,,,,,N,
+14:45:19.459,22,frequently asked questions,tap,363.06,32.87,,,,,T,
+14:45:21.219,22,frequently asked questions,swipe,694.27,111.99,447.79,15.36,470.82,24.39,L,Y
+14:45:22.837,22,frequently asked questions,swipe,52.17,116.19,149.50,111.99,291.94,105.84,A,F
+14:45:23.354,22,frequently asked questions,tap,614.44,113.39,,,,,K,
+14:45:23.879,22,frequently asked questions,swipe,188.01,22.36,214.62,111.29,253.13,240.00,E, 
+14:45:26.464,22,frequently asked questions,swipe,36.76,118.99,131.99,112.69,276.24,103.15,A,F
+14:45:27.131,22,frequently asked questions,tap,620.04,112.69,,,,,K,
+14:45:27.956,22,frequently asked questions,swipe,193.61,17.46,214.62,108.49,244.97,240.00,E, 
+14:45:29.674,22,frequently asked questions,tap,13.65,30.07,,,,,Q,
+14:45:29.975,22,frequently asked questions,tap,496.81,39.17,,,,,U,
+14:45:30.375,22,frequently asked questions,tap,202.71,25.86,,,,,E,
+14:45:30.916,22,frequently asked questions,tap,141.79,134.40,,,,,S,
+14:45:31.875,22,frequently asked questions,tap,351.86,35.67,,,,,T,
+14:45:32.542,22,frequently asked questions,swipe,579.43,22.36,643.85,24.46,800.00,29.56,I,backspace
+14:45:34.093,22,frequently asked questions,swipe,517.11,198.12,153.70,114.09,283.28,144.05,N,F
+14:45:37.062,23,is she done yet,tap,590.63,34.97,,,,,I,
+14:45:37.187,23,is she done yet,tap,122.89,119.69,,,,,S,
+14:45:38.029,23,is she done yet,tap,122.19,117.59,,,,,S,
+14:45:39.146,23,is she done yet,swipe,456.19,114.79,204.81,16.06,232.80,27.05,H,E
+14:45:42.356,23,is she done yet,swipe,122.89,122.49,459.69,109.19,362.70,113.02,S,G
+14:45:42.773,23,is she done yet,tap,183.11,31.47,,,,,E,
+14:45:44.574,23,is she done yet,tap,127.09,121.09,,,,,S,
+14:45:44.775,23,is she done yet,tap,472.30,118.29,,,,,H,
+14:45:44.916,23,is she done yet,tap,201.31,39.17,,,,,E,
+14:45:45.942,23,is she done yet,tap,209.72,127.40,,,,,D,
+14:45:47.076,23,is she done yet,swipe,673.26,31.47,498.91,181.31,491.25,187.90,O,N
+14:45:47.384,23,is she done yet,tap,183.11,20.96,,,,,E,
+14:45:51.045,23,is she done yet,swipe,430.98,44.77,195.71,30.07,191.45,29.80,Y,E
+14:45:51.337,23,is she done yet,tap,360.96,34.27,,,,,T,
+14:45:54.222,24,communicate through email,tap,253.83,200.22,,,,,C,
+14:45:54.513,24,communicate through email,tap,667.66,11.86,,,,,O,
+14:45:55.539,24,communicate through email,tap,577.33,199.52,,,,,M,
+14:45:55.689,24,communicate through email,tap,575.23,198.82,,,,,M,
+14:45:56.465,24,communicate through email,tap,508.71,50.37,,,,,U,
+14:45:58.791,24,communicate through email,swipe,494.70,209.32,589.23,20.96,599.75,0.00,N,I
+14:46:00.533,24,communicate through email,swipe,251.73,203.02,43.06,102.89,35.35,99.19,C,A
+14:46:01.292,24,communicate through email,swipe,342.76,32.87,191.51,46.17,103.68,53.90,T,W
+14:46:02.935,24,communicate through email,tap,348.36,38.47,,,,,T,
+14:46:03.603,24,communicate through email,tap,451.99,117.59,,,,,H,
+14:46:04.161,24,communicate through email,tap,274.84,36.37,,,,,R,
+14:46:04.694,24,communicate through email,tap,677.46,34.97,,,,,O,
+14:46:05.187,24,communicate through email,tap,512.21,28.67,,,,,U,
+14:46:05.920,24,communicate through email,swipe,372.17,114.79,464.60,99.39,608.90,75.34,G,I
+14:46:07.562,24,communicate through email,tap,196.41,39.17,,,,,E,
+14:46:07.821,24,communicate through email,tap,578.73,202.32,,,,,M,
+14:46:08.221,24,communicate through email,tap,40.96,125.30,,,,,A,
+14:46:08.655,24,communicate through email,swipe,585.73,25.86,684.46,92.39,784.77,159.97,I,enter
+14:46:11.531,25,he called seven times,tap,444.99,112.69,,,,,H,
+14:46:11.690,25,he called seven times,tap,196.41,37.77,,,,,E,
+14:46:12.340,25,he called seven times,tap,255.93,198.12,,,,,C,
+14:46:13.008,25,he called seven times,tap,33.26,122.49,,,,,A,
+14:46:13.574,25,he called seven times,tap,690.77,103.59,,,,,L,
+14:46:13.733,25,he called seven times,tap,685.16,105.69,,,,,L,
+14:46:14.208,25,he called seven times,swipe,187.31,35.67,211.82,121.79,245.45,240.00,E, 
+14:46:16.851,25,he called seven times,swipe,124.99,134.40,217.42,27.26,240.94,0.00,S,R
+14:46:17.676,25,he called seven times,swipe,339.26,203.02,173.30,21.66,177.24,25.96,V,E
+14:46:18.077,25,he called seven times,tap,501.01,196.02,,,,,N,
+14:46:19.628,25,he called seven times,tap,362.36,43.37,,,,,T,
+14:46:19.986,25,he called seven times,tap,594.84,20.26,,,,,I,
+14:46:20.637,25,he called seven times,tap,569.63,189.02,,,,,M,
+14:46:21.120,25,he called seven times,swipe,201.31,22.36,123.59,107.09,39.07,199.22,E,
+14:46:24.647,26,this person is a disaster,swipe,356.06,39.17,473.70,122.49,551.91,177.89,T,M
+14:46:25.072,26,this person is a disaster,tap,575.23,22.36,,,,,I,
+14:46:25.239,26,this person is a disaster,tap,131.29,119.69,,,,,S,
+14:46:26.298,26,this person is a disaster,swipe,734.88,40.57,827.31,21.66,800.00,27.25,P,backspace
+14:46:29.416,26,this person is a disaster,swipe,342.06,27.96,447.79,127.40,516.89,192.38,T,N
+14:46:29.758,26,this person is a disaster,tap,563.33,30.07,,,,,I,
+14:46:29.925,26,this person is a disaster,tap,124.29,119.69,,,,,S,
+14:46:31.893,26,this person is a disaster,tap,737.68,37.77,,,,,P,
+14:46:32.477,26,this person is a disaster,swipe,183.11,27.96,265.03,26.56,423.07,23.86,E,Y
+14:46:32.935,26,this person is a disaster,tap,132.69,116.89,,,,,S,
+14:46:33.577,26,this person is a disaster,swipe,680.26,10.46,502.41,193.92,513.21,182.78,O,N
+14:46:37.087,26,this person is a disaster,swipe,685.86,20.26,498.91,193.22,509.69,183.24,O,N
+14:46:38.939,26,this person is a disaster,tap,736.28,24.46,,,,,P,
+14:46:39.139,26,this person is a disaster,tap,181.01,21.66,,,,,E,
+14:46:39.347,26,this person is a disaster,tap,275.54,27.96,,,,,R,
+14:46:39.897,26,this person is a disaster,tap,127.09,110.59,,,,,S,
+14:46:40.756,26,this person is a disaster,swipe,683.06,13.96,504.51,177.81,506.23,176.23,O,N
+14:46:42.065,26,this person is a disaster,tap,574.53,38.47,,,,,I,
+14:46:42.215,26,this person is a disaster,tap,137.59,118.99,,,,,S,
+14:46:42.466,26,this person is a disaster,tap,51.47,124.60,,,,,A,
+14:46:43.266,26,this person is a disaster,tap,207.61,109.19,,,,,D,
+14:46:43.441,26,this person is a disaster,tap,573.83,39.17,,,,,I,
+14:46:44.383,26,this person is a disaster,swipe,136.19,113.39,38.16,116.89,0.00,118.26,S,
+14:46:44.942,26,this person is a disaster,tap,134.09,120.39,,,,,S,
+14:46:46.001,26,this person is a disaster,tap,342.76,33.57,,,,,T,
+14:46:46.584,26,this person is a disaster,swipe,178.91,39.87,263.63,42.67,418.77,47.80,E,Y
+14:46:49.661,27,companies announce a merger,tap,252.43,204.42,,,,,C,
+14:46:49.820,27,companies announce a merger,tap,663.46,32.17,,,,,O,
+14:46:50.011,27,companies announce a merger,tap,561.23,207.92,,,,,M,
+14:46:51.404,27,companies announce a merger,tap,753.09,36.37,,,,,P,
+14:46:51.620,27,companies announce a merger,tap,49.37,115.49,,,,,A,
+14:46:52.229,27,companies announce a merger,swipe,497.51,214.22,574.53,20.26,582.58,0.00,N,I
+14:46:52.897,27,companies announce a merger,swipe,195.01,25.16,134.09,111.99,57.17,221.63,E,
+14:46:54.389,27,companies announce a merger,tap,53.57,140.00,,,,,A,
+14:46:54.714,27,companies announce a merger,tap,493.30,202.32,,,,,N,
+14:46:54.881,27,companies announce a merger,tap,491.90,204.42,,,,,N,
+14:46:55.831,27,companies announce a merger,swipe,640.35,35.67,502.41,28.67,400.66,23.50,O,Y
+14:46:56.349,27,companies announce a merger,tap,491.90,191.82,,,,,N,
+14:46:56.898,27,companies announce a merger,swipe,263.63,204.42,144.60,3.46,142.55,0.00,C,W
+14:46:58.349,27,companies announce a merger,tap,24.16,138.60,,,,,A,
+14:46:59.600,27,companies announce a merger,tap,580.13,192.52,,,,,M,
+14:47:00.125,27,companies announce a merger,swipe,177.51,41.27,285.34,42.67,417.49,44.39,E,Y
+14:47:00.701,27,companies announce a merger,swipe,376.37,128.80,238.42,57.37,163.24,18.45,G,E
+14:47:00.942,27,companies announce a merger,swipe,179.61,18.86,278.34,31.47,417.67,49.25,E,Y
+14:47:05.145,27,companies announce a merger,tap,582.93,198.12,,,,,M,
+14:47:05.645,27,companies announce a merger,swipe,169.10,37.77,262.93,23.06,406.21,0.61,E,Y
+14:47:06.496,27,companies announce a merger,swipe,381.97,127.40,276.24,29.37,244.56,0.00,G,R
+14:47:07.254,27,companies announce a merger,tap,138.29,109.19,,,,,S,
+14:47:10.164,27,companies announce a merger,tap,580.13,201.62,,,,,M,
+14:47:10.323,27,companies announce a merger,tap,169.80,30.07,,,,,E,
+14:47:10.523,27,companies announce a merger,tap,259.43,28.67,,,,,R,
+14:47:10.931,27,companies announce a merger,tap,388.27,118.99,,,,,G,
+14:47:11.473,27,companies announce a merger,swipe,177.51,36.37,265.03,34.27,417.44,30.61,E,Y
+14:47:14.433,28,just what the doctor ordered,swipe,540.22,109.89,501.71,19.56,493.37,0.00,J,U
+14:47:15.084,28,just what the doctor ordered,swipe,136.19,135.10,358.16,33.57,354.44,35.27,S,T
+14:47:17.327,28,just what the doctor ordered,tap,110.98,31.47,,,,,W,
+14:47:17.785,28,just what the doctor ordered,tap,453.39,115.49,,,,,H,
+14:47:18.711,28,just what the doctor ordered,swipe,36.76,127.40,356.06,25.86,265.48,54.67,A,R
+14:47:20.537,28,just what the doctor ordered,swipe,339.96,28.67,454.09,118.99,528.15,177.60,T,N
+14:47:20.887,28,just what the doctor ordered,tap,185.91,29.37,,,,,E,
+14:47:22.113,28,just what the doctor ordered,tap,222.32,132.30,,,,,D,
+14:47:22.414,28,just what the doctor ordered,tap,662.76,27.96,,,,,O,
+14:47:22.571,28,just what the doctor ordered,tap,251.03,185.51,,,,,C,
+14:47:22.955,28,just what the doctor ordered,tap,349.06,37.07,,,,,T,
+14:47:24.105,28,just what the doctor ordered,tap,665.56,27.26,,,,,O,
+14:47:24.314,28,just what the doctor ordered,tap,275.54,34.27,,,,,R,
+14:47:25.490,28,just what the doctor ordered,tap,668.36,27.96,,,,,O,
+14:47:25.956,28,just what the doctor ordered,tap,269.23,22.36,,,,,R,
+14:47:27.191,28,just what the doctor ordered,swipe,211.82,118.99,169.80,2.76,168.81,0.00,D,E
+14:47:27.932,28,just what the doctor ordered,swipe,274.84,35.67,172.60,20.26,38.13,0.00,R,Q
+14:47:28.374,28,just what the doctor ordered,tap,216.72,109.19,,,,,D,
+14:47:31.493,29,the library is closed today,swipe,350.46,16.76,460.39,107.79,535.31,169.83,T,N
+14:47:31.851,29,the library is closed today,tap,191.51,23.76,,,,,E,
+14:47:33.102,29,the library is closed today,swipe,699.87,110.59,573.83,22.36,541.88,0.00,L,U
+14:47:33.511,29,the library is closed today,tap,428.18,203.72,,,,,B,
+14:47:34.345,29,the library is closed today,swipe,269.23,25.16,59.87,114.79,48.60,119.62,R,A
+14:47:35.186,29,the library is closed today,swipe,269.93,25.86,433.09,37.77,509.30,43.33,R,U
+14:47:37.738,29,the library is closed today,tap,585.03,32.87,,,,,I,
+14:47:37.880,29,the library is closed today,tap,141.09,130.20,,,,,S,
+14:47:38.413,29,the library is closed today,tap,254.53,196.02,,,,,C,
+14:47:38.997,29,the library is closed today,swipe,701.97,115.49,656.46,25.86,643.32,0.00,L,O
+14:47:39.781,29,the library is closed today,swipe,125.69,134.40,188.01,17.46,197.31,0.00,S,E
+14:47:40.098,29,the library is closed today,tap,220.22,115.49,,,,,D,
+14:47:41.348,29,the library is closed today,tap,363.76,39.17,,,,,T,
+14:47:41.482,29,the library is closed today,tap,663.46,20.96,,,,,O,
+14:47:42.366,29,the library is closed today,swipe,204.81,114.09,31.16,113.39,0.00,113.27,D,
+14:47:42.833,29,the library is closed today,tap,345.56,18.86,,,,,T,

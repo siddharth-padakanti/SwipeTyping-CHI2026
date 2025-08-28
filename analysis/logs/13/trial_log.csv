@@ -1,0 +1,236 @@
+Time,Trial Num,Target,Action,Current Sentence,Updated Sentence
+14:37:48.472,0,protect your environment,Start,,
+14:37:56.580,0,protect your environment,Insert_top1,,protect 
+14:38:00.536,0,protect your environment,Insert_top3,protect ,protect your 
+14:38:09.329,0,protect your environment,Insert_top1,protect your ,protect your environment 
+14:38:10.046,0,protect your environment,End,protect your environment,protect your environment
+14:38:10.547,1,do not drink the water,Start,,
+14:38:12.188,1,do not drink the water,Insert_top1,,do 
+14:38:13.514,1,do not drink the water,Insert_top1,do ,do not 
+14:38:16.683,1,do not drink the water,Insert_top1,do not ,do not drink 
+14:38:18.168,1,do not drink the water,Insert_top1,do not drink ,do not drink the 
+14:38:22.061,1,do not drink the water,Insert_top1,do not drink the ,do not drink the water 
+14:38:22.061,1,do not drink the water,End,do not drink the water,do not drink the water
+14:38:22.562,2,tickets are very expensive,Start,,
+14:38:27.564,2,tickets are very expensive,Insert_top1,,tickets 
+14:38:29.606,2,tickets are very expensive,Insert_top1,tickets ,tickets are 
+14:38:32.083,2,tickets are very expensive,Insert_top1,tickets are ,tickets are very 
+14:38:38.011,2,tickets are very expensive,Insert_top1,tickets are very ,tickets are very expensive 
+14:38:38.713,2,tickets are very expensive,End,tickets are very expensive,tickets are very expensive
+14:38:39.213,3,sad to hear that news,Start,,
+14:38:41.255,3,sad to hear that news,Insert_top1,,sad 
+14:38:42.230,3,sad to hear that news,Insert_top1,sad ,sad to 
+14:38:45.265,3,sad to hear that news,Insert_top1,sad to ,sad to hear 
+14:38:48.267,3,sad to hear that news,Insert_top1,sad to hear ,sad to hear that 
+14:38:52.311,3,sad to hear that news,DeletePartial,sad to hear that ne,sad to hear that 
+14:38:56.330,3,sad to hear that news,DeletePartial,sad to hear that ne,sad to hear that 
+14:38:59.065,3,sad to hear that news,Insert_top1,sad to hear that ,sad to hear that news 
+14:38:59.924,3,sad to hear that news,End,sad to hear that news,sad to hear that news
+14:39:00.425,4,sent this by registered mail,Start,,
+14:39:02.992,4,sent this by registered mail,Insert_top1,,sent 
+14:39:05.685,4,sent this by registered mail,Insert_top1,sent ,sent thus 
+14:39:06.452,4,sent this by registered mail,DeleteFull,sent thus ,sent thus
+14:39:06.602,4,sent this by registered mail,DeleteFull,sent thus,sent 
+14:39:06.777,4,sent this by registered mail,DeleteFull,sent ,sent
+14:39:07.495,4,sent this by registered mail,Insert,sent,sent 
+14:39:10.483,4,sent this by registered mail,Insert_top3,sent ,sent this 
+14:39:12.030,4,sent this by registered mail,Insert_top1,sent this ,sent this by 
+14:39:19.493,4,sent this by registered mail,Insert_top1,sent this by ,sent this by registered 
+14:39:22.678,4,sent this by registered mail,Insert_top1,sent this by registered ,sent this by registered mail 
+14:39:22.679,4,sent this by registered mail,End,sent this by registered mail,sent this by registered mail
+14:39:23.180,5,zero in on the facts,Start,,
+14:39:26.813,5,zero in on the facts,Insert_top1,,zero 
+14:39:29.406,5,zero in on the facts,DeletePartial,zero im,zero 
+14:39:32.475,5,zero in on the facts,DeletePartial,zero om,zero 
+14:39:33.350,5,zero in on the facts,Insert_top1,zero ,zero in 
+14:39:34.626,5,zero in on the facts,Insert_top1,zero in ,zero in on 
+14:39:35.985,5,zero in on the facts,Insert_top1,zero in on ,zero in on the 
+14:39:39.479,5,zero in on the facts,Insert_top1,zero in on the ,zero in on the facts 
+14:39:39.480,5,zero in on the facts,End,zero in on the facts,zero in on the facts
+14:39:39.980,6,a quarter of a century,Start,,
+14:39:41.121,6,a quarter of a century,Insert_top1,,a 
+14:39:46.349,6,a quarter of a century,Insert_top1,a ,a quarter 
+14:39:47.292,6,a quarter of a century,Insert_top1,a quarter ,a quarter of 
+14:39:47.617,6,a quarter of a century,Insert_top1,a quarter of ,a quarter of a 
+14:39:51.928,6,a quarter of a century,Insert_top1,a quarter of a ,a quarter of a century 
+14:39:51.928,6,a quarter of a century,End,a quarter of a century,a quarter of a century
+14:39:52.429,7,please follow the guidelines,Start,,
+14:39:56.205,7,please follow the guidelines,Insert_top1,,please 
+14:40:00.199,7,please follow the guidelines,Insert_top1,please ,please follow 
+14:40:02.409,7,please follow the guidelines,Insert_top1,please follow ,please follow the 
+14:40:09.487,7,please follow the guidelines,Insert_top1,please follow the ,please follow the guidelines 
+14:40:09.488,7,please follow the guidelines,End,please follow the guidelines,please follow the guidelines
+14:40:09.990,8,stability of the nation,Start,,
+14:40:16.725,8,stability of the nation,Insert_top1,,stability 
+14:40:17.642,8,stability of the nation,Insert_top1,stability ,stability of 
+14:40:19.568,8,stability of the nation,Insert_top1,stability of ,stability of the 
+14:40:23.807,8,stability of the nation,Insert_top3,stability of the ,stability of the nation 
+14:40:24.613,8,stability of the nation,End,stability of the nation,stability of the nation
+14:40:25.114,9,the stock exchange dipped,Start,,
+14:40:28.423,9,the stock exchange dipped,Insert_top1,,the 
+14:40:31.166,9,the stock exchange dipped,Insert_top1,the ,the stock 
+14:40:36.694,9,the stock exchange dipped,Insert_top1,the stock ,the stock exchange 
+14:40:41.906,9,the stock exchange dipped,DeletePartial,the stock exchange fitted,the stock exchange 
+14:40:44.649,9,the stock exchange dipped,DeletePartial,the stock exchange dipp,the stock exchange 
+14:40:44.882,9,the stock exchange dipped,DeleteFull,the stock exchange ,the stock exchange
+14:40:49.226,9,the stock exchange dipped,DeletePartial,the stock exchangesuited,the stock exchange
+14:40:50.093,9,the stock exchange dipped,Insert,the stock exchange,the stock exchange 
+14:40:52.436,9,the stock exchange dipped,Insert_top1,the stock exchange ,the stock exchange dipped 
+14:40:52.437,9,the stock exchange dipped,End,the stock exchange dipped,the stock exchange dipped
+14:40:52.938,10,the capital of our nation,Start,,
+14:40:55.156,10,the capital of our nation,Insert_top1,,the 
+14:40:59.098,10,the capital of our nation,Insert_top1,the ,the capital 
+14:41:01.283,10,the capital of our nation,DeletePartial,the capital od,the capital 
+14:41:02.809,10,the capital of our nation,DeletePartial,the capital f,the capital 
+14:41:03.626,10,the capital of our nation,Insert_top1,the capital ,the capital of 
+14:41:06.441,10,the capital of our nation,Insert_top3,the capital of ,the capital of our 
+14:41:10.155,10,the capital of our nation,DeletePartial,the capital of our latin,the capital of our 
+14:41:14.218,10,the capital of our nation,Insert_top3,the capital of our ,the capital of our nation 
+14:41:14.950,10,the capital of our nation,End,the capital of our nation,the capital of our nation
+14:41:15.450,11,with each step forward,Start,,
+14:41:18.468,11,with each step forward,Insert_top1,,with 
+14:41:23.187,11,with each step forward,Insert_top1,with ,with each 
+14:41:28.040,11,with each step forward,DeletePartial,with each acer,with each 
+14:41:33.267,11,with each step forward,DeletePartial,with each acer,with each 
+14:41:36.311,11,with each step forward,Insert_top1,with each ,with each step 
+14:41:43.857,11,with each step forward,Insert_top1,with each step ,with each step forward 
+14:41:43.857,11,with each step forward,End,with each step forward,with each step forward
+14:41:44.358,12,the world is a stage,Start,,
+14:41:48.492,12,the world is a stage,Insert_top1,,the 
+14:41:52.862,12,the world is a stage,DeletePartial,the work,the 
+14:41:54.588,12,the world is a stage,DeletePartial,the r,the 
+14:41:59.382,12,the world is a stage,Insert_top1,the ,the world 
+14:42:00.107,12,the world is a stage,Insert_top1,the world ,the world is 
+14:42:00.374,12,the world is a stage,Insert_top1,the world is ,the world is a 
+14:42:06.628,12,the world is a stage,Insert_top1,the world is a ,the world is a stage 
+14:42:06.629,12,the world is a stage,End,the world is a stage,the world is a stage
+14:42:07.129,13,the power of denial,Start,,
+14:42:10.613,13,the power of denial,Insert_top1,,the 
+14:42:12.656,13,the power of denial,DeletePartial,the p,the 
+14:42:15.533,13,the power of denial,DeletePartial,the poet,the 
+14:42:18.868,13,the power of denial,DeletePartial,the fatty,the 
+14:42:24.271,13,the power of denial,DeletePartial,the fatty,the 
+14:42:26.105,13,the power of denial,Insert_top1,the ,the power 
+14:42:27.340,13,the power of denial,Insert_top1,the power ,the power of 
+14:42:31.533,13,the power of denial,Insert_top1,the power of ,the power of denial 
+14:42:31.534,13,the power of denial,End,the power of denial,the power of denial
+14:42:32.035,14,completely sold out of that,Start,,
+14:42:38.145,14,completely sold out of that,DeletePartial,cook,
+14:42:50.086,14,completely sold out of that,Insert_top1,,completely 
+14:42:52.828,14,completely sold out of that,Insert_top1,completely ,completely sold 
+14:42:55.964,14,completely sold out of that,Insert_top1,completely sold ,completely sold out 
+14:42:56.939,14,completely sold out of that,Insert_top1,completely sold out ,completely sold out of 
+14:42:59.707,14,completely sold out of that,Insert_top1,completely sold out of ,completely sold out of that 
+14:42:59.708,14,completely sold out of that,End,completely sold out of that,completely sold out of that
+14:43:00.209,15,question that must be answered,Start,,
+14:43:05.552,15,question that must be answered,Insert_top1,,question 
+14:43:08.046,15,question that must be answered,Insert_top1,question ,question that 
+14:43:10.980,15,question that must be answered,Insert_top1,question that ,question that must 
+14:43:12.065,15,question that must be answered,Insert_top1,question that must ,question that must be 
+14:43:19.093,15,question that must be answered,DeletePartial,question that must be answers,question that must be 
+14:43:26.039,15,question that must be answered,Insert_top1,question that must be ,question that must be answered 
+14:43:26.040,15,question that must be answered,End,question that must be answered,question that must be answered
+14:43:26.540,16,are you talking to me,Start,,
+14:43:28.957,16,are you talking to me,Insert_top1,,are 
+14:43:31.116,16,are you talking to me,Insert_top1,are ,are you 
+14:43:36.461,16,are you talking to me,Insert_top1,are you ,are you talking 
+14:43:37.487,16,are you talking to me,Insert_top1,are you talking ,are you talking to 
+14:43:38.621,16,are you talking to me,Insert_top1,are you talking to ,are you talking to me 
+14:43:38.621,16,are you talking to me,End,are you talking to me,are you talking to me
+14:43:39.122,17,love means many things,Start,,
+14:43:42.773,17,love means many things,DeletePartial,lone,
+14:43:46.117,17,love means many things,Insert_top1,,love 
+14:43:49.518,17,love means many things,Insert_top1,love ,love means 
+14:43:52.003,17,love means many things,Insert_top1,love means ,love means many 
+14:43:56.572,17,love means many things,Insert_top1,love means many ,love means many things 
+14:43:56.573,17,love means many things,End,love means many things,love means many things
+14:43:57.074,18,want to join us for lunch,Start,,
+14:44:01.850,18,want to join us for lunch,Insert_top1,,want 
+14:44:03.209,18,want to join us for lunch,Insert_top1,want ,want to 
+14:44:06.270,18,want to join us for lunch,DeletePartial,want to jm,want to 
+14:44:10.397,18,want to join us for lunch,DeletePartial,want to joan,want to 
+14:44:11.831,18,want to join us for lunch,Insert_top1,want to ,want to join 
+14:44:14.758,18,want to join us for lunch,DeletePartial,want to join ya,want to join 
+14:44:15.666,18,want to join us for lunch,Insert_top1,want to join ,want to join us 
+14:44:17.668,18,want to join us for lunch,Insert_top1,want to join us ,want to join us for 
+14:44:22.362,18,want to join us for lunch,Insert_top1,want to join us for ,want to join us for lunch 
+14:44:22.362,18,want to join us for lunch,End,want to join us for lunch,want to join us for lunch
+14:44:22.864,19,the living is easy,Start,,
+14:44:26.864,19,the living is easy,Insert_top1,,the 
+14:44:30.968,19,the living is easy,Insert_top3,the ,the living 
+14:44:32.317,19,the living is easy,Insert_top1,the living ,the living is 
+14:44:35.411,19,the living is easy,Insert_top1,the living is ,the living is easy 
+14:44:35.412,19,the living is easy,End,the living is easy,the living is easy
+14:44:35.912,20,life if but a dream,Start,,
+14:44:39.413,20,life if but a dream,Insert_top1,,life 
+14:44:40.997,20,life if but a dream,Insert_top1,life ,life if 
+14:44:43.632,20,life if but a dream,DeletePartial,life if bye,life if 
+14:44:45.825,20,life if but a dream,Insert_top1,life if ,life if but 
+14:44:46.584,20,life if but a dream,Insert_top1,life if but ,life if but a 
+14:44:49.720,20,life if but a dream,Insert_top1,life if but a ,life if but a dream 
+14:44:49.721,20,life if but a dream,End,life if but a dream,life if but a dream
+14:44:50.222,21,the second largest country,Start,,
+14:44:52.280,21,the second largest country,Insert_top1,,the 
+14:44:55.625,21,the second largest country,Insert_top1,the ,the second 
+14:45:00.413,21,the second largest country,Insert_top1,the second ,the second largest 
+14:45:05.008,21,the second largest country,Insert_top1,the second largest ,the second largest country 
+14:45:05.008,21,the second largest country,End,the second largest country,the second largest country
+14:45:05.509,22,frequently asked questions,Start,,
+14:45:13.414,22,frequently asked questions,DeletePartial,presently,
+14:45:22.044,22,frequently asked questions,Insert_top1,,frequently 
+14:45:25.613,22,frequently asked questions,DeletePartial,frequently aimed,frequently 
+14:45:28.899,22,frequently asked questions,Insert_top1,frequently ,frequently asked 
+14:45:35.403,22,frequently asked questions,Insert_top1,frequently asked ,frequently asked questions 
+14:45:35.404,22,frequently asked questions,End,frequently asked questions,frequently asked questions
+14:45:35.904,23,is she done yet,Start,,
+14:45:37.420,23,is she done yet,Insert_top1,,is 
+14:45:40.255,23,is she done yet,DeletePartial,is ent,is 
+14:45:44.033,23,is she done yet,DeletePartial,is sf,is 
+14:45:45.091,23,is she done yet,Insert_top1,is ,is she 
+14:45:49.090,23,is she done yet,Insert_top3,is she ,is she done 
+14:45:52.454,23,is she done yet,Insert_top1,is she done ,is she done yet 
+14:45:52.455,23,is she done yet,End,is she done yet,is she done yet
+14:45:52.955,24,communicate through email,Start,,
+14:46:02.076,24,communicate through email,Insert_top1,,communicate 
+14:46:06.654,24,communicate through email,Insert_top1,communicate ,communicate through 
+14:46:09.905,24,communicate through email,Insert_top1,communicate through ,communicate through email 
+14:46:09.906,24,communicate through email,End,communicate through email,communicate through email
+14:46:10.407,25,he called seven times,Start,,
+14:46:11.832,25,he called seven times,Insert_top1,,he 
+14:46:15.561,25,he called seven times,Insert_top3,he ,he called 
+14:46:18.860,25,he called seven times,Insert_top1,he called ,he called seven 
+14:46:21.837,25,he called seven times,Insert_top1,he called seven ,he called seven times 
+14:46:22.438,25,he called seven times,End,he called seven times,he called seven times
+14:46:22.939,26,this person is a disaster,Start,,
+14:46:28.124,26,this person is a disaster,DeletePartial,thumbs,
+14:46:30.813,26,this person is a disaster,Insert_top3,,this 
+14:46:38.338,26,this person is a disaster,DeletePartial,this peterson,this 
+14:46:41.515,26,this person is a disaster,Insert_top1,this ,this person 
+14:46:42.340,26,this person is a disaster,Insert_top1,this person ,this person is 
+14:46:42.591,26,this person is a disaster,Insert_top1,this person is ,this person is a 
+14:46:47.835,26,this person is a disaster,Insert_top1,this person is a ,this person is a disaster 
+14:46:47.836,26,this person is a disaster,End,this person is a disaster,this person is a disaster
+14:46:48.336,27,companies announce a merger,Start,,
+14:46:53.780,27,companies announce a merger,Insert_top1,,companies 
+14:46:57.816,27,companies announce a merger,Insert_top1,companies ,companies announce 
+14:46:58.950,27,companies announce a merger,Insert_top1,companies announce ,companies announce a 
+14:47:02.881,27,companies announce a merger,Insert_top3,companies announce a ,companies announce a mergers 
+14:47:03.736,27,companies announce a merger,DeleteFull,companies announce a mergers ,companies announce a mergers
+14:47:04.194,27,companies announce a merger,DeleteFull,companies announce a mergers,companies announce a 
+14:47:09.506,27,companies announce a merger,DeletePartial,companies announce a meters,companies announce a 
+14:47:12.574,27,companies announce a merger,Insert_top1,companies announce a ,companies announce a merger 
+14:47:12.575,27,companies announce a merger,End,companies announce a merger,companies announce a merger
+14:47:13.076,28,just what the doctor ordered,Start,,
+14:47:16.422,28,just what the doctor ordered,Insert_top3,,just 
+14:47:19.461,28,just what the doctor ordered,Insert_top1,just ,just what 
+14:47:21.354,28,just what the doctor ordered,Insert_top1,just what ,just what the 
+14:47:24.722,28,just what the doctor ordered,Insert_top1,just what the ,just what the doctor 
+14:47:29.583,28,just what the doctor ordered,Insert_top1,just what the doctor ,just what the doctor ordered 
+14:47:29.584,28,just what the doctor ordered,End,just what the doctor ordered,just what the doctor ordered
+14:47:30.085,29,the library is closed today,Start,,
+14:47:32.093,29,the library is closed today,Insert_top1,,the 
+14:47:36.975,29,the library is closed today,Insert_top3,the ,the library 
+14:47:38.021,29,the library is closed today,Insert_top1,the library ,the library is 
+14:47:40.690,29,the library is closed today,Insert_top1,the library is ,the library is closed 
+14:47:44.467,29,the library is closed today,Insert_top1,the library is closed ,the library is closed today 
+14:47:44.467,29,the library is closed today,End,the library is closed today,the library is closed today

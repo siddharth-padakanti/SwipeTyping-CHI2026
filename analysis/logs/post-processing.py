@@ -6,7 +6,7 @@ import numpy as np
 import os
 from datetime import datetime
 
-participant_id = [2, 6, 9, 11, 12, 15, 16, 18, 19, 20]
+participant_id = [2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 15, 16, 18, 19, 20, 23]
 
 tap_coords = {
     "Q": (40, 40), "W": (120, 40), "E": (200, 40), "R": (280, 40), "T": (360, 40),
@@ -204,6 +204,9 @@ def process_trial(pid, tid, gesture, word, trial):
             elif grow['Type'] == "tap":
                 tap_count += 1
                 target_char_count += 1
+
+        # print(swipe_count)
+        # print(tap_count)
         
         swipe_ratio = swipe_count / (swipe_count + tap_count)
         tap_ratio = tap_count / (swipe_count + tap_count)
@@ -240,6 +243,7 @@ if __name__ == '__main__':
     total_usage = []
     total_word = []
     for pid in participant_id:
+        print(pid)
         gesture_df = pd.read_csv(str(pid) + '/gesture_log.csv', keep_default_na=False)
         trial_df = pd.read_csv(str(pid) + '/trial_log.csv', keep_default_na=False)
         word_df = pd.read_csv(str(pid) + '/word_log.csv', keep_default_na=False)
