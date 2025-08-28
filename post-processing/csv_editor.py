@@ -1,30 +1,3 @@
-
-"""
-CSV + Video Sync & Editor (Pure Python, Tkinter)
-------------------------------------------------
-What it does:
-- Lets you choose a video file and a CSV log file.
-- Displays video (left) and CSV table (right) side-by-side.
-- Parses a start time from the *video filename* (e.g., "..._08-24-2025__20-15-58.mp4"),
-  then syncs the CSV rows via their "Timestamp"/"Time" column.
-- Scrub with the timeline slider; the video frame updates and the nearest CSV row highlights.
-- Click a CSV row to jump the timeline to that moment.
-- Double-click a CSV cell to edit it in-place.
-- Save the edited CSV via a file dialog.
-- NEW: Play/Pause button and Spacebar shortcut to play/pause; ±0.5s nudge buttons.
-
-Dependencies (install if needed):
-    pip install opencv-python pandas pillow
-
-Run:
-    python csv_video_sync_tool.py
-
-Notes:
-- Works on Windows/macOS/Linux with Python 3.9+.
-- Requires a display (it's a desktop app).
-
-Author: ChatGPT (for Sid)
-"""
 import os
 import re
 import sys
@@ -56,18 +29,6 @@ from tkinter import ttk, filedialog, messagebox
 
 
 def parse_video_start_from_name(path: str) -> Optional[datetime]:
-    """
-    Try to parse a start datetime from a video filename.
-    Supported patterns (anywhere in the filename):
-        MM-DD-YYYY__HH-MM-SS
-        MM-DD-YYYY_HH-MM-SS
-        YYYY-MM-DD__HH-MM-SS
-        YYYY-MM-DD_HH-MM-SS
-
-    Examples:
-        "ipad_tap_08-24-2025__20-15-58.mp4"
-        "2025-08-24_20-15-58_cam1.mov"
-    """
     fname = os.path.basename(path)
 
     patterns = [
@@ -93,15 +54,6 @@ def parse_video_start_from_name(path: str) -> Optional[datetime]:
 
 
 def parse_timestamp_field(s: str) -> Optional[datetime]:
-    """
-    Parse a CSV timestamp string into a datetime.
-    Supports:
-        - "HH:MM:SS[.fff]" (we will combine with *today's* date at runtime; caller can adjust to desired date)
-        - "YYYY-MM-DD HH:MM:SS[.fff]"
-        - "MM/DD/YYYY HH:MM:SS[.fff]"
-        - "YYYY-MM-DDTHH:MM:SS[.fff]"
-    Returns None on failure.
-    """
     if not isinstance(s, str):
         return None
     s = s.strip()
@@ -214,35 +166,29 @@ class App(tk.Tk):
         self.title("CSV + Video Sync & Editor (Python/Tkinter)")
         self.geometry("1200x760")
 
-        # State
         self.video_path: Optional[str] = None
         self.csv_path: Optional[str] = None
         self.df: Optional[pd.DataFrame] = None
         self.df_cols: List[str] = []
-        self.abs_times: Optional[List[datetime]] = None  # normalized absolute datetimes per row
+        self.abs_times: Optional[List[datetime]] = None  
         self.video_start_dt: Optional[datetime] = None
-        self.time_offset_sec: float = 0.0  # offset applied so that "slider time = 0" aligns to video_start_dt
+        self.time_offset_sec: float = 0.0  
 
-        # Video state
         self.cap: Optional[cv2.VideoCapture] = None
         self.video_duration_sec: float = 0.0
         self.video_fps: float = 0.0
 
-        # Playback state
         self.playing: bool = False
-        self.play_interval_ms: int = 33  # ~30fps default
+        self.play_interval_ms: int = 33 
 
         self.highlight_tag = "highlight_tag"
 
         self._build_ui()
 
-        # Keyboard shortcuts
         self.bind("<space>", lambda e: self.toggle_play())
 
-        # Graceful close
         self.protocol("WM_DELETE_WINDOW", self._on_close)
 
-    # ---------- UI ----------
     def _build_ui(self):
         menubar = tk.Menu(self)
         filemenu = tk.Menu(menubar, tearoff=0)
@@ -262,18 +208,15 @@ class App(tk.Tk):
 
         self.config(menu=menubar)
 
-        # Paned layout
         paned = ttk.Panedwindow(self, orient=tk.HORIZONTAL)
         paned.pack(fill=tk.BOTH, expand=True)
 
-        # Left: Video
         left_frame = ttk.Frame(paned)
         paned.add(left_frame, weight=3)
 
         self.video_canvas = tk.Canvas(left_frame, bg="#111", width=800, height=450, highlightthickness=0)
         self.video_canvas.pack(fill=tk.BOTH, expand=True, padx=6, pady=6)
 
-        # Right: CSV table
         right_frame = ttk.Frame(paned)
         paned.add(right_frame, weight=2)
 
@@ -284,11 +227,9 @@ class App(tk.Tk):
         self.table_scroll_y = ttk.Scrollbar(self.table_container, orient="vertical")
         self.table_scroll_x = ttk.Scrollbar(self.table_container, orient="horizontal")
 
-        # Bottom: Controls + Timeline
         bottom = ttk.Frame(self)
         bottom.pack(fill=tk.X, padx=8, pady=6)
 
-        # Play/Pause and nudge controls
         self.play_btn = ttk.Button(bottom, text="Play", command=self.toggle_play)
         self.play_btn.pack(side=tk.LEFT, padx=(0,6))
 
@@ -306,7 +247,6 @@ class App(tk.Tk):
         self.jump_entry.pack(side=tk.LEFT, padx=6)
         ttk.Button(bottom, text="Jump", command=self.jump_to_time).pack(side=tk.LEFT)
 
-        # Status bar
         self.status = tk.StringVar(value="Open a video and a CSV to begin.")
         statusbar = ttk.Label(self, textvariable=self.status, relief="sunken", anchor="w")
         statusbar.pack(fill=tk.X, side=tk.BOTTOM)
@@ -322,7 +262,6 @@ class App(tk.Tk):
         self._load_video(path)
 
     def _load_video(self, path: str):
-        # Stop playback if running
         if self.playing:
             self.toggle_play(force=False)
 
@@ -389,11 +328,9 @@ class App(tk.Tk):
             messagebox.showwarning("CSV", "No 'Timestamp' or 'Time' column found. Sync will be disabled.")
             self.abs_times = None
         else:
-            # Parse timestamps to absolute datetimes
             self.abs_times = []
             inferred_date = None
             if self.video_start_dt:
-                # Use the date from the parsed start dt if CSV has only times
                 inferred_date = self.video_start_dt.date()
 
             for i, s in enumerate(self.df[ts_col].astype(str).tolist()):
@@ -401,19 +338,16 @@ class App(tk.Tk):
                 if dt is None:
                     self.abs_times.append(None)
                     continue
-                # If parsed only time-of-day (year=1900), combine with inferred date or today
                 if dt.year == 1900 and dt.month == 1 and dt.day == 1:
                     if inferred_date is None:
                         inferred_date = date.today()
                     dt = datetime.combine(inferred_date, dt.time())
                 self.abs_times.append(dt)
 
-        # Build / refresh table UI
         self._build_table()
 
         self.status.set(f"CSV loaded with {len(self.df)} rows.")
 
-        # If video has no start time yet, try to use CSV first timestamp
         if (self.video_start_dt is None) and self.abs_times:
             first_valid = next((t for t in self.abs_times if t is not None), None)
             if first_valid:
