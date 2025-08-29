@@ -173,8 +173,8 @@ def process_trial(pid, tid, gesture, word, trial):
         tap_count = 0
         for gidx, grow in gesture_insertdf.iterrows():
             if grow['Type'] == "swipe":
-                swipe_count += 1
                 if target_char_count + 1 < len(target):
+                    swipe_count += 1
                     swipe_key_set.append([target[target_char_count], target[target_char_count+1]])
                     tarX1 = tap_coords[target[target_char_count].upper()][0]
                     tarY1 = tap_coords[target[target_char_count].upper()][1]
@@ -187,22 +187,11 @@ def process_trial(pid, tid, gesture, word, trial):
                     dy = float(grow['EndY']) - float(grow['StartY'])
                     dis = math.sqrt(dx*dx + dy*dy) / key_coord
                     swipe_dist.append([dis, distarget])
-                elif target_char_count < len(target):
-                    swipe_key_set.append([target[target_char_count], ''])
-                    dx = float(grow['EndX']) - float(grow['StartX'])
-                    dy = float(grow['EndY']) - float(grow['StartY'])
-                    dis = math.sqrt(dx*dx + dy*dy) / key_coord
-                    swipe_dist.append([dis, 0])
-                else:
-                    swipe_key_set.append(['', ''])
-                    dx = float(grow['EndX']) - float(grow['StartX'])
-                    dy = float(grow['EndY']) - float(grow['StartY'])
-                    dis = math.sqrt(dx*dx + dy*dy) / key_coord
-                    swipe_dist.append([0, 0])
                 
                 target_char_count += 2
             elif grow['Type'] == "tap":
-                tap_count += 1
+                if target_char_count  < len(target):
+                    tap_count += 1
                 target_char_count += 1
 
         # print(swipe_count)
@@ -214,7 +203,7 @@ def process_trial(pid, tid, gesture, word, trial):
         insert["swipe_ratio"] = swipe_ratio
         insert["tap_ratio"] = tap_ratio
         insert["swipe_key_count"] = swipe_count * 2
-        insert["tap_key_count"] = min(tap_count, len(target) - swipe_count * 2)
+        insert["tap_key_count"] = tap_count
         insert["swipe_dist"] = swipe_dist
         insert["swipe_key_set"] = swipe_key_set
 
