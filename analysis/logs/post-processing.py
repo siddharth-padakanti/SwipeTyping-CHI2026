@@ -190,12 +190,7 @@ def process_trial(pid, tid, gesture, word, trial):
                     dis = math.sqrt(dx*dx + dy*dy) / key_coord
                     swipe_dist.append([dis, distarget])
 
-                    swipe_information.append({
-                        "distance": dis,
-                        "target_distance": distarget,
-                        "target_start_key": target[target_char_count],
-                        "target_end_key": target[target_char_count+1]
-                    })
+                    
                 
                 target_char_count += 2
             elif grow['Type'] == "tap":
@@ -215,6 +210,16 @@ def process_trial(pid, tid, gesture, word, trial):
         insert["tap_key_count"] = tap_count
         insert["swipe_dist"] = swipe_dist
         insert["swipe_key_set"] = swipe_key_set
+
+        if (swipe_count * 2 + tap_count == len(target) and insert["category"] != "incorrect"):
+            for sidx in range(len(swipe_dist)):
+                swipe_information.append({
+                        "distance": swipe_dist[sidx][0],
+                        "target_distance": swipe_dist[sidx][1],
+                        "target_start_key": swipe_key_set[sidx][0],
+                        "target_end_key": swipe_key_set[sidx][1],
+                    })
+
 
         
 
