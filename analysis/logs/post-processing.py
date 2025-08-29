@@ -6,7 +6,7 @@ import numpy as np
 import os
 from datetime import datetime
 
-participant_id = [2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 15, 16, 18, 19, 20, 23]
+participant_id = [2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 18, 19, 20, 21, 22, 23, 24]
 
 tap_coords = {
     "Q": (40, 40), "W": (120, 40), "E": (200, 40), "R": (280, 40), "T": (360, 40),

@@ -1,0 +1,934 @@
+Time,Type,X,Y,Keys,Finger
+11:38:59.218,tap,[348],[28],[t],Left Middle
+11:38:59.326,tap,[444],[96],[h],Right Middle
+11:39:00.568,swipe,"[705, 636]","[130, 55]","[l, i]",Right Middle
+11:39:00.834,tap,[331],[185],[v],Left Middle
+11:39:01.084,tap,[599],[60],[i],Right Middle
+11:39:01.126,tap,[512],[186],[n],Right Index
+11:39:01.234,tap,[395],[118],[g],Left Index
+11:39:02.344,tap,[610],[29],[i],Right Middle
+11:39:02.961,swipe,"[185, 137]","[24, 93]","[e, s]",Left Middle
+11:39:03.478,tap,[138],[115],[s],Left Middle
+11:39:03.836,tap,[441],[44],[y],Right Middle
+11:39:06.238,swipe,"[196, 98]","[16, 83]","[e, s]",Left Middle
+11:39:06.496,tap,[129],[121],[s],Left Middle
+11:39:06.863,tap,[420],[43],[y],Left Middle
+11:39:08.539,tap,[181],[31],[e],Left Middle
+11:39:08.847,tap,[62],[126],[a],Left Ring
+11:39:09.023,tap,[149],[127],[s],Left Ring
+11:39:09.422,swipe,"[156, 198]","[129.5, 97]","[s, t]",Left Ring
+11:39:11.157,tap,[189],[42],[e],Left Middle
+11:39:11.348,tap,[69],[140],[a],Left Ring
+11:39:11.765,swipe,"[142, 197]","[120, 92]","[s, t]",Left Ring
+11:39:13.350,tap,[427],[41],[y],Left Middle
+11:39:14.709,tap,[186],[25],[e],Left Middle
+11:39:14.951,tap,[66],[113],[a],Left Ring
+11:39:14.992,tap,[144],[115],[s],Left Ring
+11:39:16.576,tap,[444],[31],[y],Left Middle
+11:39:18.336,tap,[423],[38],[y],Left Middle
+11:39:22.821,tap,[349],[36],[t],Left Middle
+11:39:23.155,tap,[435],[116],[h],Right Index
+11:39:23.255,tap,[191],[31],[e],Left Middle
+11:39:24.231,swipe,"[696, 631]","[135, 75]","[l, u]",Right Middle
+11:39:24.548,tap,[333],[194],[v],Left Middle
+11:39:24.748,tap,[599],[48],[i],Right Middle
+11:39:24.932,tap,[367],[120],[g],Left Index
+11:39:27.632,swipe,"[699, 649]","[123, 71]","[l, i]",Right Middle
+11:39:27.866,tap,[343],[190],[v],Left Middle
+11:39:28.183,tap,[586],[43],[i],Right Middle
+11:39:28.291,tap,[358],[114],[g],Left Index
+11:39:30.350,swipe,"[703, 659]","[119, 73]","[l, i]",Right Middle
+11:39:32.377,swipe,"[693, 644]","[125, 68]","[l, i]",Right Middle
+11:39:32.693,tap,[339],[195],[v],Left Middle
+11:39:32.918,tap,[595],[48],[i],Right Middle
+11:39:32.960,tap,[500],[193],[n],Right Index
+11:39:33.068,tap,[368],[125],[g],Left Index
+11:39:34.320,tap,[606],[39],[i],Right Middle
+11:39:34.444,tap,[150],[111],[s],Left Middle
+11:39:34.928,tap,[185],[31],[e],Left Middle
+11:39:35.212,tap,[79],[116],[a],Left Ring
+11:39:35.337,tap,[162],[99],[s],Left Ring
+11:39:36.071,tap,[424],[51],[y],Left Middle
+11:39:38.780,tap,[207],[109],[d],Left Middle
+11:39:38.863,tap,[660],[29],[o],Right Middle
+11:39:39.264,tap,[488],[204],[n],Right Index
+11:39:39.347,tap,[649],[49],[o],Right Middle
+11:39:39.464,tap,[356],[55],[t],Left Middle
+11:39:40.281,swipe,"[207, 241]","[125, 57]","[d, r]",Left Middle
+11:39:40.481,tap,[586],[46],[i],Right Middle
+11:39:40.723,tap,[603],[118],[k],Right Middle
+11:39:43.074,swipe,"[192, 229]","[138, 75]","[d, r]",Left Middle
+11:39:44.066,tap,[596],[27],[i],Right Middle
+11:39:44.291,tap,[609],[104],[k],Right Middle
+11:39:45.951,swipe,"[201, 240]","[125, 60]","[d, r]",Left Middle
+11:39:46.284,tap,[598],[36],[i],Right Index
+11:39:46.426,tap,[506],[185],[n],Right Index
+11:39:46.534,tap,[612],[105],[k],Right Middle
+11:39:47.818,tap,[343],[50],[t],Left Middle
+11:39:47.894,tap,[479],[125],[h],Right Index
+11:39:48.002,tap,[185],[42],[e],Left Middle
+11:39:48.569,swipe,"[114, 85]","[17, 58]","[w, t]",Left Middle
+11:39:48.819,tap,[324],[47],[t],Left Middle
+11:39:49.002,tap,[185],[17],[e],Left Middle
+11:39:49.052,tap,[271],[45],[r],Left Middle
+11:39:51.279,tap,[345],[53],[t],Left Middle
+11:39:51.387,tap,[476],[129.5],[h],Right Index
+11:39:52.287,swipe,"[131, 158]","[124, 69]","[s, e]",Left Middle
+11:39:52.538,tap,[246],[185],[c],Left Middle
+11:39:52.746,tap,[636],[35],[i],Right Middle
+11:39:52.779,tap,[485],[184],[n],Right Index
+11:39:53.180,tap,[204],[108],[d],Left Middle
+11:39:53.938,swipe,"[704, 656]","[126, 108]","[l, y]",Right Middle
+11:39:57.298,swipe,"[693, 616]","[124, 138]","[l, b]",Right Middle
+11:39:57.682,tap,[255],[34],[r],Left Middle
+11:39:57.941,tap,[372],[127],[g],Left Middle
+11:39:58.107,tap,[201],[38],[e],Left Middle
+11:39:58.324,tap,[148],[115],[s],Left Middle
+11:39:58.499,tap,[342],[63],[t],Left Middle
+11:39:59.841,tap,[241],[193],[c],Left Middle
+11:40:00.142,tap,[642],[57],[o],Right Middle
+11:40:00.333,tap,[533],[46],[u],Right Middle
+11:40:00.759,swipe,"[501, 465]","[201, 166]","[n, t]",Right Index
+11:40:01.126,tap,[303],[34],[r],Left Middle
+11:40:01.384,tap,[428],[60],[y],Left Middle
+11:40:03.752,tap,[72],[118],[a],Left Ring
+11:40:04.786,swipe,"[25, 67]","[34, 33]","[q, r]",Left Ring
+11:40:05.236,tap,[87],[85],[a],Left Ring
+11:40:05.486,tap,[255],[41],[r],Left Middle
+11:40:05.661,tap,[366],[52],[t],Left Middle
+11:40:05.878,tap,[198],[29],[e],Left Middle
+11:40:05.920,tap,[262],[49],[r],Left Middle
+11:40:07.146,tap,[660],[48],[o],Right Middle
+11:40:07.354,tap,[299],[109],[f],Left Middle
+11:40:08.004,tap,[77],[114],[a],Left Ring
+11:40:08.513,tap,[230],[172],[c],Left Middle
+11:40:08.646,tap,[222],[101],[d],Left Middle
+11:40:10.172,swipe,"[243, 215]","[202, 133]","[c, e]",Left Middle
+11:40:10.497,tap,[318],[50],[r],Left Middle
+11:40:11.406,tap,[528],[59],[u],Right Middle
+11:40:11.506,tap,[269],[28],[r],Left Middle
+11:40:11.631,tap,[417],[52],[y],Left Middle
+11:40:13.199,swipe,"[243, 227]","[199, 153]","[c, e]",Left Middle
+11:40:14.058,tap,[486],[203],[n],Right Index
+11:40:14.492,tap,[341],[43],[t],Left Middle
+11:40:15.492,tap,[528],[43],[u],Right Middle
+11:40:15.733,tap,[282],[27],[r],Left Middle
+11:40:17.418,tap,[246],[182],[c],Left Middle
+11:40:17.601,tap,[187],[39],[e],Left Middle
+11:40:17.726,tap,[495],[189],[n],Right Index
+11:40:18.035,tap,[351],[52],[t],Left Middle
+11:40:18.560,tap,[523],[65],[u],Right Middle
+11:40:19.019,swipe,"[272, 297]","[57, 56]","[r, u]",Left Middle
+11:40:21.712,swipe,"[294, 269]","[126, 71]","[f, e]",Left Middle
+11:40:22.229,tap,[194],[22],[e],Left Middle
+11:40:22.604,tap,[40],[36],[q],Left Ring
+11:40:23.304,tap,[535],[47],[u],Right Middle
+11:40:23.504,tap,[185],[41],[e],Left Middle
+11:40:23.613,tap,[499],[193],[n],Right Index
+11:40:23.763,tap,[327],[42],[t],Left Middle
+11:40:24.171,tap,[679],[126],[l],Right Middle
+11:40:24.305,tap,[399],[56],[t],Left Middle
+11:40:26.347,swipe,"[49, 89]","[115, 120]","[a, f]",Left Ring
+11:40:26.556,tap,[607],[118],[k],Right Middle
+11:40:26.781,tap,[189],[43],[e],Left Middle
+11:40:26.906,tap,[220],[143],[d],Left Middle
+11:40:28.599,swipe,"[23, 100]","[38, 37]","[q, r]",Left Middle
+11:40:28.982,tap,[176],[19],[e],Left Middle
+11:40:29.157,tap,[141],[111],[s],Left Middle
+11:40:29.382,tap,[329],[41],[t],Left Middle
+11:40:29.533,tap,[578],[50],[i],Right Index
+11:40:29.591,tap,[663],[41],[o],Right Index
+11:40:29.733,tap,[493],[186],[n],Right Index
+11:40:29.883,tap,[144],[97],[s],Left Middle
+11:40:34.068,swipe,"[240, 251]","[198, 162]","[c, r]",Left Middle
+11:40:34.327,tap,[554],[195],[m],Right Index
+11:40:34.552,tap,[724],[36],[p],Right Middle
+11:40:34.618,tap,[683],[125],[l],Right Middle
+11:40:34.877,tap,[181],[32],[e],Left Middle
+11:40:35.227,tap,[335],[47],[t],Left Middle
+11:40:35.461,tap,[191],[36],[e],Left Middle
+11:40:35.553,tap,[708],[101],[l],Right Middle
+11:40:35.786,tap,[414],[42],[y],Left Middle
+11:40:38.588,swipe,"[236, 278]","[197, 158]","[c, y]",Left Middle
+11:40:38.971,tap,[586],[181],[m],Right Index
+11:40:39.505,tap,[746],[44],[p],Right Middle
+11:40:39.546,tap,[697],[102],[l],Right Middle
+11:40:40.013,swipe,"[178, 257]","[46, 27]","[e, t]",Left Middle
+11:40:40.439,tap,[206],[45],[e],Left Middle
+11:40:40.547,tap,[685],[98],[l],Right Middle
+11:40:40.755,tap,[424],[50],[y],Left Middle
+11:40:42.131,tap,[138],[115],[s],Left Middle
+11:40:42.223,tap,[661],[36],[o],Right Middle
+11:40:42.398,tap,[677],[106],[l],Right Middle
+11:40:42.531,tap,[208],[118],[d],Left Middle
+11:40:43.523,tap,[673],[63],[o],Right Middle
+11:40:43.715,tap,[529],[53],[u],Right Middle
+11:40:43.882,tap,[358],[55],[t],Left Middle
+11:40:44.374,tap,[647],[64],[o],Right Middle
+11:40:44.691,tap,[284],[113],[f],Left Middle
+11:40:45.283,swipe,"[325, 376]","[20, 73]","[t, n]",Left Middle
+11:40:45.633,tap,[82],[106],[a],Left Ring
+11:40:45.800,tap,[345],[47],[t],Left Middle
+11:40:48.910,swipe,"[563, 540]","[134, 80]","[j, u]",Right Index
+11:40:49.085,tap,[139],[124],[s],Left Middle
+11:40:49.294,tap,[348],[59],[t],Left Middle
+11:40:50.452,swipe,"[100, 171]","[43, 75]","[w, f]",Left Middle
+11:40:50.677,tap,[85],[121],[a],Left Ring
+11:40:50.861,tap,[343],[51],[t],Left Middle
+11:40:52.403,swipe,"[103, 185]","[36, 62]","[w, f]",Left Middle
+11:40:52.704,tap,[82],[115],[a],Left Ring
+11:40:52.912,tap,[348],[55],[t],Left Middle
+11:40:54.354,tap,[341],[25],[t],Left Middle
+11:40:54.546,tap,[416],[106],[g],Left Middle
+11:40:54.721,tap,[216],[45],[e],Left Middle
+11:40:55.805,swipe,"[208, 239]","[113, 96]","[d, y]",Left Middle
+11:40:57.656,tap,[792],[34],[p],Right Middle
+11:40:59.641,tap,[352],[38],[t],Left Middle
+11:40:59.757,tap,[474],[125],[h],Right Index
+11:40:59.891,tap,[185],[32],[e],Left Middle
+11:41:00.891,swipe,"[213, 274]","[112, 103]","[d, y]",Left Middle
+11:41:01.283,tap,[257],[181],[c],Left Middle
+11:41:01.508,tap,[341],[57],[t],Left Middle
+11:41:01.984,tap,[669],[48],[o],Right Middle
+11:41:02.084,tap,[259],[29],[r],Left Middle
+11:41:04.001,swipe,"[694, 645]","[55, 50]","[o, y]",Right Middle
+11:41:04.260,tap,[213],[120],[d],Left Middle
+11:41:04.668,tap,[176],[36],[e],Left Middle
+11:41:04.736,tap,[271],[41],[r],Left Middle
+11:41:05.052,tap,[187],[13],[e],Left Middle
+11:41:05.102,tap,[210],[117],[d],Left Middle
+11:41:07.570,tap,[334],[41],[t],Left Middle
+11:41:07.670,tap,[486],[111],[h],Right Index
+11:41:07.753,tap,[179],[29],[e],Left Middle
+11:41:08.387,swipe,"[129, 178]","[118, 89]","[s, t]",Left Middle
+11:41:08.570,tap,[670],[37],[o],Right Middle
+11:41:08.712,tap,[255],[197],[c],Left Middle
+11:41:08.837,tap,[618],[113],[k],Right Middle
+11:41:09.654,swipe,"[206, 163.5]","[22, 115]","[e, c]",Left Middle
+11:41:10.130,tap,[249],[185],[c],Left Middle
+11:41:10.347,tap,[474],[122],[h],Right Index
+11:41:10.463,tap,[93],[119],[a],Left Ring
+11:41:10.597,tap,[479],[190],[n],Right Index
+11:41:10.747,tap,[215],[48],[e],Left Middle
+11:41:12.981,swipe,"[173, 180]","[15, 120]","[e, c]",Left Middle
+11:41:13.465,tap,[250],[193],[c],Left Middle
+11:41:15.032,swipe,"[187, 180]","[29, 107]","[e, c]",Left Middle
+11:41:15.316,tap,[246],[196],[c],Left Middle
+11:41:15.516,tap,[465],[122],[h],Right Index
+11:41:15.774,tap,[504],[193],[n],Right Index
+11:41:15.849,tap,[364],[125],[g],Left Middle
+11:41:15.891,tap,[208],[34],[e],Left Middle
+11:41:17.184,tap,[201],[34],[e],Left Middle
+11:41:17.443,tap,[180],[188],[x],Left Middle
+11:41:17.867,swipe,"[234, 303]","[205, 171]","[c, h]",Left Middle
+11:41:18.126,tap,[65],[130],[a],Left Ring
+11:41:18.484,tap,[481],[207],[n],Right Index
+11:41:18.618,tap,[355],[110],[g],Left Middle
+11:41:18.709,tap,[196],[46],[e],Left Middle
+11:41:21.561,swipe,"[223, 250]","[113, 111]","[d, h]",Left Middle
+11:41:21.769,tap,[725],[48],[p],Right Middle
+11:41:21.894,tap,[725],[48],[p],Right Middle
+11:41:22.053,tap,[180],[28],[e],Left Middle
+11:41:22.111,tap,[227],[115],[d],Left Middle
+11:41:23.470,swipe,"[216, 257]","[121, 102]","[d, y]",Left Middle
+11:41:23.712,tap,[738],[31],[p],Right Middle
+11:41:23.854,tap,[741],[36],[p],Right Middle
+11:41:24.004,tap,[196],[24],[e],Left Middle
+11:41:24.062,tap,[227],[111],[d],Left Middle
+11:41:25.563,swipe,"[204, 250]","[122, 110]","[d, y]",Left Middle
+11:41:25.814,tap,[747],[41],[p],Right Middle
+11:41:25.938,tap,[748],[43],[p],Right Middle
+11:41:26.130,tap,[195],[13],[e],Left Middle
+11:41:26.197,tap,[228],[99],[d],Left Middle
+11:41:27.314,tap,[218],[102],[d],Left Middle
+11:41:27.448,tap,[600],[35],[i],Right Middle
+11:41:27.698,tap,[740],[41],[p],Right Middle
+11:41:28.173,tap,[732],[44],[p],Right Middle
+11:41:28.482,tap,[199],[32],[e],Left Middle
+11:41:28.540,tap,[229],[110],[d],Left Middle
+11:41:30.933,tap,[116],[41],[w],Left Middle
+11:41:31.141,tap,[63],[109],[a],Left Ring
+11:41:31.425,tap,[497],[192],[n],Right Index
+11:41:32.283,tap,[339],[48],[t],Left Middle
+11:41:33.217,swipe,"[557, 600]","[115, 89]","[j, p]",Right Index
+11:41:33.442,tap,[628],[32],[i],Right Index
+11:41:33.600,tap,[521],[115],[j],Right Index
+11:41:33.843,tap,[492],[207],[n],Right Index
+11:41:37.153,tap,[121],[32],[w],Left Index
+11:41:37.345,tap,[53],[130],[a],Left Ring
+11:41:37.536,tap,[495],[202],[n],Right Index
+11:41:37.703,tap,[346],[52],[t],Left Middle
+11:41:38.537,tap,[347],[40],[t],Left Middle
+11:41:39.279,swipe,"[535, 605]","[131, 101]","[j, p]",Right Index
+11:41:39.604,tap,[593],[40],[i],Right Index
+11:41:39.704,tap,[490.5],[188],[n],Right Index
+11:41:41.730,tap,[653],[32],[o],Right Index
+11:41:42.373,swipe,"[525, 585]","[129.5, 92]","[j, p]",Right Index
+11:41:42.631,tap,[586],[40],[i],Right Index
+11:41:42.739,tap,[489],[172],[n],Right Index
+11:41:44.448,swipe,"[534, 607]","[123, 92]","[j, p]",Right Index
+11:41:44.715,tap,[586],[43],[i],Right Index
+11:41:44.815,tap,[482],[187],[n],Right Index
+11:41:46.208,tap,[533],[43],[u],Right Middle
+11:41:46.316,tap,[151],[106],[s],Left Ring
+11:41:46.766,tap,[657],[50],[o],Right Middle
+11:41:46.858,tap,[292],[101],[f],Left Middle
+11:41:47.008,tap,[261],[38],[r],Left Middle
+11:41:47.642,swipe,"[691, 631]","[103, 55]","[l, i]",Right Index
+11:41:47.892,tap,[490],[193],[n],Right Index
+11:41:48.142,tap,[285],[188],[c],Left Middle
+11:41:48.234,tap,[483.5],[120],[h],Right Middle
+11:41:51.694,swipe,"[535, 502]","[39, 89]","[u, b]",Right Middle
+11:41:58.648,tap,[519],[32],[u],Right Middle
+11:41:58.765,tap,[150],[106],[s],Left Middle
+11:42:00.116,swipe,"[272, 311]","[125, 103]","[f, u]",Left Middle
+11:42:00.757,tap,[270],[34],[r],Left Middle
+11:42:02.350,tap,[304],[119],[f],Left Middle
+11:42:02.475,tap,[677],[32],[o],Right Middle
+11:42:02.593,tap,[259],[38],[r],Left Middle
+11:42:04.292,tap,[294],[102],[f],Left Middle
+11:42:04.367,tap,[673],[29],[o],Right Middle
+11:42:04.484,tap,[264],[36],[r],Left Middle
+11:42:05.910,swipe,"[692, 642]","[111, 86]","[l, y]",Right Index
+11:42:06.202,tap,[495],[200],[n],Right Index
+11:42:06.653,tap,[260],[185],[c],Left Middle
+11:42:06.677,tap,[462],[113],[h],Right Index
+11:42:10.671,swipe,"[325, 362]","[36, 37]","[t, i]",Left Middle
+11:42:11.096,tap,[250],[191],[c],Left Middle
+11:42:11.205,tap,[605],[118],[k],Right Middle
+11:42:11.371,tap,[189],[32],[e],Left Middle
+11:42:11.596,tap,[368],[48],[t],Left Middle
+11:42:11.863,tap,[150],[129],[s],Left Ring
+11:42:13.097,tap,[68],[117],[a],Left Ring
+11:42:13.289,tap,[285],[44],[r],Left Middle
+11:42:13.364,tap,[186],[27],[e],Left Middle
+11:42:14.281,swipe,"[317, 252]","[194, 138]","[v, w]",Left Middle
+11:42:14.506,tap,[248],[22],[r],Left Middle
+11:42:14.740,tap,[460],[51],[y],Left Middle
+11:42:17.641,swipe,"[184, 180]","[27, 128]","[e, p]",Left Middle
+11:42:18.325,tap,[734],[55],[p],Right Middle
+11:42:18.467,tap,[202],[25],[e],Left Middle
+11:42:18.592,tap,[507],[201],[n],Right Index
+11:42:19.217,swipe,"[114, 154]","[108, 94]","[s, t]",Left Middle
+11:42:19.492,tap,[311],[176],[v],Left Middle
+11:42:19.617,tap,[188],[23],[e],Left Middle
+11:42:22.269,swipe,"[698, 682]","[121, 75]","[l, o]",Right Middle
+11:42:22.519,tap,[320],[178],[v],Left Middle
+11:42:24.128,swipe,"[695, 684]","[111, 67]","[l, o]",Right Middle
+11:42:24.370,tap,[327],[172],[v],Left Middle
+11:42:24.453,tap,[213],[41],[e],Left Middle
+11:42:26.296,tap,[697],[125],[l],Right Middle
+11:42:26.455,tap,[683],[26],[o],Right Middle
+11:42:26.805,tap,[314],[183],[v],Left Middle
+11:42:26.880,tap,[199],[29],[e],Left Middle
+11:42:27.864,swipe,"[582, 558]","[192, 175]","[m, t]",Right Index
+11:42:28.155,tap,[72],[119],[a],Left Ring
+11:42:28.347,tap,[478],[204],[n],Right Index
+11:42:29.148,tap,[153],[134],[s],Left Ring
+11:42:30.248,tap,[796.5],[38],[p],Right Middle
+11:42:30.790,swipe,"[586, 554]","[201, 167]","[m, y]",Right Middle
+11:42:31.057,tap,[68],[112],[a],Left Ring
+11:42:31.174,tap,[476],[207],[n],Right Index
+11:42:31.299,tap,[149.5],[117],[s],Left Ring
+11:42:32.925,swipe,"[576, 537]","[200, 167]","[m, t]",Right Index
+11:42:33.400,tap,[58],[115],[a],Left Ring
+11:42:33.583,tap,[474],[197],[n],Right Index
+11:42:33.683,tap,[163.5],[122],[s],Left Ring
+11:42:35.968,tap,[556],[174],[m],Right Index
+11:42:36.135,tap,[194],[36],[e],Left Middle
+11:42:36.560,tap,[78],[111],[a],Left Ring
+11:42:36.643,tap,[476],[200],[n],Right Index
+11:42:36.760,tap,[163.5],[124],[s],Left Ring
+11:42:38.419,swipe,"[575, 539]","[200, 187]","[m, g]",Right Index
+11:42:38.711,tap,[488],[201],[n],Right Index
+11:42:39.245,tap,[437],[31],[y],Left Middle
+11:42:41.304,swipe,"[579, 542]","[209, 200]","[m, g]",Right Index
+11:42:41.563,tap,[490],[203],[n],Right Index
+11:42:42.238,tap,[458],[29],[y],Right Middle
+11:42:44.848,tap,[343],[41],[t],Left Middle
+11:42:44.898,tap,[478],[129],[h],Right Index
+11:42:45.198,tap,[579],[43],[i],Right Index
+11:42:45.365,tap,[494],[195],[n],Right Index
+11:42:45.857,tap,[359],[113],[g],Left Middle
+11:42:46.115,tap,[145],[118],[s],Left Middle
+11:42:49.025,swipe,"[336, 404]","[34, 90]","[t, n]",Left Middle
+11:42:49.292,tap,[604],[34],[i],Right Middle
+11:42:49.426,tap,[144],[125],[s],Left Ring
+11:42:50.309,swipe,"[749, 709]","[52, 48]","[p, u]",Right Middle
+11:42:51.009,tap,[262],[45],[r],Left Middle
+11:42:51.401,tap,[137],[115],[s],Left Middle
+11:42:51.535,tap,[508],[177],[n],Right Index
+11:42:52.919,tap,[747],[25],[p],Right Middle
+11:42:53.077,tap,[189],[37],[e],Left Middle
+11:42:53.119,tap,[263],[40],[r],Left Middle
+11:42:53.336,tap,[152],[122],[s],Left Middle
+11:42:53.486,tap,[505],[177],[n],Right Index
+11:42:54.169,tap,[595],[57],[i],Right Middle
+11:42:54.303,tap,[140],[121],[s],Left Ring
+11:42:54.528,tap,[69],[124],[a],Left Ring
+11:42:55.537,tap,[207],[127],[d],Left Middle
+11:42:55.862,tap,[138],[111],[s],Left Ring
+11:42:56.079,tap,[58],[106],[a],Left Ring
+11:42:56.404,tap,[348],[52],[t],Left Middle
+11:42:56.596,tap,[196],[16],[e],Left Middle
+11:42:56.646,tap,[301],[45],[r],Left Middle
+11:42:59.156,tap,[68],[143],[a],Left Ring
+11:43:00.606,swipe,"[220, 257]","[120, 111]","[d, y]",Left Middle
+11:43:00.906,tap,[136],[125],[s],Left Ring
+11:43:01.215,tap,[70],[127],[a],Left Ring
+11:43:01.640,tap,[348],[53],[t],Left Middle
+11:43:01.849,tap,[185],[45],[e],Left Middle
+11:43:01.898,tap,[266],[46],[r],Left Middle
+11:43:03.725,swipe,"[212, 249]","[120, 106]","[d, y]",Left Middle
+11:43:04.067,tap,[128],[121],[s],Left Ring
+11:43:04.309,tap,[66],[126],[a],Left Ring
+11:43:05.359,tap,[140],[136],[s],Left Ring
+11:43:06.168,tap,[344],[46],[t],Left Middle
+11:43:06.359,tap,[191],[28],[e],Left Middle
+11:43:06.409,tap,[266],[38],[r],Left Middle
+11:43:10.770,swipe,"[760, 729]","[50, 44]","[p, u]",Right Middle
+11:43:10.979,tap,[681],[49],[o],Right Middle
+11:43:11.237,tap,[340],[38],[t],Left Middle
+11:43:11.404,tap,[199],[25],[e],Left Middle
+11:43:11.612,tap,[230],[201],[c],Left Middle
+11:43:11.854,tap,[336],[45],[t],Left Middle
+11:43:13.764,tap,[431],[50],[y],Left Middle
+11:43:14.130,tap,[661],[50],[o],Right Middle
+11:43:14.189,tap,[534],[48],[u],Right Middle
+11:43:14.322,tap,[275],[28],[r],Left Middle
+11:43:15.231,swipe,"[185, 209]","[30, 66]","[e, v]",Left Middle
+11:43:15.506,tap,[505],[200],[n],Right Index
+11:43:15.740,tap,[322],[194],[v],Left Middle
+11:43:17.065,tap,[183],[24],[e],Left Middle
+11:43:17.174,tap,[517],[181],[n],Right Index
+11:43:17.374,tap,[319],[186],[v],Left Middle
+11:43:17.499,tap,[588],[47],[i],Right Middle
+11:43:17.784,tap,[276],[41],[r],Left Middle
+11:43:17.908,tap,[664],[27],[o],Right Middle
+11:43:18.708,tap,[572],[176],[m],Right Middle
+11:43:18.799,tap,[185],[55],[e],Left Middle
+11:43:18.925,tap,[512],[182],[n],Right Index
+11:43:19.825,tap,[348],[33],[t],Left Middle
+11:43:22.118,swipe,"[250, 290]","[205, 178]","[c, y]",Left Middle
+11:43:22.301,tap,[558],[198],[m],Right Index
+11:43:22.518,tap,[729],[58],[p],Right Middle
+11:43:22.685,tap,[82],[115],[a],Left Ring
+11:43:22.860,tap,[512],[186],[n],Right Index
+11:43:23.202,tap,[613],[39],[i],Right Middle
+11:43:23.302,tap,[203],[23],[e],Left Middle
+11:43:23.477,tap,[159],[125],[s],Left Ring
+11:43:24.828,tap,[67],[126],[a],Left Ring
+11:43:25.003,tap,[491],[197],[n],Right Index
+11:43:25.103,tap,[495],[203],[n],Right Index
+11:43:25.595,swipe,"[668, 674]","[54, 31]","[o, o]",Right Index
+11:43:25.637,tap,[545],[42],[u],Right Index
+11:43:26.228,tap,[506],[193],[n],Right Index
+11:43:26.470,swipe,"[283, 266]","[225, 169]","[c, e]",Left Middle
+11:43:28.622,tap,[76],[111],[a],Left Ring
+11:43:28.864,tap,[493],[199],[n],Right Index
+11:43:28.988,tap,[502],[193],[n],Right Index
+11:43:29.347,tap,[764],[7],[p],Right Middle
+11:43:29.355,tap,[659],[24],[o],Right Middle
+11:43:29.405,tap,[526],[54],[u],Right Middle
+11:43:29.631,tap,[495],[185],[n],Right Index
+11:43:30.039,tap,[246],[204],[c],Left Middle
+11:43:30.806,tap,[201],[34],[e],Left Middle
+11:43:32.665,tap,[73],[122],[a],Left Ring
+11:43:32.907,tap,[481],[205],[n],Right Index
+11:43:33.057,tap,[482],[205],[n],Right Index
+11:43:33.491,tap,[654],[36],[o],Right Index
+11:43:33.532,tap,[533],[50],[u],Right Index
+11:43:33.774,tap,[492],[186],[n],Right Index
+11:43:33.874,tap,[304],[196],[v],Left Middle
+11:43:34.633,tap,[253],[216],[c],Left Middle
+11:43:34.775,tap,[206],[27],[e],Left Middle
+11:43:36.234,tap,[64],[125],[a],Left Ring
+11:43:36.601,tap,[479],[212],[n],Right Index
+11:43:36.768,tap,[480],[204],[n],Right Index
+11:43:37.418,tap,[652],[39],[o],Right Index
+11:43:37.451,tap,[524],[28],[u],Right Index
+11:43:37.676,tap,[483],[186],[n],Right Index
+11:43:37.885,tap,[276],[218],[c],Left Middle
+11:43:38.102,tap,[176],[31],[e],Left Middle
+11:43:38.785,tap,[73],[113],[a],Left Ring
+11:43:39.419,swipe,"[587, 560]","[193, 170]","[m, y]",Right Index
+11:43:39.652,tap,[259],[47],[r],Left Middle
+11:43:39.894,tap,[361],[102],[g],Left Middle
+11:43:40.070,tap,[191],[48],[e],Left Middle
+11:43:40.119,tap,[269],[43],[r],Left Middle
+11:43:42.763,tap,[604],[29],[i],Right Middle
+11:43:42.846,tap,[147],[127],[s],Left Ring
+11:43:43.180,tap,[139],[127],[s],Left Ring
+11:43:43.305,tap,[479],[123],[h],Right Index
+11:43:43.538,tap,[196],[45],[e],Left Middle
+11:43:44.080,tap,[226],[127],[d],Left Middle
+11:43:44.188,tap,[640],[61],[o],Right Middle
+11:43:44.230,tap,[495],[181],[n],Right Index
+11:43:44.272,tap,[193],[36],[e],Left Middle
+11:43:44.905,tap,[470],[45],[y],Left Middle
+11:43:45.122,tap,[354],[56],[t],Left Middle
+11:43:46.648,tap,[402],[49],[y],Left Middle
+11:43:46.907,tap,[198],[34],[e],Left Middle
+11:43:48.249,tap,[342],[47],[t],Left Middle
+11:43:49.250,tap,[450],[45],[y],Left Middle
+11:43:49.392,tap,[173],[24],[e],Left Middle
+11:43:49.516,tap,[349],[50],[t],Left Middle
+11:43:51.968,tap,[241],[186],[c],Left Middle
+11:43:52.101,tap,[667],[49],[o],Right Index
+11:43:52.351,tap,[577],[197],[m],Right Index
+11:43:52.501,tap,[560],[181],[m],Right Index
+11:43:52.893,swipe,"[579, 566]","[189, 152]","[m, u]",Right Index
+11:43:53.160,tap,[512],[202],[n],Right Index
+11:43:53.368,tap,[592],[41],[i],Right Middle
+11:43:53.702,tap,[272],[197],[c],Left Middle
+11:43:53.919,tap,[80],[109],[a],Left Ring
+11:43:54.085,tap,[341],[62],[t],Left Middle
+11:43:54.144,tap,[202],[29],[e],Left Middle
+11:43:55.303,swipe,"[324, 371]","[35, 78]","[t, n]",Left Middle
+11:43:55.578,tap,[285],[41],[r],Left Middle
+11:43:55.745,tap,[650],[66],[o],Right Middle
+11:43:55.911,tap,[515],[50],[u],Right Middle
+11:43:56.029,tap,[364],[116],[g],Left Index
+11:43:56.111,tap,[462],[122],[h],Right Index
+11:43:57.487,swipe,"[186, 207]","[31, 70]","[e, m]",Left Middle
+11:43:57.762,tap,[568],[206],[m],Right Index
+11:43:59.146,swipe,"[185, 201]","[17, 41]","[e, v]",Left Middle
+11:43:59.480,tap,[77],[114],[a],Left Ring
+11:43:59.613,tap,[580],[46],[i],Right Middle
+11:43:59.688,swipe,"[679, 670]","[92, 105]","[l, e]",Right Middle
+11:44:01.189,swipe,"[182, 212]","[27, 55]","[e, v]",Left Middle
+11:44:01.740,tap,[75],[125],[a],Left Ring
+11:44:02.048,tap,[589],[45],[i],Right Middle
+11:44:02.123,tap,[684],[114],[l],Right Middle
+11:44:05.266,swipe,"[77, 90]","[190, 145]","[z, w]",Left Pinky
+11:44:06.851,tap,[86],[183],[z],Left Pinky
+11:44:07.068,tap,[202],[33],[e],Left Middle
+11:44:07.217,tap,[269],[34],[r],Left Middle
+11:44:07.276,tap,[649],[58],[o],Right Middle
+11:44:08.518,tap,[576],[40],[i],Right Middle
+11:44:08.560,tap,[496],[168],[n],Right Index
+11:44:08.952,tap,[656],[41],[o],Right Index
+11:44:08.985,tap,[514],[174],[n],Right Index
+11:44:09.002,tap,[70],[126],[a],Left Ring
+11:44:09.344,tap,[351],[55],[t],Left Middle
+11:44:09.377,tap,[474],[118],[h],Right Index
+11:44:09.519,tap,[217],[24],[e],Left Middle
+11:44:10.135,swipe,"[285, 250]","[125, 122]","[f, a]",Left Middle
+11:44:10.561,tap,[253],[205],[c],Left Middle
+11:44:10.778,tap,[327],[57],[t],Left Middle
+11:44:11.011,tap,[142],[122],[s],Left Middle
+11:44:13.504,swipe,"[13, 86]","[37, 36]","[q, r]",Left Middle
+11:44:14.046,tap,[196],[31],[e],Left Middle
+11:44:14.221,tap,[140],[130],[s],Left Middle
+11:44:14.438,tap,[327],[52],[t],Left Middle
+11:44:14.588,tap,[583],[50],[i],Right Index
+11:44:14.596,tap,[663],[38],[o],Right Index
+11:44:15.197,tap,[495],[211],[n],Right Index
+11:44:15.322,tap,[152],[136],[s],Left Ring
+11:44:17.339,swipe,"[16, 97]","[45, 49]","[q, r]",Left Ring
+11:44:17.681,tap,[182],[12],[e],Left Middle
+11:44:17.848,tap,[129],[122],[s],Left Middle
+11:44:18.091,tap,[322],[50],[t],Left Middle
+11:44:18.265,tap,[589],[50],[i],Right Index
+11:44:18.298,tap,[664],[43],[o],Right Index
+11:44:18.457,tap,[494],[186],[n],Right Index
+11:44:19.991,swipe,"[331, 344]","[34, 53]","[t, n]",Left Middle
+11:44:20.283,tap,[72],[102],[a],Left Ring
+11:44:20.458,tap,[332],[41],[t],Left Middle
+11:44:22.159,tap,[349],[42],[t],Left Middle
+11:44:22.276,tap,[460],[125],[h],Right Index
+11:44:22.434,tap,[84],[116],[a],Left Ring
+11:44:22.593,tap,[318],[45],[r],Left Middle
+11:44:23.660,swipe,"[582, 570]","[193, 150]","[m, u]",Right Index
+11:44:23.843,tap,[122],[119],[s],Left Middle
+11:44:24.068,tap,[322],[50],[t],Left Middle
+11:44:24.960,tap,[797],[41],[p],Right Middle
+11:44:25.294,tap,[554],[185],[m],Right Middle
+11:44:25.477,tap,[514],[48],[u],Right Middle
+11:44:25.613,tap,[147],[122],[s],Left Middle
+11:44:25.803,tap,[333],[57],[t],Left Middle
+11:44:28.229,tap,[340],[38],[t],Left Middle
+11:44:28.304,tap,[460],[127],[h],Right Index
+11:44:28.529,tap,[82],[126],[a],Left Ring
+11:44:28.696,tap,[342],[44],[t],Left Middle
+11:44:29.330,tap,[545],[189],[m],Right Middle
+11:44:29.663,tap,[520],[48],[u],Right Middle
+11:44:29.755,tap,[141],[107],[s],Left Middle
+11:44:29.963,tap,[332],[46],[t],Left Middle
+11:44:30.205,tap,[433],[188],[b],Right Index
+11:44:30.305,tap,[189],[34],[e],Left Middle
+11:44:30.805,tap,[68],[115],[a],Left Ring
+11:44:30.897,tap,[493],[185],[n],Right Index
+11:44:31.214,tap,[149],[122],[s],Left Middle
+11:44:31.639,tap,[112],[43],[w],Left Middle
+11:44:31.898,tap,[177],[50],[e],Left Middle
+11:44:31.989,tap,[265],[38],[r],Left Middle
+11:44:32.281,tap,[231],[94],[d],Left Middle
+11:44:33.849,tap,[64],[125],[a],Left Ring
+11:44:34.065,tap,[495],[193],[n],Right Index
+11:44:34.399,tap,[138],[131],[s],Left Middle
+11:44:34.958,tap,[108],[46],[w],Left Middle
+11:44:35.233,tap,[178],[43],[e],Left Middle
+11:44:35.274,tap,[261],[36],[r],Left Middle
+11:44:35.758,tap,[194],[41],[e],Left Middle
+11:44:35.808,tap,[217],[132],[d],Left Middle
+11:44:40.653,tap,[565],[177],[m],Right Middle
+11:44:40.886,tap,[519],[48],[u],Right Middle
+11:44:40.994,tap,[160],[118],[s],Left Middle
+11:44:41.219,tap,[343],[48],[t],Left Middle
+11:44:41.670,tap,[419],[195],[b],Right Index
+11:44:43.162,tap,[416],[186],[b],Right Index
+11:44:43.279,tap,[203],[28],[e],Left Middle
+11:44:44.154,tap,[74],[130],[a],Left Ring
+11:44:44.279,tap,[505],[182],[n],Right Index
+11:44:44.529,tap,[140],[115],[s],Left Middle
+11:44:44.821,tap,[109],[31],[w],Left Middle
+11:44:45.080,tap,[182],[44],[e],Left Middle
+11:44:45.146,tap,[259],[34],[r],Left Middle
+11:44:45.363,tap,[199],[29],[e],Left Middle
+11:44:45.421,tap,[217],[118],[d],Left Middle
+11:44:50.324,tap,[560],[200],[m],Right Middle
+11:44:50.474,tap,[516],[50],[u],Right Middle
+11:44:50.633,tap,[159],[122],[s],Left Middle
+11:44:50.833,tap,[344],[58],[t],Left Middle
+11:44:51.600,tap,[439],[186],[b],Right Index
+11:44:51.717,tap,[217],[19],[e],Left Middle
+11:44:52.367,tap,[76],[120],[a],Left Ring
+11:44:52.509,tap,[479],[193],[n],Right Index
+11:44:52.792,tap,[145],[111],[s],Left Middle
+11:44:53.009,tap,[114],[43],[w],Left Middle
+11:44:53.276,tap,[178],[34],[e],Left Middle
+11:44:53.326,tap,[253],[34],[r],Left Middle
+11:44:53.518,tap,[208],[9],[e],Left Middle
+11:44:53.576,tap,[224],[102],[d],Left Middle
+11:44:55.902,tap,[133],[126],[s],Left Middle
+11:44:56.119,tap,[172],[26],[e],Left Middle
+11:44:56.227,tap,[490.5],[190],[n],Right Index
+11:44:56.353,tap,[333],[48],[t],Left Middle
+11:44:57.228,tap,[336],[43],[t],Left Middle
+11:44:57.328,tap,[465],[129.5],[h],Right Middle
+11:44:57.545,tap,[591],[40],[i],Right Middle
+11:44:57.678,tap,[142],[126],[s],Left Ring
+11:44:58.187,tap,[430],[199],[b],Right Index
+11:44:58.520,tap,[397],[60],[t],Left Middle
+11:44:59.138,swipe,"[262, 229]","[45, 44]","[r, q]",Left Middle
+11:44:59.396,tap,[369],[109],[g],Left Middle
+11:44:59.730,tap,[589],[52],[i],Right Middle
+11:44:59.863,tap,[155],[150],[s],Left Middle
+11:45:00.330,tap,[357],[57],[t],Left Middle
+11:45:00.572,tap,[193],[30],[e],Left Middle
+11:45:00.630,tap,[264],[45],[r],Left Middle
+11:45:00.905,tap,[194],[48],[e],Left Middle
+11:45:00.955,tap,[220],[127],[d],Left Middle
+11:45:02.406,swipe,"[594, 574]","[207, 182]","[m, y]",Right Middle
+11:45:02.606,tap,[577],[59],[i],Right Middle
+11:45:02.789,tap,[677],[129],[l],Right Middle
+11:45:04.382,swipe,"[588, 552]","[214, 208]","[m, v]",Right Middle
+11:45:04.690,tap,[603],[52],[i],Right Middle
+11:45:04.874,tap,[684],[128],[l],Right Middle
+11:45:07.759,tap,[727],[52],[p],Right Middle
+11:45:07.817,tap,[680],[120],[l],Right Middle
+11:45:08.034,tap,[181],[55],[e],Left Middle
+11:45:08.268,tap,[77],[138],[a],Left Ring
+11:45:08.309,tap,[130],[133],[s],Left Ring
+11:45:08.509,tap,[188],[39],[e],Left Middle
+11:45:09.051,tap,[292],[114],[f],Left Middle
+11:45:09.368,tap,[676],[115],[l],Right Middle
+11:45:09.510,tap,[681],[117],[l],Right Middle
+11:45:09.710,tap,[673],[41],[o],Right Middle
+11:45:09.818,tap,[125],[58],[w],Left Middle
+11:45:10.485,tap,[333],[55],[t],Left Middle
+11:45:10.577,tap,[478],[113],[h],Right Index
+11:45:11.944,swipe,"[351, 383]","[139, 121]","[g, i]",Left Index
+11:45:12.261,tap,[598],[24],[i],Right Middle
+11:45:12.511,tap,[215],[136],[d],Left Middle
+11:45:12.620,tap,[679],[89],[l],Right Middle
+11:45:12.795,tap,[191],[31],[e],Left Middle
+11:45:13.312,tap,[583],[41],[i],Right Middle
+11:45:13.337,tap,[488],[181],[n],Right Index
+11:45:13.779,tap,[134],[126],[s],Left Middle
+11:45:16.897,tap,[294],[122],[f],Left Middle
+11:45:16.989,tap,[663],[30],[o],Right Middle
+11:45:17.197,tap,[682],[118],[l],Right Middle
+11:45:17.364,tap,[675],[73],[o],Right Middle
+11:45:17.539,tap,[666],[30],[o],Right Middle
+11:45:17.648,tap,[133],[39],[w],Left Index
+11:45:19.275,tap,[297],[126],[f],Left Index
+11:45:19.398,tap,[661],[32],[o],Right Middle
+11:45:19.640,tap,[682],[110],[l],Right Middle
+11:45:19.807,tap,[682],[106],[l],Right Middle
+11:45:19.982,tap,[670],[29],[o],Right Middle
+11:45:20.107,tap,[127],[43],[w],Left Middle
+11:45:21.116,tap,[355],[52],[t],Left Middle
+11:45:21.333,tap,[203],[49],[e],Left Middle
+11:45:23.601,tap,[345],[31],[t],Left Middle
+11:45:23.709,tap,[472],[115],[h],Right Index
+11:45:23.926,tap,[170.5],[29],[e],Left Middle
+11:45:25.719,swipe,"[364, 388]","[123, 105]","[g, u]",Left Middle
+11:45:25.985,tap,[589],[48],[i],Right Middle
+11:45:26.319,tap,[213],[121],[d],Left Middle
+11:45:26.394,tap,[197],[20],[e],Left Middle
+11:45:26.669,tap,[689],[111],[l],Right Middle
+11:45:26.911,tap,[584],[45],[i],Right Middle
+11:45:26.961,tap,[505],[175],[n],Right Index
+11:45:27.069,tap,[199],[27],[e],Left Middle
+11:45:27.270,tap,[142],[140],[s],Left Middle
+11:45:35.140,tap,[342],[32],[t],Left Middle
+11:45:35.232,tap,[467],[122],[h],Right Index
+11:45:35.357,tap,[185],[31],[e],Left Middle
+11:45:36.749,tap,[736],[31],[p],Right Middle
+11:45:36.816,tap,[665],[57],[o],Right Middle
+11:45:36.899,tap,[122],[46],[w],Left Middle
+11:45:37.191,tap,[203],[34],[e],Left Middle
+11:45:37.250,tap,[284],[36],[r],Left Middle
+11:45:38.142,tap,[663],[56],[o],Right Middle
+11:45:38.275,tap,[298],[109],[f],Left Middle
+11:45:39.034,tap,[199],[155],[d],Left Middle
+11:45:39.243,tap,[197],[24],[e],Left Middle
+11:45:39.401,tap,[509],[200],[n],Right Index
+11:45:39.901,tap,[68],[124],[a],Left Ring
+11:45:40.035,tap,[597],[79],[i],Right Middle
+11:45:41.444,tap,[213],[158],[d],Left Middle
+11:45:41.636,tap,[193],[38],[e],Left Middle
+11:45:41.786,tap,[505],[197],[n],Right Index
+11:45:42.219,tap,[605],[48],[i],Right Middle
+11:45:42.394,tap,[82],[139],[a],Left Ring
+11:45:43.387,tap,[693],[120],[l],Right Middle
+11:45:48.931,tap,[104],[33],[w],Left Index
+11:45:49.265,tap,[593],[47],[i],Right Middle
+11:45:49.432,tap,[327],[34],[t],Left Middle
+11:45:49.532,tap,[470],[118],[h],Right Index
+11:45:50.249,tap,[176],[19],[e],Left Middle
+11:45:50.457,tap,[72],[119],[a],Left Ring
+11:45:50.632,tap,[255],[182],[c],Left Middle
+11:45:51.166,tap,[60],[111],[a],Left Ring
+11:45:52.566,tap,[161],[24],[e],Left Middle
+11:45:52.750,tap,[77],[129],[a],Left Ring
+11:45:52.900,tap,[264],[196],[c],Left Middle
+11:45:53.008,tap,[472],[122],[h],Right Index
+11:45:53.809,tap,[147],[127],[s],Left Middle
+11:45:54.084,tap,[349],[52],[t],Left Middle
+11:45:54.442,tap,[194],[24],[e],Left Middle
+11:45:54.584,tap,[724],[50],[p],Right Middle
+11:45:55.426,swipe,"[285, 306]","[118, 81]","[f, t]",Left Middle
+11:45:55.760,tap,[266],[47],[r],Left Middle
+11:45:56.035,tap,[124],[11],[w],Left Middle
+11:45:56.185,tap,[59],[108],[a],Left Ring
+11:45:56.335,tap,[277],[27],[r],Left Middle
+11:45:56.510,tap,[206],[123],[d],Left Middle
+11:45:59.037,tap,[466],[113],[h],Right Index
+11:45:59.195,tap,[171],[13],[e],Left Middle
+11:45:59.787,tap,[250],[202],[c],Left Middle
+11:46:00.071,tap,[86],[128],[a],Left Ring
+11:46:00.329,tap,[673],[123],[l],Right Middle
+11:46:00.462,tap,[674],[122],[l],Right Middle
+11:46:00.638,tap,[203],[57],[e],Left Middle
+11:46:00.696,tap,[228],[127],[d],Left Middle
+11:46:01.338,tap,[139],[124],[s],Left Middle
+11:46:01.529,tap,[182],[22],[e],Left Middle
+11:46:01.738,tap,[320],[180],[v],Left Middle
+11:46:01.914,tap,[177],[17],[e],Left Middle
+11:46:02.005,tap,[498],[193],[n],Right Index
+11:46:02.488,tap,[343],[44],[t],Left Middle
+11:46:02.697,tap,[584],[43],[i],Right Middle
+11:46:02.747,tap,[558],[172],[m],Right Middle
+11:46:02.889,tap,[204],[13],[e],Left Middle
+11:46:03.064,tap,[142],[130],[s],Left Middle
+11:46:05.023,tap,[343],[41],[t],Left Middle
+11:46:05.106,tap,[472],[113],[h],Right Index
+11:46:05.890,swipe,"[121, 175]","[45, 43]","[w, t]",Left Index
+11:46:06.307,tap,[262],[28],[r],Left Index
+11:46:06.416,tap,[695],[106],[l],Right Middle
+11:46:06.824,tap,[199],[129],[d],Left Middle
+11:46:08.075,tap,[595],[42],[i],Right Middle
+11:46:08.192,tap,[134],[131],[s],Left Ring
+11:46:08.450,tap,[63],[127],[a],Left Ring
+11:46:09.142,swipe,"[131, 178]","[121, 98]","[s, t]",Left Ring
+11:46:09.342,tap,[68],[116],[a],Left Ring
+11:46:09.542,tap,[338],[115],[f],Left Middle
+11:46:09.609,tap,[178],[34],[e],Left Middle
+11:46:11.602,swipe,"[142, 173]","[126, 89]","[s, r]",Left Ring
+11:46:11.860,tap,[74],[124],[a],Left Ring
+11:46:12.077,tap,[348],[111],[g],Left Middle
+11:46:12.135,tap,[173],[28],[e],Left Middle
+11:46:13.294,tap,[129],[127],[s],Left Middle
+11:46:13.536,tap,[344],[40],[t],Left Middle
+11:46:13.870,tap,[65],[122],[a],Left Ring
+11:46:14.103,tap,[341],[122],[g],Left Middle
+11:46:14.145,tap,[187],[32],[e],Left Middle
+11:46:18.322,tap,[339],[44],[t],Left Middle
+11:46:18.397,tap,[465],[118],[h],Right Index
+11:46:18.531,tap,[152],[34],[w],Left Index
+11:46:19.664,tap,[126],[14],[w],Left Index
+11:46:22.216,tap,[341],[35],[t],Left Index
+11:46:22.316,tap,[458],[116],[h],Right Index
+11:46:22.449,tap,[168],[23],[e],Left Index
+11:46:23.450,tap,[117],[43],[w],Left Index
+11:46:23.600,tap,[660],[44],[o],Right Middle
+11:46:23.933,tap,[257],[38],[r],Left Middle
+11:46:24.025,tap,[674],[126],[l],Right Middle
+11:46:24.192,tap,[220],[129.5],[d],Left Middle
+11:46:25.293,tap,[601],[45],[i],Right Middle
+11:46:25.410,tap,[134],[134],[s],Left Ring
+11:46:25.818,tap,[58],[122],[a],Left Ring
+11:46:26.618,swipe,"[121, 162]","[122, 101]","[s, t]",Left Ring
+11:46:26.802,tap,[68],[115],[a],Left Ring
+11:46:26.994,tap,[327],[111],[f],Left Middle
+11:46:27.043,tap,[170],[13],[e],Left Middle
+11:46:29.820,tap,[324],[44],[t],Left Middle
+11:46:29.903,tap,[469],[127],[h],Right Index
+11:46:30.663,swipe,"[691, 666]","[131, 99]","[l, i]",Right Index
+11:46:31.162,tap,[432],[191],[b],Right Index
+11:46:31.337,tap,[257],[41],[r],Left Middle
+11:46:31.496,tap,[69],[109],[a],Left Ring
+11:46:31.696,tap,[287],[45],[r],Left Middle
+11:46:32.088,tap,[432],[59],[y],Right Middle
+11:46:33.280,tap,[612],[41],[i],Right Middle
+11:46:33.405,tap,[145],[134],[s],Left Middle
+11:46:34.239,swipe,"[241, 287]","[199, 179]","[c, h]",Left Middle
+11:46:34.448,tap,[681],[36],[o],Right Middle
+11:46:34.590,tap,[140],[126],[s],Left Middle
+11:46:34.814,tap,[192],[26],[e],Left Middle
+11:46:34.873,tap,[227],[113],[d],Left Middle
+11:46:36.515,swipe,"[245, 306]","[201, 182]","[c, h]",Left Middle
+11:46:36.732,tap,[693],[27],[o],Right Middle
+11:46:36.874,tap,[154],[125],[s],Left Middle
+11:46:37.099,tap,[201],[37],[e],Left Middle
+11:46:37.157,tap,[231],[118],[d],Left Middle
+11:46:38.758,swipe,"[245, 315]","[200, 203]","[c, n]",Left Middle
+11:46:38.991,tap,[679],[43],[o],Right Middle
+11:46:39.400,tap,[147],[110],[s],Left Middle
+11:46:39.617,tap,[206],[39],[e],Left Middle
+11:46:39.675,tap,[220],[139],[d],Left Middle
+11:46:41.176,tap,[339],[41],[t],Left Middle
+11:46:41.276,tap,[652],[40],[o],Right Middle
+11:46:41.518,tap,[205],[130],[d],Left Middle
+11:46:41.643,tap,[61],[120],[a],Left Ring
+11:46:42.402,tap,[418],[35],[y],Left Middle
+11:46:44.828,swipe,"[682, 654]","[133, 99]","[l, i]",Right Middle
+11:46:45.070,tap,[279],[120],[f],Left Middle
+11:46:45.136,tap,[187],[36],[e],Left Middle
+11:46:47.471,tap,[593],[59],[i],Right Middle
+11:46:47.588,tap,[298],[118],[f],Left Index
+11:46:48.422,tap,[397],[197],[b],Left Index
+11:46:48.864,tap,[529],[41],[u],Right Middle
+11:46:48.980,tap,[333],[38],[t],Left Middle
+11:46:49.414,tap,[81],[140],[a],Left Ring
+11:46:49.965,swipe,"[208, 244]","[141, 90]","[d, r]",Left Middle
+11:46:50.164,tap,[182],[23],[e],Left Middle
+11:46:50.348,tap,[60],[108],[a],Left Ring
+11:46:50.523,tap,[570],[191],[m],Right Index
+11:46:51.799,swipe,"[205, 222]","[117, 90]","[d, r]",Left Middle
+11:46:51.932,tap,[252],[38],[r],Left Middle
+11:46:52.816,tap,[184],[32],[e],Left Middle
+11:46:52.999,tap,[52],[115],[a],Left Ring
+11:46:53.091,tap,[561],[209],[m],Right Index
+11:46:54.341,swipe,"[210, 232]","[109, 85]","[d, r]",Left Middle
+11:46:54.525,tap,[178],[26],[e],Left Middle
+11:46:54.708,tap,[54],[109],[a],Left Ring
+11:46:54.792,tap,[573],[196],[m],Right Index
+11:46:59.982,tap,[50],[122],[a],Left Ring
+11:47:01.192,swipe,"[206, 231]","[114, 98]","[d, t]",Left Middle
+11:47:01.367,tap,[181],[37],[e],Left Middle
+11:47:01.542,tap,[61],[125],[a],Left Ring
+11:47:01.626,tap,[569],[200],[m],Right Index
+11:47:03.937,tap,[132],[131],[s],Left Ring
+11:47:04.062,tap,[53],[108],[a],Left Ring
+11:47:04.171,tap,[203],[132],[d],Left Middle
+11:47:04.739,tap,[340],[51],[t],Left Middle
+11:47:05.472,swipe,"[475, 461]","[129.5, 117]","[h, t]",Right Index
+11:47:05.723,tap,[187],[32],[e],Left Middle
+11:47:05.898,tap,[61],[128],[a],Left Ring
+11:47:06.048,tap,[290],[50],[r],Left Middle
+11:47:08.201,tap,[674],[45],[o],Right Middle
+11:47:09.285,swipe,"[482, 459]","[136, 118]","[h, r]",Right Middle
+11:47:10.278,tap,[186],[46],[e],Left Middle
+11:47:10.461,tap,[65],[100],[a],Left Middle
+11:47:10.595,tap,[262],[56],[r],Left Middle
+11:47:12.347,swipe,"[460, 437]","[136, 126]","[h, e]",Right Index
+11:47:12.722,tap,[57],[125],[a],Left Ring
+11:47:13.039,tap,[266],[43],[r],Left Middle
+11:47:14.441,swipe,"[334, 350]","[49, 73]","[t, a]",Left Middle
+11:47:14.716,tap,[92],[111],[a],Left Ring
+11:47:14.883,tap,[329],[44],[t],Left Middle
+11:47:16.184,swipe,"[514, 493]","[198, 181]","[n, t]",Right Index
+11:47:16.476,tap,[119],[26],[w],Left Index
+11:47:16.667,tap,[49],[120],[a],Left Ring
+11:47:16.692,tap,[135],[120],[s],Left Ring
+11:47:18.202,swipe,"[519, 488]","[207, 179]","[n, t]",Right Index
+11:47:18.569,tap,[112],[48],[w],Left Index
+11:47:18.761,tap,[144],[137],[s],Left Ring
+11:47:20.045,tap,[493],[195],[n],Right Index
+11:47:20.271,tap,[181],[37],[e],Left Middle
+11:47:20.604,tap,[142],[146],[s],Left Middle
+11:47:22.231,tap,[496],[189],[n],Right Index
+11:47:22.547,tap,[180],[37],[e],Left Middle
+11:47:22.747,tap,[129],[42],[w],Left Middle
+11:47:22.989,tap,[134],[151],[s],Left Ring
+11:47:25.733,tap,[47],[134],[a],Left Ring
+11:47:25.983,tap,[240],[44],[e],Left Middle
+11:47:26.050,tap,[166],[26],[e],Left Middle
+11:47:26.750,tap,[453],[48],[y],Right Middle
+11:47:26.909,tap,[661],[62],[o],Right Middle
+11:47:26.959,tap,[530],[41],[u],Right Middle
+11:47:27.009,tap,[42],[115],[a],Left Ring
+11:47:27.635,swipe,"[332, 269]","[39, 71]","[t, s]",Left Middle
+11:47:27.968,tap,[691],[119],[l],Right Middle
+11:47:28.535,tap,[616],[124],[k],Right Middle
+11:47:28.743,tap,[588],[48],[i],Right Middle
+11:47:28.802,tap,[501],[189],[n],Right Index
+11:47:28.894,tap,[368],[120],[g],Left Middle
+11:47:29.903,tap,[348],[45],[t],Left Middle
+11:47:30.253,tap,[551],[193],[m],Right Index
+11:47:30.370,tap,[199],[42],[e],Left Middle
+11:47:32.038,tap,[666],[41],[o],Right Middle
+11:47:32.379,tap,[566],[186],[m],Right Middle
+11:47:32.504,tap,[182],[44],[e],Left Middle
+11:47:34.873,swipe,"[131, 161]",[103],"[s, g]",Left Ring
+11:47:35.073,tap,[79],[142],[a],Left Ring
+11:47:35.348,tap,[399],[188],[b],Left Index
+11:47:35.465,swipe,"[601, 612]","[48, 64]","[i, l]",Right Middle
+11:47:35.607,tap,[673],[136.5],[l],Right Middle
+11:47:35.790,tap,[603],[56],[i],Right Middle
+11:47:36.549,tap,[136],[119],[s],Left Ring
+11:47:38.066,swipe,"[124, 171]","[114, 100]","[s, t]",Left Ring
+11:47:38.600,tap,[63],[127],[a],Left Ring
+11:47:38.892,tap,[383],[181],[b],Left Index
+11:47:39.075,tap,[603],[52],[i],Right Middle
+11:47:39.267,tap,[682],[129],[l],Right Middle
+11:47:39.476,tap,[603],[46],[i],Right Middle
+11:47:39.759,tap,[336],[49],[t],Left Middle
+11:47:39.951,tap,[410],[62],[y],Left Middle
+11:47:41.310,tap,[620],[61],[i],Right Middle
+11:47:41.427,tap,[292],[110],[f],Left Middle
+11:47:41.819,tap,[340],[48],[t],Left Middle
+11:47:41.927,tap,[463],[132],[h],Right Index
+11:47:42.636,swipe,"[499, 477]","[197, 186]","[n, f]",Right Index
+11:47:42.970,tap,[333],[45],[t],Left Middle
+11:47:43.095,tap,[579],[61],[i],Right Middle
+11:47:43.161,tap,[656],[48],[o],Right Middle
+11:47:43.270,tap,[500],[186],[n],Right Index
+11:47:45.296,swipe,"[512, 472]","[209, 209]","[n, c]",Right Index
+11:47:45.696,tap,[336],[35],[t],Left Middle
+11:47:45.813,tap,[598],[55],[i],Right Middle
+11:47:45.871,tap,[668],[57],[o],Right Middle
+11:47:45.996,tap,[504],[204],[n],Right Index
+11:47:48.481,tap,[331],[45],[t],Right Index
+11:47:48.564,tap,[469.5],[140],[h],Right Index
+11:47:48.673,tap,[181],[59],[e],Left Middle
+11:47:49.507,swipe,"[251, 211]","[203, 197]","[c, o]",Left Middle
+11:47:49.790,tap,[698],[59],[o],Right Middle
+11:47:50.216,tap,[608],[34],[i],Right Middle
+11:47:50.399,tap,[335],[44],[t],Left Middle
+11:47:50.632,tap,[82],[121],[a],Left Ring
+11:47:50.699,tap,[679],[113],[l],Right Middle
+11:47:51.883,tap,[654],[51],[o],Right Middle
+11:47:51.983,tap,[287],[125],[f],Left Middle
+11:47:52.625,tap,[647],[63],[o],Right Middle
+11:47:52.767,tap,[534],[59],[u],Right Middle
+11:47:52.859,tap,[280],[38],[r],Left Middle
+11:47:53.517,swipe,"[516, 476.5]","[198, 193]","[n, c]",Right Index
+11:47:53.859,tap,[348],[43],[t],Left Middle
+11:47:54.009,tap,[617],[62],[i],Right Index
+11:47:54.076,tap,[685],[56],[o],Right Index
+11:47:54.201,tap,[504],[201],[n],Right Index
