@@ -213,6 +213,8 @@ def process_trial(pid, tid, gesture, word, trial):
 
         insert["swipe_ratio"] = swipe_ratio
         insert["tap_ratio"] = tap_ratio
+        insert["swipe_key_count"] = swipe_count * 2
+        insert["tap_key_count"] = min(tap_count, len(target) - swipe_count * 2)
         insert["swipe_dist"] = swipe_dist
         insert["swipe_key_set"] = swipe_key_set
 
