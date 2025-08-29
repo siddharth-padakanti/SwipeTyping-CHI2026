@@ -152,6 +152,8 @@ def process_trial(pid, tid, gesture, word, trial):
         insert_start_time = row['Time']
     # print(insert_word)
 
+    swipe_information = []
+
     for idx in range(len(insert_word)):
         insert = insert_word[idx]
         # print(insert)
@@ -187,6 +189,13 @@ def process_trial(pid, tid, gesture, word, trial):
                     dy = float(grow['EndY']) - float(grow['StartY'])
                     dis = math.sqrt(dx*dx + dy*dy) / key_coord
                     swipe_dist.append([dis, distarget])
+
+                    swipe_information.append({
+                        "distance": dis,
+                        "target_distance": distarget,
+                        "target_start_key": target[target_char_count],
+                        "target_end_key": target[target_char_count+1]
+                    })
                 
                 target_char_count += 2
             elif grow['Type'] == "tap":
@@ -207,6 +216,8 @@ def process_trial(pid, tid, gesture, word, trial):
         insert["swipe_dist"] = swipe_dist
         insert["swipe_key_set"] = swipe_key_set
 
+        
+
         # print(swipe_ratio)
         # print(tap_ratio)
         # print(swipe_dist)
@@ -218,7 +229,7 @@ def process_trial(pid, tid, gesture, word, trial):
 
     # print(insert_word)
 
-    return trial_result, insert_word
+    return trial_result, insert_word, swipe_information
 
 
 
@@ -233,6 +244,7 @@ if __name__ == '__main__':
     total_result = []
     total_usage = []
     total_word = []
+    total_swipe = []
     for pid in participant_id:
         print(pid)
         gesture_df = pd.read_csv(str(pid) + '/gesture_log.csv', keep_default_na=False)
@@ -246,11 +258,12 @@ if __name__ == '__main__':
         participant_word = []
 
         for trial_id in range(30):
-            trial_result, words = process_trial(pid, trial_id, gesture_df[gesture_df['Trial Num'] == trial_id], 
+            trial_result, words, swipes = process_trial(pid, trial_id, gesture_df[gesture_df['Trial Num'] == trial_id], 
                           word_df[word_df['Trial Num'] == trial_id], trial_df[trial_df['Trial Num'] == trial_id])
             
             total_result = total_result + trial_result
             participant_word = participant_word + words
+            total_swipe = total_swipe + swipes
 
         # calculate results per participants
         # print(participant_word)
@@ -276,9 +289,11 @@ if __name__ == '__main__':
     resultdf = pd.DataFrame(total_result)
     usagedf = pd.DataFrame(total_usage)
     worddf = pd.DataFrame(total_word)
+    swipedf = pd.DataFrame(total_swipe)
 
     resultdf.to_csv('result.csv', index=False)  
     usagedf.to_csv('usage.csv', index=False)  
     worddf.to_csv('word.csv', index=False)  
+    swipedf.to_csv('swipes.csv', index=False)  
 
 
