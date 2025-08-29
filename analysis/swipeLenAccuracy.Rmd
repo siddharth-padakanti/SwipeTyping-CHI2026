@@ -60,16 +60,16 @@ accuracy_summary
 
 # line + dot
 accuracy_graph <- ggplot(accuracy_summary) +
-  geom_pointrange( aes(x=length, y=meanAccuracy, ymin=lowCIAccuracy, ymax=highCIAccuracy,color=length), alpha=0.9, size=0.8, position=position_dodge(width=0.60)) +
+  geom_pointrange( aes(x=length, y=meanAccuracy, ymin=lowCIAccuracy, ymax=highCIAccuracy,color=length), alpha=0.9, size=0.8, position=position_dodge(width=1.0)) +
   facet_wrap(~condition, ncol = 1) +
-  scale_y_continuous(limits=c(0.5,1.0)) +
+  scale_y_continuous(limits=c(0.0,1.0), breaks = seq(0, 1.0, 0.1)) +
   scale_colour_manual(values = c("2" = "#E74C3C", "3" = "#3498DB", "4" = "#2ECC71"))
 
 accuracy_graph
 
 accuracy_graph + theme( # remove the vertical grid lines
           panel.background = element_blank(),
-          panel.grid.major.y = element_blank() ,
+          panel.grid.major.y = element_line( size=.1, color="gray" ),
           # explicitly set the horizontal lines (or they will disappear too)
           panel.grid.major.x = element_line( size=.1, color="gray" ),
           axis.title.x = element_blank(),
@@ -133,16 +133,16 @@ accuracy_char_summary
 
 # line + dot
 accuracy_char_graph <- ggplot(accuracy_char_summary) +
-  geom_pointrange( aes(x=char_num, y=meanAccuracy, ymin=lowCIAccuracy, ymax=highCIAccuracy,color=length), alpha=0.9, size=0.8, position=position_dodge(width=0.30)) +
+  geom_pointrange( aes(x=char_num, y=meanAccuracy, ymin=lowCIAccuracy, ymax=highCIAccuracy,color=length), alpha=0.9, size=0.8, position=position_dodge(width=1.0)) +
   facet_wrap(~condition, ncol = 1) +
-  scale_y_continuous(limits=c(0,1.0)) +
+  scale_y_continuous(limits=c(0,1.0), breaks = seq(0, 1.0, 0.1)) +
   scale_colour_manual(values = c("2" = "#E74C3C", "3" = "#3498DB", "4" = "#2ECC71"))
 
 accuracy_char_graph
 
 accuracy_char_graph + theme( # remove the vertical grid lines
           panel.background = element_blank(),
-          panel.grid.major.y = element_blank() ,
+          panel.grid.major.y = element_line( size=.1, color="gray" ),
           # explicitly set the horizontal lines (or they will disappear too)
           panel.grid.major.x = element_line( size=.1, color="gray" ),
           axis.title.x = element_blank(),
